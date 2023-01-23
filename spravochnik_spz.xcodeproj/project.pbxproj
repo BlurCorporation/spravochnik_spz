@@ -123,6 +123,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B19F236297EFCA200F34EF1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		1B2B11DE2979CFF300FFC896 = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +170,7 @@
 		220AE4EC297D524500DEA441 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				1B19F236297EFCA200F34EF1 /* Cells */,
 				220AE4F4297D52F600DEA441 /* Entities */,
 				220AE4F3297D52EB00DEA441 /* Classes */,
 				220AE4F2297D52E000DEA441 /* Protocols */,
