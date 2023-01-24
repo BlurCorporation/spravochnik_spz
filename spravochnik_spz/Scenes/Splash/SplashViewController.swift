@@ -21,23 +21,19 @@ final class SplashViewController: UIViewController {
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView(image: Constants.Images.logo)
         imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
-    private func lineView (color: UIColor) -> UIView {
-        let view = UILabel()
-        view.backgroundColor = color
-        view.layer.masksToBounds = true
-        view.layer.cornerRadius = Constants.Sizes.cornerRadiusAllLine
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }
-    private lazy var gray1LineView  = lineView(color: Constants.Colors.lightGrey)
+
+    private lazy var gray1LineView = lineView(color: Constants.Colors.lightGrey)
     private lazy var black2LineView  = lineView(color: Constants.Colors.black)
     private lazy var gray3LineView = lineView(color: Constants.Colors.lightGrey)
     
-    private var linesStackView = UIStackView()
+    private lazy var linesStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = Constants.Sizes.spasingBetweenLine
+        return stackView
+    }()
         
     // MARK: - LifeCycle
     
@@ -61,17 +57,18 @@ private extension SplashViewController {
     }
     
     func addSubViews() {
-        linesStackView = UIStackView(arrangedSubviews: [gray1LineView,
-                                                        black2LineView,
-                                                        gray3LineView],
-                                     axis: .horizontal,
-                                     spacing: Constants.Sizes.spasingBetweenLine)
-        
-        view.addSubview(logoImageView)
-        view.addSubview(linesStackView)
+        linesStackView.addArrangedSubviews(gray1LineView,
+                                           black2LineView,
+                                           gray3LineView)
+        view.addSubviews(logoImageView,
+                         linesStackView)
     }
     
     func setupConstraints() {
+        let logoWidth: CGFloat = 151
+        let logoHeight: CGFloat = 112
+        let linesBottomAnchor: CGFloat = -150
+        
         NSLayoutConstraint.activate([
             gray1LineView.heightAnchor.constraint(equalToConstant: Constants.Sizes.heightAllLine),
             gray1LineView.widthAnchor.constraint(equalToConstant: Constants.Sizes.widthGrayLine),
@@ -84,11 +81,11 @@ private extension SplashViewController {
             
             logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoImageView.widthAnchor.constraint(equalToConstant: 151),
-            logoImageView.heightAnchor.constraint(equalToConstant: 112),
+            logoImageView.widthAnchor.constraint(equalToConstant: logoWidth),
+            logoImageView.heightAnchor.constraint(equalToConstant: logoHeight),
             
             linesStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            linesStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
+            linesStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: linesBottomAnchor)
         ])
     }
 }
