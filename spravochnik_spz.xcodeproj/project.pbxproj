@@ -56,6 +56,10 @@
 		226E6F4A297D716800846141 /* FirePumpStationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F49297D716800846141 /* FirePumpStationPresenter.swift */; };
 		226E6F4C297D717800846141 /* FirePumpStationResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F4B297D717800846141 /* FirePumpStationResultsViewController.swift */; };
 		226E6F4E297D718400846141 /* FirePumpStationResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F4D297D718400846141 /* FirePumpStationResultsPresenter.swift */; };
+		45DA6E4C29804524008D26F8 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA6E4B29804524008D26F8 /* UIView.swift */; };
+		45DA6E4E298047CF008D26F8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA6E4D298047CF008D26F8 /* UIViewController.swift */; };
+		45F72C2C297F1C6F00D90C8F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F72C2B297F1C6F00D90C8F /* Constants.swift */; };
+		45F72C30297F24A400D90C8F /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F72C2F297F24A400D90C8F /* UIStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +114,10 @@
 		226E6F49297D716800846141 /* FirePumpStationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirePumpStationPresenter.swift; sourceTree = "<group>"; };
 		226E6F4B297D717800846141 /* FirePumpStationResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirePumpStationResultsViewController.swift; sourceTree = "<group>"; };
 		226E6F4D297D718400846141 /* FirePumpStationResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirePumpStationResultsPresenter.swift; sourceTree = "<group>"; };
+		45DA6E4B29804524008D26F8 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		45DA6E4D298047CF008D26F8 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		45F72C2B297F1C6F00D90C8F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		45F72C2F297F24A400D90C8F /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +238,9 @@
 		220AE4F1297D52D300DEA441 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				45F72C2F297F24A400D90C8F /* UIStackView.swift */,
+				45DA6E4B29804524008D26F8 /* UIView.swift */,
+				45DA6E4D298047CF008D26F8 /* UIViewController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -251,6 +262,7 @@
 		220AE4F4297D52F600DEA441 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				45F72C2B297F1C6F00D90C8F /* Constants.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -587,12 +599,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				226E6F40297D708500846141 /* SmokeExhaustSystemPresenter.swift in Sources */,
+				45F72C30297F24A400D90C8F /* UIStackView.swift in Sources */,
 				226E6F37297D6FFA00846141 /* ModuleFirefightingSystemResultsViewController.swift in Sources */,
 				226E6F4C297D717800846141 /* FirePumpStationResultsViewController.swift in Sources */,
 				226E6EE6297D5E6900846141 /* SplashViewController.swift in Sources */,
 				226E6F15297D6BDE00846141 /* PerimeterAlarmSystemViewController.swift in Sources */,
 				1B2B11EB2979CFF300FFC896 /* AppDelegate.swift in Sources */,
 				226E6F35297D6FEC00846141 /* ModuleFirefightingSystemPresenter.swift in Sources */,
+				45DA6E4E298047CF008D26F8 /* UIViewController.swift in Sources */,
 				1B2B11ED2979CFF300FFC896 /* SceneDelegate.swift in Sources */,
 				226E6F48297D715800846141 /* FirePumpStationViewController.swift in Sources */,
 				226E6F4E297D718400846141 /* FirePumpStationResultsPresenter.swift in Sources */,
@@ -605,10 +619,12 @@
 				226E6EF5297D681E00846141 /* AuthViewController.swift in Sources */,
 				226E6F05297D6A6A00846141 /* ProfileViewController.swift in Sources */,
 				226E6F23297D6DFA00846141 /* FireAlarmSystemResultsViewController.swift in Sources */,
+				45DA6E4C29804524008D26F8 /* UIView.swift in Sources */,
 				226E6F2F297D6ED700846141 /* NotificationSystemResultsPresenter.swift in Sources */,
 				226E6F1B297D6C2D00846141 /* PerimeterAlarmSystemResultsViewController.swift in Sources */,
 				226E6F29297D6EB100846141 /* NotificationSystemViewController.swift in Sources */,
 				226E6F0D297D6B9100846141 /* SecurityAlarmSystemPresenter.swift in Sources */,
+				45F72C2C297F1C6F00D90C8F /* Constants.swift in Sources */,
 				226E6EF7297D683200846141 /* AuthPresenter.swift in Sources */,
 				226E6F44297D70A200846141 /* SmokeExhaustSystemResultsPresenter.swift in Sources */,
 				226E6F17297D6BEB00846141 /* PerimeterAlarmSystemPresenter.swift in Sources */,
