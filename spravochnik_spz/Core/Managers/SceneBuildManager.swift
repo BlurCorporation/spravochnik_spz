@@ -11,6 +11,7 @@ protocol Buildable {
     func buildRegisterScreen() -> RegisterViewController
     func buildAuthScreen() -> AuthViewController
     func buildOnboardingScreen() -> OnboardingViewController
+    func buildTabBarScreen() -> TabBarController
     func buildMainScreen() -> MainViewController
     func buildSavedCalculationsScreen() -> SavedCalculationsViewController
     func buildProfileScreen() -> ProfileViewController
@@ -79,6 +80,12 @@ extension SceneBuildManager: Buildable {
         
         viewController.presenter = presenter
         presenter.viewController = viewController
+        
+        return viewController
+    }
+    
+    func buildTabBarScreen() -> TabBarController {
+        let viewController = TabBarController()
         
         return viewController
     }
