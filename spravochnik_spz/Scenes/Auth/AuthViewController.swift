@@ -36,6 +36,7 @@ private extension AuthViewController {
     func setupViewController() {
         addSubViews()
         setupConstraints()
+        view.backgroundColor = .systemBackground
     }
     
     func addSubViews() {}

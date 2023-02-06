@@ -7,7 +7,10 @@
 
 // MARK: - StartPresenterProtocol
 
-protocol StartPresenterProtocol: AnyObject {}
+protocol StartPresenterProtocol: AnyObject {
+    func loginButtonPressed()
+    func registerButtonPressed()
+}
 
 // MARK: - StartPresenter
 
@@ -27,4 +30,16 @@ final class StartPresenter {
 
 //MARK: - StartPresenterExtension
 
-extension StartPresenter: StartPresenterProtocol {}
+extension StartPresenter: StartPresenterProtocol {
+    func loginButtonPressed() {
+        let authViewController = sceneBuildManager.buildAuthScreen()
+        viewController?.navigationController?.pushViewController(authViewController,
+                                                                 animated: true)
+    }
+    
+    func registerButtonPressed() {
+        let registerViewController = sceneBuildManager.buildRegisterScreen()
+        viewController?.navigationController?.pushViewController(registerViewController,
+                                                                 animated: true)
+    }
+}

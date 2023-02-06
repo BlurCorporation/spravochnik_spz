@@ -31,5 +31,27 @@ enum Constants {
         static let widthBlackLine = CGFloat(30)
         static let cornerRadiusAllLine = CGFloat(1.5)
         static let spasingBetweenLine = CGFloat(5)
+        static let applicationNameLabelFont = CGFloat(34)
+        static let infoLabelFont = CGFloat(11)
+    }
+    
+    enum TextLabels {
+        static let applicationNameLabelText = "Справочник СПЗ"
+        static let infoApplicationLabelText = "Войдите в систему или зарегистрируйтесь, чтобы получить полный доступ к приложению с возможность сохранять и делиться произведенными расчетами"
+        static let infoWithLinksLabelText = "Выполняя вход в приложение вы соглашаетесь с Условиями использования и Политикой конфиденциальности"
+    }
+    
+    enum TextButtons {
+        static let loginButton = "Войти"
+        static let registerButton = "Зарегистрироваться"
+    }
+    
+    enum Constraints {
+        static let sideOffset = CGFloat(16)
+        static let lowerOffset = CGFloat(16)
+        static let buttonsSpasing = CGFloat(8)
+        static let labelsStackViewSpasing = CGFloat(8)
+        static let authButtonHeight = CGFloat(50)
+        static let commonStackViewTopOffset = CGFloat(24)
     }
 }
