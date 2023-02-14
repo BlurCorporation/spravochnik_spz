@@ -102,7 +102,7 @@ extension SceneBuildManager: Buildable {
     
     func buildSavedCalculationsScreen() -> SavedCalculationsViewController {
         let viewController = SavedCalculationsViewController()
-        let presenter = SavedCalculationsPresenter(sceneBuildManager: self)
+        let presenter = SavedCalculationsTablePresenter(sceneBuildManager: self)
         
         viewController.presenter = presenter
         presenter.viewController = viewController
