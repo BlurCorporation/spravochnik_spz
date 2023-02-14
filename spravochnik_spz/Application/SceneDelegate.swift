@@ -26,8 +26,7 @@ private extension SceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         let sceneBuildManager: Buildable = SceneBuildManager()
         let viewController = sceneBuildManager.buildTabBarScreen()
-        let navigationController = UINavigationController(rootViewController: viewController)
-        window.rootViewController = navigationController
+        window.rootViewController = viewController
         window.makeKeyAndVisible()
         window.overrideUserInterfaceStyle = .light
         self.window = window

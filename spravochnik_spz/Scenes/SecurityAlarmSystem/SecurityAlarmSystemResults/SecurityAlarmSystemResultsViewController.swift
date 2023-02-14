@@ -23,6 +23,7 @@ final class SecurityAlarmSystemResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewController()
+        
     }
 }
 
@@ -36,6 +37,7 @@ private extension SecurityAlarmSystemResultsViewController {
     func setupViewController() {
         addSubViews()
         setupConstraints()
+        navigationController?.isNavigationBarHidden = false
     }
     
     func addSubViews() {}
