@@ -41,7 +41,7 @@ extension CustomButton {
             backgroundColor = .black
             setTitleColor(.white, for: .normal)
         case .transparent:
-            backgroundColor = .clear
+            backgroundColor = Constants.Colors.clear
             setTitleColor(.lightGray, for: .normal)
         }
     }
