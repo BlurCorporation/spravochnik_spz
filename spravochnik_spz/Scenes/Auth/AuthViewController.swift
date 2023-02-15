@@ -24,6 +24,11 @@ final class AuthViewController: UIViewController {
         super.viewDidLoad()
         setupViewController()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
 }
 
 // MARK: - AuthViewProtocol Impl

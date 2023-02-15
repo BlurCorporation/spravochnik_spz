@@ -7,7 +7,14 @@
 
 // MARK: - RegisterPresenterProtocol
 
-protocol RegisterPresenterProtocol: AnyObject {}
+protocol RegisterPresenterProtocol: AnyObject {
+    func backButtonPressed()
+    func registerButtonPressed()
+    func appleButtonPressed()
+    func googleButtonPressed()
+    func facebookButtonPressed()
+    func loginButtonPressed()
+}
 
 // MARK: - RegisterPresenter
 
@@ -27,4 +34,28 @@ final class RegisterPresenter {
 
 //MARK: - RegisterPresenterExtension
 
-extension RegisterPresenter: RegisterPresenterProtocol {}
+extension RegisterPresenter: RegisterPresenterProtocol {
+    func backButtonPressed() {
+        viewController?.navigationController?.popViewController(animated: true)
+    }
+    
+    func registerButtonPressed() {
+        print(#function)
+    }
+    
+    func appleButtonPressed() {
+        print(#function)
+    }
+    
+    func googleButtonPressed() {
+        print(#function)
+    }
+    
+    func facebookButtonPressed() {
+        print(#function)
+    }
+    
+    func loginButtonPressed() {
+        print(#function)
+    }
+}

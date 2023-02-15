@@ -100,6 +100,11 @@ final class StartViewController: UIViewController {
         setupViewController()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
     // MARK: - Action
 
     @objc private func loginButtonPressed() {
@@ -152,8 +157,8 @@ private extension StartViewController {
             infoWithLinksLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
                                                        constant: -Constants.Constraints.lowerOffset),
             
-            loginButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.authButtonHeight),
-            registerButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.authButtonHeight),
+            loginButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.buttonHeight),
+            registerButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.buttonHeight),
             
             commonStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
                                                  constant: Constants.Constraints.commonStackViewTopOffset),
