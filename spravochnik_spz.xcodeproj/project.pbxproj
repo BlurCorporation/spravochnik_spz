@@ -13,6 +13,7 @@
 		1B2B11F72979CFF400FFC896 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B2B11F52979CFF400FFC896 /* LaunchScreen.storyboard */; };
 		1BA6E00229917F61000F0F82 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6E00129917F61000F0F82 /* CustomButton.swift */; };
 		1BA6E00429917F77000F0F82 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6E00329917F77000F0F82 /* TabBarController.swift */; };
+		2265A2CB299BE272005DF662 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2265A2CA299BE272005DF662 /* CustomTextField.swift */; };
 		1BA6E0072993A829000F0F82 /* SavedCalculationsUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6E0062993A829000F0F82 /* SavedCalculationsUITableViewCell.swift */; };
 		1BA6E0092993A8FC000F0F82 /* SavedCalculationCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6E0082993A8FC000F0F82 /* SavedCalculationCellModel.swift */; };
 		1BA6E00B2993CC68000F0F82 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6E00A2993CC68000F0F82 /* NumberFormatter.swift */; };
@@ -78,6 +79,7 @@
 		1B2B11F82979CFF400FFC896 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BA6E00129917F61000F0F82 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		1BA6E00329917F77000F0F82 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		2265A2CA299BE272005DF662 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		1BA6E0062993A829000F0F82 /* SavedCalculationsUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCalculationsUITableViewCell.swift; sourceTree = "<group>"; };
 		1BA6E0082993A8FC000F0F82 /* SavedCalculationCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCalculationCellModel.swift; sourceTree = "<group>"; };
 		1BA6E00A2993CC68000F0F82 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				1BA6E00129917F61000F0F82 /* CustomButton.swift */,
+				2265A2CA299BE272005DF662 /* CustomTextField.swift */,
 				1BA6E00C2993CE98000F0F82 /* PaddingCostLabel.swift */,
 			);
 			path = Classes;
@@ -647,6 +650,7 @@
 				226E6EE6297D5E6900846141 /* SplashViewController.swift in Sources */,
 				1BA6E0092993A8FC000F0F82 /* SavedCalculationCellModel.swift in Sources */,
 				226E6F15297D6BDE00846141 /* PerimeterAlarmSystemViewController.swift in Sources */,
+				2265A2CB299BE272005DF662 /* CustomTextField.swift in Sources */,
 				1B2B11EB2979CFF300FFC896 /* AppDelegate.swift in Sources */,
 				226E6F35297D6FEC00846141 /* ModuleFirefightingSystemPresenter.swift in Sources */,
 				45DA6E4E298047CF008D26F8 /* UIViewController.swift in Sources */,

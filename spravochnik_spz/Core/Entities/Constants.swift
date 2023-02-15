@@ -37,6 +37,13 @@ enum Constants {
     
     enum Images {
         static let logo = UIImage(named: "logo") ?? UIImage()
+        static let tabBarMain = UIImage(named: "TabBarMain") ?? UIImage()
+        static let tabBarSaved = UIImage(named: "TabBarSaved") ?? UIImage()
+        static let tabBarProfile = UIImage(named: "TabBarProfile") ?? UIImage()
+        static let appleButtonImage = UIImage(named: "Apple") ?? UIImage()
+        static let facebookButtonImage = UIImage(named: "Facebook") ?? UIImage()
+        static let googleButtonImage = UIImage(named: "Google") ?? UIImage()
+        static let backButtomImage = UIImage(named: "Back") ?? UIImage()
         // SavedCalculationsCells
         static let date = UIImage(named: "DateImage") ?? UIImage()
         static let stage = UIImage(named: "StageImage") ?? UIImage()
@@ -61,6 +68,7 @@ enum Constants {
         static let cornerRadiusAllLine = CGFloat(1.5)
         static let spasingBetweenLine = CGFloat(5)
         static let applicationNameLabelFont = CGFloat(34)
+        static let registerFont = CGFloat(14)
         static let infoLabelFont = CGFloat(11)
         // SavedCalcTableView
         static let savedCalcCellCornerRadius = CGFloat(16)
@@ -76,6 +84,8 @@ enum Constants {
         static let applicationNameLabelText = "Справочник СПЗ"
         static let infoApplicationLabelText = "Войдите в систему или зарегистрируйтесь, чтобы получить полный доступ к приложению с возможность сохранять и делиться произведенными расчетами"
         static let infoWithLinksLabelText = "Выполняя вход в приложение вы соглашаетесь с Условиями использования и Политикой конфиденциальности"
+        static let infoRegisterBottomLabelText = "У вас уже есть аккаунт?"
+        static let authLabelText = "Войти через"
         static let savedCalculationsTitleLabelText = "Сохраненные расчеты"
     }
     
@@ -84,11 +94,29 @@ enum Constants {
         static let registerButton = "Зарегистрироваться"
     }
     
+    enum PlaceHolders {
+        static let name = "Имя"
+        static let eMail = "Email"
+        static let password = "Пароль"
+        static let retypePassword = "Повторите пароль"
+    }
+    
     enum Constraints {
         static let sideOffset = CGFloat(16)
         static let lowerOffset = CGFloat(16)
         static let buttonsSpasing = CGFloat(8)
         static let labelsStackViewSpasing = CGFloat(8)
+        static let buttonHeight = CGFloat(50)
+        static let commonStackViewTopOffset = CGFloat(128)
+        static let registerTextFieldStackViewHeight = CGFloat(224)
+        static let registerLineViewHeight = CGFloat(1.5)
+        static let registerTopStackViewTopOffset = CGFloat(50)
+        static let registerMiddleStackViewSideOffset = CGFloat(48)
+        static let registerMiddleStackViewTopOffset = CGFloat(32)
+    }
+    
+    enum NavigationController {
+        static let registerTitle = "Регистрация"
         static let authButtonHeight = CGFloat(50)
         static let commonStackViewTopOffset = CGFloat(24)
         // SavedCalculationsCells

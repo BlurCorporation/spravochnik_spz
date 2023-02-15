@@ -30,9 +30,9 @@ private extension TabBarController {
         let navSavedCalculationViewController = UINavigationController(rootViewController: savedCalculationViewController)
         let navProfileViewController = UINavigationController(rootViewController: profileViewController)
         
-        mainViewController.tabBarItem.image = UIImage(named: "TabBarMain")
-        savedCalculationViewController.tabBarItem.image = UIImage(named: "TabBarSaved")
-        navProfileViewController.tabBarItem.image = UIImage(named: "TabBarProfile")
+        mainViewController.tabBarItem.image = Constants.Images.tabBarMain
+        savedCalculationViewController.tabBarItem.image = Constants.Images.tabBarSaved
+        navProfileViewController.tabBarItem.image = Constants.Images.tabBarProfile
         
         tabBar.tintColor = .black
         tabBar.backgroundColor = .systemBackground
