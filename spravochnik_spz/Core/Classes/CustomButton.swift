@@ -14,12 +14,14 @@ enum ButtonMode {
 }
 
 class CustomButton: UIButton {
-    let mode: ButtonMode
+    var mode: ButtonMode? {
+        didSet {
+            setupButton()
+        }
+    }
     
-    required init(mode: ButtonMode) {
-        self.mode = mode
-        super.init(frame: CGRect.zero)
-        setupButton()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
     
     required init?(coder: NSCoder) {
@@ -43,6 +45,8 @@ extension CustomButton {
         case .transparent:
             backgroundColor = Constants.Colors.clear
             setTitleColor(.lightGray, for: .normal)
+        case .none:
+            print("АШИБКА")
         }
     }
 }

@@ -22,7 +22,8 @@ final class RegisterViewController: UIViewController {
         let button = UIButton(type: .custom)
         button.setImage(Constants.Images.backButtomImage,
                         for: .normal)
-        button.addTarget(self, action: #selector(backButtonPressed),
+        button.addTarget(self,
+                         action: #selector(backButtonPressed),
                          for: .touchUpInside)
         return button
     }()
@@ -62,7 +63,8 @@ final class RegisterViewController: UIViewController {
     }()
     
     private lazy var registerButton: CustomButton = {
-        let button = CustomButton(mode: .black)
+        let button = CustomButton(type: .system)
+        button.mode = .black
         button.setTitle(Constants.TextButtons.registerButton, for: .normal)
         button.addTarget(self,
                          action: #selector(registerButtonPressed),
@@ -106,7 +108,8 @@ final class RegisterViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setBackgroundImage(Constants.Images.appleButtonImage,
                                   for: .normal)
-        button.addTarget(self, action: #selector(appleButtonPressed),
+        button.addTarget(self,
+                         action: #selector(appleButtonPressed),
                          for: .touchUpInside)
         return button
     }()
@@ -115,7 +118,8 @@ final class RegisterViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setBackgroundImage(Constants.Images.googleButtonImage,
                                   for: .normal)
-        button.addTarget(self, action: #selector(googleButtonPressed),
+        button.addTarget(self,
+                         action: #selector(googleButtonPressed),
                          for: .touchUpInside)
         return button
     }()
@@ -124,7 +128,8 @@ final class RegisterViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setBackgroundImage(Constants.Images.facebookButtonImage,
                                   for: .normal)
-        button.addTarget(self, action: #selector(facebookButtonPressed),
+        button.addTarget(self,
+                         action: #selector(facebookButtonPressed),
                          for: .touchUpInside)
         return button
     }()
@@ -161,11 +166,13 @@ final class RegisterViewController: UIViewController {
     
     private lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitleColor(UIColor.black, for: .normal)
+        button.setTitleColor(UIColor.black,
+                             for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: Constants.Sizes.registerFont)
         button.setTitle(Constants.TextButtons.loginButton,
                         for: .normal)
-        button.addTarget(self, action: #selector(loginButtonPressed),
+        button.addTarget(self,
+                         action: #selector(loginButtonPressed),
                          for: .touchUpInside)
         return button
     }()
@@ -201,9 +208,7 @@ final class RegisterViewController: UIViewController {
     }
 
     @objc private func registerButtonPressed() {
-        registerButton.pushAnimate { [weak self] in
-            self?.presenter?.registerButtonPressed()
-        }
+        presenter?.registerButtonPressed()
     }
     
     @objc private func appleButtonPressed() {

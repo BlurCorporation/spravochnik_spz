@@ -51,7 +51,8 @@ final class StartViewController: UIViewController {
     }()
     
     private lazy var loginButton: CustomButton = {
-        let button = CustomButton(mode: .white)
+        let button = CustomButton(type: .system)
+        button.mode = .white
         button.setTitle(Constants.TextButtons.loginButton, for: .normal)
         button.addTarget(self,
                          action: #selector(loginButtonPressed),
@@ -60,7 +61,8 @@ final class StartViewController: UIViewController {
     }()
     
     private lazy var registerButton: CustomButton = {
-        let button = CustomButton(mode: .black)
+        let button = CustomButton(type: .system)
+        button.mode = .black
         button.setTitle(Constants.TextButtons.registerButton, for: .normal)
         button.addTarget(self,
                          action: #selector(registerButtonPressed),
@@ -108,15 +110,11 @@ final class StartViewController: UIViewController {
     // MARK: - Action
 
     @objc private func loginButtonPressed() {
-        loginButton.pushAnimate { [weak self] in
-            self?.presenter?.loginButtonPressed()
-        }
+        presenter?.loginButtonPressed()
     }
 
     @objc private func registerButtonPressed() {
-        registerButton.pushAnimate { [weak self] in
-            self?.presenter?.registerButtonPressed()
-        }
+        presenter?.registerButtonPressed()
     }
 }
 

@@ -18,6 +18,11 @@ final class TabBarController: UITabBarController {
         super.viewDidLoad()
         setupTabBarController()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
 }
 
 private extension TabBarController {

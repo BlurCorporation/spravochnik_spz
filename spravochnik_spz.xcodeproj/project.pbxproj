@@ -13,12 +13,12 @@
 		1B2B11F72979CFF400FFC896 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B2B11F52979CFF400FFC896 /* LaunchScreen.storyboard */; };
 		1BA6E00229917F61000F0F82 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6E00129917F61000F0F82 /* CustomButton.swift */; };
 		1BA6E00429917F77000F0F82 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6E00329917F77000F0F82 /* TabBarController.swift */; };
-		2265A2CB299BE272005DF662 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2265A2CA299BE272005DF662 /* CustomTextField.swift */; };
 		1BA6E0072993A829000F0F82 /* SavedCalculationsUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6E0062993A829000F0F82 /* SavedCalculationsUITableViewCell.swift */; };
 		1BA6E0092993A8FC000F0F82 /* SavedCalculationCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6E0082993A8FC000F0F82 /* SavedCalculationCellModel.swift */; };
 		1BA6E00B2993CC68000F0F82 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6E00A2993CC68000F0F82 /* NumberFormatter.swift */; };
 		1BA6E00D2993CE98000F0F82 /* PaddingCostLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6E00C2993CE98000F0F82 /* PaddingCostLabel.swift */; };
 		1BA6E012299BEFA5000F0F82 /* SavedCalcCustomHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6E011299BEFA5000F0F82 /* SavedCalcCustomHeaderCell.swift */; };
+		2265A2CB299BE272005DF662 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2265A2CA299BE272005DF662 /* CustomTextField.swift */; };
 		226E6EE6297D5E6900846141 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EE5297D5E6900846141 /* SplashViewController.swift */; };
 		226E6EE8297D5E7500846141 /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EE7297D5E7500846141 /* SplashPresenter.swift */; };
 		226E6EEB297D63A900846141 /* SceneBuildManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EEA297D63A900846141 /* SceneBuildManager.swift */; };
@@ -79,12 +79,12 @@
 		1B2B11F82979CFF400FFC896 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BA6E00129917F61000F0F82 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		1BA6E00329917F77000F0F82 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		2265A2CA299BE272005DF662 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		1BA6E0062993A829000F0F82 /* SavedCalculationsUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCalculationsUITableViewCell.swift; sourceTree = "<group>"; };
 		1BA6E0082993A8FC000F0F82 /* SavedCalculationCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCalculationCellModel.swift; sourceTree = "<group>"; };
 		1BA6E00A2993CC68000F0F82 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 		1BA6E00C2993CE98000F0F82 /* PaddingCostLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingCostLabel.swift; sourceTree = "<group>"; };
 		1BA6E011299BEFA5000F0F82 /* SavedCalcCustomHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCalcCustomHeaderCell.swift; sourceTree = "<group>"; };
+		2265A2CA299BE272005DF662 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		226E6EE5297D5E6900846141 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		226E6EE7297D5E7500846141 /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
 		226E6EEA297D63A900846141 /* SceneBuildManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneBuildManager.swift; sourceTree = "<group>"; };
@@ -835,7 +835,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4A6Q5M35JJ;
+				DEVELOPMENT_TEAM = H456X98Q5T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = spravochnik_spz/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -862,7 +862,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4A6Q5M35JJ;
+				DEVELOPMENT_TEAM = H456X98Q5T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = spravochnik_spz/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

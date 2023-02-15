@@ -19,6 +19,7 @@ enum Constants {
         static let grey = UIColor.gray
         static let lightGrey = UIColor.lightGray
         static let clear = UIColor.clear
+        static let noneBackground = UIColor.red
         
         // SavedCalculationsCells
         static let address = UIColor.white
@@ -113,12 +114,6 @@ enum Constants {
         static let registerTopStackViewTopOffset = CGFloat(50)
         static let registerMiddleStackViewSideOffset = CGFloat(48)
         static let registerMiddleStackViewTopOffset = CGFloat(32)
-    }
-    
-    enum NavigationController {
-        static let registerTitle = "Регистрация"
-        static let authButtonHeight = CGFloat(50)
-        static let commonStackViewTopOffset = CGFloat(24)
         // SavedCalculationsCells
         static let leadingOffset = CGFloat(20)
         static let trailingOffset = CGFloat(-20)
@@ -128,6 +123,12 @@ enum Constants {
         static let topTableViewOffset = CGFloat(64)
         // SavedCalcTableHeader
         static let leadingHeaderOffset = CGFloat(16)
+    }
+    
+    enum NavigationController {
+        static let registerTitle = "Регистрация"
+        static let authButtonHeight = CGFloat(50)
+        static let commonStackViewTopOffset = CGFloat(24)
     }
     
     enum Fonts {

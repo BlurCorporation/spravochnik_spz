@@ -36,6 +36,11 @@ final class SavedCalculationsViewController: UIViewController {
         SavedCalculationsTableView.dataSource = self
         SavedCalculationsTableView.delegate = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
 }
 
 // MARK: - SavedCalculationsViewProtocol Impl
@@ -108,7 +113,6 @@ private extension SavedCalculationsViewController {
         SavedCalculationsTableView.register(SavedCalculationsUITableViewCell.self,
                            forCellReuseIdentifier: SavedCalculationsUITableViewCell.identifier)
         SavedCalculationsTableView.separatorColor = Constants.Colors.clear
-        navigationController?.isNavigationBarHidden = true
     }
     
     func addSubViews() {
