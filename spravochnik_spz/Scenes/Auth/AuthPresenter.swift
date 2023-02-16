@@ -47,7 +47,7 @@ extension AuthPresenter: AuthPresenterProtocol {
     }
     
     func backButtonPressed() {
-        viewController?.navigationController?.popViewController(animated: true)
+        viewController?.navigationController?.popToRootViewController(animated: true)
     }
     
     func identifireButtonPressed() {
@@ -67,7 +67,15 @@ extension AuthPresenter: AuthPresenterProtocol {
     }
     
     func loginButtonPressed() {
-        print(#function)
+        if authType == .auth {
+            let registerViewController = sceneBuildManager.buildAuthScreen(type: .register)
+            viewController?.navigationController?.pushViewController(registerViewController,
+                                                                        animated: true)
+        } else {
+            let authViewController = sceneBuildManager.buildAuthScreen(type: .auth)
+            viewController?.navigationController?.pushViewController(authViewController,
+                                                                     animated: true)
+        }
     }
     
     func forgotPasswordButtonPressed() {

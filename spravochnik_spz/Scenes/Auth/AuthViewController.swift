@@ -171,8 +171,6 @@ final class AuthViewController: UIViewController {
         button.setTitleColor(UIColor.black,
                              for: .normal)
         button.titleLabel?.font = Constants.Fonts.infoWithLinksLabelFont
-        button.setTitle(Constants.TextButtons.loginButton,
-                        for: .normal)
         button.addTarget(self,
                          action: #selector(loginButtonPressed),
                          for: .touchUpInside)
@@ -254,15 +252,23 @@ final class AuthViewController: UIViewController {
 extension AuthViewController: AuthViewProtocol {
     func setupAuth() {
         title = Constants.NavigationController.authTitle
-        identifireButton.setTitle(Constants.TextButtons.loginButton, for: .normal)
+        identifireButton.setTitle(Constants.TextButtons.loginButton,
+                                  for: .normal)
         nameTextField.isHidden = true
         retypePasswordTextField.isHidden = true
         infoWithLinksLabel.isHidden = true
+        infoBottomLabel.text = Constants.TextLabels.infoAuthBottomLabelText
+        loginButton.setTitle(Constants.TextButtons.registerButton,
+                        for: .normal)
+        
     }
     
     func setupRegister() {
         title = Constants.NavigationController.registerTitle
-        identifireButton.setTitle(Constants.TextButtons.registerButton, for: .normal)
+        identifireButton.setTitle(Constants.TextButtons.registerButton,
+                                  for: .normal)
+        loginButton.setTitle(Constants.TextButtons.loginButton,
+                        for: .normal)
         forgotPasswordButton.isHidden = true
     }
 }

@@ -84,6 +84,7 @@ enum Constants {
         static let infoApplicationLabelText = "Войдите в систему или зарегистрируйтесь, чтобы получить полный доступ к приложению с возможность сохранять и делиться произведенными расчетами"
         static let infoWithLinksLabelText = "Выполняя вход в приложение вы соглашаетесь с Условиями использования и Политикой конфиденциальности"
         static let infoRegisterBottomLabelText = "У вас уже есть аккаунт?"
+        static let infoAuthBottomLabelText = "У вас нет аккаунта?"
         static let authLabelText = "Войти через"
         static let savedCalculationsTitleLabelText = "Сохраненные расчеты"
     }
