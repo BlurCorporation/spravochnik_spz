@@ -21,44 +21,47 @@ final class SavedCalculationsUITableViewCell: UITableViewCell {
     
     static let identifier = "TableViewCell"
     
-    private let typeLabel: UILabel = {
-        let label = UILabel()
-        label.font = Constants.Fonts.type
-        label.textColor = Constants.Colors.type
+    private let systemLabel: PaddingLabel = {
+        let label = PaddingLabel()
+        label.font = Constants.Fonts.cellSystemLabel
+        label.textColor = Constants.Colors.system
         return label
     }()
     
-    private let typeImage: UIImageView = {
+    private let systemImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    private let typeStackView: UIStackView = {
+    private let systemStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.spacing = Constants.Sizes.littleStackViewSpacing
+        stackView.alignment = .center
         return stackView
     }()
     
-    private let addressLabel : UILabel = {
-        let label = UILabel()
-        label.font = Constants.Fonts.address
+    private let addressLabel : PaddingLabel = {
+        let label = PaddingLabel()
+        label.font = Constants.Fonts.cellAddressLabel
         label.textColor = Constants.Colors.address
+        label.contentMode = .scaleAspectFill
         label.numberOfLines = 0
         return label
     }()
     
-    private let addrTypeStackView: UIStackView = {
+    private let addrsystemStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = Constants.Sizes.littleStackViewSpacing
         stackView.alignment = .leading
+        stackView.distribution = .equalCentering
         return stackView
     }()
     
-    private let dateLabel: UILabel = {
-        let label = UILabel()
-        label.font = Constants.Fonts.date
+    private let dateLabel: PaddingLabel = {
+        let label = PaddingLabel()
+        label.font = Constants.Fonts.cellDateLabel
         label.textColor = Constants.Colors.date
         return label
     }()
@@ -74,12 +77,13 @@ final class SavedCalculationsUITableViewCell: UITableViewCell {
     private let dateStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.spacing = Constants.Sizes.littleStackViewSpacing
+        stackView.alignment = .center
         return stackView
     }()
     
-    private let stagesLabel: UILabel = {
-        let label = UILabel()
-        label.font = Constants.Fonts.stages
+    private let stagesLabel: PaddingLabel = {
+        let label = PaddingLabel()
+        label.font = Constants.Fonts.cellStagesLabel
         label.textColor = Constants.Colors.stages
         return label
     }()
@@ -106,9 +110,9 @@ final class SavedCalculationsUITableViewCell: UITableViewCell {
         return stackView
     }()
     
-    private let costLabel: PaddingCostLabel = {
-        let label = PaddingCostLabel()
-        label.font = Constants.Fonts.cost
+    private let costLabel: PaddingLabel = {
+        let label = PaddingLabel()
+        label.font = Constants.Fonts.cellCostLabel
         label.textColor = Constants.Colors.cost
         label.layer.borderWidth = Constants.Sizes.borderWidth
         label.layer.cornerRadius = Constants.Sizes.costCornerRadius
@@ -168,10 +172,10 @@ final class SavedCalculationsUITableViewCell: UITableViewCell {
 extension SavedCalculationsUITableViewCell: SavedCalculationsUITableViewCellProtocol {
     func set(object: SavedCalculationsCellModel,
              backgroundImage: UIImage) {
-        self.typeImage.image = object.image
+        self.systemImage.image = object.image
         self.backgroundImage.image = backgroundImage
         self.addressLabel.text = "\(object.address)"
-        self.typeLabel.text = "\(object.type)"
+        self.systemLabel.text = "\(object.system)"
         self.dateLabel.text = "\(object.date)"
         self.stagesLabel.text = "\(object.stages)"
         self.costLabel.text = "₽ \(object.cost.formattedWithSeparator)"
@@ -184,10 +188,10 @@ private extension SavedCalculationsUITableViewCell {
     func setupCell(){
         contentView.addSubviews(backgroundImage,
                                 mainStackView)
-        typeStackView.addArrangedSubviews(typeImage,
-                                          typeLabel)
-        addrTypeStackView.addArrangedSubviews(addressLabel,
-                                              typeStackView)
+        systemStackView.addArrangedSubviews(systemImage,
+                                          systemLabel)
+        addrsystemStackView.addArrangedSubviews(addressLabel,
+                                              systemStackView)
         stageStackView.addArrangedSubviews(stageImage,
                                            stagesLabel)
         dateStackView.addArrangedSubviews(dateImage,
@@ -196,7 +200,7 @@ private extension SavedCalculationsUITableViewCell {
                                                 stageStackView)
         stagesDateCostStackView.addArrangedSubviews(stagesDateStackView,
                                                     costLabel)
-        mainStackView.addArrangedSubviews(addrTypeStackView,
+        mainStackView.addArrangedSubviews(addrsystemStackView,
                                           stagesDateCostStackView)
         contentView.layer.cornerRadius = Constants.Sizes.savedCalcCellCornerRadius
         contentView.backgroundColor = Constants.Colors.clear
@@ -210,15 +214,17 @@ private extension SavedCalculationsUITableViewCell {
             backgroundImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
             mainStackView.topAnchor.constraint(equalTo: contentView.topAnchor,
-                                               constant: Constants.Constraints.topOffset),
+                                               constant: Constants.Constraints.cellOffsets),
             mainStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
-                                                   constant: Constants.Constraints.leadingOffset),
+                                                   constant: Constants.Constraints.cellOffsets),
             mainStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,
-                                                    constant: Constants.Constraints.trailingOffset),
+                                                    constant: -Constants.Constraints.cellOffsets),
             mainStackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor,
-                                                  constant: Constants.Constraints.bottomOffset),
+                                                  constant: -Constants.Constraints.cellOffsets),
             
-            costLabel.heightAnchor.constraint(equalToConstant: Constants.Sizes.costHeight)
+            costLabel.heightAnchor.constraint(equalToConstant: Constants.Sizes.costHeight),
+            
+//            addressLabel.heightAnchor.constraint(equalToConstant: 14)
         ])
     }
 }

@@ -76,7 +76,7 @@ final class RegisterViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.text = Constants.TextLabels.infoWithLinksLabelText
-        label.font = UIFont.systemFont(ofSize: Constants.Sizes.infoLabelFont)
+        label.font = Constants.Fonts.infoWithLinksLabelFont
         label.textColor = Constants.Colors.grey
         label.numberOfLines = 0
         return label
@@ -88,7 +88,7 @@ final class RegisterViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.text = Constants.TextLabels.authLabelText
-        label.font = UIFont.boldSystemFont(ofSize: Constants.Sizes.registerFont)
+        label.font = Constants.Fonts.authLabelFont
         label.textColor = .black
         label.numberOfLines = 0
         return label
@@ -159,7 +159,7 @@ final class RegisterViewController: UIViewController {
     private let infoBottomLabel: UILabel = {
         let label = UILabel()
         label.text = Constants.TextLabels.infoRegisterBottomLabelText
-        label.font = UIFont.systemFont(ofSize: Constants.Sizes.infoLabelFont)
+        label.font = Constants.Fonts.infoWithLinksLabelFont
         label.textColor = Constants.Colors.grey
         return label
     }()
@@ -168,7 +168,7 @@ final class RegisterViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitleColor(UIColor.black,
                              for: .normal)
-        button.titleLabel?.font = .boldSystemFont(ofSize: Constants.Sizes.registerFont)
+        button.titleLabel?.font = Constants.Fonts.infoWithLinksLabelFont
         button.setTitle(Constants.TextButtons.loginButton,
                         for: .normal)
         button.addTarget(self,
@@ -244,6 +244,8 @@ private extension RegisterViewController {
     
     func setupNavigationController() {
         title = Constants.NavigationController.registerTitle
+        let attributes = [NSAttributedString.Key.font: Constants.Fonts.titleNavBarFont ?? .systemFont(ofSize: 50)]
+        UINavigationBar.appearance().titleTextAttributes = attributes
         navigationItem.setHidesBackButton(true,
                                           animated: true)
         let barButtom = UIBarButtonItem(customView: backButton)
@@ -302,7 +304,7 @@ private extension RegisterViewController {
             
             bottomStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             bottomStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
-                                                    constant: -Constants.Constraints.lowerOffset)
+                                                    constant: -Constants.Constraints.bottomOffset)
         ])
     }
 }

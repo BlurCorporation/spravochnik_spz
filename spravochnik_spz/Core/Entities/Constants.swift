@@ -23,7 +23,7 @@ enum Constants {
         
         // SavedCalculationsCells
         static let address = UIColor.white
-        static let type = UIColor(red: 1,
+        static let system = UIColor(red: 1,
                                   green: 1,
                                   blue: 0.996,
                                   alpha: 1)
@@ -68,12 +68,9 @@ enum Constants {
         static let widthBlackLine = CGFloat(30)
         static let cornerRadiusAllLine = CGFloat(1.5)
         static let spasingBetweenLine = CGFloat(5)
-        static let applicationNameLabelFont = CGFloat(34)
-        static let registerFont = CGFloat(14)
-        static let infoLabelFont = CGFloat(11)
         // SavedCalcTableView
         static let savedCalcCellCornerRadius = CGFloat(16)
-        static let littleStackViewSpacing = CGFloat(8)
+        static let littleStackViewSpacing = CGFloat(4)
         static let bigStackViewSpacing = CGFloat(32)
         static let costCornerRadius = CGFloat(18)
         static let costHeight = CGFloat(50)
@@ -104,7 +101,7 @@ enum Constants {
     
     enum Constraints {
         static let sideOffset = CGFloat(16)
-        static let lowerOffset = CGFloat(16)
+        static let bottomOffset = CGFloat(16)
         static let buttonsSpasing = CGFloat(8)
         static let labelsStackViewSpasing = CGFloat(8)
         static let buttonHeight = CGFloat(50)
@@ -115,10 +112,7 @@ enum Constants {
         static let registerMiddleStackViewSideOffset = CGFloat(48)
         static let registerMiddleStackViewTopOffset = CGFloat(32)
         // SavedCalculationsCells
-        static let leadingOffset = CGFloat(20)
-        static let trailingOffset = CGFloat(-20)
-        static let topOffset = CGFloat(20)
-        static let bottomOffset = CGFloat(-20)
+        static let cellOffsets = CGFloat(20)
         // SavedCalcTableView
         static let topTableViewOffset = CGFloat(64)
         // SavedCalcTableHeader
@@ -133,12 +127,53 @@ enum Constants {
     
     enum Fonts {
         // SavedCalculationsCells with sizes
-        static let address = UIFont(name: "HelveticaNeue-Medium", size: 16)
-        static let type = UIFont.italicSystemFont(ofSize: 12)
-        static let date = UIFont(name: "HelveticaNeue-Light", size: 13)
-        static let stages = UIFont(name: "HelveticaNeue-Light", size: 13)
-        static let cost = UIFont(name: "HelveticaNeue-Light", size: 13)
+        static let cellAddressLabel = UIFont(name: "HelveticaNeueCyr-Medium", size: 16)
+        static let cellSystemLabel = UIFont(name: "HelveticaNeueCyr-Roman", size: 12)
+        static let cellDateLabel = UIFont(name: "HelveticaNeueCyr-Light", size: 13)
+        static let cellStagesLabel = UIFont(name: "HelveticaNeueCyr-Light", size: 13)
+        static let cellCostLabel = UIFont(name: "HelveticaNeueCyr-Light", size: 13)
         // SavedCalculationsHeader
-        static let savedCalcTitle = UIFont(name: "HelveticaNeue-Bold", size: 30)
+        static let savedCalcTitle = UIFont(name: "HelveticaNeueCyr-Bold", size: 30)
+        // cap
+        static let capFont = UIFont(name: "HelveticaNeueCyr-Bold", size: 17)
+        static let smallCapFont = UIFont(name: "HelveticaNeueCyr-Roman", size: 14)
+        // start, auth
+        static let infoWithLinksLabelFont = UIFont(name: "HelveticaNeueCyr-Light", size: 11)
+        // onboarding, start, calculations, results
+        static let infoLabelFont = UIFont(name: "HelveticaNeueCyr-Light", size: 13)
+        // reset and change password
+        static let infoPasswordFont = UIFont(name: "HelveticaNeueCyr-Medium", size: 12)
+        // auth
+        static let authLabelFont = UIFont(name: "HelveticaNeueCyr-Medium", size: 13)
+        // main
+        static let mainCellFont = UIFont(name: "HelveticaNeueCyr-Medium", size: 16)
+        // titleNavBar
+        static let titleNavBarFont = UIFont(name: "HelveticaNeueCyr-Medium", size: 17)
+        // customAlert
+        static let alertTitle = UIFont(name: "HelveticaNeueCyr-Medium", size: 18)
+        // customTextFields
+        static let textField = UIFont(name: "HelveticaNeueCyr-Roman", size: 15)
+        // profile
+        static let profileButtonFont = UIFont(name: "HelveticaNeueCyr-Roman", size: 15)
+        static let smallProfileButtonFont = UIFont(name: "HelveticaNeueCyr-Roman", size: 13)
+        // results tableView
+        static let allSectionNumberFont = UIFont(name: "HelveticaNeueCyr-Medium", size: 17)
+        static let firstSectionResultsFont = UIFont(name: "HelveticaNeueCyr-Roman", size: 18)
+        static let secondSectionResultsFont = UIFont(name: "HelveticaNeueCyr-Roman", size: 15)
+        static let thirdSectionTitleResultsFont = UIFont(name: "HelveticaNeueCyr-Medium", size: 18)
+        static let thirdSectionResultsFont = UIFont(name: "HelveticaNeueCyr-Roman", size: 15)
+        // calculation tableView
+        static let firstSectionCalculationFont = UIFont(name: "HelveticaNeueCyr-Roman", size: 18)
+        static let secondSection = UIFont(name: "HelveticaNeueCyr-Medium", size: 15)
+        // customButton
+        static let customButtonFont = UIFont(name: "HelveticaNeueCyr-Bold", size: 17)
+        // in sections tableView in results
+        static let smallTableHeaderFont = UIFont(name: "HelveticaNeueCyr-Bold", size: 20)
+        // onboarding
+        static let onboardingTitleFont = UIFont(name: "HelveticaNeueCyr-Bold", size: 30)
+        // tableView and username in profile
+        static let bigTableHeaderFont = UIFont(name: "HelveticaNeueCyr-Bold", size: 30)
+        // start
+        static let applicationNameLabelFont = UIFont(name: "HelveticaNeueCyr-Bold", size: 34)
     }
 }

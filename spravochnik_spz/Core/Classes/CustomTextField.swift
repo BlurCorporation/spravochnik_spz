@@ -41,5 +41,6 @@ extension CustomTextField {
         layer.borderWidth = 1
         layer.borderColor = Constants.Colors.grey.cgColor
         layer.cornerRadius = 11
+        font = Constants.Fonts.textField
     }
 }

@@ -22,7 +22,7 @@ final class SavedCalcCustomHeaderCell: UITableViewHeaderFooterView {
     private let savedCalcLabel: UILabel = {
         let label = UILabel()
         label.text = Constants.TextLabels.savedCalculationsTitleLabelText
-        label.font = Constants.Fonts.savedCalcTitle
+        label.font = Constants.Fonts.bigTableHeaderFont
         label.numberOfLines = 0
         return label
     }()

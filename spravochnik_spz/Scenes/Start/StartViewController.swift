@@ -28,7 +28,7 @@ final class StartViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.text = Constants.TextLabels.applicationNameLabelText
-        label.font = UIFont.boldSystemFont(ofSize: Constants.Sizes.applicationNameLabelFont)
+        label.font = Constants.Fonts.applicationNameLabelFont
         return label
     }()
     
@@ -36,7 +36,7 @@ final class StartViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.text = Constants.TextLabels.infoApplicationLabelText
-        label.font = UIFont.systemFont(ofSize: Constants.Sizes.infoLabelFont)
+        label.font = Constants.Fonts.infoLabelFont
         label.textColor = Constants.Colors.grey
         label.numberOfLines = 0
         return label
@@ -82,7 +82,7 @@ final class StartViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.text = Constants.TextLabels.infoWithLinksLabelText
-        label.font = UIFont.systemFont(ofSize: Constants.Sizes.infoLabelFont)
+        label.font = Constants.Fonts.infoWithLinksLabelFont
         label.textColor = Constants.Colors.grey
         label.numberOfLines = 0
         return label
@@ -153,7 +153,7 @@ private extension StartViewController {
             infoWithLinksLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
                                                          constant: -Constants.Constraints.sideOffset),
             infoWithLinksLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
-                                                       constant: -Constants.Constraints.lowerOffset),
+                                                       constant: -Constants.Constraints.bottomOffset),
             
             loginButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.buttonHeight),
             registerButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.buttonHeight),
@@ -165,7 +165,7 @@ private extension StartViewController {
             commonStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
                                                       constant: -Constants.Constraints.sideOffset),
             commonStackView.bottomAnchor.constraint(equalTo: infoWithLinksLabel.topAnchor,
-                                                    constant: -Constants.Constraints.lowerOffset)
+                                                    constant: -Constants.Constraints.bottomOffset)
         ])
     }
 }

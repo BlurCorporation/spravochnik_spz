@@ -31,7 +31,7 @@ class CustomButton: UIButton {
 
 extension CustomButton {
     func setupButton() {
-        titleLabel?.font = .boldSystemFont(ofSize: 17)
+        titleLabel?.font = Constants.Fonts.customButtonFont
         layer.cornerRadius = 13
         switch mode {
         case .white:

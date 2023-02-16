@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PaddingCostLabel: UILabel {
+class PaddingLabel: UILabel {
     var edgeInset: UIEdgeInsets = .zero
 
         override func drawText(in rect: CGRect) {
@@ -21,6 +21,6 @@ class PaddingCostLabel: UILabel {
         override var intrinsicContentSize: CGSize {
             let size = super.intrinsicContentSize
             return CGSize(width: size.width + edgeInset.left + edgeInset.right + 20,
-                          height: size.height + edgeInset.top + edgeInset.bottom)
+                          height: size.height + edgeInset.top + edgeInset.bottom + 8)
         }
 }
