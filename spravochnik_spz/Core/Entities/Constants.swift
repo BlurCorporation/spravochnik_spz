@@ -76,6 +76,7 @@ enum Constants {
         static let costHeight = CGFloat(50)
         static let savedCalcHeaderHeight = CGFloat(80)
         static let widthHeader = CGFloat(263)
+        static let textFieldHeight = CGFloat(50)
     }
     
     enum TextLabels {
@@ -90,6 +91,7 @@ enum Constants {
     enum TextButtons {
         static let loginButton = "Войти"
         static let registerButton = "Зарегистрироваться"
+        static let forgotPassword = "Забыли пароль?"
     }
     
     enum PlaceHolders {
@@ -121,6 +123,7 @@ enum Constants {
     
     enum NavigationController {
         static let registerTitle = "Регистрация"
+        static let authTitle = "Войти"
         static let authButtonHeight = CGFloat(50)
         static let commonStackViewTopOffset = CGFloat(24)
     }

@@ -25,15 +25,16 @@
 		1BA6E00D2993CE98000F0F82 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6E00C2993CE98000F0F82 /* PaddingLabel.swift */; };
 		1BA6E012299BEFA5000F0F82 /* SavedCalcCustomHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6E011299BEFA5000F0F82 /* SavedCalcCustomHeaderCell.swift */; };
 		2265A2CB299BE272005DF662 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2265A2CA299BE272005DF662 /* CustomTextField.swift */; };
+		2265A2CE299EB9A6005DF662 /* AuthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2265A2CD299EB9A6005DF662 /* AuthType.swift */; };
 		226E6EE6297D5E6900846141 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EE5297D5E6900846141 /* SplashViewController.swift */; };
 		226E6EE8297D5E7500846141 /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EE7297D5E7500846141 /* SplashPresenter.swift */; };
 		226E6EEB297D63A900846141 /* SceneBuildManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EEA297D63A900846141 /* SceneBuildManager.swift */; };
 		226E6EED297D64D700846141 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EEC297D64D700846141 /* StartViewController.swift */; };
 		226E6EEF297D64E300846141 /* StartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EEE297D64E300846141 /* StartPresenter.swift */; };
-		226E6EF1297D667400846141 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EF0297D667400846141 /* RegisterViewController.swift */; };
-		226E6EF3297D667F00846141 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EF2297D667F00846141 /* RegisterPresenter.swift */; };
-		226E6EF5297D681E00846141 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EF4297D681E00846141 /* AuthViewController.swift */; };
-		226E6EF7297D683200846141 /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EF6297D683200846141 /* AuthPresenter.swift */; };
+		226E6EF1297D667400846141 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EF0297D667400846141 /* AuthViewController.swift */; };
+		226E6EF3297D667F00846141 /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EF2297D667F00846141 /* AuthPresenter.swift */; };
+		226E6EF5297D681E00846141 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EF4297D681E00846141 /* ResetPasswordViewController.swift */; };
+		226E6EF7297D683200846141 /* ResetPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EF6297D683200846141 /* ResetPasswordPresenter.swift */; };
 		226E6EF9297D691900846141 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EF8297D691900846141 /* OnboardingViewController.swift */; };
 		226E6EFB297D692600846141 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EFA297D692600846141 /* OnboardingPresenter.swift */; };
 		226E6EFD297D699000846141 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EFC297D699000846141 /* MainViewController.swift */; };
@@ -97,15 +98,16 @@
 		1BA6E00C2993CE98000F0F82 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		1BA6E011299BEFA5000F0F82 /* SavedCalcCustomHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCalcCustomHeaderCell.swift; sourceTree = "<group>"; };
 		2265A2CA299BE272005DF662 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		2265A2CD299EB9A6005DF662 /* AuthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthType.swift; sourceTree = "<group>"; };
 		226E6EE5297D5E6900846141 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		226E6EE7297D5E7500846141 /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
 		226E6EEA297D63A900846141 /* SceneBuildManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneBuildManager.swift; sourceTree = "<group>"; };
 		226E6EEC297D64D700846141 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		226E6EEE297D64E300846141 /* StartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPresenter.swift; sourceTree = "<group>"; };
-		226E6EF0297D667400846141 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		226E6EF2297D667F00846141 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
-		226E6EF4297D681E00846141 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
-		226E6EF6297D683200846141 /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
+		226E6EF0297D667400846141 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		226E6EF2297D667F00846141 /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
+		226E6EF4297D681E00846141 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		226E6EF6297D683200846141 /* ResetPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordPresenter.swift; sourceTree = "<group>"; };
 		226E6EF8297D691900846141 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		226E6EFA297D692600846141 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
 		226E6EFC297D699000846141 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -246,8 +248,8 @@
 			children = (
 				226E6EE4297D5E3A00846141 /* Splash */,
 				226E6EE3297D5E3300846141 /* Start */,
-				226E6EE2297D5E2E00846141 /* Register */,
-				226E6EE1297D5E2100846141 /* Auth */,
+				226E6EE2297D5E2E00846141 /* Auth */,
+				226E6EE1297D5E2100846141 /* ResetPassword */,
 				226E6EE0297D5D1D00846141 /* Onboarding */,
 				22BD56F02990E6D4002762BC /* TabBar */,
 				226E6EDF297D5CFE00846141 /* Main */,
@@ -320,9 +322,18 @@
 		220AE4F4297D52F600DEA441 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				2265A2CC299EB968005DF662 /* TypeViewController */,
 				45F72C2B297F1C6F00D90C8F /* Constants.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		2265A2CC299EB968005DF662 /* TypeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2265A2CD299EB9A6005DF662 /* AuthType.swift */,
+			);
+			path = TypeViewController;
 			sourceTree = "<group>";
 		};
 		226E6ED6297D5B6400846141 /* FirePumpStation */ = {
@@ -424,22 +435,22 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
-		226E6EE1297D5E2100846141 /* Auth */ = {
+		226E6EE1297D5E2100846141 /* ResetPassword */ = {
 			isa = PBXGroup;
 			children = (
-				226E6EF4297D681E00846141 /* AuthViewController.swift */,
-				226E6EF6297D683200846141 /* AuthPresenter.swift */,
+				226E6EF4297D681E00846141 /* ResetPasswordViewController.swift */,
+				226E6EF6297D683200846141 /* ResetPasswordPresenter.swift */,
 			);
-			path = Auth;
+			path = ResetPassword;
 			sourceTree = "<group>";
 		};
-		226E6EE2297D5E2E00846141 /* Register */ = {
+		226E6EE2297D5E2E00846141 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				226E6EF0297D667400846141 /* RegisterViewController.swift */,
-				226E6EF2297D667F00846141 /* RegisterPresenter.swift */,
+				226E6EF0297D667400846141 /* AuthViewController.swift */,
+				226E6EF2297D667F00846141 /* AuthPresenter.swift */,
 			);
-			path = Register;
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		226E6EE3297D5E3300846141 /* Start */ = {
@@ -693,9 +704,9 @@
 				226E6F0B297D6B8500846141 /* SecurityAlarmSystemViewController.swift in Sources */,
 				226E6F0F297D6BA400846141 /* SecurityAlarmSystemResultsViewController.swift in Sources */,
 				226E6F39297D700A00846141 /* ModuleFirefightingSystemResultsPresenter.swift in Sources */,
-				226E6EF1297D667400846141 /* RegisterViewController.swift in Sources */,
+				226E6EF1297D667400846141 /* AuthViewController.swift in Sources */,
 				226E6F01297D69DC00846141 /* SavedCalculationsViewController.swift in Sources */,
-				226E6EF5297D681E00846141 /* AuthViewController.swift in Sources */,
+				226E6EF5297D681E00846141 /* ResetPasswordViewController.swift in Sources */,
 				226E6F05297D6A6A00846141 /* ProfileViewController.swift in Sources */,
 				226E6F23297D6DFA00846141 /* FireAlarmSystemResultsViewController.swift in Sources */,
 				45DA6E4C29804524008D26F8 /* UIView.swift in Sources */,
@@ -705,16 +716,17 @@
 				226E6F0D297D6B9100846141 /* SecurityAlarmSystemPresenter.swift in Sources */,
 				45F72C2C297F1C6F00D90C8F /* Constants.swift in Sources */,
 				1BA6E00D2993CE98000F0F82 /* PaddingLabel.swift in Sources */,
-				226E6EF7297D683200846141 /* AuthPresenter.swift in Sources */,
+				226E6EF7297D683200846141 /* ResetPasswordPresenter.swift in Sources */,
 				226E6F44297D70A200846141 /* SmokeExhaustSystemResultsPresenter.swift in Sources */,
 				226E6F17297D6BEB00846141 /* PerimeterAlarmSystemPresenter.swift in Sources */,
-				226E6EF3297D667F00846141 /* RegisterPresenter.swift in Sources */,
+				226E6EF3297D667F00846141 /* AuthPresenter.swift in Sources */,
 				226E6F21297D6DD300846141 /* FireAlarmSystemPresenter.swift in Sources */,
 				226E6EFD297D699000846141 /* MainViewController.swift in Sources */,
 				226E6EFB297D692600846141 /* OnboardingPresenter.swift in Sources */,
 				226E6F07297D6A7300846141 /* ProfilePresenter.swift in Sources */,
 				226E6F25297D6E0700846141 /* FireAlarmSystemResultsPresenter.swift in Sources */,
 				226E6F03297D69E800846141 /* SavedCalculationsPresenter.swift in Sources */,
+				2265A2CE299EB9A6005DF662 /* AuthType.swift in Sources */,
 				226E6EF9297D691900846141 /* OnboardingViewController.swift in Sources */,
 				226E6F4A297D716800846141 /* FirePumpStationPresenter.swift in Sources */,
 				226E6F2B297D6EBC00846141 /* NotificationSystemPresenter.swift in Sources */,
