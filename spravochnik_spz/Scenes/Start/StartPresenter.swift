@@ -32,13 +32,13 @@ final class StartPresenter {
 
 extension StartPresenter: StartPresenterProtocol {
     func loginButtonPressed() {
-        let authViewController = sceneBuildManager.buildAuthScreen()
+        let authViewController = sceneBuildManager.buildAuthScreen(type: .auth)
         viewController?.navigationController?.pushViewController(authViewController,
                                                                  animated: true)
     }
     
     func registerButtonPressed() {
-        let registerViewController = sceneBuildManager.buildRegisterScreen()
+        let registerViewController = sceneBuildManager.buildAuthScreen(type: .register)
         viewController?.navigationController?.pushViewController(registerViewController,
                                                                  animated: true)
     }
