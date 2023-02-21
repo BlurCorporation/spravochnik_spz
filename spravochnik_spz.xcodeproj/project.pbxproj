@@ -11,6 +11,7 @@
 		1B2B11ED2979CFF300FFC896 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2B11EC2979CFF300FFC896 /* SceneDelegate.swift */; };
 		1B2B11F42979CFF400FFC896 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B2B11F32979CFF400FFC896 /* Assets.xcassets */; };
 		1B2B11F72979CFF400FFC896 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B2B11F52979CFF400FFC896 /* LaunchScreen.storyboard */; };
+		1B41C61029A018F700F5AF29 /* CustomProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B41C60F29A018F700F5AF29 /* CustomProfileView.swift */; };
 		1B9938D7299D740B00E2F8A9 /* HelveticaNeueCyr-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B9938D1299D740B00E2F8A9 /* HelveticaNeueCyr-Black.ttf */; };
 		1B9938D8299D740B00E2F8A9 /* HelveticaNeueCyr-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B9938D2299D740B00E2F8A9 /* HelveticaNeueCyr-Light.ttf */; };
 		1B9938D9299D740B00E2F8A9 /* HelveticaNeueCyr-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B9938D3299D740B00E2F8A9 /* HelveticaNeueCyr-Italic.ttf */; };
@@ -84,6 +85,7 @@
 		1B2B11F32979CFF400FFC896 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B2B11F62979CFF400FFC896 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B2B11F82979CFF400FFC896 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B41C60F29A018F700F5AF29 /* CustomProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProfileView.swift; sourceTree = "<group>"; };
 		1B9938D1299D740B00E2F8A9 /* HelveticaNeueCyr-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HelveticaNeueCyr-Black.ttf"; sourceTree = "<group>"; };
 		1B9938D2299D740B00E2F8A9 /* HelveticaNeueCyr-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HelveticaNeueCyr-Light.ttf"; sourceTree = "<group>"; };
 		1B9938D3299D740B00E2F8A9 /* HelveticaNeueCyr-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HelveticaNeueCyr-Italic.ttf"; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				1BA6E00129917F61000F0F82 /* CustomButton.swift */,
 				2265A2CA299BE272005DF662 /* CustomTextField.swift */,
 				1BA6E00C2993CE98000F0F82 /* PaddingLabel.swift */,
+				1B41C60F29A018F700F5AF29 /* CustomProfileView.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -690,6 +693,7 @@
 				226E6F37297D6FFA00846141 /* ModuleFirefightingSystemResultsViewController.swift in Sources */,
 				226E6F4C297D717800846141 /* FirePumpStationResultsViewController.swift in Sources */,
 				1BA6E012299BEFA5000F0F82 /* SavedCalcCustomHeaderCell.swift in Sources */,
+				1B41C61029A018F700F5AF29 /* CustomProfileView.swift in Sources */,
 				226E6EE6297D5E6900846141 /* SplashViewController.swift in Sources */,
 				1BA6E0092993A8FC000F0F82 /* SavedCalculationCellModel.swift in Sources */,
 				226E6F15297D6BDE00846141 /* PerimeterAlarmSystemViewController.swift in Sources */,
@@ -879,7 +883,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = H456X98Q5T;
+				DEVELOPMENT_TEAM = 4A6Q5M35JJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = spravochnik_spz/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -906,7 +910,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = H456X98Q5T;
+				DEVELOPMENT_TEAM = 4A6Q5M35JJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = spravochnik_spz/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

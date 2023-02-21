@@ -90,6 +90,11 @@ enum Constants {
     }
     
     enum TextButtons {
+        static let appThemeButtonText = "Тема приложения"
+        static let colorAppThemeButtonText = "Системная"
+        static let changeDataButtonText = "Обновить данные"
+        static let usingConditionsButtonText = "Условия пользования"
+        static let privacyPolicyButtonText = "Политика конфиденциальности"
         static let loginButton = "Войти"
         static let registerButton = "Зарегистрироваться"
         static let forgotPassword = "Забыли пароль?"
