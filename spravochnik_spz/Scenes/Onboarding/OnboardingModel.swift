@@ -25,4 +25,11 @@ struct OnboardingModel1 {
         Constants.TextLabels.onboarding22,
         Constants.TextLabels.onboarding32
     ]
+    
+    let textNextButton = [
+        Constants.TextButtons.onboardingNextButton,
+        Constants.TextButtons.onboardingNextButton,
+        Constants.TextButtons.loginButton
+    ]
+    
 }

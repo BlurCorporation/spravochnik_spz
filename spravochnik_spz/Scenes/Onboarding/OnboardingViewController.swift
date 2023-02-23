@@ -116,6 +116,8 @@ extension OnboardingViewController: OnboardingViewProtocol {
         imageView.image = presenter?.image
         labelFirst.text = presenter?.text1
         labelSecond.text = presenter?.text2
+        nextButton.setTitle(presenter?.textNextButton, for: .normal)
+        //тут надо покрутить, как скрыть кнопку "Продолжить" бескостыльно
     }
 }
 

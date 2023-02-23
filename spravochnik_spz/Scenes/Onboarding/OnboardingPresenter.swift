@@ -14,6 +14,8 @@ protocol OnboardingPresenterProtocol: AnyObject {
     var text1: String? { get set }
     var text2: String? { get set }
     var indexForScreen: Int { get }
+    var textNextButton: String? { get set }
+    var statusSkipButton: Bool? { get set }
     var model: OnboardingModel1 { get }
     func getImage()
     func getText()
@@ -28,6 +30,8 @@ class OnboardingPresenter {
     var image: UIImage?
     var text1: String?
     var text2: String?
+    var textNextButton: String?
+    var statusSkipButton: Bool?
     var indexForScreen = 0
     
     // MARK: - PrivateProperties
@@ -53,6 +57,7 @@ extension OnboardingPresenter: OnboardingPresenterProtocol {
     func getText() {
         text1 = model.texts1[indexForScreen]
         text2 = model.texts2[indexForScreen]
+        textNextButton = model.textNextButton[indexForScreen]
     }
     
     func changeScreen(toIndex: Int? = nil) {
@@ -64,6 +69,7 @@ extension OnboardingPresenter: OnboardingPresenterProtocol {
             indexForScreen += 1
             getImage()
             getText()
+            (indexForScreen == 0 || indexForScreen == 1) ? (statusSkipButton = false) : (statusSkipButton = true)
         } else {
             getNextVC()
         }
