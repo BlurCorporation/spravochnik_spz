@@ -19,7 +19,7 @@ final class StartViewController: UIViewController {
     // MARK: - PrivateProperties
     
     private let logoImageView: UIImageView = {
-        let imageView = UIImageView(image: Constants.Images.logo)
+        let imageView = UIImageView(image: Constants.Images.logoImage)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -37,7 +37,7 @@ final class StartViewController: UIViewController {
         label.textAlignment = .center
         label.text = Constants.TextLabels.infoApplicationLabelText
         label.font = Constants.Fonts.infoLabelFont
-        label.textColor = Constants.Colors.grey
+        label.textColor = Constants.Colors.lightGray
         label.numberOfLines = 0
         return label
     }()
@@ -83,7 +83,7 @@ final class StartViewController: UIViewController {
         label.textAlignment = .center
         label.text = Constants.TextLabels.infoWithLinksLabelText
         label.font = Constants.Fonts.infoWithLinksLabelFont
-        label.textColor = Constants.Colors.grey
+        label.textColor = Constants.Colors.lightGray
         label.numberOfLines = 0
         return label
     }()
@@ -114,8 +114,12 @@ final class StartViewController: UIViewController {
     }
 
     @objc private func registerButtonPressed() {
-        presenter?.registerButtonPressed()
+        registerButton.pushAnimate { [weak self] in
+            self?.presenter?.registerButtonPressed()
+        }
+//        presenter?.registerButtonPressed()
     }
+
 }
 
 // MARK: - StartViewProtocol Impl
@@ -159,7 +163,7 @@ private extension StartViewController {
             registerButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.buttonHeight),
             
             commonStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
-                                                 constant: Constants.Constraints.commonStackViewTopOffset),
+                                                 constant: Constants.Constraints.commonStartStackViewTopOffset),
             commonStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,
                                                      constant: Constants.Constraints.sideOffset),
             commonStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,

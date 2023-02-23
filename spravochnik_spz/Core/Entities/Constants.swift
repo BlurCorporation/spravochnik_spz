@@ -15,8 +15,9 @@ enum Constants {
         static let darkThemeBackground = UIColor.black
         
         // App Colors
-        static let black = UIColor.black
-        static let grey = UIColor.gray
+        static let dark = #colorLiteral(red: 0.06380403787, green: 0.09624507278, blue: 0.12997365, alpha: 1)
+        static let darkGray = #colorLiteral(red: 0.5958735943, green: 0.6070739031, blue: 0.6143226027, alpha: 1)
+        static let lightGray = #colorLiteral(red: 0.8471679091, green: 0.8505566716, blue: 0.8537925482, alpha: 1)
         static let lightGrey = UIColor.lightGray
         static let clear = UIColor.clear
         static let noneBackground = UIColor.red
@@ -37,7 +38,7 @@ enum Constants {
     }
     
     enum Images {
-        static let logo = UIImage(named: "logo") ?? UIImage()
+        static let logoImage = UIImage(named: "logo") ?? UIImage()
         static let tabBarMain = UIImage(named: "TabBarMain") ?? UIImage()
         static let tabBarSaved = UIImage(named: "TabBarSaved") ?? UIImage()
         static let tabBarProfile = UIImage(named: "TabBarProfile") ?? UIImage()
@@ -58,6 +59,8 @@ enum Constants {
         static let blackBackground = UIImage(named: "BlackBackground") ?? UIImage()
         static let grayBackground = UIImage(named: "GrayBackground") ?? UIImage()
         static let brownBackground = UIImage(named: "BrownBackground") ?? UIImage()
+        // Profile
+        static let logoutImage = UIImage(named: "logout") ?? UIImage()
     }
     
     enum Sizes {
@@ -87,9 +90,15 @@ enum Constants {
         static let infoAuthBottomLabelText = "У вас нет аккаунта?"
         static let authLabelText = "Войти через"
         static let savedCalculationsTitleLabelText = "Сохраненные расчеты"
+        static let username = "Роман"
     }
     
     enum TextButtons {
+        static let appThemeButtonText = "Тема приложения"
+        static let colorAppThemeButtonText = "Системная"
+        static let updateDataButtonText = "Обновить данные"
+        static let usingConditionsButtonText = "Условия пользования"
+        static let privacyPolicyButtonText = "Политика конфиденциальности"
         static let loginButton = "Войти"
         static let registerButton = "Зарегистрироваться"
         static let forgotPassword = "Забыли пароль?"
@@ -108,12 +117,12 @@ enum Constants {
         static let buttonsSpasing = CGFloat(8)
         static let labelsStackViewSpasing = CGFloat(8)
         static let buttonHeight = CGFloat(50)
-        static let commonStackViewTopOffset = CGFloat(128)
+        static let commonStartStackViewTopOffset = CGFloat(128)
         static let registerTextFieldStackViewHeight = CGFloat(224)
         static let registerLineViewHeight = CGFloat(1.5)
         static let registerTopStackViewTopOffset = CGFloat(50)
         static let registerMiddleStackViewSideOffset = CGFloat(48)
-        static let registerMiddleStackViewTopOffset = CGFloat(32)
+        static let commonStackViewTopOffset = CGFloat(32)
         // SavedCalculationsCells
         static let cellOffsets = CGFloat(20)
         // SavedCalcTableView

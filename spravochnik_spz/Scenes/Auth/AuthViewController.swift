@@ -79,7 +79,7 @@ final class AuthViewController: UIViewController {
         label.textAlignment = .center
         label.text = Constants.TextLabels.infoWithLinksLabelText
         label.font = Constants.Fonts.infoWithLinksLabelFont
-        label.textColor = Constants.Colors.grey
+        label.textColor = Constants.Colors.lightGray
         label.numberOfLines = 0
         return label
     }()
@@ -162,7 +162,7 @@ final class AuthViewController: UIViewController {
         let label = UILabel()
         label.text = Constants.TextLabels.infoRegisterBottomLabelText
         label.font = Constants.Fonts.infoWithLinksLabelFont
-        label.textColor = Constants.Colors.grey
+        label.textColor = Constants.Colors.lightGray
         return label
     }()
     
@@ -343,7 +343,7 @@ private extension AuthViewController {
             middleStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
                                                       constant: -Constants.Constraints.registerMiddleStackViewSideOffset),
             middleStackView.topAnchor.constraint(equalTo: topStackView.bottomAnchor,
-                                                 constant: Constants.Constraints.registerMiddleStackViewTopOffset),
+                                                 constant: Constants.Constraints.commonStackViewTopOffset),
             
             bottomStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             bottomStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,

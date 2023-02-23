@@ -39,7 +39,7 @@ class CustomTextField: UITextField {
 extension CustomTextField {
     func setupTextField() {
         layer.borderWidth = 1
-        layer.borderColor = Constants.Colors.grey.cgColor
+        layer.borderColor = Constants.Colors.lightGray.cgColor
         layer.cornerRadius = 11
         font = Constants.Fonts.textField
     }
