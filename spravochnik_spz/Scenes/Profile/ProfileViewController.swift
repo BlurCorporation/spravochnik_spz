@@ -23,18 +23,24 @@ final class ProfileViewController: UIViewController {
         return view
     }()
     
-    private let themeButton: UIButton = {
-        let button = UIButton()
-        let subview = CustomProfileView(firstTitle: Constants.TextButtons.appThemeButtonText,
-                                        secondTitle: Constants.TextButtons.colorAppThemeButtonText)
-        button.addSubviews(subview)
-        subview.widthAnchor.constraint(equalTo: button.widthAnchor).isActive = true
-        button.layer.borderWidth = 0.7
-        button.layer.borderColor = UIColor(red: 0.812,
-                                           green: 0.816,
-                                           blue: 0.82,
-                                           alpha: 1).cgColor
-        button.layer.cornerRadius = 11
+//    private let themeButton: UIButton = {
+//        let button = UIButton()
+//        let subview = CustomProfileView(firstTitle: Constants.TextButtons.appThemeButtonText,
+//                                        secondTitle: Constants.TextButtons.colorAppThemeButtonText)
+//        button.addSubviews(subview)
+//        subview.widthAnchor.constraint(equalTo: button.widthAnchor).isActive = true
+//        button.layer.borderWidth = 0.7
+//        button.layer.borderColor = UIColor(red: 0.812,
+//                                           green: 0.816,
+//                                           blue: 0.82,
+//                                           alpha: 1).cgColor
+//        button.layer.cornerRadius = 11
+//        return button
+//    }()
+    
+    private let themeButton: CustomProfileButtom = {
+        let button = CustomProfileButtom()
+        button.setTitleLabels(header: "Заголовок")
         return button
     }()
     
