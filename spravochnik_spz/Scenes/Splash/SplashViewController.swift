@@ -19,13 +19,13 @@ final class SplashViewController: UIViewController {
     // MARK: - PrivateProperties
     
     private lazy var logoImageView: UIImageView = {
-        let imageView = UIImageView(image: Constants.Images.logo)
+        let imageView = UIImageView(image: Constants.Images.logoImage)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
     private lazy var gray1LineView = lineView(color: Constants.Colors.lightGrey)
-    private lazy var black2LineView  = lineView(color: Constants.Colors.black)
+    private lazy var black2LineView  = lineView(color: Constants.Colors.dark)
     private lazy var gray3LineView = lineView(color: Constants.Colors.lightGrey)
     
     private lazy var linesStackView: UIStackView = {

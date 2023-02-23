@@ -17,72 +17,78 @@ final class ProfileViewController: UIViewController {
     var presenter: ProfilePresenterProtocol?
     
     // MARK: - PrivateProperties
-    private let customView: CustomProfileView = {
-        let view = CustomProfileView(firstTitle: Constants.TextButtons.appThemeButtonText,
-                                     secondTitle: Constants.TextButtons.colorAppThemeButtonText)
-        return view
-    }()
-    
-//    private let themeButton: UIButton = {
-//        let button = UIButton()
-//        let subview = CustomProfileView(firstTitle: Constants.TextButtons.appThemeButtonText,
-//                                        secondTitle: Constants.TextButtons.colorAppThemeButtonText)
-//        button.addSubviews(subview)
-//        subview.widthAnchor.constraint(equalTo: button.widthAnchor).isActive = true
-//        button.layer.borderWidth = 0.7
-//        button.layer.borderColor = UIColor(red: 0.812,
-//                                           green: 0.816,
-//                                           blue: 0.82,
-//                                           alpha: 1).cgColor
-//        button.layer.cornerRadius = 11
-//        return button
-//    }()
-    
-    private let themeButton: CustomProfileButtom = {
-        let button = CustomProfileButtom()
-        button.setTitleLabels(header: "Заголовок")
+    private lazy var logoutButton: UIButton = {
+        let button = UIButton()
+        let image = Constants.Images.logoutImage
+        button.setImage(image,
+                        for: .normal)
+        button.layer.borderWidth = Constants.Sizes.borderWidth
+        button.layer.borderColor = Constants.Colors.lightGray.cgColor
+        button.layer.cornerRadius = 7
+        button.addTarget(self,
+                         action: #selector(logoutButtonPressed),
+                         for: .touchUpInside)
         return button
     }()
     
-    private let updateDataButton: UIButton = {
-        let button = UIButton()
-        let subview = CustomProfileView(firstTitle: Constants.TextButtons.changeDataButtonText, secondTitle: nil)
-        button.addSubviews(subview)
-        subview.widthAnchor.constraint(equalTo: button.widthAnchor).isActive = true
-        button.layer.borderWidth = 0.7
-        button.layer.borderColor = UIColor(red: 0.812,
-                                           green: 0.816,
-                                           blue: 0.82,
-                                           alpha: 1).cgColor
-        button.layer.cornerRadius = 11
+    private let logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        let image = Constants.Images.logoImage
+        imageView.image = image
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
+    private let usernameLabel: UILabel = {
+        let label = UILabel()
+        label.text = Constants.TextLabels.username
+        label.font = Constants.Fonts.bigTableHeaderFont
+        return label
+    }()
+    
+    private let logoUsernameStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 32
+        stackView.distribution = .equalSpacing
+        stackView.alignment = .center
+        return stackView
+    }()
+    
+    private lazy var themeButton: CustomProfileButton = {
+        let button = CustomProfileButton(size: .big)
+        button.setTitleLabels(header: Constants.TextButtons.appThemeButtonText,
+                              theme: Constants.TextButtons.colorAppThemeButtonText)
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(themeButtonPressed))
+        button.addGestureRecognizer(tap)
         return button
     }()
     
-    private let conditionButton: UIButton = {
-        let button = UIButton()
-        let subview = CustomProfileView(firstTitle: Constants.TextButtons.usingConditionsButtonText, secondTitle: nil)
-        button.addSubviews(subview)
-        subview.widthAnchor.constraint(equalTo: button.widthAnchor).isActive = true
-        button.layer.borderWidth = 0.7
-        button.layer.borderColor = UIColor(red: 0.812,
-                                           green: 0.816,
-                                           blue: 0.82,
-                                           alpha: 1).cgColor
-        button.layer.cornerRadius = 11
+    private lazy var updateDataButton: CustomProfileButton = {
+        let button = CustomProfileButton(size: .small)
+        button.setTitleLabels(header: Constants.TextButtons.updateDataButtonText)
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(updateDataButtonPressed))
+        button.addGestureRecognizer(tap)
         return button
     }()
     
-    private let privacyButton: UIButton = {
-        let button = UIButton()
-        let subview = CustomProfileView(firstTitle: Constants.TextButtons.privacyPolicyButtonText, secondTitle: nil)
-        button.addSubviews(subview)
-        subview.widthAnchor.constraint(equalTo: button.widthAnchor).isActive = true
-        button.layer.borderWidth = 0.7
-        button.layer.borderColor = UIColor(red: 0.812,
-                                           green: 0.816,
-                                           blue: 0.82,
-                                           alpha: 1).cgColor
-        button.layer.cornerRadius = 11
+    private lazy var conditionButton: CustomProfileButton = {
+        let button = CustomProfileButton(size: .small)
+        button.setTitleLabels(header: Constants.TextButtons.usingConditionsButtonText)
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(conditionButtonPressed))
+        button.addGestureRecognizer(tap)
+        return button
+    }()
+    
+    private lazy var privacyButton: CustomProfileButton = {
+        let button = CustomProfileButton(size: .small)
+        button.setTitleLabels(header: Constants.TextButtons.privacyPolicyButtonText)
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(privacyButtonPressed))
+        button.addGestureRecognizer(tap)
         return button
     }()
     
@@ -94,12 +100,50 @@ final class ProfileViewController: UIViewController {
         return stackView
     }()
     
+    private let commonButtonsStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 32
+        stackView.distribution = .equalSpacing
+        stackView.alignment = .center
+        return stackView
+    }()
     
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewController()
+    }
+    
+    // MARK: - Actions
+    
+    @objc private func logoutButtonPressed() {
+        presenter?.logoutButtonPressed()
+    }
+    
+    @objc private func themeButtonPressed() {
+        themeButton.pushAnimate { [weak self] in
+            self?.presenter?.themeButtonPressed()
+        }
+    }
+    
+    @objc private func updateDataButtonPressed() {
+        updateDataButton.pushAnimate { [weak self] in
+            self?.presenter?.updateDataButtonPressed()
+        }
+    }
+    
+    @objc private func conditionButtonPressed() {
+        conditionButton.pushAnimate { [weak self] in
+            self?.presenter?.conditionButtonPressed()
+        }
+    }
+    
+    @objc private func privacyButtonPressed() {
+        privacyButton.pushAnimate { [weak self] in
+            self?.presenter?.privacyButtonPressed()
+        }
     }
 }
 
@@ -112,34 +156,48 @@ extension ProfileViewController: ProfileViewProtocol {}
 private extension ProfileViewController {
     func setupViewController() {
         addSubViews()
+        setupNavBar()
         setupConstraints()
         view.backgroundColor = .systemBackground
     }
     
+    func setupNavBar() {
+        let barButton = UIBarButtonItem(customView: logoutButton)
+        navigationItem.rightBarButtonItem = barButton
+    }
+    
     func addSubViews() {
-//        themeButton.addSubview(customView)
-        buttonsStack.addArrangedSubviews(themeButton, updateDataButton, conditionButton, privacyButton)
-        view.addSubviews(buttonsStack)
+        logoUsernameStack.addArrangedSubviews(logoImageView,
+                                             usernameLabel)
+        buttonsStack.addArrangedSubviews(themeButton,
+                                         updateDataButton,
+                                         conditionButton,
+                                         privacyButton)
+        commonButtonsStack.addArrangedSubviews(logoUsernameStack,
+                                                    buttonsStack)
+        view.addSubviews(commonButtonsStack)
     }
     
     func setupConstraints() {
         let offset = CGFloat(16)
-        let bigButton = CGFloat(69)
-        let smallButton = CGFloat(50)
+        let logoutButtonSize = CGFloat(40)
+        let logoImageSize = CGFloat(80)
+        
         NSLayoutConstraint.activate([
-            buttonsStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            buttonsStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            logoutButton.heightAnchor.constraint(equalToConstant: logoutButtonSize),
+            logoutButton.widthAnchor.constraint(equalToConstant: logoutButtonSize),
+            
+            commonButtonsStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            commonButtonsStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+                                                          constant: Constants.Constraints.commonStackViewTopOffset),
+            
             buttonsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor,
                                                   constant: offset),
             buttonsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor,
                                                    constant: -offset),
             
-            themeButton.heightAnchor.constraint(equalToConstant: bigButton),
-            updateDataButton.heightAnchor.constraint(equalToConstant: smallButton),
-            conditionButton.heightAnchor.constraint(equalToConstant: smallButton),
-            privacyButton.heightAnchor.constraint(equalToConstant: smallButton),
-            
-//            customView.widthAnchor.constraint(equalTo: themeButton.widthAnchor)
+            logoImageView.heightAnchor.constraint(equalToConstant: logoImageSize),
+            logoImageView.widthAnchor.constraint(equalToConstant: logoImageSize),
         ])
     }
 }

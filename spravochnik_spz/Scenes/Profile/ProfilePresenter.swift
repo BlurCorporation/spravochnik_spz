@@ -5,10 +5,18 @@
 //  Created by Swift Learning on 22.01.2023.
 //
 
+import UIKit
+
 
 // MARK: - ProfilePresenterProtocol
 
-protocol ProfilePresenterProtocol: AnyObject {}
+protocol ProfilePresenterProtocol: AnyObject {
+    func themeButtonPressed()
+    func updateDataButtonPressed()
+    func conditionButtonPressed()
+    func privacyButtonPressed()
+    func logoutButtonPressed()
+}
 
 // MARK: - ProfilePresenter
 
@@ -28,4 +36,26 @@ final class ProfilePresenter {
 
 //MARK: - ProfilePresenterExtension
 
-extension ProfilePresenter: ProfilePresenterProtocol {}
+extension ProfilePresenter: ProfilePresenterProtocol {
+    func logoutButtonPressed() {
+        let startViewController = sceneBuildManager.buildStartScreen()
+        let rootViewController = UINavigationController.init(rootViewController: startViewController)
+        UIApplication.shared.windows.first?.rootViewController = rootViewController
+    }
+    
+    func themeButtonPressed() {
+        print(#function)
+    }
+    
+    func updateDataButtonPressed() {
+        print(#function)
+    }
+    
+    func conditionButtonPressed() {
+        print(#function)
+    }
+    
+    func privacyButtonPressed() {
+        print(#function)
+    }
+}
