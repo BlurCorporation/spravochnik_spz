@@ -48,7 +48,9 @@ extension ProfilePresenter: ProfilePresenterProtocol {
     }
     
     func updateDataButtonPressed() {
-        print(#function)
+        let updateDataViewController = sceneBuildManager.buildResetPasswordScreen(updateDataType: .updateData)
+        viewController?.navigationController?.pushViewController(updateDataViewController,
+                                                                 animated: true)
     }
     
     func conditionButtonPressed() {

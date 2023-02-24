@@ -209,10 +209,8 @@ final class AuthViewController: UIViewController {
         navigationController?.isNavigationBarHidden = false
     }
     
-    override func touchesBegan(
-        _ touches: Set<UITouch>,
-        with event: UIEvent?
-    ) {
+    override func touchesBegan(_ touches: Set<UITouch>,
+                               with event: UIEvent?) {
         self.view.endEditing(true)
     }
     

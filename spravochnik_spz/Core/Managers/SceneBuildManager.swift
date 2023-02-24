@@ -9,7 +9,7 @@ protocol Buildable {
     func buildSplashScreen() -> SplashViewController
     func buildStartScreen() -> StartViewController
     func buildAuthScreen(type: AuthType) -> AuthViewController
-    func buildResetPasswordScreen() -> ResetPasswordViewController
+    func buildResetPasswordScreen(updateDataType: UpdateDataType) -> ResetPasswordViewController
     func buildOnboardingScreen() -> OnboardingViewController
     func buildTabBarScreen() -> TabBarController
     func buildMainScreen() -> MainViewController
@@ -64,9 +64,9 @@ extension SceneBuildManager: Buildable {
         return viewController
     }
     
-    func buildResetPasswordScreen() -> ResetPasswordViewController {
+    func buildResetPasswordScreen(updateDataType: UpdateDataType) -> ResetPasswordViewController {
         let viewController = ResetPasswordViewController()
-        let presenter = ResetPasswordPresenter(sceneBuildManager: self)
+        let presenter = ResetPasswordPresenter(sceneBuildManager: self, updateDataType: updateDataType)
         
         viewController.presenter = presenter
         presenter.viewController = viewController

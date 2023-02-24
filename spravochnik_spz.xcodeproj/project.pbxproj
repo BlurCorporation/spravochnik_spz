@@ -72,6 +72,7 @@
 		226E6F4C297D717800846141 /* FirePumpStationResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F4B297D717800846141 /* FirePumpStationResultsViewController.swift */; };
 		226E6F4E297D718400846141 /* FirePumpStationResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F4D297D718400846141 /* FirePumpStationResultsPresenter.swift */; };
 		22F5886229A788D1004053CF /* CustomProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5886129A788D1004053CF /* CustomProfileButton.swift */; };
+		22F5886429A82C9A004053CF /* UpdateDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5886329A82C9A004053CF /* UpdateDataType.swift */; };
 		45DA6E4C29804524008D26F8 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA6E4B29804524008D26F8 /* UIView.swift */; };
 		45DA6E4E298047CF008D26F8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA6E4D298047CF008D26F8 /* UIViewController.swift */; };
 		45F72C2C297F1C6F00D90C8F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F72C2B297F1C6F00D90C8F /* Constants.swift */; };
@@ -146,6 +147,7 @@
 		226E6F4B297D717800846141 /* FirePumpStationResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirePumpStationResultsViewController.swift; sourceTree = "<group>"; };
 		226E6F4D297D718400846141 /* FirePumpStationResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirePumpStationResultsPresenter.swift; sourceTree = "<group>"; };
 		22F5886129A788D1004053CF /* CustomProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProfileButton.swift; sourceTree = "<group>"; };
+		22F5886329A82C9A004053CF /* UpdateDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDataType.swift; sourceTree = "<group>"; };
 		45DA6E4B29804524008D26F8 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		45DA6E4D298047CF008D26F8 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		45F72C2B297F1C6F00D90C8F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				2265A2CD299EB9A6005DF662 /* AuthType.swift */,
+				22F5886329A82C9A004053CF /* UpdateDataType.swift */,
 			);
 			path = TypeViewController;
 			sourceTree = "<group>";
@@ -741,6 +744,7 @@
 				226E6F2D297D6ECA00846141 /* NotificationSystemResultsViewController.swift in Sources */,
 				226E6EEB297D63A900846141 /* SceneBuildManager.swift in Sources */,
 				226E6F1F297D6DC700846141 /* FireAlarmSystemViewController.swift in Sources */,
+				22F5886429A82C9A004053CF /* UpdateDataType.swift in Sources */,
 				226E6EE8297D5E7500846141 /* SplashPresenter.swift in Sources */,
 				226E6EED297D64D700846141 /* StartViewController.swift in Sources */,
 				226E6F33297D6FE100846141 /* ModuleFirefightingSystemViewController.swift in Sources */,
@@ -883,7 +887,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4A6Q5M35JJ;
+				DEVELOPMENT_TEAM = H456X98Q5T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = spravochnik_spz/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -910,7 +914,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4A6Q5M35JJ;
+				DEVELOPMENT_TEAM = H456X98Q5T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = spravochnik_spz/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
