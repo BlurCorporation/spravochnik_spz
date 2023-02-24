@@ -91,6 +91,8 @@ enum Constants {
         static let authLabelText = "Войти через"
         static let savedCalculationsTitleLabelText = "Сохраненные расчеты"
         static let username = "Роман"
+        static let infoPasswordLabelText = "Пароль должен быть длинной не менее 8 символов и минимум одна заглавная буква"
+        static let infoEmailLabelText = "Мы отправим электронное письмо на этот адрес для сброса пароля"
     }
     
     enum TextButtons {
@@ -102,6 +104,10 @@ enum Constants {
         static let loginButton = "Войти"
         static let registerButton = "Зарегистрироваться"
         static let forgotPassword = "Забыли пароль?"
+        static let resetPasswordButtonText = "Отправить письмо"
+        static let updatePasswordButtonText = "Обновить пароль"
+        static let changePasswordButtonText = "Изменить пароль"
+        static let saveChangesButtonText = "Сохранить изменения"
     }
     
     enum PlaceHolders {
@@ -109,6 +115,7 @@ enum Constants {
         static let eMail = "Email"
         static let password = "Пароль"
         static let retypePassword = "Повторите пароль"
+        static let newPassword = "Новый пароль"
     }
     
     enum Constraints {
@@ -134,6 +141,9 @@ enum Constants {
     enum NavigationController {
         static let registerTitle = "Регистрация"
         static let authTitle = "Войти"
+        static let resetPasswordTitle = "Сбросить пароль"
+        static let updatePasswordTitle = "Обновить пароль"
+        static let updateDataTitle = "Обновить данные"
         static let authButtonHeight = CGFloat(50)
         static let commonStackViewTopOffset = CGFloat(24)
     }

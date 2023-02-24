@@ -79,6 +79,8 @@ extension AuthPresenter: AuthPresenterProtocol {
     }
     
     func forgotPasswordButtonPressed() {
-        print(#function)
+        let resetPasswordViewController = sceneBuildManager.buildResetPasswordScreen(updateDataType: .resetPassword)
+        viewController?.navigationController?.pushViewController(resetPasswordViewController,
+                                                                 animated: true)
     }
 }
