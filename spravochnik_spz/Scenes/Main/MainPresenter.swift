@@ -18,6 +18,7 @@ final class MainPresenter {
     
     private let sceneBuildManager: Buildable
     
+    
     // MARK: - Initializer
     
     init(sceneBuildManager: Buildable) {
