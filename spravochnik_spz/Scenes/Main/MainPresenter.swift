@@ -7,7 +7,12 @@
 
 // MARK: - MainPresenterProtocol
 
-protocol MainPresenterProtocol: AnyObject {}
+protocol MainPresenterProtocol: AnyObject {
+    func cellSet(object: MainCollectionViewModel,
+                 cell: MainCollectionViewCell)
+    func helpButtonPressed()
+    func openCalculationCellSelected(index: Int)
+}
 
 // MARK: - MainPresenter
 
@@ -18,6 +23,7 @@ final class MainPresenter {
     
     private let sceneBuildManager: Buildable
     
+    
     // MARK: - Initializer
     
     init(sceneBuildManager: Buildable) {
@@ -27,4 +33,34 @@ final class MainPresenter {
 
 //MARK: - MainPresenterExtension
 
-extension MainPresenter: MainPresenterProtocol {}
+extension MainPresenter: MainPresenterProtocol {
+    func cellSet(object: MainCollectionViewModel,
+                 cell: MainCollectionViewCell) {
+        cell.set(object: object)
+    }
+    
+    func helpButtonPressed() {
+        print(#function)
+    }
+    
+    func openCalculationCellSelected(index: Int) {
+        switch index {
+        case 0:
+            print(index)
+        case 1:
+            print(index)
+        case 2:
+            print(index)
+        case 3:
+            print(index)
+        case 4:
+            print(index)
+        case 5:
+            print(index)
+        case 6:
+            print(index)
+        default: fatalError()
+
+        }
+    }
+}

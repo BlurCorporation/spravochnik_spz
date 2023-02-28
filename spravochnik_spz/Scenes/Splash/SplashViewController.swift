@@ -24,9 +24,9 @@ final class SplashViewController: UIViewController {
         return imageView
     }()
 
-    private lazy var gray1LineView = lineView(color: Constants.Colors.lightGrey)
+    private lazy var gray1LineView = lineView(color: Constants.Colors.lightGray)
     private lazy var black2LineView  = lineView(color: Constants.Colors.dark)
-    private lazy var gray3LineView = lineView(color: Constants.Colors.lightGrey)
+    private lazy var gray3LineView = lineView(color: Constants.Colors.lightGray)
     
     private lazy var linesStackView: UIStackView = {
         let stackView = UIStackView()

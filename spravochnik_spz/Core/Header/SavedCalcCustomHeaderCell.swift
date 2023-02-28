@@ -19,8 +19,8 @@ final class SavedCalcCustomHeaderCell: UITableViewHeaderFooterView {
     
     static let identifier = "TableViewHeader"
     
-    private let savedCalcLabel: UILabel = {
-        let label = UILabel()
+    private let savedCalcLabel: PaddingLabel = {
+        let label = PaddingLabel()
         label.text = Constants.TextLabels.savedCalculationsTitleLabelText
         label.font = Constants.Fonts.bigTableHeaderFont
         label.numberOfLines = 0

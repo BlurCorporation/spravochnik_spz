@@ -79,7 +79,7 @@ extension SavedCalculationsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    heightForHeaderInSection section: Int) -> CGFloat {
-        return Constants.Sizes.savedCalcHeaderHeight
+        return Constants.Sizes.headerHeight
     }
     
     func tableView(_ tableView: UITableView,
@@ -107,6 +107,7 @@ extension SavedCalculationsViewController: UITableViewDelegate {
 
 private extension SavedCalculationsViewController {
     func setupViewController() {
+        navigationController?.isNavigationBarHidden = true
         addSubViews()
         setupConstraints()
         view.backgroundColor = .systemBackground
