@@ -18,7 +18,6 @@ enum Constants {
         static let dark = #colorLiteral(red: 0.06380403787, green: 0.09624507278, blue: 0.12997365, alpha: 1)
         static let darkGray = #colorLiteral(red: 0.5958735943, green: 0.6070739031, blue: 0.6143226027, alpha: 1)
         static let lightGray = #colorLiteral(red: 0.8471679091, green: 0.8505566716, blue: 0.8537925482, alpha: 1)
-        static let lightGrey = UIColor.lightGray
         static let clear = UIColor.clear
         static let noneBackground = UIColor.red
         
@@ -35,6 +34,11 @@ enum Constants {
                                             green: 1,
                                             blue: 0.996,
                                             alpha: 1)
+        
+        // Main and SavedCalc cells
+        static let darkCellColor = #colorLiteral(red: 0.2431372549, green: 0.2392156863, blue: 0.2549019608, alpha: 1)
+        static let grayCellColor = #colorLiteral(red: 0.5607843137, green: 0.5843137255, blue: 0.6156862745, alpha: 1)
+        static let yellowCellColor = #colorLiteral(red: 0.8352941176, green: 0.6784313725, blue: 0.5098039216, alpha: 1)
     }
     
     enum Images {
@@ -61,6 +65,8 @@ enum Constants {
         static let brownBackground = UIImage(named: "BrownBackground") ?? UIImage()
         // Profile
         static let logoutImage = UIImage(named: "logout") ?? UIImage()
+        // Main
+        static let helpImage = UIImage(named: "help") ?? UIImage()
     }
     
     enum Sizes {
@@ -77,9 +83,19 @@ enum Constants {
         static let bigStackViewSpacing = CGFloat(32)
         static let costCornerRadius = CGFloat(18)
         static let costHeight = CGFloat(50)
-        static let savedCalcHeaderHeight = CGFloat(80)
+        static let headerHeight = CGFloat(80)
         static let widthHeader = CGFloat(263)
         static let textFieldHeight = CGFloat(50)
+    }
+    
+    enum alarmTypesText {
+        static let securityAlarmText = "Охранная сигнализация"
+        static let fireAlarmText = "Пожарная сигнализация"
+        static let firePumpText = "Насосные станции установок пожаротушения"
+        static let moduleFirefightingText = "Модульные установки пожаротушения"
+        static let notificationText = "Система оповещения о пожаре"
+        static let perimetrAlarmText = "Охранная сигнализация периметра"
+        static let smokeExhaustText = "Система управления дымоудаления"
     }
     
     enum TextLabels {
@@ -93,6 +109,7 @@ enum Constants {
         static let username = "Роман"
         static let infoPasswordLabelText = "Пароль должен быть длинной не менее 8 символов и минимум одна заглавная буква"
         static let infoEmailLabelText = "Мы отправим электронное письмо на этот адрес для сброса пароля"
+        static let mainHeaderLabelText = "Расчет стоимости проектирования"
     }
     
     enum TextButtons {

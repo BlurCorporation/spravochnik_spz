@@ -84,7 +84,7 @@ final class AuthViewController: UIViewController {
         return label
     }()
     
-    private lazy var leadingLineView = lineView(color: Constants.Colors.lightGrey)
+    private lazy var leadingLineView = lineView(color: Constants.Colors.lightGray)
     
     private let authLabel: UILabel = {
         let label = UILabel()
@@ -96,7 +96,7 @@ final class AuthViewController: UIViewController {
         return label
     }()
     
-    private lazy var trailingLineView = lineView(color: Constants.Colors.lightGrey)
+    private lazy var trailingLineView = lineView(color: Constants.Colors.lightGray)
     
     private let authStackView: UIStackView = {
         let stackView = UIStackView()

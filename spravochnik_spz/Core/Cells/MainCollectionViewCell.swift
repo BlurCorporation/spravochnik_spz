@@ -7,15 +7,38 @@
 
 import UIKit
 
-class MainCollectionViewCell: UICollectionViewCell {
+// MARK: - MainCollectionViewCellProtocol
+
+protocol MainCollectionViewCellProtocol: AnyObject {
+    func set(object: MainCollectionViewModel)
+}
+
+// MARK: - MainCollectionViewCell
+
+final class MainCollectionViewCell: UICollectionViewCell {
     
-    static let identifier = "TableViewCell"
-    
-    private let label: UILabel = {
-        let label = UILabel()
-        label.text = "123"
-        label.backgroundColor = .gray
+    private let titleLabel: PaddingLabel = {
+        let label = PaddingLabel()
+        label.font = Constants.Fonts.mainCellFont
+        label.textColor = .white
+        label.numberOfLines = .zero
         return label
+    }()
+    
+    private let typeImage: UIImageView = {
+        let image = Constants.Images.stage
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = image
+        return imageView
+    }()
+    
+    private let commonStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        stackView.alignment = .leading
+        return stackView
     }()
     
     override init(frame: CGRect) {
@@ -29,17 +52,37 @@ class MainCollectionViewCell: UICollectionViewCell {
     }
 }
 
+// MARK: - MainCollectionViewCellProtocol Impl
+
+extension MainCollectionViewCell: MainCollectionViewCellProtocol {
+    func set(object: MainCollectionViewModel) {
+        self.backgroundColor = object.backgroundColor
+        self.titleLabel.text = object.title
+        self.typeImage.image = object.typeImage
+    }
+}
+
+// MARK: - Private Methods
+
 extension MainCollectionViewCell {
     func setupCell() {
-        contentView.addSubviews(label)
+        self.layer.cornerRadius = 24
+        commonStack.addArrangedSubviews(typeImage,
+                                        titleLabel)
+        
+        contentView.addSubviews(commonStack)
     }
     
     func setupConstraints() {
+        let offsets = CGFloat(20)
+        
         NSLayoutConstraint.activate([
-            label.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-            label.heightAnchor.constraint(equalTo: contentView.heightAnchor),
-            label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            commonStack.topAnchor.constraint(equalTo: contentView.topAnchor,
+                                             constant: offsets),
+            commonStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
+                                                 constant: offsets),
+            commonStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,
+                                                  constant: -offsets)
         ])
     }
 }
