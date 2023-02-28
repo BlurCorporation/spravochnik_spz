@@ -67,6 +67,9 @@ enum Constants {
         static let logoutImage = UIImage(named: "logout") ?? UIImage()
         // Main
         static let helpImage = UIImage(named: "help") ?? UIImage()
+        // Calculation
+        static let checkBoxImage = UIImage(named: "checkbox")
+        static let checkBoxTrueImage = UIImage(named: "checkboxTrue")
     }
     
     enum Sizes {
@@ -125,6 +128,8 @@ enum Constants {
         static let updatePasswordButtonText = "Обновить пароль"
         static let changePasswordButtonText = "Изменить пароль"
         static let saveChangesButtonText = "Сохранить изменения"
+        static let calculationButtonText = "Расчет"
+        static let otherCalculationButtonText = "Перейти к другим расчетам"
     }
     
     enum PlaceHolders {

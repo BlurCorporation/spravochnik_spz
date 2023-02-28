@@ -46,36 +46,18 @@
 		226E6F03297D69E800846141 /* SavedCalculationsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F02297D69E800846141 /* SavedCalculationsPresenter.swift */; };
 		226E6F05297D6A6A00846141 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F04297D6A6A00846141 /* ProfileViewController.swift */; };
 		226E6F07297D6A7300846141 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F06297D6A7300846141 /* ProfilePresenter.swift */; };
-		226E6F0B297D6B8500846141 /* SecurityAlarmSystemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F0A297D6B8500846141 /* SecurityAlarmSystemViewController.swift */; };
-		226E6F0D297D6B9100846141 /* SecurityAlarmSystemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F0C297D6B9100846141 /* SecurityAlarmSystemPresenter.swift */; };
-		226E6F0F297D6BA400846141 /* SecurityAlarmSystemResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F0E297D6BA400846141 /* SecurityAlarmSystemResultsViewController.swift */; };
-		226E6F11297D6BB100846141 /* SecurityAlarmSystemResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F10297D6BB100846141 /* SecurityAlarmSystemResultsPresenter.swift */; };
-		226E6F15297D6BDE00846141 /* PerimeterAlarmSystemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F14297D6BDE00846141 /* PerimeterAlarmSystemViewController.swift */; };
-		226E6F17297D6BEB00846141 /* PerimeterAlarmSystemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F16297D6BEB00846141 /* PerimeterAlarmSystemPresenter.swift */; };
-		226E6F1B297D6C2D00846141 /* PerimeterAlarmSystemResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F1A297D6C2D00846141 /* PerimeterAlarmSystemResultsViewController.swift */; };
-		226E6F1D297D6C3A00846141 /* PerimeterAlarmSystemResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F1C297D6C3A00846141 /* PerimeterAlarmSystemResultsPresenter.swift */; };
-		226E6F1F297D6DC700846141 /* FireAlarmSystemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F1E297D6DC700846141 /* FireAlarmSystemViewController.swift */; };
-		226E6F21297D6DD300846141 /* FireAlarmSystemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F20297D6DD300846141 /* FireAlarmSystemPresenter.swift */; };
-		226E6F23297D6DFA00846141 /* FireAlarmSystemResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F22297D6DFA00846141 /* FireAlarmSystemResultsViewController.swift */; };
-		226E6F25297D6E0700846141 /* FireAlarmSystemResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F24297D6E0700846141 /* FireAlarmSystemResultsPresenter.swift */; };
-		226E6F29297D6EB100846141 /* NotificationSystemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F28297D6EB100846141 /* NotificationSystemViewController.swift */; };
-		226E6F2B297D6EBC00846141 /* NotificationSystemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F2A297D6EBC00846141 /* NotificationSystemPresenter.swift */; };
-		226E6F2D297D6ECA00846141 /* NotificationSystemResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F2C297D6ECA00846141 /* NotificationSystemResultsViewController.swift */; };
-		226E6F2F297D6ED700846141 /* NotificationSystemResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F2E297D6ED700846141 /* NotificationSystemResultsPresenter.swift */; };
-		226E6F33297D6FE100846141 /* ModuleFirefightingSystemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F32297D6FE100846141 /* ModuleFirefightingSystemViewController.swift */; };
-		226E6F35297D6FEC00846141 /* ModuleFirefightingSystemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F34297D6FEC00846141 /* ModuleFirefightingSystemPresenter.swift */; };
-		226E6F37297D6FFA00846141 /* ModuleFirefightingSystemResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F36297D6FFA00846141 /* ModuleFirefightingSystemResultsViewController.swift */; };
-		226E6F39297D700A00846141 /* ModuleFirefightingSystemResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F38297D700A00846141 /* ModuleFirefightingSystemResultsPresenter.swift */; };
-		226E6F3E297D707D00846141 /* SmokeExhaustSystemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F3D297D707D00846141 /* SmokeExhaustSystemViewController.swift */; };
-		226E6F40297D708500846141 /* SmokeExhaustSystemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F3F297D708500846141 /* SmokeExhaustSystemPresenter.swift */; };
-		226E6F42297D709600846141 /* SmokeExhaustSystemResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F41297D709600846141 /* SmokeExhaustSystemResultsViewController.swift */; };
-		226E6F44297D70A200846141 /* SmokeExhaustSystemResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F43297D70A200846141 /* SmokeExhaustSystemResultsPresenter.swift */; };
-		226E6F48297D715800846141 /* FirePumpStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F47297D715800846141 /* FirePumpStationViewController.swift */; };
-		226E6F4A297D716800846141 /* FirePumpStationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F49297D716800846141 /* FirePumpStationPresenter.swift */; };
-		226E6F4C297D717800846141 /* FirePumpStationResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F4B297D717800846141 /* FirePumpStationResultsViewController.swift */; };
-		226E6F4E297D718400846141 /* FirePumpStationResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F4D297D718400846141 /* FirePumpStationResultsPresenter.swift */; };
+		226E6F0B297D6B8500846141 /* CalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F0A297D6B8500846141 /* CalculationViewController.swift */; };
+		226E6F0D297D6B9100846141 /* CalculationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F0C297D6B9100846141 /* CalculationPresenter.swift */; };
+		226E6F15297D6BDE00846141 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F14297D6BDE00846141 /* ResultViewController.swift */; };
+		226E6F17297D6BEB00846141 /* ResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F16297D6BEB00846141 /* ResultPresenter.swift */; };
 		22F5886229A788D1004053CF /* CustomProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5886129A788D1004053CF /* CustomProfileButton.swift */; };
 		22F5886429A82C9A004053CF /* UpdateDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5886329A82C9A004053CF /* UpdateDataType.swift */; };
+		22F5886629A8E48E004053CF /* CalculationHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5886529A8E48E004053CF /* CalculationHeaderViewCell.swift */; };
+		22F5886A29A8EB06004053CF /* ValueCoefficientTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5886929A8EB06004053CF /* ValueCoefficientTypeTableViewCell.swift */; };
+		22F5886C29A8EB14004053CF /* ChoiceCoefficientTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5886B29A8EB14004053CF /* ChoiceCoefficientTypeTableViewCell.swift */; };
+		22F5886E29A8EB21004053CF /* DefaultValueCoefficientTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5886D29A8EB21004053CF /* DefaultValueCoefficientTypeTableViewCell.swift */; };
+		22F5887029A8EB30004053CF /* CheckboxCoefficientTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5886F29A8EB30004053CF /* CheckboxCoefficientTypeTableViewCell.swift */; };
+		22F5887429A9FFCD004053CF /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5887329A9FFCD004053CF /* Test.swift */; };
 		45DA6E4C29804524008D26F8 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA6E4B29804524008D26F8 /* UIView.swift */; };
 		45DA6E4E298047CF008D26F8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA6E4D298047CF008D26F8 /* UIViewController.swift */; };
 		45F72C2C297F1C6F00D90C8F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F72C2B297F1C6F00D90C8F /* Constants.swift */; };
@@ -124,36 +106,18 @@
 		226E6F02297D69E800846141 /* SavedCalculationsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCalculationsPresenter.swift; sourceTree = "<group>"; };
 		226E6F04297D6A6A00846141 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		226E6F06297D6A7300846141 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
-		226E6F0A297D6B8500846141 /* SecurityAlarmSystemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityAlarmSystemViewController.swift; sourceTree = "<group>"; };
-		226E6F0C297D6B9100846141 /* SecurityAlarmSystemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityAlarmSystemPresenter.swift; sourceTree = "<group>"; };
-		226E6F0E297D6BA400846141 /* SecurityAlarmSystemResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityAlarmSystemResultsViewController.swift; sourceTree = "<group>"; };
-		226E6F10297D6BB100846141 /* SecurityAlarmSystemResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityAlarmSystemResultsPresenter.swift; sourceTree = "<group>"; };
-		226E6F14297D6BDE00846141 /* PerimeterAlarmSystemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerimeterAlarmSystemViewController.swift; sourceTree = "<group>"; };
-		226E6F16297D6BEB00846141 /* PerimeterAlarmSystemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerimeterAlarmSystemPresenter.swift; sourceTree = "<group>"; };
-		226E6F1A297D6C2D00846141 /* PerimeterAlarmSystemResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerimeterAlarmSystemResultsViewController.swift; sourceTree = "<group>"; };
-		226E6F1C297D6C3A00846141 /* PerimeterAlarmSystemResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerimeterAlarmSystemResultsPresenter.swift; sourceTree = "<group>"; };
-		226E6F1E297D6DC700846141 /* FireAlarmSystemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireAlarmSystemViewController.swift; sourceTree = "<group>"; };
-		226E6F20297D6DD300846141 /* FireAlarmSystemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireAlarmSystemPresenter.swift; sourceTree = "<group>"; };
-		226E6F22297D6DFA00846141 /* FireAlarmSystemResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireAlarmSystemResultsViewController.swift; sourceTree = "<group>"; };
-		226E6F24297D6E0700846141 /* FireAlarmSystemResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireAlarmSystemResultsPresenter.swift; sourceTree = "<group>"; };
-		226E6F28297D6EB100846141 /* NotificationSystemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSystemViewController.swift; sourceTree = "<group>"; };
-		226E6F2A297D6EBC00846141 /* NotificationSystemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSystemPresenter.swift; sourceTree = "<group>"; };
-		226E6F2C297D6ECA00846141 /* NotificationSystemResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSystemResultsViewController.swift; sourceTree = "<group>"; };
-		226E6F2E297D6ED700846141 /* NotificationSystemResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSystemResultsPresenter.swift; sourceTree = "<group>"; };
-		226E6F32297D6FE100846141 /* ModuleFirefightingSystemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFirefightingSystemViewController.swift; sourceTree = "<group>"; };
-		226E6F34297D6FEC00846141 /* ModuleFirefightingSystemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFirefightingSystemPresenter.swift; sourceTree = "<group>"; };
-		226E6F36297D6FFA00846141 /* ModuleFirefightingSystemResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFirefightingSystemResultsViewController.swift; sourceTree = "<group>"; };
-		226E6F38297D700A00846141 /* ModuleFirefightingSystemResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFirefightingSystemResultsPresenter.swift; sourceTree = "<group>"; };
-		226E6F3D297D707D00846141 /* SmokeExhaustSystemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeExhaustSystemViewController.swift; sourceTree = "<group>"; };
-		226E6F3F297D708500846141 /* SmokeExhaustSystemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeExhaustSystemPresenter.swift; sourceTree = "<group>"; };
-		226E6F41297D709600846141 /* SmokeExhaustSystemResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeExhaustSystemResultsViewController.swift; sourceTree = "<group>"; };
-		226E6F43297D70A200846141 /* SmokeExhaustSystemResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeExhaustSystemResultsPresenter.swift; sourceTree = "<group>"; };
-		226E6F47297D715800846141 /* FirePumpStationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirePumpStationViewController.swift; sourceTree = "<group>"; };
-		226E6F49297D716800846141 /* FirePumpStationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirePumpStationPresenter.swift; sourceTree = "<group>"; };
-		226E6F4B297D717800846141 /* FirePumpStationResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirePumpStationResultsViewController.swift; sourceTree = "<group>"; };
-		226E6F4D297D718400846141 /* FirePumpStationResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirePumpStationResultsPresenter.swift; sourceTree = "<group>"; };
+		226E6F0A297D6B8500846141 /* CalculationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationViewController.swift; sourceTree = "<group>"; };
+		226E6F0C297D6B9100846141 /* CalculationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationPresenter.swift; sourceTree = "<group>"; };
+		226E6F14297D6BDE00846141 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		226E6F16297D6BEB00846141 /* ResultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPresenter.swift; sourceTree = "<group>"; };
 		22F5886129A788D1004053CF /* CustomProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProfileButton.swift; sourceTree = "<group>"; };
 		22F5886329A82C9A004053CF /* UpdateDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDataType.swift; sourceTree = "<group>"; };
+		22F5886529A8E48E004053CF /* CalculationHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationHeaderViewCell.swift; sourceTree = "<group>"; };
+		22F5886929A8EB06004053CF /* ValueCoefficientTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueCoefficientTypeTableViewCell.swift; sourceTree = "<group>"; };
+		22F5886B29A8EB14004053CF /* ChoiceCoefficientTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceCoefficientTypeTableViewCell.swift; sourceTree = "<group>"; };
+		22F5886D29A8EB21004053CF /* DefaultValueCoefficientTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultValueCoefficientTypeTableViewCell.swift; sourceTree = "<group>"; };
+		22F5886F29A8EB30004053CF /* CheckboxCoefficientTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxCoefficientTypeTableViewCell.swift; sourceTree = "<group>"; };
+		22F5887329A9FFCD004053CF /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		45DA6E4B29804524008D26F8 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		45DA6E4D298047CF008D26F8 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		45F72C2B297F1C6F00D90C8F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -178,6 +142,8 @@
 				1BA6E0082993A8FC000F0F82 /* SavedCalculationCellModel.swift */,
 				1BA8702C29AA5DF0006159CB /* MainCollectionViewCell.swift */,
 				1BA8703229AD0540006159CB /* MainCollectionViewModel.swift */,
+				22F5886829A8EADA004053CF /* Calculation */,
+				22F5886729A8EAC9004053CF /* SavedCalculations */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -226,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				1BA6E011299BEFA5000F0F82 /* SavedCalcCustomHeaderCell.swift */,
+				22F5886529A8E48E004053CF /* CalculationHeaderViewCell.swift */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -251,6 +218,7 @@
 				220AE4F1297D52D300DEA441 /* Extension */,
 				220AE4F0297D52CC00DEA441 /* Managers */,
 				220AE4EF297D52C500DEA441 /* Services */,
+				22F5887329A9FFCD004053CF /* Test.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -267,13 +235,8 @@
 				226E6EDF297D5CFE00846141 /* Main */,
 				226E6EDE297D5CD100846141 /* SavedCalculations */,
 				226E6EDD297D5CC600846141 /* Profile */,
-				226E6EDC297D5CAC00846141 /* SecurityAlarmSystem */,
-				226E6EDB297D5C7E00846141 /* PerimeterAlarmSystem */,
-				226E6EDA297D5C4700846141 /* FireAlarmSystem */,
-				226E6ED9297D5C3C00846141 /* NotificationSystem */,
-				226E6ED8297D5C0D00846141 /* ModuleFirefightingSystem */,
-				226E6ED7297D5BD800846141 /* SmokeExhaustSystem */,
-				226E6ED6297D5B6400846141 /* FirePumpStation */,
+				226E6EDC297D5CAC00846141 /* Calculation */,
+				226E6EDB297D5C7E00846141 /* Result */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -351,67 +314,22 @@
 			path = TypeViewController;
 			sourceTree = "<group>";
 		};
-		226E6ED6297D5B6400846141 /* FirePumpStation */ = {
+		226E6EDB297D5C7E00846141 /* Result */ = {
 			isa = PBXGroup;
 			children = (
-				226E6F46297D714B00846141 /* FirePumpStation */,
-				226E6F45297D714000846141 /* FirePumpStationResults */,
+				226E6F14297D6BDE00846141 /* ResultViewController.swift */,
+				226E6F16297D6BEB00846141 /* ResultPresenter.swift */,
 			);
-			path = FirePumpStation;
+			path = Result;
 			sourceTree = "<group>";
 		};
-		226E6ED7297D5BD800846141 /* SmokeExhaustSystem */ = {
+		226E6EDC297D5CAC00846141 /* Calculation */ = {
 			isa = PBXGroup;
 			children = (
-				226E6F3B297D706B00846141 /* SmokeExhaustSystem */,
-				226E6F3A297D706400846141 /* SmokeExhaustSystemResults */,
+				226E6F0A297D6B8500846141 /* CalculationViewController.swift */,
+				226E6F0C297D6B9100846141 /* CalculationPresenter.swift */,
 			);
-			path = SmokeExhaustSystem;
-			sourceTree = "<group>";
-		};
-		226E6ED8297D5C0D00846141 /* ModuleFirefightingSystem */ = {
-			isa = PBXGroup;
-			children = (
-				226E6F31297D6FD300846141 /* ModuleFirefightingSystem */,
-				226E6F30297D6FCA00846141 /* ModuleFirefightingSystemResults */,
-			);
-			path = ModuleFirefightingSystem;
-			sourceTree = "<group>";
-		};
-		226E6ED9297D5C3C00846141 /* NotificationSystem */ = {
-			isa = PBXGroup;
-			children = (
-				226E6F27297D6E9E00846141 /* NotificationSystem */,
-				226E6F26297D6E8E00846141 /* NotificationSystemResults */,
-			);
-			path = NotificationSystem;
-			sourceTree = "<group>";
-		};
-		226E6EDA297D5C4700846141 /* FireAlarmSystem */ = {
-			isa = PBXGroup;
-			children = (
-				226E6F18297D6BFD00846141 /* FireAlarmSystem */,
-				226E6F19297D6C0500846141 /* FireAlarmSystemResults */,
-			);
-			path = FireAlarmSystem;
-			sourceTree = "<group>";
-		};
-		226E6EDB297D5C7E00846141 /* PerimeterAlarmSystem */ = {
-			isa = PBXGroup;
-			children = (
-				226E6F13297D6BC600846141 /* PerimeterAlarmSystem */,
-				226E6F12297D6BBF00846141 /* PerimeterAlarmSystemResults */,
-			);
-			path = PerimeterAlarmSystem;
-			sourceTree = "<group>";
-		};
-		226E6EDC297D5CAC00846141 /* SecurityAlarmSystem */ = {
-			isa = PBXGroup;
-			children = (
-				226E6F09297D6B5000846141 /* SecurityAlarmSystem */,
-				226E6F08297D6B3900846141 /* SecurityAlarmSystemResults */,
-			);
-			path = SecurityAlarmSystem;
+			path = Calculation;
 			sourceTree = "<group>";
 		};
 		226E6EDD297D5CC600846141 /* Profile */ = {
@@ -486,138 +404,32 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
-		226E6F08297D6B3900846141 /* SecurityAlarmSystemResults */ = {
-			isa = PBXGroup;
-			children = (
-				226E6F0E297D6BA400846141 /* SecurityAlarmSystemResultsViewController.swift */,
-				226E6F10297D6BB100846141 /* SecurityAlarmSystemResultsPresenter.swift */,
-			);
-			path = SecurityAlarmSystemResults;
-			sourceTree = "<group>";
-		};
-		226E6F09297D6B5000846141 /* SecurityAlarmSystem */ = {
-			isa = PBXGroup;
-			children = (
-				226E6F0A297D6B8500846141 /* SecurityAlarmSystemViewController.swift */,
-				226E6F0C297D6B9100846141 /* SecurityAlarmSystemPresenter.swift */,
-			);
-			path = SecurityAlarmSystem;
-			sourceTree = "<group>";
-		};
-		226E6F12297D6BBF00846141 /* PerimeterAlarmSystemResults */ = {
-			isa = PBXGroup;
-			children = (
-				226E6F1A297D6C2D00846141 /* PerimeterAlarmSystemResultsViewController.swift */,
-				226E6F1C297D6C3A00846141 /* PerimeterAlarmSystemResultsPresenter.swift */,
-			);
-			path = PerimeterAlarmSystemResults;
-			sourceTree = "<group>";
-		};
-		226E6F13297D6BC600846141 /* PerimeterAlarmSystem */ = {
-			isa = PBXGroup;
-			children = (
-				226E6F14297D6BDE00846141 /* PerimeterAlarmSystemViewController.swift */,
-				226E6F16297D6BEB00846141 /* PerimeterAlarmSystemPresenter.swift */,
-			);
-			path = PerimeterAlarmSystem;
-			sourceTree = "<group>";
-		};
-		226E6F18297D6BFD00846141 /* FireAlarmSystem */ = {
-			isa = PBXGroup;
-			children = (
-				226E6F1E297D6DC700846141 /* FireAlarmSystemViewController.swift */,
-				226E6F20297D6DD300846141 /* FireAlarmSystemPresenter.swift */,
-			);
-			path = FireAlarmSystem;
-			sourceTree = "<group>";
-		};
-		226E6F19297D6C0500846141 /* FireAlarmSystemResults */ = {
-			isa = PBXGroup;
-			children = (
-				226E6F22297D6DFA00846141 /* FireAlarmSystemResultsViewController.swift */,
-				226E6F24297D6E0700846141 /* FireAlarmSystemResultsPresenter.swift */,
-			);
-			path = FireAlarmSystemResults;
-			sourceTree = "<group>";
-		};
-		226E6F26297D6E8E00846141 /* NotificationSystemResults */ = {
-			isa = PBXGroup;
-			children = (
-				226E6F2C297D6ECA00846141 /* NotificationSystemResultsViewController.swift */,
-				226E6F2E297D6ED700846141 /* NotificationSystemResultsPresenter.swift */,
-			);
-			path = NotificationSystemResults;
-			sourceTree = "<group>";
-		};
-		226E6F27297D6E9E00846141 /* NotificationSystem */ = {
-			isa = PBXGroup;
-			children = (
-				226E6F28297D6EB100846141 /* NotificationSystemViewController.swift */,
-				226E6F2A297D6EBC00846141 /* NotificationSystemPresenter.swift */,
-			);
-			path = NotificationSystem;
-			sourceTree = "<group>";
-		};
-		226E6F30297D6FCA00846141 /* ModuleFirefightingSystemResults */ = {
-			isa = PBXGroup;
-			children = (
-				226E6F36297D6FFA00846141 /* ModuleFirefightingSystemResultsViewController.swift */,
-				226E6F38297D700A00846141 /* ModuleFirefightingSystemResultsPresenter.swift */,
-			);
-			path = ModuleFirefightingSystemResults;
-			sourceTree = "<group>";
-		};
-		226E6F31297D6FD300846141 /* ModuleFirefightingSystem */ = {
-			isa = PBXGroup;
-			children = (
-				226E6F32297D6FE100846141 /* ModuleFirefightingSystemViewController.swift */,
-				226E6F34297D6FEC00846141 /* ModuleFirefightingSystemPresenter.swift */,
-			);
-			path = ModuleFirefightingSystem;
-			sourceTree = "<group>";
-		};
-		226E6F3A297D706400846141 /* SmokeExhaustSystemResults */ = {
-			isa = PBXGroup;
-			children = (
-				226E6F41297D709600846141 /* SmokeExhaustSystemResultsViewController.swift */,
-				226E6F43297D70A200846141 /* SmokeExhaustSystemResultsPresenter.swift */,
-			);
-			path = SmokeExhaustSystemResults;
-			sourceTree = "<group>";
-		};
-		226E6F3B297D706B00846141 /* SmokeExhaustSystem */ = {
-			isa = PBXGroup;
-			children = (
-				226E6F3D297D707D00846141 /* SmokeExhaustSystemViewController.swift */,
-				226E6F3F297D708500846141 /* SmokeExhaustSystemPresenter.swift */,
-			);
-			path = SmokeExhaustSystem;
-			sourceTree = "<group>";
-		};
-		226E6F45297D714000846141 /* FirePumpStationResults */ = {
-			isa = PBXGroup;
-			children = (
-				226E6F4B297D717800846141 /* FirePumpStationResultsViewController.swift */,
-				226E6F4D297D718400846141 /* FirePumpStationResultsPresenter.swift */,
-			);
-			path = FirePumpStationResults;
-			sourceTree = "<group>";
-		};
-		226E6F46297D714B00846141 /* FirePumpStation */ = {
-			isa = PBXGroup;
-			children = (
-				226E6F47297D715800846141 /* FirePumpStationViewController.swift */,
-				226E6F49297D716800846141 /* FirePumpStationPresenter.swift */,
-			);
-			path = FirePumpStation;
-			sourceTree = "<group>";
-		};
 		22BD56F02990E6D4002762BC /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
 				1BA6E00329917F77000F0F82 /* TabBarController.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		22F5886729A8EAC9004053CF /* SavedCalculations */ = {
+			isa = PBXGroup;
+			children = (
+				1BA6E0082993A8FC000F0F82 /* SavedCalculationCellModel.swift */,
+				1BA6E0062993A829000F0F82 /* SavedCalculationsUITableViewCell.swift */,
+			);
+			path = SavedCalculations;
+			sourceTree = "<group>";
+		};
+		22F5886829A8EADA004053CF /* Calculation */ = {
+			isa = PBXGroup;
+			children = (
+				22F5886929A8EB06004053CF /* ValueCoefficientTypeTableViewCell.swift */,
+				22F5886B29A8EB14004053CF /* ChoiceCoefficientTypeTableViewCell.swift */,
+				22F5886D29A8EB21004053CF /* DefaultValueCoefficientTypeTableViewCell.swift */,
+				22F5886F29A8EB30004053CF /* CheckboxCoefficientTypeTableViewCell.swift */,
+			);
+			path = Calculation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -698,19 +510,16 @@
 			files = (
 				1BA6E00229917F61000F0F82 /* CustomButton.swift in Sources */,
 				1BA6E0072993A829000F0F82 /* SavedCalculationsUITableViewCell.swift in Sources */,
-				226E6F40297D708500846141 /* SmokeExhaustSystemPresenter.swift in Sources */,
 				45F72C30297F24A400D90C8F /* UIStackView.swift in Sources */,
 				1BA6E00429917F77000F0F82 /* TabBarController.swift in Sources */,
 				1BA6E00B2993CC68000F0F82 /* NumberFormatter.swift in Sources */,
-				226E6F37297D6FFA00846141 /* ModuleFirefightingSystemResultsViewController.swift in Sources */,
-				226E6F4C297D717800846141 /* FirePumpStationResultsViewController.swift in Sources */,
+				22F5887429A9FFCD004053CF /* Test.swift in Sources */,
 				1BA6E012299BEFA5000F0F82 /* SavedCalcCustomHeaderCell.swift in Sources */,
 				226E6EE6297D5E6900846141 /* SplashViewController.swift in Sources */,
 				1BA6E0092993A8FC000F0F82 /* SavedCalculationCellModel.swift in Sources */,
-				226E6F15297D6BDE00846141 /* PerimeterAlarmSystemViewController.swift in Sources */,
+				226E6F15297D6BDE00846141 /* ResultViewController.swift in Sources */,
 				2265A2CB299BE272005DF662 /* CustomTextField.swift in Sources */,
 				1B2B11EB2979CFF300FFC896 /* AppDelegate.swift in Sources */,
-				226E6F35297D6FEC00846141 /* ModuleFirefightingSystemPresenter.swift in Sources */,
 				45DA6E4E298047CF008D26F8 /* UIViewController.swift in Sources */,
 				1B2B11ED2979CFF300FFC896 /* SceneDelegate.swift in Sources */,
 				226E6F48297D715800846141 /* FirePumpStationViewController.swift in Sources */,
@@ -720,6 +529,7 @@
 				226E6F0F297D6BA400846141 /* SecurityAlarmSystemResultsViewController.swift in Sources */,
 				226E6F39297D700A00846141 /* ModuleFirefightingSystemResultsPresenter.swift in Sources */,
 				1BA8702F29AA71EA006159CB /* CustomUICollectionViewFlowLayout.swift in Sources */,
+				226E6F0B297D6B8500846141 /* CalculationViewController.swift in Sources */,
 				226E6EF1297D667400846141 /* AuthViewController.swift in Sources */,
 				226E6F01297D69DC00846141 /* SavedCalculationsViewController.swift in Sources */,
 				226E6EF5297D681E00846141 /* ResetPasswordViewController.swift in Sources */,
@@ -727,40 +537,33 @@
 				226E6F23297D6DFA00846141 /* FireAlarmSystemResultsViewController.swift in Sources */,
 				1BA8702D29AA5DF0006159CB /* MainCollectionViewCell.swift in Sources */,
 				45DA6E4C29804524008D26F8 /* UIView.swift in Sources */,
-				226E6F2F297D6ED700846141 /* NotificationSystemResultsPresenter.swift in Sources */,
-				226E6F1B297D6C2D00846141 /* PerimeterAlarmSystemResultsViewController.swift in Sources */,
-				226E6F29297D6EB100846141 /* NotificationSystemViewController.swift in Sources */,
-				226E6F0D297D6B9100846141 /* SecurityAlarmSystemPresenter.swift in Sources */,
+				226E6F0D297D6B9100846141 /* CalculationPresenter.swift in Sources */,
 				45F72C2C297F1C6F00D90C8F /* Constants.swift in Sources */,
+				22F5886629A8E48E004053CF /* CalculationHeaderViewCell.swift in Sources */,
 				1BA6E00D2993CE98000F0F82 /* PaddingLabel.swift in Sources */,
+				22F5886A29A8EB06004053CF /* ValueCoefficientTypeTableViewCell.swift in Sources */,
 				226E6EF7297D683200846141 /* ResetPasswordPresenter.swift in Sources */,
-				226E6F44297D70A200846141 /* SmokeExhaustSystemResultsPresenter.swift in Sources */,
-				226E6F17297D6BEB00846141 /* PerimeterAlarmSystemPresenter.swift in Sources */,
+				226E6F17297D6BEB00846141 /* ResultPresenter.swift in Sources */,
 				226E6EF3297D667F00846141 /* AuthPresenter.swift in Sources */,
-				226E6F21297D6DD300846141 /* FireAlarmSystemPresenter.swift in Sources */,
 				226E6EFD297D699000846141 /* MainViewController.swift in Sources */,
 				226E6EFB297D692600846141 /* OnboardingPresenter.swift in Sources */,
 				226E6F07297D6A7300846141 /* ProfilePresenter.swift in Sources */,
-				226E6F25297D6E0700846141 /* FireAlarmSystemResultsPresenter.swift in Sources */,
 				226E6F03297D69E800846141 /* SavedCalculationsPresenter.swift in Sources */,
+				22F5887029A8EB30004053CF /* CheckboxCoefficientTypeTableViewCell.swift in Sources */,
 				2265A2CE299EB9A6005DF662 /* AuthType.swift in Sources */,
 				226E6EF9297D691900846141 /* OnboardingViewController.swift in Sources */,
 				226E6F4A297D716800846141 /* FirePumpStationPresenter.swift in Sources */,
 				1BA8703329AD0540006159CB /* MainCollectionViewModel.swift in Sources */,
 				226E6F2B297D6EBC00846141 /* NotificationSystemPresenter.swift in Sources */,
+				22F5886C29A8EB14004053CF /* ChoiceCoefficientTypeTableViewCell.swift in Sources */,
 				22F5886229A788D1004053CF /* CustomProfileButton.swift in Sources */,
-				226E6F1D297D6C3A00846141 /* PerimeterAlarmSystemResultsPresenter.swift in Sources */,
 				226E6EFF297D699900846141 /* MainPresenter.swift in Sources */,
 				226E6EEF297D64E300846141 /* StartPresenter.swift in Sources */,
-				226E6F11297D6BB100846141 /* SecurityAlarmSystemResultsPresenter.swift in Sources */,
-				226E6F2D297D6ECA00846141 /* NotificationSystemResultsViewController.swift in Sources */,
 				226E6EEB297D63A900846141 /* SceneBuildManager.swift in Sources */,
-				226E6F1F297D6DC700846141 /* FireAlarmSystemViewController.swift in Sources */,
 				22F5886429A82C9A004053CF /* UpdateDataType.swift in Sources */,
+				22F5886E29A8EB21004053CF /* DefaultValueCoefficientTypeTableViewCell.swift in Sources */,
 				226E6EE8297D5E7500846141 /* SplashPresenter.swift in Sources */,
 				226E6EED297D64D700846141 /* StartViewController.swift in Sources */,
-				226E6F33297D6FE100846141 /* ModuleFirefightingSystemViewController.swift in Sources */,
-				226E6F42297D709600846141 /* SmokeExhaustSystemResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

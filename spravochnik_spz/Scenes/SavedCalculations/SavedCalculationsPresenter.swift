@@ -54,27 +54,7 @@ extension SavedCalculationsTablePresenter: SavedCalculationsTablePresenterProtoc
     }
     
     func openCell(image: UIImage) {
-        var nextViewController = UIViewController()
-        
-        switch image {
-        case Constants.Images.fireAlarmIcon:
-            nextViewController = sceneBuildManager.buildFireAlarmSystemResultsScreen()
-        case Constants.Images.securityAlarmIcon:
-            nextViewController = sceneBuildManager.buildSecurityAlarmSystemResultsScreen()
-        case Constants.Images.firePumpIcon:
-            nextViewController = sceneBuildManager.buildFirePumpStationResultsScreen()
-        case Constants.Images.notificationIcon:
-            nextViewController = sceneBuildManager.buildNotificationSystemResultsScreen()
-        case Constants.Images.perimetrAlarmIcon:
-            nextViewController = sceneBuildManager.buildPerimeterAlarmSystemResultsScreen()
-        case Constants.Images.smokeExhaustIcon:
-            nextViewController = sceneBuildManager.buildSmokeExhaustSystemResultsScreen()
-        case Constants.Images.moduleFirefightingIcon:
-            nextViewController = sceneBuildManager.buildModuleFirefightingSystemResultsScreen()
-        default:
-            nextViewController = sceneBuildManager.buildTabBarScreen()
-        }
-        
+        let nextViewController = UIViewController()
         viewController?.navigationController?.pushViewController(nextViewController,
                                                                  animated: true)
     }
