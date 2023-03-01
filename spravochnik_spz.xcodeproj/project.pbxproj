@@ -19,8 +19,6 @@
 		1B9938DC299D740B00E2F8A9 /* HelveticaNeueCyr-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B9938D6299D740B00E2F8A9 /* HelveticaNeueCyr-Bold.ttf */; };
 		1BA6E00229917F61000F0F82 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6E00129917F61000F0F82 /* CustomButton.swift */; };
 		1BA6E00429917F77000F0F82 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6E00329917F77000F0F82 /* TabBarController.swift */; };
-		1BA6E0072993A829000F0F82 /* SavedCalculationsUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6E0062993A829000F0F82 /* SavedCalculationsUITableViewCell.swift */; };
-		1BA6E0092993A8FC000F0F82 /* SavedCalculationCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6E0082993A8FC000F0F82 /* SavedCalculationCellModel.swift */; };
 		1BA6E00B2993CC68000F0F82 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6E00A2993CC68000F0F82 /* NumberFormatter.swift */; };
 		1BA6E00D2993CE98000F0F82 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6E00C2993CE98000F0F82 /* PaddingLabel.swift */; };
 		1BA6E012299BEFA5000F0F82 /* SavedCalcCustomHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6E011299BEFA5000F0F82 /* SavedCalcCustomHeaderCell.swift */; };
@@ -50,6 +48,8 @@
 		226E6F0D297D6B9100846141 /* CalculationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F0C297D6B9100846141 /* CalculationPresenter.swift */; };
 		226E6F15297D6BDE00846141 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F14297D6BDE00846141 /* ResultViewController.swift */; };
 		226E6F17297D6BEB00846141 /* ResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F16297D6BEB00846141 /* ResultPresenter.swift */; };
+		228E1D2E29AFA91C00117BDC /* SavedCalculationCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228E1D2D29AFA91B00117BDC /* SavedCalculationCellModel.swift */; };
+		228E1D3029AFA92300117BDC /* SavedCalculationsUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228E1D2F29AFA92300117BDC /* SavedCalculationsUITableViewCell.swift */; };
 		22F5886229A788D1004053CF /* CustomProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5886129A788D1004053CF /* CustomProfileButton.swift */; };
 		22F5886429A82C9A004053CF /* UpdateDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5886329A82C9A004053CF /* UpdateDataType.swift */; };
 		22F5886629A8E48E004053CF /* CalculationHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5886529A8E48E004053CF /* CalculationHeaderViewCell.swift */; };
@@ -79,8 +79,6 @@
 		1B9938D6299D740B00E2F8A9 /* HelveticaNeueCyr-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HelveticaNeueCyr-Bold.ttf"; sourceTree = "<group>"; };
 		1BA6E00129917F61000F0F82 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		1BA6E00329917F77000F0F82 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		1BA6E0062993A829000F0F82 /* SavedCalculationsUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCalculationsUITableViewCell.swift; sourceTree = "<group>"; };
-		1BA6E0082993A8FC000F0F82 /* SavedCalculationCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCalculationCellModel.swift; sourceTree = "<group>"; };
 		1BA6E00A2993CC68000F0F82 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 		1BA6E00C2993CE98000F0F82 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		1BA6E011299BEFA5000F0F82 /* SavedCalcCustomHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCalcCustomHeaderCell.swift; sourceTree = "<group>"; };
@@ -110,6 +108,8 @@
 		226E6F0C297D6B9100846141 /* CalculationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationPresenter.swift; sourceTree = "<group>"; };
 		226E6F14297D6BDE00846141 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		226E6F16297D6BEB00846141 /* ResultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPresenter.swift; sourceTree = "<group>"; };
+		228E1D2D29AFA91B00117BDC /* SavedCalculationCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedCalculationCellModel.swift; sourceTree = "<group>"; };
+		228E1D2F29AFA92300117BDC /* SavedCalculationsUITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedCalculationsUITableViewCell.swift; sourceTree = "<group>"; };
 		22F5886129A788D1004053CF /* CustomProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProfileButton.swift; sourceTree = "<group>"; };
 		22F5886329A82C9A004053CF /* UpdateDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDataType.swift; sourceTree = "<group>"; };
 		22F5886529A8E48E004053CF /* CalculationHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationHeaderViewCell.swift; sourceTree = "<group>"; };
@@ -138,8 +138,6 @@
 		1B19F236297EFCA200F34EF1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				1BA6E0062993A829000F0F82 /* SavedCalculationsUITableViewCell.swift */,
-				1BA6E0082993A8FC000F0F82 /* SavedCalculationCellModel.swift */,
 				1BA8702C29AA5DF0006159CB /* MainCollectionViewCell.swift */,
 				1BA8703229AD0540006159CB /* MainCollectionViewModel.swift */,
 				22F5886829A8EADA004053CF /* Calculation */,
@@ -415,8 +413,8 @@
 		22F5886729A8EAC9004053CF /* SavedCalculations */ = {
 			isa = PBXGroup;
 			children = (
-				1BA6E0082993A8FC000F0F82 /* SavedCalculationCellModel.swift */,
-				1BA6E0062993A829000F0F82 /* SavedCalculationsUITableViewCell.swift */,
+				228E1D2D29AFA91B00117BDC /* SavedCalculationCellModel.swift */,
+				228E1D2F29AFA92300117BDC /* SavedCalculationsUITableViewCell.swift */,
 			);
 			path = SavedCalculations;
 			sourceTree = "<group>";
@@ -509,32 +507,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BA6E00229917F61000F0F82 /* CustomButton.swift in Sources */,
-				1BA6E0072993A829000F0F82 /* SavedCalculationsUITableViewCell.swift in Sources */,
 				45F72C30297F24A400D90C8F /* UIStackView.swift in Sources */,
+				228E1D3029AFA92300117BDC /* SavedCalculationsUITableViewCell.swift in Sources */,
 				1BA6E00429917F77000F0F82 /* TabBarController.swift in Sources */,
 				1BA6E00B2993CC68000F0F82 /* NumberFormatter.swift in Sources */,
 				22F5887429A9FFCD004053CF /* Test.swift in Sources */,
 				1BA6E012299BEFA5000F0F82 /* SavedCalcCustomHeaderCell.swift in Sources */,
 				226E6EE6297D5E6900846141 /* SplashViewController.swift in Sources */,
-				1BA6E0092993A8FC000F0F82 /* SavedCalculationCellModel.swift in Sources */,
 				226E6F15297D6BDE00846141 /* ResultViewController.swift in Sources */,
 				2265A2CB299BE272005DF662 /* CustomTextField.swift in Sources */,
 				1B2B11EB2979CFF300FFC896 /* AppDelegate.swift in Sources */,
 				45DA6E4E298047CF008D26F8 /* UIViewController.swift in Sources */,
 				1B2B11ED2979CFF300FFC896 /* SceneDelegate.swift in Sources */,
-				226E6F48297D715800846141 /* FirePumpStationViewController.swift in Sources */,
-				226E6F4E297D718400846141 /* FirePumpStationResultsPresenter.swift in Sources */,
-				226E6F3E297D707D00846141 /* SmokeExhaustSystemViewController.swift in Sources */,
-				226E6F0B297D6B8500846141 /* SecurityAlarmSystemViewController.swift in Sources */,
-				226E6F0F297D6BA400846141 /* SecurityAlarmSystemResultsViewController.swift in Sources */,
-				226E6F39297D700A00846141 /* ModuleFirefightingSystemResultsPresenter.swift in Sources */,
+				226E6F0B297D6B8500846141 /* CalculationViewController.swift in Sources */,
 				1BA8702F29AA71EA006159CB /* CustomUICollectionViewFlowLayout.swift in Sources */,
 				226E6F0B297D6B8500846141 /* CalculationViewController.swift in Sources */,
 				226E6EF1297D667400846141 /* AuthViewController.swift in Sources */,
 				226E6F01297D69DC00846141 /* SavedCalculationsViewController.swift in Sources */,
 				226E6EF5297D681E00846141 /* ResetPasswordViewController.swift in Sources */,
 				226E6F05297D6A6A00846141 /* ProfileViewController.swift in Sources */,
-				226E6F23297D6DFA00846141 /* FireAlarmSystemResultsViewController.swift in Sources */,
 				1BA8702D29AA5DF0006159CB /* MainCollectionViewCell.swift in Sources */,
 				45DA6E4C29804524008D26F8 /* UIView.swift in Sources */,
 				226E6F0D297D6B9100846141 /* CalculationPresenter.swift in Sources */,
@@ -544,6 +535,7 @@
 				22F5886A29A8EB06004053CF /* ValueCoefficientTypeTableViewCell.swift in Sources */,
 				226E6EF7297D683200846141 /* ResetPasswordPresenter.swift in Sources */,
 				226E6F17297D6BEB00846141 /* ResultPresenter.swift in Sources */,
+				228E1D2E29AFA91C00117BDC /* SavedCalculationCellModel.swift in Sources */,
 				226E6EF3297D667F00846141 /* AuthPresenter.swift in Sources */,
 				226E6EFD297D699000846141 /* MainViewController.swift in Sources */,
 				226E6EFB297D692600846141 /* OnboardingPresenter.swift in Sources */,
@@ -552,9 +544,7 @@
 				22F5887029A8EB30004053CF /* CheckboxCoefficientTypeTableViewCell.swift in Sources */,
 				2265A2CE299EB9A6005DF662 /* AuthType.swift in Sources */,
 				226E6EF9297D691900846141 /* OnboardingViewController.swift in Sources */,
-				226E6F4A297D716800846141 /* FirePumpStationPresenter.swift in Sources */,
 				1BA8703329AD0540006159CB /* MainCollectionViewModel.swift in Sources */,
-				226E6F2B297D6EBC00846141 /* NotificationSystemPresenter.swift in Sources */,
 				22F5886C29A8EB14004053CF /* ChoiceCoefficientTypeTableViewCell.swift in Sources */,
 				22F5886229A788D1004053CF /* CustomProfileButton.swift in Sources */,
 				226E6EFF297D699900846141 /* MainPresenter.swift in Sources */,

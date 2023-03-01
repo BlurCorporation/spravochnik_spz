@@ -25,7 +25,7 @@ private extension SceneDelegate {
     func setupRootViewController(windowScene: UIWindowScene) {
         let window = UIWindow(windowScene: windowScene)
         let sceneBuildManager: Buildable = SceneBuildManager()
-        let viewController = sceneBuildManager.buildCalculationScreen(calculationType: .pumpingStationsOfFireExtinguishingInstallations)
+        let viewController = sceneBuildManager.buildMainScreen()
         let navigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
