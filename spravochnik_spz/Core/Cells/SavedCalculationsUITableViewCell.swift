@@ -9,9 +9,7 @@ import UIKit
 
 // MARK: - SavedCalculationsUITableViewCellProtocol
 
-protocol SavedCalculationsUITableViewCellProtocol: AnyObject {
-    func set(object: SavedCalculationsCellModel, backgroundImage: UIImage)
-}
+protocol SavedCalculationsUITableViewCellProtocol: AnyObject {}
 
 // MARK: SavedCalculationsUITableViewCell
 
@@ -145,12 +143,28 @@ final class SavedCalculationsUITableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle,
                   reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupCell()
-        setupContsraints()
+        self.setupCell()
+        self.setupContsraints()
+//        self.setupGesture()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    var viewModel: SavedCalculationsCellModelProtocol?  {
+        didSet {
+            guard let _object = viewModel else { return }
+            if oldValue?.image != _object.image {
+                self.systemImage.image = _object.image
+            }
+            self.backgroundImage.image = _object.backgroundImage
+            self.addressLabel.text = "\(_object.address)"
+            self.systemLabel.text = "\(_object.system)"
+            self.dateLabel.text = "\(_object.date)"
+            self.stagesLabel.text = "\(_object.stages)"
+            self.costLabel.text = "\(_object.cost.formattedWithSeparator)"
+        }
     }
     
     // MARK: - Override funcs
@@ -162,29 +176,30 @@ final class SavedCalculationsUITableViewCell: UITableViewCell {
                                                                      bottom: 4,
                                                                      right: 16))
     }
-}
-
-
-
-
-// MARK: - SavedCalculationsUITableViewCellProtocol Impl
-
-extension SavedCalculationsUITableViewCell: SavedCalculationsUITableViewCellProtocol {
-    func set(object: SavedCalculationsCellModel,
-             backgroundImage: UIImage) {
-        self.systemImage.image = object.image
-        self.backgroundImage.image = backgroundImage
-        self.addressLabel.text = "\(object.address)"
-        self.systemLabel.text = "\(object.system)"
-        self.dateLabel.text = "\(object.date)"
-        self.stagesLabel.text = "\(object.stages)"
-        self.costLabel.text = "₽ \(object.cost.formattedWithSeparator)"
+    
+    
+    /// Метод для переиспользования и очистки данных в больших списках
+    override func prepareForReuse() {
+        
     }
+    
+    
 }
 
 // MARK: - Private Methods
 
 private extension SavedCalculationsUITableViewCell {
+    
+//    func setupGesture() {
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapHandler))
+//        self.addGestureRecognizer(tapGesture)
+//    }
+//
+//    @objc
+//    private func viewTapHandler() {
+//        self.viewModel?.actionHandler?()
+//    }
+    
     func setupCell(){
         contentView.addSubviews(backgroundImage,
                                 mainStackView)
@@ -217,14 +232,11 @@ private extension SavedCalculationsUITableViewCell {
                                                constant: Constants.Constraints.cellOffsets),
             mainStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
                                                    constant: Constants.Constraints.cellOffsets),
-            mainStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,
-                                                    constant: -Constants.Constraints.cellOffsets),
+            contentView.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor, constant: Constants.Constraints.cellOffsets),
             mainStackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor,
                                                   constant: -Constants.Constraints.cellOffsets),
             
             costLabel.heightAnchor.constraint(equalToConstant: Constants.Sizes.costHeight),
-            
-//            addressLabel.heightAnchor.constraint(equalToConstant: 14)
         ])
     }
 }

@@ -36,6 +36,7 @@ private extension SecurityAlarmSystemViewController {
     func setupViewController() {
         addSubViews()
         setupConstraints()
+        view.backgroundColor = .systemBackground
     }
     
     func addSubViews() {}

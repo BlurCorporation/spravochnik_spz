@@ -5,13 +5,12 @@
 //  Created by Swift Learning on 22.01.2023.
 //
 
-import UIKit
-
 // MARK: - SavedCalculationsPresenterProtocol
 
 protocol SavedCalculationsTablePresenterProtocol: AnyObject {
-    func cellSet(object: SavedCalculationsCellModel, cell: SavedCalculationsUITableViewCell, indexPathRow: Int)
-    func openCell(image: UIImage)
+    
+    func viewDidLoad()
+    func openCell(text: String)
 }
 
 // MARK: - SavedCalculationsPresenter
@@ -23,6 +22,8 @@ final class SavedCalculationsTablePresenter {
     
     private let sceneBuildManager: Buildable
     
+    
+    
     // MARK: - Initializer
     
     init(sceneBuildManager: Buildable) {
@@ -33,49 +34,53 @@ final class SavedCalculationsTablePresenter {
 //MARK: - SavedCalculationsPresenterExtension
 
 extension SavedCalculationsTablePresenter: SavedCalculationsTablePresenterProtocol {
-    func cellSet(object: SavedCalculationsCellModel,
-                 cell: SavedCalculationsUITableViewCell,
-                 indexPathRow: Int) {
-        var backgroundImage = UIImage()
+    func viewDidLoad() {
+        self.viewController?.update(dataSource: self.makeData())
+    }
+
+    
+    private func makeData()-> [SavedCalculationsCellModelProtocol] {
+        let cells: [SavedCalculationsCellModelProtocol] = SavedCalculationsCellModel.calculations
         
-        switch indexPathRow % 3 {
-        case 0:
-            backgroundImage = Constants.Images.blackBackground
-        case 1:
-            backgroundImage = Constants.Images.grayBackground
-        case 2:
-            backgroundImage = Constants.Images.brownBackground
-        default:
-            backgroundImage = Constants.Images.blackBackground
-        }
-        
-        cell.set(object: object, backgroundImage: backgroundImage)
-        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        return cells
     }
     
-    func openCell(image: UIImage) {
-        var nextViewController = UIViewController()
-        
-        switch image {
-        case Constants.Images.fireAlarmIcon:
-            nextViewController = sceneBuildManager.buildFireAlarmSystemResultsScreen()
-        case Constants.Images.securityAlarmIcon:
-            nextViewController = sceneBuildManager.buildSecurityAlarmSystemResultsScreen()
-        case Constants.Images.firePumpIcon:
-            nextViewController = sceneBuildManager.buildFirePumpStationResultsScreen()
-        case Constants.Images.notificationIcon:
-            nextViewController = sceneBuildManager.buildNotificationSystemResultsScreen()
-        case Constants.Images.perimetrAlarmIcon:
-            nextViewController = sceneBuildManager.buildPerimeterAlarmSystemResultsScreen()
-        case Constants.Images.smokeExhaustIcon:
-            nextViewController = sceneBuildManager.buildSmokeExhaustSystemResultsScreen()
-        case Constants.Images.moduleFirefightingIcon:
-            nextViewController = sceneBuildManager.buildModuleFirefightingSystemResultsScreen()
+    func openCell(text: String) {
+        switch text {
+        case "Пожарная сигнализация":
+            let nextViewController = sceneBuildManager.buildFireAlarmSystemResultsScreen()
+            viewController?.navigationController?.pushViewController(nextViewController,
+                                                                     animated: true)
+        case "Охранная сигнализация":
+            let nextViewController = sceneBuildManager.buildSecurityAlarmSystemResultsScreen()
+            viewController?.navigationController?.pushViewController(nextViewController,
+                                                                     animated: true)
+        case "Насосные станции установок пожаротушения":
+            let nextViewController = sceneBuildManager.buildFirePumpStationResultsScreen()
+            viewController?.navigationController?.pushViewController(nextViewController,
+                                                                     animated: true)
+        case "Система оповещения о пожаре":
+            let nextViewController = sceneBuildManager.buildNotificationSystemResultsScreen()
+            viewController?.navigationController?.pushViewController(nextViewController,
+                                                                     animated: true)
+        case "Охранная сигнализация периметра":
+            let nextViewController = sceneBuildManager.buildPerimeterAlarmSystemResultsScreen()
+            viewController?.navigationController?.pushViewController(nextViewController,
+                                                                     animated: true)
+        case "Система управления дымоудаления":
+            let nextViewController = sceneBuildManager.buildSmokeExhaustSystemResultsScreen()
+            viewController?.navigationController?.pushViewController(nextViewController,
+                                                                     animated: true)
+        case "Модульные установки пожаротушения":
+            let nextViewController = sceneBuildManager.buildModuleFirefightingSystemResultsScreen()
+            viewController?.navigationController?.pushViewController(nextViewController,
+                                                                     animated: true)
         default:
-            nextViewController = sceneBuildManager.buildTabBarScreen()
+            let nextViewController = sceneBuildManager.buildTabBarScreen()
+            viewController?.navigationController?.pushViewController(nextViewController,
+                                                                     animated: true)
         }
+
         
-        viewController?.navigationController?.pushViewController(nextViewController,
-                                                                 animated: true)
     }
 }
