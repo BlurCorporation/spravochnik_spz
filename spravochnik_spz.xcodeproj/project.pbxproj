@@ -27,6 +27,8 @@
 		1BA8702D29AA5DF0006159CB /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA8702C29AA5DF0006159CB /* MainCollectionViewCell.swift */; };
 		1BA8702F29AA71EA006159CB /* CustomUICollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA8702E29AA71EA006159CB /* CustomUICollectionViewFlowLayout.swift */; };
 		1BA8703329AD0540006159CB /* MainCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA8703229AD0540006159CB /* MainCollectionViewModel.swift */; };
+		1BB0BD2B29B8D98C0020C98E /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB0BD2A29B8D98C0020C98E /* CustomAlert.swift */; };
+		1BB0BD2D29B8E29F0020C98E /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB0BD2C29B8E29F0020C98E /* AlertType.swift */; };
 		2265A2CB299BE272005DF662 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2265A2CA299BE272005DF662 /* CustomTextField.swift */; };
 		2265A2CE299EB9A6005DF662 /* AuthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2265A2CD299EB9A6005DF662 /* AuthType.swift */; };
 		226E6EE6297D5E6900846141 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EE5297D5E6900846141 /* SplashViewController.swift */; };
@@ -105,6 +107,8 @@
 		1BA8702C29AA5DF0006159CB /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		1BA8702E29AA71EA006159CB /* CustomUICollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUICollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		1BA8703229AD0540006159CB /* MainCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewModel.swift; sourceTree = "<group>"; };
+		1BB0BD2A29B8D98C0020C98E /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		1BB0BD2C29B8E29F0020C98E /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		2265A2CA299BE272005DF662 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		2265A2CD299EB9A6005DF662 /* AuthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthType.swift; sourceTree = "<group>"; };
 		226E6EE5297D5E6900846141 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -329,6 +333,7 @@
 				1BA6E00C2993CE98000F0F82 /* PaddingLabel.swift */,
 				22F5886129A788D1004053CF /* CustomProfileButton.swift */,
 				1BA8702E29AA71EA006159CB /* CustomUICollectionViewFlowLayout.swift */,
+				1BB0BD2A29B8D98C0020C98E /* CustomAlert.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -347,6 +352,7 @@
 			children = (
 				2265A2CD299EB9A6005DF662 /* AuthType.swift */,
 				22F5886329A82C9A004053CF /* UpdateDataType.swift */,
+				1BB0BD2C29B8E29F0020C98E /* AlertType.swift */,
 			);
 			path = TypeViewController;
 			sourceTree = "<group>";
@@ -729,6 +735,7 @@
 				45DA6E4C29804524008D26F8 /* UIView.swift in Sources */,
 				226E6F2F297D6ED700846141 /* NotificationSystemResultsPresenter.swift in Sources */,
 				226E6F1B297D6C2D00846141 /* PerimeterAlarmSystemResultsViewController.swift in Sources */,
+				1BB0BD2B29B8D98C0020C98E /* CustomAlert.swift in Sources */,
 				226E6F29297D6EB100846141 /* NotificationSystemViewController.swift in Sources */,
 				226E6F0D297D6B9100846141 /* SecurityAlarmSystemPresenter.swift in Sources */,
 				45F72C2C297F1C6F00D90C8F /* Constants.swift in Sources */,
@@ -744,6 +751,7 @@
 				226E6F25297D6E0700846141 /* FireAlarmSystemResultsPresenter.swift in Sources */,
 				226E6F03297D69E800846141 /* SavedCalculationsPresenter.swift in Sources */,
 				2265A2CE299EB9A6005DF662 /* AuthType.swift in Sources */,
+				1BB0BD2D29B8E29F0020C98E /* AlertType.swift in Sources */,
 				226E6EF9297D691900846141 /* OnboardingViewController.swift in Sources */,
 				226E6F4A297D716800846141 /* FirePumpStationPresenter.swift in Sources */,
 				1BA8703329AD0540006159CB /* MainCollectionViewModel.swift in Sources */,

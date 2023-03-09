@@ -17,7 +17,9 @@ final class ProfileViewController: UIViewController {
     var presenter: ProfilePresenterProtocol?
     
     // MARK: - PrivateProperties
-    private lazy var logoutButton: UIButton = {
+
+    ///
+    private var logoutButton: UIButton = {
         let button = UIButton()
         let image = Constants.Images.logoutImage
         button.setImage(image,
@@ -25,7 +27,7 @@ final class ProfileViewController: UIViewController {
         button.layer.borderWidth = Constants.Sizes.borderWidth
         button.layer.borderColor = Constants.Colors.lightGray.cgColor
         button.layer.cornerRadius = 7
-        button.addTarget(self,
+        button.addTarget(nil,
                          action: #selector(logoutButtonPressed),
                          for: .touchUpInside)
         return button
@@ -109,11 +111,24 @@ final class ProfileViewController: UIViewController {
         return stackView
     }()
     
+    private let customView: CustomAlert = {
+        let view = CustomAlert()
+        return view
+    }()
+    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewController()
+        
+        title = "123"
+        customView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
+//        let customView = CustomAlert()//frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        UIApplication.shared.windows.first?.addSubview(customView)
+        
+//        customView.leftButton.addTarget(self, action: #selector(close), for: .touchUpInside)
+//        self.view.addSubview(customView)
     }
     
     // MARK: - Actions
@@ -184,6 +199,12 @@ private extension ProfileViewController {
         let logoImageSize = CGFloat(80)
         
         NSLayoutConstraint.activate([
+//            customView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            customView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            customView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+//            customView.topAnchor.constraint(equalTo: view.topAnchor),
+
+            
             logoutButton.heightAnchor.constraint(equalToConstant: logoutButtonSize),
             logoutButton.widthAnchor.constraint(equalToConstant: logoutButtonSize),
             
