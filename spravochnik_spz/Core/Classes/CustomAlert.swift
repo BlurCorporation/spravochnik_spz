@@ -12,8 +12,22 @@ protocol CustomAlertProtocol: UIView {
     func rightButtonHandler()
 }
 
+protocol CustomAlertDataSource: UIView {
+//    var title: String { get set }
+//    var leftButtonTitle: String { get set }
+//    var rightButtonTitle: String { get set }
+    
+    
+    func setupClearView(title: String, leftButtonTitle: String, rightButtonTitle: String)
+}
+
+
 class CustomAlert: UIView {
 
+    private var type: AlertType = .clear
+    
+    var title: String = ""
+    
     private let backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -53,10 +67,31 @@ class CustomAlert: UIView {
     }()
     
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.addCustomView()
-        self.setupConstraints()
+    init(type: AlertType) {
+        super.init(frame: CGRect.zero)
+        self.type = type
+        
+        
+        
+//        switch type {
+//        case .clear:
+//            setupClearView()
+//        case .singleField:
+//            <#code#>
+//        case .threeHorizontalButtons:
+//            <#code#>
+//        case .threeVerticalButtons:
+//            <#code#>
+//        case .fourHorizontalButtons:
+//            <#code#>
+//        case .fiveHorizontalButtons:
+//            <#code#>
+//        }
+        
+        
+        
+        
+//        self.setupConstraints()
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -71,8 +106,26 @@ class CustomAlert: UIView {
         rightButtonHandler()
     }
 
+//    func setupClearView() {
+//        titleLabel.text = self.title
+//        self.addCustomView()
+//    }
+    
+    func setupClearView(title: String, leftButtonTitle: String, rightButtonTitle: String) {
+        titleLabel.text = title
+        self.addCustomView()
+        
+    }
     
     func addCustomView() {
+        
+        // Настройка констрэйнтов и наличие или отсутствие кнопошек в зависимости от type
+        // switch type {
+        // case .clear:
+        //      функцияКотораяНастраиваетНаполнение()
+        // }
+        // self.setupClearViewConstraints()
+        
         // создайте объект эффекта размытия
         let blurEffect = UIBlurEffect(style: .extraLight)
 
@@ -89,12 +142,45 @@ class CustomAlert: UIView {
         
         leftRightButtonsStackView.addArrangedSubviews(leftButton, rightButton)
         self.addSubviews(blurView, backgroundView, titleLabel, leftRightButtonsStackView)
+        
+        self.setupClearViewConstraints()
     }
+    
+//    switch type {
+//    case .clear:
+//        setupClearView()
+//    case .singleField:
+//        <#code#>
+//    case .threeHorizontalButtons:
+//        <#code#>
+//    case .threeVerticalButtons:
+//        <#code#>
+//    case .fourHorizontalButtons:
+//        <#code#>
+//    case .fiveHorizontalButtons:
+//        <#code#>
+//    }
+    
+    
+    
+    func setupSingleFieldView() {
+        
+    }
+    
+    func setupThreeHorizontalButtonsView() {
+        
+    }
+    
+    func setupThreeVerticalButtonsView() {
+        
+    }
+    
+    
     
 }
 
 private extension CustomAlert {
-    func setupConstraints() {
+    func setupClearViewConstraints() {
         let offset = CGFloat(16)
         let logoutButtonSize = CGFloat(40)
         let logoImageSize = CGFloat(80)
@@ -130,3 +216,9 @@ extension CustomAlert: CustomAlertProtocol {
     
     
 }
+
+
+
+//extension CustomAlert: CustomAlertDataSource {
+//
+//}

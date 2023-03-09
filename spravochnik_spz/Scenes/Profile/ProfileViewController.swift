@@ -112,7 +112,8 @@ final class ProfileViewController: UIViewController {
     }()
     
     private let customView: CustomAlert = {
-        let view = CustomAlert()
+        let view = CustomAlert(type: .clear)
+        view.setupClearView(title: "123", leftButtonTitle: "213", rightButtonTitle: "123")
         return view
     }()
     
@@ -125,7 +126,12 @@ final class ProfileViewController: UIViewController {
         title = "123"
         customView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
 //        let customView = CustomAlert()//frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        
         UIApplication.shared.windows.first?.addSubview(customView)
+        
+        
+//        customView.setupClearView(title: "123", leftButtonTitle: "213", rightButtonTitle: "123")
+        
         
 //        customView.leftButton.addTarget(self, action: #selector(close), for: .touchUpInside)
 //        self.view.addSubview(customView)
