@@ -40,8 +40,18 @@ extension SavedCalculationsTablePresenter: SavedCalculationsTablePresenterProtoc
 
     
     private func makeData()-> [SavedCalculationsCellModelProtocol] {
-        let cells: [SavedCalculationsCellModelProtocol] = SavedCalculationsCellModel.calculations
-        
+        let cells: [SavedCalculationsCellModelProtocol] = [SavedCalculationsCellModel]()
+        SavedCalculationsCellModel.calculations.compactMap(<#T##transform: (SavedCalculationsCellModel) throws -> ElementOfResult?##(SavedCalculationsCellModel) throws -> ElementOfResult?#>)
+        cells.append(SavedCalculationsCellModel(address: <#T##String#>,
+                                                system: <#T##String#>,
+                                                date: <#T##String#>,
+                                                stages: <#T##String#>,
+                                                cost: <#T##Float#>,
+                                                image: <#T##UIImage#>,
+                                                backgroundImage: <#T##UIImage#>,
+                                                actionHandler: {
+            
+        }))
         return cells
     }
     

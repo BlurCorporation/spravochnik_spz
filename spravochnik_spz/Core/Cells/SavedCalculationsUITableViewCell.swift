@@ -190,15 +190,15 @@ final class SavedCalculationsUITableViewCell: UITableViewCell {
 
 private extension SavedCalculationsUITableViewCell {
     
-//    func setupGesture() {
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapHandler))
-//        self.addGestureRecognizer(tapGesture)
-//    }
-//
-//    @objc
-//    private func viewTapHandler() {
-//        self.viewModel?.actionHandler?()
-//    }
+    func setupGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapHandler))
+        self.addGestureRecognizer(tapGesture)
+    }
+
+    @objc
+    private func viewTapHandler() {
+        self.viewModel?.actionHandler?()
+    }
     
     func setupCell(){
         contentView.addSubviews(backgroundImage,
