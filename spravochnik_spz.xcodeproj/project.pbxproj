@@ -11,6 +11,8 @@
 		1B2B11ED2979CFF300FFC896 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2B11EC2979CFF300FFC896 /* SceneDelegate.swift */; };
 		1B2B11F42979CFF400FFC896 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B2B11F32979CFF400FFC896 /* Assets.xcassets */; };
 		1B2B11F72979CFF400FFC896 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B2B11F52979CFF400FFC896 /* LaunchScreen.storyboard */; };
+		1B41442329CCB5D100153A6F /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B41442229CCB5D100153A6F /* AlertViewController.swift */; };
+		1B41442629CCB6DD00153A6F /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B41442529CCB6DD00153A6F /* AlertPresenter.swift */; };
 		1B9938D7299D740B00E2F8A9 /* HelveticaNeueCyr-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B9938D1299D740B00E2F8A9 /* HelveticaNeueCyr-Black.ttf */; };
 		1B9938D8299D740B00E2F8A9 /* HelveticaNeueCyr-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B9938D2299D740B00E2F8A9 /* HelveticaNeueCyr-Light.ttf */; };
 		1B9938D9299D740B00E2F8A9 /* HelveticaNeueCyr-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B9938D3299D740B00E2F8A9 /* HelveticaNeueCyr-Italic.ttf */; };
@@ -91,6 +93,8 @@
 		1B2B11F32979CFF400FFC896 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B2B11F62979CFF400FFC896 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B2B11F82979CFF400FFC896 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B41442229CCB5D100153A6F /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		1B41442529CCB6DD00153A6F /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
 		1B9938D1299D740B00E2F8A9 /* HelveticaNeueCyr-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HelveticaNeueCyr-Black.ttf"; sourceTree = "<group>"; };
 		1B9938D2299D740B00E2F8A9 /* HelveticaNeueCyr-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HelveticaNeueCyr-Light.ttf"; sourceTree = "<group>"; };
 		1B9938D3299D740B00E2F8A9 /* HelveticaNeueCyr-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HelveticaNeueCyr-Italic.ttf"; sourceTree = "<group>"; };
@@ -213,6 +217,15 @@
 			path = spravochnik_spz;
 			sourceTree = "<group>";
 		};
+		1B41442429CCB5FE00153A6F /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				1B41442229CCB5D100153A6F /* AlertViewController.swift */,
+				1B41442529CCB6DD00153A6F /* AlertPresenter.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 		1B9938D0299D739E00E2F8A9 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +291,7 @@
 				226E6ED8297D5C0D00846141 /* ModuleFirefightingSystem */,
 				226E6ED7297D5BD800846141 /* SmokeExhaustSystem */,
 				226E6ED6297D5B6400846141 /* FirePumpStation */,
+				1B41442429CCB5FE00153A6F /* Alert */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -740,6 +754,7 @@
 				226E6F0D297D6B9100846141 /* SecurityAlarmSystemPresenter.swift in Sources */,
 				45F72C2C297F1C6F00D90C8F /* Constants.swift in Sources */,
 				1BA6E00D2993CE98000F0F82 /* PaddingLabel.swift in Sources */,
+				1B41442629CCB6DD00153A6F /* AlertPresenter.swift in Sources */,
 				226E6EF7297D683200846141 /* ResetPasswordPresenter.swift in Sources */,
 				226E6F44297D70A200846141 /* SmokeExhaustSystemResultsPresenter.swift in Sources */,
 				226E6F17297D6BEB00846141 /* PerimeterAlarmSystemPresenter.swift in Sources */,
@@ -756,6 +771,7 @@
 				226E6F4A297D716800846141 /* FirePumpStationPresenter.swift in Sources */,
 				1BA8703329AD0540006159CB /* MainCollectionViewModel.swift in Sources */,
 				226E6F2B297D6EBC00846141 /* NotificationSystemPresenter.swift in Sources */,
+				1B41442329CCB5D100153A6F /* AlertViewController.swift in Sources */,
 				22F5886229A788D1004053CF /* CustomProfileButton.swift in Sources */,
 				226E6F1D297D6C3A00846141 /* PerimeterAlarmSystemResultsPresenter.swift in Sources */,
 				226E6EFF297D699900846141 /* MainPresenter.swift in Sources */,
