@@ -43,7 +43,7 @@ private extension AlertViewController {
     func setupViewController() {
         addSubViews()
         setupConstraints()
-        view.backgroundColor = .clear
+        view.backgroundColor = .red
         navigationController?.isNavigationBarHidden = true
     }
     

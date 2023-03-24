@@ -38,9 +38,14 @@ final class ProfilePresenter {
 
 extension ProfilePresenter: ProfilePresenterProtocol {
     func logoutButtonPressed() {
-        let startViewController = sceneBuildManager.buildStartScreen()
-        let rootViewController = UINavigationController.init(rootViewController: startViewController)
-        UIApplication.shared.windows.first?.rootViewController = rootViewController
+//        let startViewController = sceneBuildManager.buildStartScreen()
+//        let rootViewController = UINavigationController.init(rootViewController: startViewController)
+//        UIApplication.shared.windows.first?.rootViewController = rootViewController
+        
+        let model = valueCoefficients[]
+        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .value(model: model))
+        vc.modalPresentationStyle = .overFullScreen
+        viewController?.present(vc, animated: true)
     }
     
     func themeButtonPressed() {

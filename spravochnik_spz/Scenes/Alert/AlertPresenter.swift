@@ -18,27 +18,35 @@ final class AlertPresenter {
     weak var viewController: AlertViewProtocol?
     
     // MARK: PrivateProperties
-    
+    private let coefficientType: CoefficientType
     // MARK: - Initializer
     
-    init() {}
+    init(coefficientType: CoefficientType) {
+        self.coefficientType = coefficientType
+    }
 }
 
 // MARK: - AlertPresenterExtension
 
 extension AlertPresenter: AlertPresenterProtocol {
     func viewDidLoad() {
+        switch coefficientType {
+            
+        case let .value(model):
+            break
+        case let .choice(model):
+            break
+        case let .defaultValue(model):
+            break
+        }
         
     }
     
 }
 
 
-enum AlertType {
-    case clear
-    case singleField
-    case threeHorizontalButtons
-    case threeVerticalButtons
-    case fourHorizontalButtons
-    case fiveHorizontalButtons
+enum CoefficientType {
+    case value(model: ValueСoefficientModel)
+    case choice(model: ChoiceCoefficientModel)
+    case defaultValue(model: DefaultCoefficientValueModel)
 }

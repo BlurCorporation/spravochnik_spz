@@ -5,7 +5,7 @@
 //  Created by Максим Косников on 08.03.2023.
 //
 
-enum AlertTypee {
+enum AlertType {
     case clear
     case singleField
     case threeHorizontalButtons

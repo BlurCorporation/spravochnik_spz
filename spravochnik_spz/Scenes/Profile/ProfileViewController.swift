@@ -141,6 +141,8 @@ final class ProfileViewController: UIViewController {
     
     @objc private func logoutButtonPressed() {
         presenter?.logoutButtonPressed()
+        
+        
     }
     
     @objc private func themeButtonPressed() {

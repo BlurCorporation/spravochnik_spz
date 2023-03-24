@@ -29,6 +29,7 @@ protocol Buildable {
     func buildSmokeExhaustSystemResultsScreen() -> SmokeExhaustSystemResultsViewController
     func buildFirePumpStationScreen() -> FirePumpStationViewController
     func buildFirePumpStationResultsScreen() -> FirePumpStationResultsViewController
+    func buildAlertScreen(coefficientType: CoefficientType) -> AlertViewController
 }
 
 final class SceneBuildManager {}
@@ -253,6 +254,16 @@ extension SceneBuildManager: Buildable {
     func buildFirePumpStationResultsScreen() -> FirePumpStationResultsViewController {
         let viewController = FirePumpStationResultsViewController()
         let presenter = FirePumpStationResultsPresenter(sceneBuildManager: self)
+        
+        viewController.presenter = presenter
+        presenter.viewController = viewController
+        
+        return viewController
+    }
+    
+    func buildAlertScreen(coefficientType: CoefficientType) -> AlertViewController {
+        let viewController = AlertViewController()
+        let presenter = AlertPresenter(coefficientType: coefficientType)
         
         viewController.presenter = presenter
         presenter.viewController = viewController
