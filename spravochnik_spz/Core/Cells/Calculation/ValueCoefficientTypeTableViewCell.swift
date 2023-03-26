@@ -10,7 +10,7 @@ import UIKit
 // MARK: - ValueCoefficientTableViewCellDelegate
 
 protocol ValueCoefficientTableViewCellDelegate: AnyObject {
-    func buttonPressed(value: Double)
+    func valueCoefficientCellPressed(value: Double)
 }
 
 // MARK: ValueCoefficientTableViewCell
@@ -28,7 +28,7 @@ final class ValueCoefficientTableViewCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = Constants.Fonts.firstSectionResultsFont
-        label.numberOfLines = 0
+        label.numberOfLines = .zero
         return label
     }()
     
@@ -39,9 +39,10 @@ final class ValueCoefficientTableViewCell: UITableViewCell {
         button.setTitleColor(Constants.Colors.dark,
                              for: .normal)
         button.titleLabel?.font = Constants.Fonts.mainCellFont
-        button.layer.cornerRadius = 8
+        button.layer.cornerRadius = Constants.Sizes.buttonInCellCornerRadius
         button.clipsToBounds = true
-        button.addTarget(self, action: #selector(buttonPressed),
+        button.addTarget(self,
+                         action: #selector(buttonPressed),
                          for: .touchUpInside)
         return button
     }()
@@ -57,6 +58,11 @@ final class ValueCoefficientTableViewCell: UITableViewCell {
         let stackView = UIStackView()
         stackView.spacing = 6
         stackView.alignment = .center
+        stackView.layoutMargins = UIEdgeInsets(top: 4,
+                                               left: 16,
+                                               bottom: 4,
+                                               right: 16)
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
     
@@ -69,19 +75,8 @@ final class ValueCoefficientTableViewCell: UITableViewCell {
         setupCell()
         setupContsraints()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - OverrideMethods
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 4,
-                                                                     left: 16,
-                                                                     bottom: 4,
-                                                                     right: 16))
     }
     
     //MARK: - Methods
@@ -90,14 +85,14 @@ final class ValueCoefficientTableViewCell: UITableViewCell {
         titleLabel.text = viewModel.title
         descriptionLabel.text = viewModel.descrpt
         value = viewModel.value
+        delegate = viewModel.delegate
     }
     
     // MARK: - Actions
     
     @objc
     private func buttonPressed() {
-        print(#function)
-        delegate?.buttonPressed(value: value)
+        delegate?.valueCoefficientCellPressed(value: value)
     }
 }
 
@@ -115,15 +110,17 @@ private extension ValueCoefficientTableViewCell {
     
     func setupContsraints() {
         let buttonWidth: CGFloat = 80
+        let buttonHeight: CGFloat = 32
         let descriptionLabelWidth: CGFloat = 30
+        let stackViewHeight: CGFloat = 48
         
         NSLayoutConstraint.activate([
             button.widthAnchor.constraint(equalToConstant: buttonWidth),
-            button.heightAnchor.constraint(equalToConstant: 32),
+            button.heightAnchor.constraint(equalToConstant: buttonHeight),
             
             descriptionLabel.widthAnchor.constraint(equalToConstant: descriptionLabelWidth),
             
-            stackView.heightAnchor.constraint(equalToConstant: 48),
+            stackView.heightAnchor.constraint(equalToConstant: stackViewHeight),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),

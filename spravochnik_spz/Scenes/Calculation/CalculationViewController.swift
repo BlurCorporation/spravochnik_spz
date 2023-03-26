@@ -7,10 +7,6 @@
 
 import UIKit
 
-struct HeaderViewModel {
-    let title: String
-}
-
 // MARK: - CalculationViewProtocol
 
 protocol CalculationViewProtocol: UIViewController {
@@ -61,8 +57,6 @@ final class CalculationViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-        tableView.register(UITableViewCell.self,
-                           forCellReuseIdentifier: "cell")
         tableView.register(ValueCoefficientTableViewCell.self,
                            forCellReuseIdentifier: ValueCoefficientTableViewCell.reuseIdentifier)
         tableView.register(CalculationHeaderViewCell.self,
@@ -71,6 +65,8 @@ final class CalculationViewController: UIViewController {
                            forCellReuseIdentifier: CheckboxCoefficientTypeTableViewCell.reuseIdentifier)
         tableView.register(ChoiceCoefficientTypeTableViewCell.self,
                            forCellReuseIdentifier: ChoiceCoefficientTypeTableViewCell.reuseIdentifier)
+        tableView.register(DefaultValueCoefficientTableViewCell.self,
+                           forCellReuseIdentifier: DefaultValueCoefficientTableViewCell.reuseIdentifier)
         return tableView
     }()
     
@@ -86,22 +82,22 @@ final class CalculationViewController: UIViewController {
     // MARK: - Action
     
     @objc private func calculationButtonPressed() {
-        print(#function)
+        presenter?.calculationButtonPressed()
     }
     
     @objc private func otherCalculationButtonPressed() {
-        print(#function)
+        presenter?.otherCalculationButtonPressed()
     }
-    
-    
 }
 
 // MARK: - CalculationViewProtocol Impl
 
 extension CalculationViewController: CalculationViewProtocol {
     func updateHeader(viewModel: HeaderViewModel) {
-        let header = CalculationHeaderViewCell(frame: .init(origin: .zero, size: .init(width: UIScreen.main.bounds.width, height: 100)))
-        header.configure(with: viewModel.title)
+        let header = CalculationHeaderViewCell(frame: .init(origin: .zero,
+                                                            size: .init(width: UIScreen.main.bounds.width,
+                                                                        height: Constants.Sizes.calculationHeaderHeight)))
+        header.configure(with: viewModel)
         tableView.tableHeaderView = header
     }
     
@@ -119,6 +115,7 @@ private extension CalculationViewController {
         setupConstraints()
         view.backgroundColor = .systemBackground
         navigationController?.isNavigationBarHidden = true
+        tabBarController?.tabBar.isHidden = true
     }
     
     func addSubViews() {
@@ -139,10 +136,11 @@ private extension CalculationViewController {
             buttonStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -Constants.Constraints.sideOffset),
             buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
-            tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
-            tableView.bottomAnchor.constraint(equalTo: buttonStackView.topAnchor, constant: 0)
+            tableView.topAnchor.constraint(equalTo: view.topAnchor,
+                                           constant: Constants.Sizes.tableViewTopOffset),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: buttonStackView.topAnchor)
         ])
     }
 }
@@ -152,30 +150,59 @@ extension CalculationViewController: UITableViewDataSource {
         sections.count
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
         sections[section].rows.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch sections[indexPath.section].rows[indexPath.row] {
             
+        case let .defaultvalueСoefficients(viewModel):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultValueCoefficientTableViewCell.reuseIdentifier,
+                                                           for: indexPath) as? DefaultValueCoefficientTableViewCell else {
+#if DEBUG
+                fatalError("Check table cell")
+#else
+                return UITableViewCell()
+#endif
+            }
+            cell.configure(with: viewModel)
+            return cell
+            
         case let .valueСoefficient(viewModel):
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: ValueCoefficientTableViewCell.reuseIdentifier, for: indexPath) as? ValueCoefficientTableViewCell else {
-                fatalError()
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ValueCoefficientTableViewCell.reuseIdentifier,
+                                                           for: indexPath) as? ValueCoefficientTableViewCell else {
+#if DEBUG
+                fatalError("Check table cell")
+#else
+                return UITableViewCell()
+#endif
             }
             cell.configure(with: viewModel)
             return cell
             
         case let .choiceСoefficient(viewModel):
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: ChoiceCoefficientTypeTableViewCell.reuseIdentifier, for: indexPath) as? ChoiceCoefficientTypeTableViewCell else {
-                fatalError()
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ChoiceCoefficientTypeTableViewCell.reuseIdentifier,
+                                                           for: indexPath) as? ChoiceCoefficientTypeTableViewCell else {
+#if DEBUG
+                fatalError("Check table cell")
+#else
+                return UITableViewCell()
+#endif
             }
             cell.configure(with: viewModel)
             return cell
             
         case let .checkboxСoefficient(viewModel):
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: CheckboxCoefficientTypeTableViewCell.reuseIdentifier, for: indexPath) as? CheckboxCoefficientTypeTableViewCell else {
-                fatalError()
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CheckboxCoefficientTypeTableViewCell.reuseIdentifier,
+                                                           for: indexPath) as? CheckboxCoefficientTypeTableViewCell else {
+#if DEBUG
+                fatalError("Check table cell")
+#else
+                return UITableViewCell()
+#endif
             }
             cell.configure(with: viewModel)
             return cell
@@ -184,10 +211,13 @@ extension CalculationViewController: UITableViewDataSource {
 }
 
 extension CalculationViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
         let rowType = sections[indexPath.section].rows[indexPath.row]
         
         switch rowType {
+        case .defaultvalueСoefficients:
+            break
         case .valueСoefficient:
             break
         case .choiceСoefficient:
@@ -204,12 +234,14 @@ struct Section {
 }
 
 enum SectionType {
+    case defaultvalueСoefficients
     case valueСoefficients
     case choiceСoefficients
     case checkboxСoefficient
 }
 
 enum RowType {
+    case defaultvalueСoefficients(viewModel: DefaultCoefficientValueViewModel)
     case valueСoefficient(viewModel: ValueСoefficientViewModel)
     case choiceСoefficient(viewModel: ChoiceCoefficientViewModel)
     case checkboxСoefficient(viewModel: CheckboxСoefficientViewModel)

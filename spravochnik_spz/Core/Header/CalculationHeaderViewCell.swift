@@ -9,11 +9,29 @@ import UIKit
 
 //MARK: - CalculationHeaderViewCell
 
+protocol CalculationHeaderViewCellCellDelegate: AnyObject {
+    func quitButtonPressed()
+}
+
 final class CalculationHeaderViewCell: UITableViewHeaderFooterView {
     
     //MARK: - Private Properties
     
     static let identifier = "CalculationHeaderViewCell"
+    
+    weak var delegate: CalculationHeaderViewCellCellDelegate?
+    
+    private lazy var quitButton: UIButton = {
+        let button = UIButton(type: .system)
+        let image = Constants.Images.quitButtom
+        button.setImage(image,
+                        for: .normal)
+        button.tintColor = .black
+        button.addTarget(self,
+                         action: #selector(quitButtonPressed),
+                         for: .touchUpInside)
+        return button
+    }()
     
     private let headerViewLabel: PaddingLabel = {
         let label = PaddingLabel()
@@ -23,7 +41,7 @@ final class CalculationHeaderViewCell: UITableViewHeaderFooterView {
     }()
     
     // MARK: - Inits
-
+    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -33,8 +51,16 @@ final class CalculationHeaderViewCell: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with text: String) {
-        headerViewLabel.text = text
+    func configure(with viewModel: HeaderViewModel) {
+        headerViewLabel.text = viewModel.title
+        delegate = viewModel.delegate
+    }
+    
+    // MARK: - Actions
+    
+    @objc
+    private func quitButtonPressed() {
+        delegate?.quitButtonPressed()
     }
 }
 
@@ -48,15 +74,20 @@ private extension CalculationHeaderViewCell {
     }
     
     func addSubViews() {
-        contentView.addSubviews(headerViewLabel)
+        contentView.addSubviews(headerViewLabel,
+                                quitButton)
     }
     
     func setupContsraints() {
         NSLayoutConstraint.activate([
             headerViewLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             headerViewLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
-                                                    constant: 16),
-            headerViewLabel.widthAnchor.constraint(equalToConstant: 300)
+                                                     constant: Constants.Constraints.leadingHeaderOffset),
+            headerViewLabel.widthAnchor.constraint(equalToConstant: Constants.Sizes.widthHeader),
+            
+            quitButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            quitButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,
+                                                 constant: -Constants.Constraints.leadingHeaderOffset)
         ])
     }
 }

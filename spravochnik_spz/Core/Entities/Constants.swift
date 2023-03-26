@@ -70,6 +70,7 @@ enum Constants {
         // Calculation
         static let checkBoxImage = UIImage(named: "checkbox")
         static let checkBoxTrueImage = UIImage(named: "checkboxTrue")
+        static let quitButtom = UIImage(named: "quitButton")
     }
     
     enum Sizes {
@@ -89,6 +90,10 @@ enum Constants {
         static let headerHeight = CGFloat(80)
         static let widthHeader = CGFloat(263)
         static let textFieldHeight = CGFloat(50)
+        // CalculationTableView
+        static let buttonInCellCornerRadius = CGFloat(8)
+        static let calculationHeaderHeight = CGFloat(100)
+        static let tableViewTopOffset = CGFloat(50)
     }
     
     enum alarmTypesText {

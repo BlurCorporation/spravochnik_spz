@@ -10,7 +10,7 @@ import UIKit
 // MARK: - ChoiceCoefficientTypeTableViewCell
 
 protocol ChoiceCoefficientTypeTableViewCellDelegate: AnyObject {
-    func buttonPressed(value: Double)
+    func choiceCoefficientCellPressed(value: Double)
 }
 
 // MARK: ChoiceCoefficientTypeTableViewCell
@@ -39,9 +39,10 @@ final class ChoiceCoefficientTypeTableViewCell: UITableViewCell {
         button.setTitleColor(Constants.Colors.dark,
                              for: .normal)
         button.titleLabel?.font = Constants.Fonts.mainCellFont
-        button.layer.cornerRadius = 8
+        button.layer.cornerRadius = Constants.Sizes.buttonInCellCornerRadius
         button.clipsToBounds = true
-        button.addTarget(self, action: #selector(buttonPressed),
+        button.addTarget(self,
+                         action: #selector(buttonPressed),
                          for: .touchUpInside)
         return button
     }()
@@ -55,8 +56,13 @@ final class ChoiceCoefficientTypeTableViewCell: UITableViewCell {
     
     private let stackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.spacing = 6 
+        stackView.spacing = 6
         stackView.alignment = .center
+        stackView.layoutMargins = UIEdgeInsets(top: 4,
+                                               left: 16,
+                                               bottom: 4,
+                                               right: 16)
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
     
@@ -74,28 +80,19 @@ final class ChoiceCoefficientTypeTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - OverrideMethods
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 4,
-                                                                     left: 16,
-                                                                     bottom: 4,
-                                                                     right: 16))
-    }
-    
     //MARK: - Methods
     
     func configure(with viewModel: ChoiceCoefficientViewModel) {
         titleLabel.text = viewModel.title
+        descriptionLabel.text = viewModel.descrpt
+        delegate = viewModel.delegate
     }
     
     // MARK: - Actions
     
     @objc
     private func buttonPressed() {
-        print(#function)
-        delegate?.buttonPressed(value: value)
+        delegate?.choiceCoefficientCellPressed(value: value)
     }
 }
 
@@ -113,15 +110,17 @@ private extension ChoiceCoefficientTypeTableViewCell {
     
     func setupContsraints() {
         let buttonWidth: CGFloat = 80
+        let buttonHeight: CGFloat = 32
         let descriptionLabelWidth: CGFloat = 30
+        let stackViewHeight: CGFloat = 48
         
         NSLayoutConstraint.activate([
             button.widthAnchor.constraint(equalToConstant: buttonWidth),
-            button.heightAnchor.constraint(equalToConstant: 32),
+            button.heightAnchor.constraint(equalToConstant: buttonHeight),
             
             descriptionLabel.widthAnchor.constraint(equalToConstant: descriptionLabelWidth),
             
-            stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 48),
+            stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: stackViewHeight),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),

@@ -53,6 +53,11 @@ final class MainViewController: UIViewController {
     
     // MARK: - LifeCycle
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewController()
@@ -169,7 +174,6 @@ private extension MainViewController {
                                                  constant: -Constants.Constraints.sideOffset),
             helpButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
                                             constant: Constants.Constraints.sideOffset),
-            
             
             collectionView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
