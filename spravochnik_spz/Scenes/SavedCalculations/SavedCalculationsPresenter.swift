@@ -8,7 +8,6 @@
 // MARK: - SavedCalculationsPresenterProtocol
 
 protocol SavedCalculationsTablePresenterProtocol: AnyObject {
-    
     func viewDidLoad()
     func openCell(text: String)
 }
@@ -40,57 +39,58 @@ extension SavedCalculationsTablePresenter: SavedCalculationsTablePresenterProtoc
 
     
     private func makeData()-> [SavedCalculationsCellModelProtocol] {
-        let cells: [SavedCalculationsCellModelProtocol] = [SavedCalculationsCellModel]()
-        SavedCalculationsCellModel.calculations.compactMap(<#T##transform: (SavedCalculationsCellModel) throws -> ElementOfResult?##(SavedCalculationsCellModel) throws -> ElementOfResult?#>)
-        cells.append(SavedCalculationsCellModel(address: <#T##String#>,
-                                                system: <#T##String#>,
-                                                date: <#T##String#>,
-                                                stages: <#T##String#>,
-                                                cost: <#T##Float#>,
-                                                image: <#T##UIImage#>,
-                                                backgroundImage: <#T##UIImage#>,
-                                                actionHandler: {
+        var cells: [SavedCalculationsCellModelProtocol] = [SavedCalculationsCellModel]()
+        SavedCalculationsCellModel.calculations.compactMap({ result in
+            cells.append(SavedCalculationsCellModel(address: result.address,
+                                                    system: result.system,
+                                                    date: result.date,
+                                                    stages: result.stages,
+                                                    cost: result.cost,
+                                                    image: result.image,
+                                                    backgroundImage: result.backgroundImage,
+                                                    actionHandler: {}))
+
             
-        }))
+            
+             })
         return cells
     }
     
+
     func openCell(text: String) {
         switch text {
-        case "Пожарная сигнализация":
-            let nextViewController = sceneBuildManager.buildFireAlarmSystemResultsScreen()
-            viewController?.navigationController?.pushViewController(nextViewController,
-                                                                     animated: true)
-        case "Охранная сигнализация":
-            let nextViewController = sceneBuildManager.buildSecurityAlarmSystemResultsScreen()
-            viewController?.navigationController?.pushViewController(nextViewController,
-                                                                     animated: true)
-        case "Насосные станции установок пожаротушения":
-            let nextViewController = sceneBuildManager.buildFirePumpStationResultsScreen()
-            viewController?.navigationController?.pushViewController(nextViewController,
-                                                                     animated: true)
-        case "Система оповещения о пожаре":
-            let nextViewController = sceneBuildManager.buildNotificationSystemResultsScreen()
-            viewController?.navigationController?.pushViewController(nextViewController,
-                                                                     animated: true)
-        case "Охранная сигнализация периметра":
-            let nextViewController = sceneBuildManager.buildPerimeterAlarmSystemResultsScreen()
-            viewController?.navigationController?.pushViewController(nextViewController,
-                                                                     animated: true)
-        case "Система управления дымоудаления":
-            let nextViewController = sceneBuildManager.buildSmokeExhaustSystemResultsScreen()
-            viewController?.navigationController?.pushViewController(nextViewController,
-                                                                     animated: true)
-        case "Модульные установки пожаротушения":
-            let nextViewController = sceneBuildManager.buildModuleFirefightingSystemResultsScreen()
-            viewController?.navigationController?.pushViewController(nextViewController,
-                                                                     animated: true)
+//        case "Пожарная сигнализация":
+//            let nextViewController = sceneBuildManager.buildFireAlarmSystemResultsScreen()
+//            viewController?.navigationController?.pushViewController(nextViewController,
+//                                                                     animated: true)
+//        case "Охранная сигнализация":
+//            let nextViewController = sceneBuildManager.buildSecurityAlarmSystemResultsScreen()
+//            viewController?.navigationController?.pushViewController(nextViewController,
+//                                                                     animated: true)
+//        case "Насосные станции установок пожаротушения":
+//            let nextViewController = sceneBuildManager.buildFirePumpStationResultsScreen()
+//            viewController?.navigationController?.pushViewController(nextViewController,
+//                                                                     animated: true)
+//        case "Система оповещения о пожаре":
+//            let nextViewController = sceneBuildManager.buildNotificationSystemResultsScreen()
+//            viewController?.navigationController?.pushViewController(nextViewController,
+//                                                                     animated: true)
+//        case "Охранная сигнализация периметра":
+//            let nextViewController = sceneBuildManager.buildPerimeterAlarmSystemResultsScreen()
+//            viewController?.navigationController?.pushViewController(nextViewController,
+//                                                                     animated: true)
+//        case "Система управления дымоудаления":
+//            let nextViewController = sceneBuildManager.buildSmokeExhaustSystemResultsScreen()
+//            viewController?.navigationController?.pushViewController(nextViewController,
+//                                                                     animated: true)
+//        case "Модульные установки пожаротушения":
+//            let nextViewController = sceneBuildManager.buildModuleFirefightingSystemResultsScreen()
+//            viewController?.navigationController?.pushViewController(nextViewController,
+//                                                                     animated: true)
         default:
             let nextViewController = sceneBuildManager.buildTabBarScreen()
             viewController?.navigationController?.pushViewController(nextViewController,
                                                                      animated: true)
         }
-
-        
     }
 }
