@@ -31,21 +31,28 @@ final class AlertPresenter {
 extension AlertPresenter: AlertPresenterProtocol {
     func viewDidLoad() {
         switch coefficientType {
+        case let .clear(model):
             
+            viewController?.updateUIForClear(title: "123")
         case let .value(model):
             break
         case let .choice(model):
-            break
+            let axis = model.type
+            let title = model.type.title
+            viewController?.updateUIForChoice(title: title,
+                                              axis: axis,
+                                              numOfItems: 5)
+    
         case let .defaultValue(model):
             break
+            
         }
-        
     }
     
 }
 
-
 enum CoefficientType {
+    case clear(model: NoСoefficientModel)
     case value(model: ValueСoefficientModel)
     case choice(model: ChoiceCoefficientModel)
     case defaultValue(model: DefaultCoefficientValueModel)

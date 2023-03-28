@@ -7,6 +7,20 @@
 
 import Foundation
 
+// MARK: - 0
+
+struct NoСoefficientModel {
+    var title: String
+    var leftButton: String
+    var rightButton: String
+    
+    init(title: String, leftButton: String, rightButton: String) {
+        self.title = title
+        self.leftButton = leftButton
+        self.rightButton = rightButton
+    }
+}
+
 // MARK: - 1
 enum ValueСoefficientType {
     case objectArea
@@ -80,7 +94,7 @@ enum ChoiceСoefficientType {
     var items: [ChoiceСoefficientItemsModel] {
         switch self {
         case .numberOfLinesOfDefence:
-            return []
+            return [.init(title: "1", value: 1), .init(title: "2", value: 1), .init(title: "3", value: 1)]
         case .terrain:
             return []
         case .typeOfNotificationSystem:

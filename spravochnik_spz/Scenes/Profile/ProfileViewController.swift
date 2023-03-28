@@ -19,7 +19,7 @@ final class ProfileViewController: UIViewController {
     // MARK: - PrivateProperties
 
     ///
-    private var logoutButton: UIButton = {
+    private lazy var logoutButton: UIButton = {
         let button = UIButton()
         let image = Constants.Images.logoutImage
         button.setImage(image,
@@ -27,7 +27,7 @@ final class ProfileViewController: UIViewController {
         button.layer.borderWidth = Constants.Sizes.borderWidth
         button.layer.borderColor = Constants.Colors.lightGray.cgColor
         button.layer.cornerRadius = 7
-        button.addTarget(nil,
+        button.addTarget(self,
                          action: #selector(logoutButtonPressed),
                          for: .touchUpInside)
         return button
@@ -127,7 +127,7 @@ final class ProfileViewController: UIViewController {
         customView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
 //        let customView = CustomAlert()//frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         
-        UIApplication.shared.windows.first?.addSubview(customView)
+//        UIApplication.shared.windows.first?.addSubview(customView)
         
         
 //        customView.setupClearView(title: "123", leftButtonTitle: "213", rightButtonTitle: "123")
@@ -141,8 +141,7 @@ final class ProfileViewController: UIViewController {
     
     @objc private func logoutButtonPressed() {
         presenter?.logoutButtonPressed()
-        
-        
+        print("123")
     }
     
     @objc private func themeButtonPressed() {

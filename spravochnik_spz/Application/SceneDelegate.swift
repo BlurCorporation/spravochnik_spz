@@ -20,12 +20,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 
+
+
 // MARK: - Private methods
 private extension SceneDelegate {
     func setupRootViewController(windowScene: UIWindowScene) {
         let window = UIWindow(windowScene: windowScene)
         let sceneBuildManager: Buildable = SceneBuildManager()
-        let viewController = sceneBuildManager.buildTabBarScreen()
+//        let model = NoСoefficientModel(title: "", leftButton: "", rightButton: "")
+        let model = ChoiceCoefficientModel(type: .terrain, itemIndex: 3)
+        
+        let viewController = sceneBuildManager.buildAlertScreen(coefficientType: .choice(model: .init(type: .terrain, itemIndex: 5)))
         let navigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
