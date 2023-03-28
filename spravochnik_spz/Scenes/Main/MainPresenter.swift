@@ -5,6 +5,8 @@
 //  Created by Swift Learning on 22.01.2023.
 //
 
+import UIKit
+
 // MARK: - MainPresenterProtocol
 
 protocol MainPresenterProtocol: AnyObject {
@@ -46,21 +48,33 @@ extension MainPresenter: MainPresenterProtocol {
     func openCalculationCellSelected(index: Int) {
         switch index {
         case 0:
-            print(index)
+            let securityAlarmViewController = sceneBuildManager.buildCalculationScreen(calculationType: .securityAlarm)
+            viewController?.navigationController?.pushViewController(securityAlarmViewController,
+                                                                     animated: true)
         case 1:
-            print(index)
+            let perimeterSecurityAlarmViewController = sceneBuildManager.buildCalculationScreen(calculationType: .perimeterSecurityAlarm)
+            viewController?.navigationController?.pushViewController(perimeterSecurityAlarmViewController,
+                                                                     animated: true)
         case 2:
-            print(index)
+            let fireWarningSystemViewController = sceneBuildManager.buildCalculationScreen(calculationType: .fireWarningSystem)
+            viewController?.navigationController?.pushViewController(fireWarningSystemViewController,
+                                                                     animated: true)
         case 3:
-            print(index)
+            let fireAlarmSystemViewController = sceneBuildManager.buildCalculationScreen(calculationType: .fireAlarmSystem)
+            viewController?.navigationController?.pushViewController(fireAlarmSystemViewController,
+                                                                     animated: true)
         case 4:
-            print(index)
+            let smokeRemovalControlSystemViewController = sceneBuildManager.buildCalculationScreen(calculationType: .smokeRemovalControlSystem)
+            viewController?.navigationController?.pushViewController(smokeRemovalControlSystemViewController,
+                                                                     animated: true)
         case 5:
-            print(index)
-        case 6:
-            print(index)
-        default: fatalError()
-
+            let modularFireExtinguishingSystemsViewController = sceneBuildManager.buildCalculationScreen(calculationType: .modularFireExtinguishingSystems)
+            viewController?.navigationController?.pushViewController(modularFireExtinguishingSystemsViewController,
+                                                                     animated: true)
+        default:
+            let pumpingStationsOfFireExtinguishingInstallationsViewController = sceneBuildManager.buildCalculationScreen(calculationType: .pumpingStationsOfFireExtinguishingInstallations)
+            viewController?.navigationController?.pushViewController(pumpingStationsOfFireExtinguishingInstallationsViewController,
+                                                                     animated: true)
         }
     }
 }

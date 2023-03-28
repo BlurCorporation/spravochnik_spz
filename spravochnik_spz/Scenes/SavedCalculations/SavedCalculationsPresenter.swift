@@ -8,9 +8,7 @@
 // MARK: - SavedCalculationsPresenterProtocol
 
 protocol SavedCalculationsTablePresenterProtocol: AnyObject {
-    
     func viewDidLoad()
-    func openCell(text: String)
 }
 
 // MARK: - SavedCalculationsPresenter
@@ -55,6 +53,7 @@ extension SavedCalculationsTablePresenter: SavedCalculationsTablePresenterProtoc
         return cells
     }
     
+
     func openCell(text: String) {
         switch text {
         case "Пожарная сигнализация":
@@ -90,7 +89,5 @@ extension SavedCalculationsTablePresenter: SavedCalculationsTablePresenterProtoc
             viewController?.navigationController?.pushViewController(nextViewController,
                                                                      animated: true)
         }
-
-        
     }
 }
