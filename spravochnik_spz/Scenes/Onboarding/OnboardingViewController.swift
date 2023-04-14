@@ -46,7 +46,7 @@ final class OnboardingViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var labelFirst: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.font = Constants.Fonts.onboardingFont1
@@ -54,7 +54,7 @@ final class OnboardingViewController: UIViewController {
         return label
     }()
     
-    private lazy var labelSecond: UILabel = {
+    private lazy var textLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -82,12 +82,23 @@ final class OnboardingViewController: UIViewController {
         return pgControl
     }()
     
+    let scrollView = UIScrollView()
+    var scrollWidth: CGFloat! = 0.0
+    var scrollHeight: CGFloat! = 0.0
+    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.layoutIfNeeded()
         setupViewController()
         setData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        scrollWidth = scrollView.frame.size.width
+        scrollHeight = scrollView.frame.size.height
+        makeASlider()
     }
     
     @objc private func closeClick() {
@@ -105,6 +116,7 @@ final class OnboardingViewController: UIViewController {
         if presenter.indexForScreen < 3 {
             pgControl.currentPage = presenter.indexForScreen
         }
+        scrollView.setContentOffset(CGPoint(x: Int(view.frame.size.width) * pgControl.currentPage, y: 0), animated: true)
         setData()
     }
 }
@@ -114,16 +126,42 @@ final class OnboardingViewController: UIViewController {
 extension OnboardingViewController: OnboardingViewProtocol {
     func setData() {
         imageView.image = presenter?.image
-        labelFirst.text = presenter?.text1
-        labelSecond.text = presenter?.text2
+        titleLabel.text = presenter?.text1
+        textLabel.text = presenter?.text2
         nextButton.setTitle(presenter?.textNextButton, for: .normal)
         //тут надо покрутить, как скрыть кнопку "Продолжить" бескостыльно
+        
+        print("setData")
     }
 }
 
 // MARK: - PrivateMethods
 
-private extension OnboardingViewController {
+extension OnboardingViewController: UIScrollViewDelegate {
+    func makeASlider() {
+        var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        for index in 0..<3 {
+            frame.origin.x = scrollWidth * CGFloat(index)
+            frame.size = CGSize(width: scrollWidth, height: scrollHeight)
+            
+            presenter?.changeScreen(toIndex: index)
+            self.setData()
+            
+            let slide = UIView(frame: frame)
+            slide.addSubview(imageView)
+            slide.addSubview(titleLabel)
+            slide.addSubview(textLabel)
+            scrollView.addSubview(slide)
+        }
+        
+        scrollView.contentSize = CGSize(width: scrollWidth * 3, height: scrollHeight)
+        print("makeASlider")
+    }
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        pgControl.currentPage = Int(floorf(Float(scrollView.contentOffset.x / scrollView.frame.size.width)))
+//    }
+    
     func setupViewController() {
         view.backgroundColor = .systemBackground
         presenter?.getImage()
@@ -133,48 +171,66 @@ private extension OnboardingViewController {
     }
     
     func addSubViews() {
+        scrollView.delegate = self
+        scrollView.isPagingEnabled = true
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.contentSize.height = 1.0
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+//        makeASlider()
         buttonsStackView.addArrangedSubviews(nextButton,
                                              skipButton)
-        view.addSubviews(imageView,
-                         labelFirst,
-                         labelSecond,
+//        view.addSubviews(imageView,
+//                         titleLabel,
+//                         textLabel,
+//                         pgControl,
+//                         buttonsStackView)
+        
+        view.addSubviews(scrollView,
                          pgControl,
                          buttonsStackView)
     }
     
     func setupConstraints() {
-        let labelButton = CGFloat(120)
+//        let labelButton = CGFloat(120)
         let imagesHeight = CGFloat(300)
         
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            
+            imageView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             imageView.heightAnchor.constraint(equalToConstant: imagesHeight),
             imageView.widthAnchor.constraint(equalToConstant: view.frame.width),
-            
-            labelFirst.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            labelFirst.leadingAnchor.constraint(equalTo: view.leadingAnchor,
-                                                 constant: Constants.Constraints.sideOffset),
-            labelFirst.trailingAnchor.constraint(equalTo: view.trailingAnchor,
-                                                 constant: -Constants.Constraints.sideOffset),
-            labelFirst.bottomAnchor.constraint(equalTo: labelSecond.topAnchor,
-                                              constant: -Constants.Constraints.sideOffset),
-            
-            labelSecond.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            labelSecond.leadingAnchor.constraint(equalTo: view.leadingAnchor,
-                                                 constant: Constants.Constraints.sideOffset),
-            labelSecond.trailingAnchor.constraint(equalTo: view.trailingAnchor,
-                                                 constant: -Constants.Constraints.sideOffset),
-            labelSecond.topAnchor.constraint(equalTo: pgControl.topAnchor,
-                                              constant: -labelButton),
-            
+//
+//            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor,
+//                                                 constant: Constants.Constraints.sideOffset),
+//            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor,
+//                                                 constant: -Constants.Constraints.sideOffset),
+//            titleLabel.bottomAnchor.constraint(equalTo: textLabel.topAnchor,
+//                                              constant: -Constants.Constraints.sideOffset),
+//
+//            textLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor,
+//                                                 constant: Constants.Constraints.sideOffset),
+//            textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor,
+//                                                 constant: -Constants.Constraints.sideOffset),
+//            textLabel.topAnchor.constraint(equalTo: pgControl.topAnchor,
+//                                              constant: -labelButton),
+//
             pgControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             pgControl.bottomAnchor.constraint(equalTo: buttonsStackView.topAnchor,
                                               constant: -Constants.Constraints.sideOffset),
-            
-            nextButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.authButtonHeight),
-            skipButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.authButtonHeight),
-            
+
+//            nextButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.authButtonHeight),
+//            skipButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.authButtonHeight),
+//
             buttonsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor,
                                                       constant: Constants.Constraints.sideOffset),
             buttonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor,

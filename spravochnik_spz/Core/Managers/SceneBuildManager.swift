@@ -29,6 +29,9 @@ protocol Buildable {
     func buildSmokeExhaustSystemResultsScreen() -> SmokeExhaustSystemResultsViewController
     func buildFirePumpStationScreen() -> FirePumpStationViewController
     func buildFirePumpStationResultsScreen() -> FirePumpStationResultsViewController
+    
+    
+    func buildOnboardingScreen2() -> OnboardingView
 }
 
 final class SceneBuildManager {}
@@ -80,6 +83,16 @@ extension SceneBuildManager: Buildable {
         
         viewController.presenter = presenter
         presenter.viewController = viewController
+        
+        return viewController
+    }
+    
+    func buildOnboardingScreen2() -> OnboardingView {
+        let viewController = OnboardingView()
+//        let presenter = OnboardingPresenter(sceneBuildManager: self)
+        
+//        viewController.presenter = presenter
+//        presenter.viewController = viewController
         
         return viewController
     }

@@ -31,5 +31,4 @@ struct OnboardingModel1 {
         Constants.TextButtons.onboardingNextButton,
         Constants.TextButtons.loginButton
     ]
-    
 }
