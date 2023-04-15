@@ -8,31 +8,6 @@
 import UIKit
 
 class OnboardingView: UIViewController {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 1
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarouselCell.cellId, for: indexPath) as? CarouselCell else {
-//            return UICollectionViewCell()
-//
-//        }
-//        return cell
-//    }
-    
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 1
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarouselCell.cellId, for: indexPath) as? CarouselCell else { return UICollectionViewCell() }
-//        let image = carouselData[indexPath.row].image
-//        let title = carouselData[indexPath.row].title
-//        let text = carouselData[indexPath.row].text
-//        cell.configure(image: image, title: title, text: text)
-//        return cell
-//    }
-    
     // MARK: - Subvies
     
     private var carouselView: CarouselView?
@@ -40,16 +15,6 @@ class OnboardingView: UIViewController {
     // MARK: - Properties
     private var presenter: OnboardingPresenterProtocol?
     private var carouselData = [CarouselView.CarouselData]()
-    
-//    private lazy var collectionView: UICollectionView = {
-//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
-//        collectionView.showsHorizontalScrollIndicator = false
-//        collectionView.backgroundColor = .clear
-//        collectionView.register(CarouselCell.self, forCellWithReuseIdentifier: CarouselCell.cellId)
-//        return collectionView
-//    }()
     
     // MARK: - Life Cycle
     
@@ -84,19 +49,12 @@ class OnboardingView: UIViewController {
 private extension OnboardingView {
     func setupUI() {
         view.backgroundColor = .systemBackground
-//        view.addSubviews(collectionView)
         guard let carouselView = carouselView else { return }
         view.addSubviews(carouselView)
         carouselView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         carouselView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         carouselView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         carouselView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-//        NSLayoutConstraint.activate([
-//            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-//            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-//        ])
     }
 }
 
