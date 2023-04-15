@@ -27,6 +27,8 @@ enum Constants {
         static let onboarding3 = UIImage(named: "onboarding3") ?? UIImage()
         static let pgLineGray = UIImage(named: "pageLineGray") ?? UIImage()
         static let pgLineBlack = UIImage(named: "pageLineBlack") ?? UIImage()
+        static let noInternet = UIImage(named: "noInternet") ?? UIImage()
+        static let file = UIImage(named: "file") ?? UIImage()
     }
     
     enum Sizes {
@@ -56,6 +58,11 @@ enum Constants {
         static let onboarding22 = "Расчеты стоимости проектирования, технические расчеты систем безопасности, физические расчеты, технико-экономические расчеты"
         static let onboarding31 = "Добро пожаловать"
         static let onboarding32 = "Благодарим, что выбрали нас. Мы поможем Вам расчитать стоимость интересующих Вас систем безопасности"
+        
+        static let noInternetTitle = "Нет соединения"
+        static let noInternetText = "Проверьте подключено ли устройство к Интернету"
+        static let savedCalcTitle = "Здесь будут отображаться сохраненные Вами расчеты"
+        static let savedCalcText = "Для выбора расчета перейдите на главный экран"
     }
     
     enum TextButtons {
