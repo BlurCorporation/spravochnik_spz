@@ -26,7 +26,7 @@ final class DefaultValueCoefficientTableViewCell: UITableViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = Constants.Fonts.firstSectionResultsFont
+        label.font = Constants.Fonts.b1
         label.numberOfLines = .zero
         return label
     }()
@@ -37,7 +37,7 @@ final class DefaultValueCoefficientTableViewCell: UITableViewCell {
         button.layer.borderColor = Constants.Colors.lightGray.cgColor
         button.setTitleColor(Constants.Colors.dark,
                              for: .normal)
-        button.titleLabel?.font = Constants.Fonts.mainCellFont
+        button.titleLabel?.font = Constants.Fonts.h4
         button.layer.cornerRadius = Constants.Sizes.buttonInCellCornerRadius
         button.clipsToBounds = true
         button.addTarget(self,
@@ -49,7 +49,7 @@ final class DefaultValueCoefficientTableViewCell: UITableViewCell {
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = Constants.Fonts.firstSectionResultsFont
+        label.font = Constants.Fonts.b1
         return label
     }()
     

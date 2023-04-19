@@ -28,7 +28,7 @@ final class StartViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.text = Constants.TextLabels.applicationNameLabelText
-        label.font = Constants.Fonts.applicationNameLabelFont
+        label.font = Constants.Fonts.h1
         return label
     }()
     
@@ -36,7 +36,7 @@ final class StartViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.text = Constants.TextLabels.infoApplicationLabelText
-        label.font = Constants.Fonts.infoLabelFont
+        label.font = Constants.Fonts.b3
         label.textColor = Constants.Colors.lightGray
         label.numberOfLines = 0
         return label
@@ -82,7 +82,7 @@ final class StartViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.text = Constants.TextLabels.infoWithLinksLabelText
-        label.font = Constants.Fonts.infoWithLinksLabelFont
+        label.font = Constants.Fonts.b6
         label.textColor = Constants.Colors.lightGray
         label.numberOfLines = 0
         return label
