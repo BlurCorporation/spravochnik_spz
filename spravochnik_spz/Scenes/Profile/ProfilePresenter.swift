@@ -38,6 +38,8 @@ final class ProfilePresenter {
 
 extension ProfilePresenter: ProfilePresenterProtocol {
     func logoutButtonPressed() {
+        let firebase = AuthService()
+        firebase.logout()
         let startViewController = sceneBuildManager.buildStartScreen()
         let rootViewController = UINavigationController.init(rootViewController: startViewController)
         UIApplication.shared.windows.first?.rootViewController = rootViewController

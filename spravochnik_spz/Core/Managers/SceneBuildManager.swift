@@ -19,7 +19,13 @@ protocol Buildable {
     func buildResultScreen() -> ResultViewController
 }
 
-final class SceneBuildManager {}
+final class SceneBuildManager {
+    private let authService: AuthServicable
+    
+    init() {
+        self.authService = AuthService()
+    }
+}
 
 extension SceneBuildManager: Buildable {
     func buildSplashScreen() -> SplashViewController {
@@ -44,7 +50,7 @@ extension SceneBuildManager: Buildable {
     
     func buildAuthScreen(type: AuthType) -> AuthViewController {
         let viewController = AuthViewController()
-        let presenter = AuthPresenter(sceneBuildManager: self, authType: type)
+        let presenter = AuthPresenter(sceneBuildManager: self, authType: type, authService: authService)
         
         viewController.presenter = presenter
         presenter.viewController = viewController

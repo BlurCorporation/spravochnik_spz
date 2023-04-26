@@ -10,10 +10,10 @@
 protocol AuthPresenterProtocol: AnyObject {
     func viewDidLoad()
     func backButtonPressed()
-    func identifireButtonPressed()
+    func identifireButtonPressed(email: String?, password: String?, repeatPassword: String?)
     func appleButtonPressed()
     func googleButtonPressed()
-    func facebookButtonPressed()
+    //func facebookButtonPressed()
     func loginButtonPressed()
     func forgotPasswordButtonPressed()
 }
@@ -27,13 +27,16 @@ final class AuthPresenter {
     
     private let sceneBuildManager: Buildable
     private let authType: AuthType
+    private let authService: AuthServicable
     
     // MARK: - Initializer
     
     init(sceneBuildManager: Buildable,
-         authType: AuthType) {
+         authType: AuthType,
+         authService: AuthServicable) {
         self.sceneBuildManager = sceneBuildManager
         self.authType = authType
+        self.authService = authService
     }
 }
 
@@ -50,8 +53,28 @@ extension AuthPresenter: AuthPresenterProtocol {
         viewController?.navigationController?.popToRootViewController(animated: true)
     }
     
-    func identifireButtonPressed() {
-        print(#function)
+    func identifireButtonPressed(email: String?, password: String?, repeatPassword: String?) {
+        guard let email = email,
+              let password = password else {
+            return
+        }
+        
+        switch authType {
+            
+        case .auth:
+            self.authService.loginUser(email: email, password: password, typeAuth: .email) { result in
+                switch result {
+                case .success(_):
+                    print("ура")
+                case .failure(_):
+                    print("alert")
+                }
+            }
+            
+        case .register:
+            print("reg")
+        }
+        
     }
     
     func appleButtonPressed() {
@@ -62,9 +85,9 @@ extension AuthPresenter: AuthPresenterProtocol {
         print(#function)
     }
     
-    func facebookButtonPressed() {
-        print(#function)
-    }
+//    func facebookButtonPressed() {
+//        print(#function)
+//    }
     
     func loginButtonPressed() {
         if authType == .auth {

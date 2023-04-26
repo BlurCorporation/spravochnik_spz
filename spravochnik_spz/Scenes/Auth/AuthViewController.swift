@@ -126,21 +126,22 @@ final class AuthViewController: UIViewController {
         return button
     }()
     
-    private lazy var facebookButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setBackgroundImage(Constants.Images.facebookButtonImage,
-                                  for: .normal)
-        button.addTarget(self,
-                         action: #selector(facebookButtonPressed),
-                         for: .touchUpInside)
-        return button
-    }()
+    //Запрещён на территории РФ
+//    private lazy var facebookButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.setBackgroundImage(Constants.Images.facebookButtonImage,
+//                                  for: .normal)
+//        button.addTarget(self,
+//                         action: #selector(facebookButtonPressed),
+//                         for: .touchUpInside)
+//        return button
+//    }()
     
     private let authButtonStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.spacing = 20
         stackView.alignment = .center
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .equalCentering
         return stackView
     }()
     
@@ -221,7 +222,7 @@ final class AuthViewController: UIViewController {
     }
 
     @objc private func identifireButtonPressed() {
-        presenter?.identifireButtonPressed()
+        presenter?.identifireButtonPressed(email: emailTextField.text, password: passwordTextField.text, repeatPassword: retypePasswordTextField.text)
     }
     
     @objc private func appleButtonPressed() {
@@ -232,9 +233,9 @@ final class AuthViewController: UIViewController {
         presenter?.googleButtonPressed()
     }
     
-    @objc private func facebookButtonPressed() {
-        presenter?.facebookButtonPressed()
-    }
+//    @objc private func facebookButtonPressed() {
+//        presenter?.facebookButtonPressed()
+//    }
     
     @objc private func loginButtonPressed() {
         presenter?.loginButtonPressed()
@@ -312,8 +313,7 @@ private extension AuthViewController {
                                           trailingLineView)
         
         authButtonStackView.addArrangedSubviews(appleButton,
-                                                googleButton,
-                                                facebookButton)
+                                                googleButton)
         
         bottomStackView.addArrangedSubviews(infoBottomLabel,
                                             loginButton)
