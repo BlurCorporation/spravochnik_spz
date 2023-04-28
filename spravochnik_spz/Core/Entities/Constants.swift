@@ -124,7 +124,7 @@ enum Constants {
         // Cap Views
         static let noInternetTitle = "Нет соединения"
         static let noInternetText = "Проверьте подключено ли устройство к Интернету"
-        static let savedCalcTitle = "Здесь будут отображаться сохраненные Вами расчеты"
+        static let savedCalcTitle = "Здесь будут отображаться\nсохраненные Вами расчеты"
         static let savedCalcText = "Для выбора расчета перейдите на главный экран"
     }
     
