@@ -75,12 +75,16 @@ extension NoInternetView {
             image.heightAnchor.constraint(equalToConstant: Constants.Constraints.capImageSize),
             image.widthAnchor.constraint(equalToConstant: Constants.Constraints.capImageSize),
             image.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            image.bottomAnchor.constraint(equalTo: self.centerYAnchor, constant: -Constants.Constraints.sideOffset),
+            image.bottomAnchor.constraint(equalTo: self.centerYAnchor,
+                                          constant: -Constants.Constraints.sideOffset),
             
             stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            stackView.topAnchor.constraint(equalTo: self.centerYAnchor, constant: Constants.Constraints.sideOffset),
-            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.Constraints.sideOffset),
-            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.Constraints.sideOffset)
+            stackView.topAnchor.constraint(equalTo: self.centerYAnchor,
+                                           constant: Constants.Constraints.sideOffset),
+            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor,
+                                               constant: Constants.Constraints.sideOffset),
+            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor,
+                                                constant: -Constants.Constraints.sideOffset)
         ])
     }
 }
