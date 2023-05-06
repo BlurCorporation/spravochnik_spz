@@ -248,8 +248,6 @@
 				226E6EDD297D5CC600846141 /* Profile */,
 				226E6EDC297D5CAC00846141 /* Calculation */,
 				226E6EDB297D5C7E00846141 /* Result */,
-				457CFC2629F01A3E0022487A /* SavedCalculationView.swift */,
-				457CFC2829F01A580022487A /* NoInternetView.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -312,6 +310,7 @@
 		220AE4F4297D52F600DEA441 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				45F912372A0666F300AB5DEA /* CustomViews */,
 				228FA2F329D0C1F9000412A7 /* Calculation */,
 				2265A2CC299EB968005DF662 /* TypeViewController */,
 				45F72C2B297F1C6F00D90C8F /* Constants.swift */,
@@ -465,6 +464,15 @@
 				22F5886F29A8EB30004053CF /* CheckboxCoefficientTypeTableViewCell.swift */,
 			);
 			path = Calculation;
+			sourceTree = "<group>";
+		};
+		45F912372A0666F300AB5DEA /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				457CFC2629F01A3E0022487A /* SavedCalculationView.swift */,
+				457CFC2829F01A580022487A /* NoInternetView.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
