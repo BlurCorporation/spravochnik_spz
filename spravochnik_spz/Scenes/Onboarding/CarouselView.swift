@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol CarouselViewDelegate: AnyObject {
-    func currentPageDidChange(to page: Int)
-}
-
 class CarouselView: UIView {
     var presenter: OnboardingPresenterProtocol?
     
@@ -31,16 +27,16 @@ class CarouselView: UIView {
         collection.backgroundColor = .yellow
         collection.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return collection
-     }()
+    }()
     
     private var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.currentPageIndicatorTintColor = Constants.Colors.black
         pageControl.pageIndicatorTintColor = Constants.Colors.grey
         pageControl.preferredIndicatorImage = Constants.Images.pgLineGray
-//        pageControl.addTarget(self,
-//                            action: #selector(pgControlChanged),
-//                            for: .valueChanged)
+        //        pageControl.addTarget(self,
+        //                            action: #selector(pgControlChanged),
+        //                            for: .valueChanged)
         return pageControl
     }()
     
@@ -66,44 +62,43 @@ class CarouselView: UIView {
     
     // MARK: - Properties
     private var carouselData = [CarouselData]()
-    private var pages: Int
-    private weak var delegate: CarouselViewDelegate?
     private var currentPage = 0 {
         didSet {
             pageControl.currentPage = currentPage
-            delegate?.currentPageDidChange(to: currentPage)
-//            self.reloadInputViews()
         }
     }
     
-    init(pages: Int, delegate: CarouselViewDelegate?) {
-            self.pages = pages
-            self.delegate = delegate
-            super.init(frame: .zero)
-            setupUI()
-        }
-        
-        required init?(coder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
+    init(presenter: OnboardingPresenterProtocol?) {
+        super.init(frame: .zero)
+        self.presenter = presenter
+        setupUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     @objc private func closeClick() {
         presenter?.getNextVC()
     }
     
     @objc private func buttonClick() {
-        
         currentPage += 1
         if currentPage >= carouselData.count {
             presenter?.getNextVC()
             return
         }
         let indexPath = IndexPath(row: currentPage, section: 0)
-        print("indexPath", indexPath)
         carouselCollectionView.scrollToItem(at: indexPath, at: .right, animated: true)
         carouselCollectionView.reloadData()
-        
     }
+    
+    //  @objc private func pgControlChanged() {
+    //    if currentPage >= carouselData.count {
+    //        presenter?.getNextVC()
+    //        return
+    //    }
+    //  }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -113,6 +108,8 @@ extension CarouselView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        pageControl.numberOfPages = carouselData.count
+        pageControl.isHidden = !(carouselData.count > 1)
         return carouselData.count
     }
     
@@ -124,9 +121,26 @@ extension CarouselView: UICollectionViewDataSource {
         cell.configure(image: image, title: title, text: text)
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension CarouselView: UICollectionViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let witdh = scrollView.frame.width - (scrollView.contentInset.left * 2)
+        let index = scrollView.contentOffset.x / witdh
+        let roundedIndex = round(index)
+        roundedIndex.isNaN ? (currentPage = 0) : (currentPage = Int(roundedIndex))
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let witdh = scrollView.frame.width - (scrollView.contentInset.left * 2)
+        let index = scrollView.contentOffset.x / witdh
+        let roundedIndex = round(index)
+        roundedIndex.isNaN ? (currentPage = 0) : (currentPage = Int(roundedIndex))
     }
 }
 
@@ -134,82 +148,51 @@ extension CarouselView: UICollectionViewDataSource {
 extension CarouselView {
     public func configureView(with data: [CarouselData]) {
         let carouselLayout = UICollectionViewFlowLayout()
+//        carouselLayout.headerReferenceSize = .zero
         carouselLayout.scrollDirection = .horizontal
-        carouselLayout.itemSize = .init(width: frame.width, height: 500)
+        carouselLayout.itemSize = .init(width: frame.width, height: 759)
         carouselLayout.sectionInset = .zero
-        
-        carouselData = data
-        carouselLayout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: 0)
-        carouselLayout.minimumInteritemSpacing = 0
+//        carouselLayout.minimumInteritemSpacing = 0
         carouselLayout.minimumLineSpacing = 0
-        print("carouselLayout ", carouselLayout.itemSize, "carouselCollectionView ", carouselCollectionView.frame.size)
+        carouselData = data
         carouselCollectionView.collectionViewLayout = carouselLayout
         carouselCollectionView.reloadData()
     }
 }
 
 private extension CarouselView {
-    func getCurrentPage() -> Int {
-        let visibleRect = CGRect(origin: carouselCollectionView.contentOffset, size: carouselCollectionView.bounds.size)
-        let visiblePoint = CGPoint(x: visibleRect.minX, y: visibleRect.minY)
-        if let visibleIndexPath = carouselCollectionView.indexPathForItem(at: visiblePoint) {
-            return visibleIndexPath.row
-        }
-        return currentPage
-    }
-}
-
-extension CarouselView: UICollectionViewDelegate {
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        currentPage = getCurrentPage()
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        currentPage = getCurrentPage()
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        currentPage = getCurrentPage()
-    }
-}
-
-private extension CarouselView {
     func setupUI() {
         backgroundColor = .clear
-        setupCollectionView()
-        setupPageControl()
-        setupButtons()
+        setupViews()
+        setupConstraints()
     }
     
-    func setupCollectionView() {
-        addSubviews(carouselCollectionView)
-        carouselCollectionView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        carouselCollectionView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        carouselCollectionView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        carouselCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-//        carouselCollectionView.heightAnchor.constraint(equalToConstant: 400).isActive = true
+    func setupViews() {
+        pageControl.numberOfPages = 3
+        addSubviews(carouselCollectionView, pageControl, nextButton, skipButton)
     }
     
-    func setupPageControl() {
-        addSubviews(pageControl)
-        pageControl.topAnchor.constraint(equalTo: bottomAnchor, constant: -200).isActive = true
-        pageControl.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        pageControl.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        pageControl.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        pageControl.numberOfPages = pages
-    }
-    
-    func setupButtons() {
-        addSubviews(nextButton, skipButton)
-        skipButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.Constraints.sideOffset).isActive = true
-        skipButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Constraints.sideOffset).isActive = true
-        skipButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Constraints.sideOffset).isActive = true
-        skipButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.authButtonHeight).isActive = true
-        
-        nextButton.bottomAnchor.constraint(equalTo: skipButton.topAnchor,
-                                           constant: -Constants.Constraints.sideOffset).isActive = true
-        nextButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Constraints.sideOffset).isActive = true
-        nextButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Constraints.sideOffset).isActive = true
-        nextButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.authButtonHeight).isActive = true
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            carouselCollectionView.topAnchor.constraint(equalTo: topAnchor),
+            carouselCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            carouselCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            carouselCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
+            pageControl.widthAnchor.constraint(equalToConstant: 300),
+            pageControl.heightAnchor.constraint(equalToConstant: Constants.Constraints.authButtonHeight),
+            
+            nextButton.topAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: Constants.Constraints.sideOffset),
+            nextButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Constraints.sideOffset),
+            nextButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Constraints.sideOffset),
+            nextButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.authButtonHeight),
+            
+            skipButton.topAnchor.constraint(equalTo: nextButton.bottomAnchor,constant: Constants.Constraints.sideOffset),
+            skipButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.Constraints.sideOffset),
+            skipButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Constraints.sideOffset),
+            skipButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Constraints.sideOffset),
+            skipButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.authButtonHeight),
+        ])
     }
 }

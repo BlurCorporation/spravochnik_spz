@@ -7,9 +7,9 @@
 
 import UIKit
 
-class CarouselCell: UICollectionViewCell{
-    // MARK: - SubViews
+class CarouselCell: UICollectionViewCell {
     
+    // MARK: - SubViews
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         let image = Constants.Images.onboarding1
@@ -36,11 +36,9 @@ class CarouselCell: UICollectionViewCell{
     }()
     
     // MARK: - Properties
-    
     static let cellId = "CarouselCell"
     
     // MARK: - Initializer
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -50,7 +48,6 @@ class CarouselCell: UICollectionViewCell{
         super.init(coder: coder)
     }
 }
-
 
 // MARK: - Setups
 private extension CarouselCell {

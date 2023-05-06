@@ -5,74 +5,44 @@
 //  Created by Swift Learning on 22.01.2023.
 //
 
-// MARK: - OnboardingPresenterProtocol
-
 import UIKit
 
+// MARK: - OnboardingPresenterProtocol
 protocol OnboardingPresenterProtocol: AnyObject {
-    var image: UIImage? { get set }
-    var text1: String? { get set }
-    var text2: String? { get set }
-    var indexForScreen: Int { get }
-    var textNextButton: String? { get set }
-    var statusSkipButton: Bool? { get set }
-    var model: OnboardingModel1 { get }
-    func getImage()
-    func getText()
-    func changeScreen(toIndex: Int?)
     func getNextVC()
+    func setData()
 }
 
 // MARK: - OnboardingPresenter
-
 class OnboardingPresenter {
-    weak var viewController: OnboardingViewProtocol?
-    var image: UIImage?
-    var text1: String?
-    var text2: String?
-    var textNextButton: String?
-    var statusSkipButton: Bool?
-    var indexForScreen = 0
+    weak var viewController: OnboardingViewProtocol2?
     
     // MARK: - PrivateProperties
-
     private let sceneBuildManager: Buildable
-    internal var model: OnboardingModel1
     
     // MARK: - Initializer
-    
-    init(sceneBuildManager: Buildable) {
+    init(viewController: OnboardingViewProtocol2, sceneBuildManager: Buildable) {
+        self.viewController = viewController
         self.sceneBuildManager = sceneBuildManager
-        self.model = OnboardingModel1()
+        setData()
     }
 }
 
 //MARK: - OnboardingPresenterExtension
-
 extension OnboardingPresenter: OnboardingPresenterProtocol {
-    func getImage() {
-        image = model.images[indexForScreen]
-    }
-    
-    func getText() {
-        text1 = model.texts1[indexForScreen]
-        text2 = model.texts2[indexForScreen]
-        textNextButton = model.textNextButton[indexForScreen]
-    }
-    
-    func changeScreen(toIndex: Int? = nil) {
-        if let toIndex = toIndex {
-            indexForScreen = toIndex-1
-        }
+    func setData() {
+        var carouselData = [CarouselView.CarouselData]()
         
-        if indexForScreen < 2 && indexForScreen > -2 {
-            indexForScreen += 1
-            getImage()
-            getText()
-            (indexForScreen == 0 || indexForScreen == 1) ? (statusSkipButton = false) : (statusSkipButton = true)
-        } else {
-            getNextVC()
-        }
+        carouselData.append(.init(image: Constants.Images.onboarding1,
+                                  title: Constants.TextLabels.onboarding11,
+                                  text: Constants.TextLabels.onboarding12))
+        carouselData.append(.init(image: Constants.Images.onboarding2,
+                                  title: Constants.TextLabels.onboarding21,
+                                  text: Constants.TextLabels.onboarding22))
+        carouselData.append(.init(image: Constants.Images.onboarding3,
+                                  title: Constants.TextLabels.onboarding31,
+                                  text: Constants.TextLabels.onboarding32))
+        viewController?.setData(carouselData: carouselData)
     }
     
     func getNextVC() {

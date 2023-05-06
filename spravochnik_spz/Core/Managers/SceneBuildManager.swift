@@ -10,7 +10,6 @@ protocol Buildable {
     func buildStartScreen() -> StartViewController
     func buildRegisterScreen() -> RegisterViewController
     func buildAuthScreen() -> AuthViewController
-    func buildOnboardingScreen() -> OnboardingViewController
     func buildTabBarScreen() -> TabBarController
     func buildMainScreen() -> MainViewController
     func buildSavedCalculationsScreen() -> SavedCalculationsViewController
@@ -31,7 +30,7 @@ protocol Buildable {
     func buildFirePumpStationResultsScreen() -> FirePumpStationResultsViewController
     
     
-    func buildOnboardingScreen2() -> OnboardingView
+    func buildOnboardingScreen() -> OnboardingView
 }
 
 final class SceneBuildManager {}
@@ -77,23 +76,11 @@ extension SceneBuildManager: Buildable {
         return viewController
     }
     
-    func buildOnboardingScreen() -> OnboardingViewController {
-        let viewController = OnboardingViewController()
-        let presenter = OnboardingPresenter(sceneBuildManager: self)
-        
+    func buildOnboardingScreen() -> OnboardingView {
+        let viewController = OnboardingView()
+        let presenter = OnboardingPresenter(viewController: viewController, sceneBuildManager: self)
         viewController.presenter = presenter
         presenter.viewController = viewController
-        
-        return viewController
-    }
-    
-    func buildOnboardingScreen2() -> OnboardingView {
-        let viewController = OnboardingView()
-//        let presenter = OnboardingPresenter(sceneBuildManager: self)
-        
-//        viewController.presenter = presenter
-//        presenter.viewController = viewController
-        
         return viewController
     }
     
