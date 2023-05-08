@@ -28,13 +28,14 @@ private extension SceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         let sceneBuildManager: Buildable = SceneBuildManager()
 //        let model = NoСoefficientModel(title: "Уверены, что хотите выйти из аккаунта?",
-//                                       leftButton: "Закрыть",
-//                                       rightButton: "Выйти")
+//                                       leftButton: "Выйти",
+//                                       rightButton: "Сохранить")
         //TODO: убрать аргумент itemIndex
-        let model = ChoiceCoefficientModel(type: .typeOfNotificationSystem,
+        let model = ChoiceCoefficientModel(type: .terrain,
                                            itemIndex: 3)
 //
-//        let model = ValueСoefficientModel(type: .objectArea)
+//        let model = ValueСoefficientModel(type: .objectArea,
+//                                          value: 0.1)
         
         let viewController = sceneBuildManager.buildAlertScreen(coefficientType: .choice(model: model))
         let navigationController = UINavigationController(rootViewController: viewController)

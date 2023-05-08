@@ -36,10 +36,15 @@ extension AlertPresenter: AlertPresenterProtocol {
         switch coefficientType {
         case let .clear(model):
             let title = model.title
-            viewController?.updateUIForClear(title: title)
+            let leftButtonTitle = model.leftButton
+            let rightButtonTittle = model.rightButton
+            viewController?.updateUIForClear(title: title,
+                                             leftButtonTitle: leftButtonTitle,
+                                             rightButtonTitle: rightButtonTittle)
         case let .value(model):
             let title = model.type.title
-            viewController?.updateUIForVlaue(title: title)
+            viewController?.updateUIForVlaue(title: title,
+                                             value: model.value)
             break
         case let .choice(model):
             let axis = model.type
@@ -50,7 +55,7 @@ extension AlertPresenter: AlertPresenterProtocol {
             let numOfItems = collectionViewDataSource.count
             viewController?.updateUIForChoice(title: title,
                                               axis: axis,
-                                              numOfItems: numOfItems)
+                                              numOfItems: 0)
             
         //TODO: - возможно использовать другой coefficientType, чтобы не было лишнего кейса в свитче
         default:
