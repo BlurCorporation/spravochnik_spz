@@ -67,6 +67,10 @@ enum Constants {
         static let logoutImage = UIImage(named: "logout") ?? UIImage()
         // Main
         static let helpImage = UIImage(named: "help") ?? UIImage()
+        // Calculation
+        static let checkBoxImage = UIImage(named: "checkbox")
+        static let checkBoxTrueImage = UIImage(named: "checkboxTrue")
+        static let quitButtom = UIImage(named: "quitButton")
     }
     
     enum Sizes {
@@ -86,6 +90,10 @@ enum Constants {
         static let headerHeight = CGFloat(80)
         static let widthHeader = CGFloat(263)
         static let textFieldHeight = CGFloat(50)
+        // CalculationTableView
+        static let buttonInCellCornerRadius = CGFloat(8)
+        static let calculationHeaderHeight = CGFloat(100)
+        static let tableViewTopOffset = CGFloat(50)
     }
     
     enum alarmTypesText {
@@ -125,6 +133,8 @@ enum Constants {
         static let updatePasswordButtonText = "Обновить пароль"
         static let changePasswordButtonText = "Изменить пароль"
         static let saveChangesButtonText = "Сохранить изменения"
+        static let calculationButtonText = "Расчет"
+        static let otherCalculationButtonText = "Перейти к другим расчетам"
     }
     
     enum PlaceHolders {

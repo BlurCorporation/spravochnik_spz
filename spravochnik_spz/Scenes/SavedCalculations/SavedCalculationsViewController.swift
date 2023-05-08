@@ -9,7 +9,10 @@ import UIKit
 
 // MARK: - SavedCalculationsViewProtocol
 
-protocol SavedCalculationsViewProtocol: UIViewController {}
+protocol SavedCalculationsViewProtocol: UIViewController {
+    func update(dataSource: [SavedCalculationsCellModelProtocol])
+    
+}
 
 // MARK: - SavedCalculationsViewController
 
@@ -18,23 +21,32 @@ final class SavedCalculationsViewController: UIViewController {
     
     // MARK: - PrivateProperties
     
-    private lazy var calculations = SavedCalculationsCellModel.calculations
+    private var dataSource: [SavedCalculationsCellModelProtocol] = [SavedCalculationsCellModelProtocol]()
+    
+    
     
     private let headerView = SavedCalcCustomHeaderCell()
     
     private let SavedCalculationsTableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = Constants.Colors.clear
+        
         return tableView
     }()
     
     // MARK: - LifeCycle
     
+    override func loadView() {
+        super.loadView()
+        setupViewController()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViewController()
         SavedCalculationsTableView.dataSource = self
         SavedCalculationsTableView.delegate = self
+        presenter?.viewDidLoad()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,26 +57,30 @@ final class SavedCalculationsViewController: UIViewController {
 
 // MARK: - SavedCalculationsViewProtocol Impl
 
-extension SavedCalculationsViewController: SavedCalculationsViewProtocol {}
+extension SavedCalculationsViewController: SavedCalculationsViewProtocol {
+    func update(dataSource: [SavedCalculationsCellModelProtocol]) {
+        self.dataSource = dataSource
+        self.SavedCalculationsTableView.reloadData()
+    }
+}
 
 // MARK: - UITableViewDataSource Impl
 
 extension SavedCalculationsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return calculations.count
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SavedCalculationsUITableViewCell.identifier,
-                                                 for: indexPath) as! SavedCalculationsUITableViewCell
-        let object = calculations[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SavedCalculationsUITableViewCell.identifier,
+                                                       for: indexPath) as? SavedCalculationsUITableViewCell else {
+            return UITableViewCell()
+        }
         
-        presenter?.cellSet(object: object,
-                           cell: cell,
-                           indexPathRow: indexPath.row)
-        
+        cell.viewModel = dataSource[indexPath.row]
+        cell.selectionStyle = .none
         return cell
     }
 }
@@ -82,25 +98,29 @@ extension SavedCalculationsViewController: UITableViewDelegate {
         return Constants.Sizes.headerHeight
     }
     
-    func tableView(_ tableView: UITableView,
-                   editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
-    }
+//    func tableView(_ tableView: UITableView,
+//                   editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+//        return .delete
+//    }
+//
+//    func tableView(_ tableView: UITableView,
+//                   commit editingStyle: UITableViewCell.EditingStyle,
+//                   forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            let object = dataSource[indexPath.row]
+////            object.removeHandler?()
+////            calculations.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath],
+//                                 with: .fade)
+//        }
+//    }
     
     func tableView(_ tableView: UITableView,
-                   commit editingStyle: UITableViewCell.EditingStyle,
-                   forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            calculations.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath],
-                                 with: .fade)
-        }
+                   didDeselectRowAt indexPath: IndexPath) {
+        
+        presenter?.openCell(text: dataSource[indexPath.row].system)
     }
-    
-    func tableView(_ tableView: UITableView,
-                   didSelectRowAt indexPath: IndexPath) {
-        presenter?.openCell(image: calculations[indexPath.row].image)
-    }
+
 }
 
 // MARK: - PrivateMethods

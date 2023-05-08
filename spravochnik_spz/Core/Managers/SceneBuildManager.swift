@@ -15,21 +15,9 @@ protocol Buildable {
     func buildMainScreen() -> MainViewController
     func buildSavedCalculationsScreen() -> SavedCalculationsViewController
     func buildProfileScreen() -> ProfileViewController
-    func buildSecurityAlarmSystemScreen() -> SecurityAlarmSystemViewController
-    func buildSecurityAlarmSystemResultsScreen() -> SecurityAlarmSystemResultsViewController
-    func buildPerimeterAlarmSystemScreen() -> PerimeterAlarmSystemViewController
-    func buildPerimeterAlarmSystemResultsScreen() -> PerimeterAlarmSystemResultsViewController
-    func buildFireAlarmSystemScreen() -> FireAlarmSystemViewController
-    func buildFireAlarmSystemResultsScreen() -> FireAlarmSystemResultsViewController
-    func buildNotificationSystemScreen() -> NotificationSystemViewController
-    func buildNotificationSystemResultsScreen() -> NotificationSystemResultsViewController
-    func buildModuleFirefightingSystemScreen() -> ModuleFirefightingSystemViewController
-    func buildModuleFirefightingSystemResultsScreen() -> ModuleFirefightingSystemResultsViewController
-    func buildSmokeExhaustSystemScreen() -> SmokeExhaustSystemViewController
-    func buildSmokeExhaustSystemResultsScreen() -> SmokeExhaustSystemResultsViewController
-    func buildFirePumpStationScreen() -> FirePumpStationViewController
-    func buildFirePumpStationResultsScreen() -> FirePumpStationResultsViewController
     func buildAlertScreen(coefficientType: CoefficientType) -> AlertViewController
+    func buildCalculationScreen(calculationType: СalculationType) -> CalculationViewController
+    func buildResultScreen() -> ResultViewController
 }
 
 final class SceneBuildManager {}
@@ -121,9 +109,10 @@ extension SceneBuildManager: Buildable {
         return viewController
     }
     
-    func buildSecurityAlarmSystemScreen() -> SecurityAlarmSystemViewController {
-        let viewController = SecurityAlarmSystemViewController()
-        let presenter = SecurityAlarmSystemPresenter(sceneBuildManager: self)
+    func buildCalculationScreen(calculationType: СalculationType) -> CalculationViewController {
+        let viewController = CalculationViewController()
+        let presenter = CalculationPresenter(sceneBuildManager: self,
+                                             calculationType: calculationType)
         
         viewController.presenter = presenter
         presenter.viewController = viewController
@@ -131,129 +120,9 @@ extension SceneBuildManager: Buildable {
         return viewController
     }
     
-    func buildSecurityAlarmSystemResultsScreen() -> SecurityAlarmSystemResultsViewController {
-        let viewController = SecurityAlarmSystemResultsViewController()
-        let presenter = SecurityAlarmSystemResultsPresenter(sceneBuildManager: self)
-        
-        viewController.presenter = presenter
-        presenter.viewController = viewController
-        
-        return viewController
-    }
-    
-    func buildPerimeterAlarmSystemScreen() -> PerimeterAlarmSystemViewController {
-        let viewController = PerimeterAlarmSystemViewController()
-        let presenter = PerimeterAlarmSystemPresenter(sceneBuildManager: self)
-        
-        viewController.presenter = presenter
-        presenter.viewController = viewController
-        
-        return viewController
-    }
-    
-    func buildPerimeterAlarmSystemResultsScreen() -> PerimeterAlarmSystemResultsViewController {
-        let viewController = PerimeterAlarmSystemResultsViewController()
-        let presenter = PerimeterAlarmSystemResultsPresenter(sceneBuildManager: self)
-        
-        viewController.presenter = presenter
-        presenter.viewController = viewController
-        
-        return viewController
-    }
-    
-    func buildFireAlarmSystemScreen() -> FireAlarmSystemViewController {
-        let viewController = FireAlarmSystemViewController()
-        let presenter = FireAlarmSystemPresenter(sceneBuildManager: self)
-        
-        viewController.presenter = presenter
-        presenter.viewController = viewController
-        
-        return viewController
-    }
-    
-    func buildFireAlarmSystemResultsScreen() -> FireAlarmSystemResultsViewController {
-        let viewController = FireAlarmSystemResultsViewController()
-        let presenter = FireAlarmSystemResultsPresenter(sceneBuildManager: self)
-        
-        viewController.presenter = presenter
-        presenter.viewController = viewController
-        
-        return viewController
-    }
-    
-    func buildNotificationSystemScreen() -> NotificationSystemViewController {
-        let viewController = NotificationSystemViewController()
-        let presenter = NotificationSystemPresenter(sceneBuildManager: self)
-        
-        viewController.presenter = presenter
-        presenter.viewController = viewController
-        
-        return viewController
-    }
-    
-    func buildNotificationSystemResultsScreen() -> NotificationSystemResultsViewController {
-        let viewController = NotificationSystemResultsViewController()
-        let presenter = NotificationSystemResultsPresenter(sceneBuildManager: self)
-        
-        viewController.presenter = presenter
-        presenter.viewController = viewController
-        
-        return viewController
-    }
-    
-    func buildModuleFirefightingSystemScreen() -> ModuleFirefightingSystemViewController {
-        let viewController = ModuleFirefightingSystemViewController()
-        let presenter = ModuleFirefightingSystemPresenter(sceneBuildManager: self)
-        
-        viewController.presenter = presenter
-        presenter.viewController = viewController
-        
-        return viewController
-    }
-    
-    func buildModuleFirefightingSystemResultsScreen() -> ModuleFirefightingSystemResultsViewController {
-        let viewController = ModuleFirefightingSystemResultsViewController()
-        let presenter = ModuleFirefightingSystemResultsPresenter(sceneBuildManager: self)
-        
-        viewController.presenter = presenter
-        presenter.viewController = viewController
-        
-        return viewController
-    }
-    
-    func buildSmokeExhaustSystemScreen() -> SmokeExhaustSystemViewController {
-        let viewController = SmokeExhaustSystemViewController()
-        let presenter = SmokeExhaustSystemPresenter(sceneBuildManager: self)
-        
-        viewController.presenter = presenter
-        presenter.viewController = viewController
-        
-        return viewController
-    }
-    
-    func buildSmokeExhaustSystemResultsScreen() -> SmokeExhaustSystemResultsViewController {
-        let viewController = SmokeExhaustSystemResultsViewController()
-        let presenter = SmokeExhaustSystemResultsPresenter(sceneBuildManager: self)
-        
-        viewController.presenter = presenter
-        presenter.viewController = viewController
-        
-        return viewController
-    }
-    
-    func buildFirePumpStationScreen() -> FirePumpStationViewController {
-        let viewController = FirePumpStationViewController()
-        let presenter = FirePumpStationPresenter(sceneBuildManager: self)
-        
-        viewController.presenter = presenter
-        presenter.viewController = viewController
-        
-        return viewController
-    }
-    
-    func buildFirePumpStationResultsScreen() -> FirePumpStationResultsViewController {
-        let viewController = FirePumpStationResultsViewController()
-        let presenter = FirePumpStationResultsPresenter(sceneBuildManager: self)
+    func buildResultScreen() -> ResultViewController {
+        let viewController = ResultViewController()
+        let presenter = ResultPresenter(sceneBuildManager: self)
         
         viewController.presenter = presenter
         presenter.viewController = viewController
