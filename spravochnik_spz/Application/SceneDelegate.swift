@@ -27,10 +27,16 @@ private extension SceneDelegate {
     func setupRootViewController(windowScene: UIWindowScene) {
         let window = UIWindow(windowScene: windowScene)
         let sceneBuildManager: Buildable = SceneBuildManager()
-//        let model = NoСoefficientModel(title: "", leftButton: "", rightButton: "")
-        let model = ChoiceCoefficientModel(type: .terrain, itemIndex: 3)
+//        let model = NoСoefficientModel(title: "Уверены, что хотите выйти из аккаунта?",
+//                                       leftButton: "Закрыть",
+//                                       rightButton: "Выйти")
+        //TODO: убрать аргумент itemIndex
+        let model = ChoiceCoefficientModel(type: .typeOfNotificationSystem,
+                                           itemIndex: 3)
+//
+//        let model = ValueСoefficientModel(type: .objectArea)
         
-        let viewController = sceneBuildManager.buildAlertScreen(coefficientType: .choice(model: .init(type: .terrain, itemIndex: 5)))
+        let viewController = sceneBuildManager.buildAlertScreen(coefficientType: .choice(model: model))
         let navigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
