@@ -1,8 +1,8 @@
 //
-//  AlertCollectionViewCellModel.swift
+//  AlertCollectionViewCellM.swift
 //  spravochnik_spz
 //
-//  Created by Максим Косников on 26.03.2023.
+//  Created by Максим Косников on 08.05.2023.
 //
 
 import Foundation

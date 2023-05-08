@@ -10,6 +10,7 @@
 
 protocol AlertPresenterProtocol: AnyObject {
     func viewDidLoad()
+    func rightButtonPressed()
 }
 
 // MARK: - ALertPresenter
@@ -31,8 +32,6 @@ final class AlertPresenter {
 
 extension AlertPresenter: AlertPresenterProtocol {
     func viewDidLoad() {
-        
-        
         switch coefficientType {
         case let .clear(model):
             let title = model.title
@@ -76,6 +75,9 @@ extension AlertPresenter: AlertPresenterProtocol {
         }
     }
     
+    func rightButtonPressed() {
+        viewController?.dismiss(animated: true)
+    }
 }
 
 enum CoefficientType {

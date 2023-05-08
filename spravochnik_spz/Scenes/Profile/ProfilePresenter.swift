@@ -38,11 +38,9 @@ final class ProfilePresenter {
 
 extension ProfilePresenter: ProfilePresenterProtocol {
     func logoutButtonPressed() {
-//        let startViewController = sceneBuildManager.buildStartScreen()
-//        let rootViewController = UINavigationController.init(rootViewController: startViewController)
-//        UIApplication.shared.windows.first?.rootViewController = rootViewController
-        
-        let model = NoСoefficientModel(title: "", leftButton: "", rightButton: "")
+        let model = NoСoefficientModel(title: "Уверены, что хотите выйти из аккаунта?",
+                                       leftButton: "Выйти",
+                                       rightButton: "Закрыть")
         let vc = sceneBuildManager.buildAlertScreen(coefficientType: .clear(model: model))
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve

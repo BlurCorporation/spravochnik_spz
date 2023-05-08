@@ -84,7 +84,7 @@ final class AlertViewController: UIViewController {
         let button = CustomButton()
         button.mode = .white
         button.setTitle("Закрыть", for: .normal)
-        //button.addTarget(self, action: #selector(rightButtonPressed), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(leftButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -92,7 +92,7 @@ final class AlertViewController: UIViewController {
         let button = CustomButton()
         button.mode = .black
         button.setTitle("Сохранить", for: .normal)
-        //button.addTarget(self, action: #selector(leftButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(rightButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -125,6 +125,12 @@ final class AlertViewController: UIViewController {
     }
     // MARK: - Action
     
+    @objc
+    func rightButtonPressed() {
+        rightButton.pushAnimate { [weak self] in
+            self?.presenter?.rightButtonPressed()
+        }
+    }
     
 }
 

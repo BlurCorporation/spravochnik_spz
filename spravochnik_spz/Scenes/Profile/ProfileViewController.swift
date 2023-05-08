@@ -111,37 +111,17 @@ final class ProfileViewController: UIViewController {
         return stackView
     }()
     
-    private let customView: CustomAlert = {
-        let view = CustomAlert(type: .clear)
-        view.setupClearView(title: "123", leftButtonTitle: "213", rightButtonTitle: "123")
-        return view
-    }()
-    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewController()
-        
-        title = "123"
-        customView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
-//        let customView = CustomAlert()//frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        
-//        UIApplication.shared.windows.first?.addSubview(customView)
-        
-        
-//        customView.setupClearView(title: "123", leftButtonTitle: "213", rightButtonTitle: "123")
-        
-        
-//        customView.leftButton.addTarget(self, action: #selector(close), for: .touchUpInside)
-//        self.view.addSubview(customView)
     }
     
     // MARK: - Actions
     
     @objc private func logoutButtonPressed() {
         presenter?.logoutButtonPressed()
-        print("123")
     }
     
     @objc private func themeButtonPressed() {
@@ -206,12 +186,6 @@ private extension ProfileViewController {
         let logoImageSize = CGFloat(80)
         
         NSLayoutConstraint.activate([
-//            customView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            customView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            customView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-//            customView.topAnchor.constraint(equalTo: view.topAnchor),
-
-            
             logoutButton.heightAnchor.constraint(equalToConstant: logoutButtonSize),
             logoutButton.widthAnchor.constraint(equalToConstant: logoutButtonSize),
             
