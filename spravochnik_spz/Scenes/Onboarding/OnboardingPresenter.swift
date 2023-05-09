@@ -11,20 +11,23 @@ import UIKit
 protocol OnboardingPresenterProtocol: AnyObject {
     func getNextVC()
     func setData()
+    func nextScreenButtonTaped(currentPage: Int)
 }
 
 // MARK: - OnboardingPresenter
 class OnboardingPresenter {
-    weak var viewController: OnboardingViewProtocol2?
+    weak var viewController: OnboardingViewProtocol?
     
     // MARK: - PrivateProperties
     private let sceneBuildManager: Buildable
-    private var onboardingModel = [OnboardingModel]()
+    private var onboardingModel: [OnboardingModel]
     
     // MARK: - Initializer
-    init(viewController: OnboardingViewProtocol2,
+    init(viewController: OnboardingViewProtocol,
+         onboardingModel: [OnboardingModel],
          sceneBuildManager: Buildable) {
         self.viewController = viewController
+        self.onboardingModel = onboardingModel
         self.sceneBuildManager = sceneBuildManager
     }
 }
@@ -32,16 +35,25 @@ class OnboardingPresenter {
 //MARK: - OnboardingPresenterExtension
 extension OnboardingPresenter: OnboardingPresenterProtocol {
     func setData() {
-        let model = [OnboardingModel(image: Constants.Images.onboarding1,
-                                     title: Constants.TextLabels.onboarding11,
-                                     text: Constants.TextLabels.onboarding12),
-                     OnboardingModel(image: Constants.Images.onboarding2,
-                                     title: Constants.TextLabels.onboarding21,
-                                     text: Constants.TextLabels.onboarding22),
-                     OnboardingModel(image: Constants.Images.onboarding3,
-                                     title: Constants.TextLabels.onboarding31,
-                                     text: Constants.TextLabels.onboarding32)]
+        let model = [OnboardingModel(image: Model.onbording1.image,
+                                     title: Model.onbording1.title,
+                                     text: Model.onbording1.text),
+                     OnboardingModel(image: Model.onbording2.image,
+                                     title: Model.onbording2.title,
+                                     text: Model.onbording2.text),
+                     OnboardingModel(image: Model.onbording3.image,
+                                     title: Model.onbording3.title,
+                                     text: Model.onbording3.text)]
         viewController?.setData(onboardingData: model)
+    }
+    
+    func nextScreenButtonTaped(currentPage: Int) {
+        if currentPage >= 3 {
+            getNextVC()
+            return
+        }
+        let indexPath = IndexPath(row: currentPage, section: 0)
+        viewController?.scrollToNextScreen(indexPath: indexPath)
     }
     
     func getNextVC() {

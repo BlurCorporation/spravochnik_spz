@@ -7,8 +7,9 @@
 
 import UIKit
 
-protocol OnboardingViewProtocol2: UIViewController {
+protocol OnboardingViewProtocol: UIViewController {
     func setData(onboardingData: [OnboardingModel])
+    func scrollToNextScreen(indexPath: IndexPath)
 }
 
 class OnboardingView: UIViewController {
@@ -35,13 +36,10 @@ class OnboardingView: UIViewController {
         pageControl.currentPageIndicatorTintColor = Constants.Colors.black
         pageControl.pageIndicatorTintColor = Constants.Colors.grey
         pageControl.preferredIndicatorImage = Constants.Images.pgLineGray
-        //        pageControl.addTarget(self,
-        //                            action: #selector(pgControlChanged),
-        //                            for: .valueChanged)
         return pageControl
     }()
     
-    private let nextButton: CustomButton = {
+    private lazy var nextButton: CustomButton = {
         let button = CustomButton(mode: .black)
         button.setTitle(Constants.TextButtons.onboardingNextButton,
                         for: .normal)
@@ -51,7 +49,7 @@ class OnboardingView: UIViewController {
         return button
     }()
     
-    private let skipButton: CustomButton = {
+    private lazy var skipButton: CustomButton = {
         let button = CustomButton(mode: .transparent)
         button.setTitle(Constants.TextButtons.onboardingSkipButton,
                         for: .normal)
@@ -64,7 +62,7 @@ class OnboardingView: UIViewController {
     // MARK: - Properties
     var presenter: OnboardingPresenterProtocol?
     
-    private var carouselData = [OnboardingModel]()
+    private var onboardingData = [OnboardingModel]()
     
     private var currentPage = 0 {
         didSet {
@@ -90,27 +88,20 @@ class OnboardingView: UIViewController {
     
     @objc private func buttonClick() {
         currentPage += 1
-        if currentPage >= carouselData.count {
-            presenter?.getNextVC()
-            return
-        }
-        let indexPath = IndexPath(row: currentPage, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: .right, animated: true)
-        collectionView.reloadData()
+        presenter?.nextScreenButtonTaped(currentPage: currentPage)
     }
-    
-    //  @objc private func pgControlChanged() {
-    //    if currentPage >= carouselData.count {
-    //        presenter?.getNextVC()
-    //        return
-    //    }
-    //  }
 }
 
 // MARK: - CarouselViewDelegate
-extension OnboardingView: OnboardingViewProtocol2 {
+extension OnboardingView: OnboardingViewProtocol {
     func setData(onboardingData: [OnboardingModel]) {
-        self.carouselData = onboardingData
+        self.onboardingData = onboardingData
+        pageControl.numberOfPages = self.onboardingData.count
+        collectionView.reloadData()
+    }
+    
+    func scrollToNextScreen(indexPath: IndexPath) {
+        collectionView.scrollToItem(at: indexPath, at: .right, animated: true)
         collectionView.reloadData()
     }
 }
@@ -118,15 +109,13 @@ extension OnboardingView: OnboardingViewProtocol2 {
 // MARK: - UICollectionViewDataSource
 extension OnboardingView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        pageControl.numberOfPages = carouselData.count
-        pageControl.isHidden = !(carouselData.count > 1)
-        return carouselData.count
+        return onboardingData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarouselCell.cellId,
                                                             for: indexPath) as? CarouselCell else { return UICollectionViewCell() }
-        let model = carouselData[indexPath.row]
+        let model = onboardingData[indexPath.row]
         cell.configure(model: model)
         return cell
     }
@@ -134,11 +123,8 @@ extension OnboardingView: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 extension OnboardingView: UICollectionViewDelegate {
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let witdh = scrollView.frame.width - (scrollView.contentInset.left * 2)
-        let index = scrollView.contentOffset.x / witdh
-        let roundedIndex = round(index)
-        roundedIndex.isNaN ? (currentPage = 0) : (currentPage = Int(roundedIndex))
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        currentPage = Int(scrollView.contentOffset.x / UIScreen.main.bounds.width)
     }
 }
 
@@ -167,18 +153,24 @@ private extension OnboardingView {
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            pageControl.widthAnchor.constraint(equalToConstant: 300),
             pageControl.heightAnchor.constraint(equalToConstant: Constants.Constraints.authButtonHeight),
             
-            nextButton.topAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: Constants.Constraints.sideOffset),
-            nextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.Constraints.sideOffset),
-            nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.Constraints.sideOffset),
+            nextButton.topAnchor.constraint(equalTo: pageControl.bottomAnchor,
+                                            constant: Constants.Constraints.sideOffset),
+            nextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor,
+                                                constant: Constants.Constraints.sideOffset),
+            nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor,
+                                                 constant: -Constants.Constraints.sideOffset),
             nextButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.authButtonHeight),
             
-            skipButton.topAnchor.constraint(equalTo: nextButton.bottomAnchor,constant: Constants.Constraints.sideOffset),
-            skipButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Constants.Constraints.sideOffset),
-            skipButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.Constraints.sideOffset),
-            skipButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.Constraints.sideOffset),
+            skipButton.topAnchor.constraint(equalTo: nextButton.bottomAnchor,
+                                            constant: Constants.Constraints.sideOffset),
+            skipButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+                                               constant: -Constants.Constraints.sideOffset),
+            skipButton.leadingAnchor.constraint(equalTo: view.leadingAnchor,
+                                                constant: Constants.Constraints.sideOffset),
+            skipButton.trailingAnchor.constraint(equalTo: view.trailingAnchor,
+                                                 constant: -Constants.Constraints.sideOffset),
             skipButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.authButtonHeight),
         ])
     }

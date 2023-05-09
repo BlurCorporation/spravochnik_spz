@@ -20,13 +20,16 @@ class CarouselCell: UICollectionViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.font = Constants.Fonts.onboardingFont1
         label.textAlignment = .center
         return label
     }()
     
-    private lazy var textLabel: UILabel = {
+    private let textLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.font = Constants.Fonts.onboardingFont2
+        label.textColor = Constants.Colors.lightGrey
         label.textAlignment = .center
         return label
     }()
@@ -57,15 +60,22 @@ private extension CarouselCell {
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 250/375),
+            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor,
+                                              multiplier: 250/375),
             
-            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            titleLabel.topAnchor.constraint(equalTo: centerYAnchor,
+                                            constant: Constants.Constraints.lowerOffset),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor,
+                                                constant: Constants.Constraints.lowerOffset),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor,
+                                                 constant: -Constants.Constraints.lowerOffset),
             
-            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
-            textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
+                                           constant: Constants.Constraints.sideOffset),
+            textLabel.leadingAnchor.constraint(equalTo: leadingAnchor,
+                                               constant: Constants.Constraints.lowerOffset),
+            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor,
+                                                constant: -Constants.Constraints.lowerOffset)
         ])
     }
 }
