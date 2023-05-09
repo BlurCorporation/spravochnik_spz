@@ -12,8 +12,6 @@ class CarouselCell: UICollectionViewCell {
     // MARK: - SubViews
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        let image = Constants.Images.onboarding1
-        imageView.image = image
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
@@ -21,7 +19,6 @@ class CarouselCell: UICollectionViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.TextLabels.onboarding11
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -29,7 +26,6 @@ class CarouselCell: UICollectionViewCell {
     
     private lazy var textLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.TextLabels.onboarding12
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -53,12 +49,15 @@ class CarouselCell: UICollectionViewCell {
 private extension CarouselCell {
     func setupUI() {
         backgroundColor = .clear
-        addSubviews(imageView, titleLabel, textLabel)
+        addSubviews(imageView,
+                    titleLabel,
+                    textLabel)
         
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 250/375),
             
             titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
@@ -73,9 +72,9 @@ private extension CarouselCell {
 
 // MARK: - Public
 extension CarouselCell {
-    public func configure(image: UIImage?, title: String, text: String) {
-        imageView.image = image
-        titleLabel.text = title
-        textLabel.text = text
+    public func configure(model: OnboardingModel) {
+        imageView.image = model.image
+        titleLabel.text = model.title
+        textLabel.text = model.text
     }
 }
