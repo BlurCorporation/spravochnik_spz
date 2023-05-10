@@ -36,6 +36,8 @@ final class AlertViewController: UIViewController {
     private var collectionViewAxis = CollectionViewAxis.horizontal
     private var collectionViewHeight: CGFloat = 0
     private var dataSource = [String]()
+    var previousSelected : IndexPath?
+    var currentSelected : Int?
     
     private let blurView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialLight)
@@ -191,10 +193,27 @@ extension AlertViewController: UICollectionViewDataSource {
         return dataSource.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        currentSelected = indexPath.row
+        previousSelected = indexPath
+        
+        // For reload the selected cell
+        self.choiceCollectionView.reloadData()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell",
                                                       for: indexPath) as! AlertCollectionViewCell
         cell.label.text = dataSource[indexPath.row]
+        
+        if currentSelected != nil && currentSelected == indexPath.row {
+            cell.label.textColor = Constants.Colors.dark
+            cell.layer.borderColor = Constants.Colors.dark.cgColor
+        } else {
+            cell.label.textColor = Constants.Colors.grayCellColor
+            cell.layer.borderColor = Constants.Colors.grayCellColor.cgColor
+        }
+        
         return cell
     }
 }

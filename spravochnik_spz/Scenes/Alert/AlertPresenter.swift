@@ -55,10 +55,6 @@ extension AlertPresenter: AlertPresenterProtocol {
             viewController?.updateUIForChoice(title: title,
                                               axis: axis,
                                               numOfItems: 0)
-            
-        //TODO: - возможно использовать другой coefficientType, чтобы не было лишнего кейса в свитче
-        default:
-            break
         }
     }
     
@@ -76,7 +72,9 @@ extension AlertPresenter: AlertPresenterProtocol {
     }
     
     func rightButtonPressed() {
-        viewController?.dismiss(animated: true)
+        viewController?.dismiss(animated: true) {
+            
+        }
     }
 }
 
@@ -84,5 +82,4 @@ enum CoefficientType {
     case clear(model: NoСoefficientModel)
     case value(model: ValueСoefficientModel)
     case choice(model: ChoiceCoefficientModel)
-    case defaultValue(model: DefaultCoefficientValueModel)
 }

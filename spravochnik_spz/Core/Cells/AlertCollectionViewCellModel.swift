@@ -9,4 +9,5 @@ import Foundation
 
 struct AlertCollectionViewCellModel {
     var title: String
+    var actionHandler: (() -> Void)?
 }
