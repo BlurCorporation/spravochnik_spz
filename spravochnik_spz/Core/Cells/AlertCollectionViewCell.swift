@@ -17,7 +17,7 @@ final class AlertCollectionViewCell: UICollectionViewCell {
     
     public let label: PaddingLabel = {
         let label = PaddingLabel()
-        label.font = Constants.Fonts.mainCellFont
+        label.font = Constants.Fonts.h4
         label.textColor = .black
         label.numberOfLines = .zero
         label.textAlignment = .center
