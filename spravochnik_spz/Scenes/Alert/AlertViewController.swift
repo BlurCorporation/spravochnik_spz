@@ -57,7 +57,7 @@ final class AlertViewController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = Constants.Fonts.customButtonFont
+        label.font = Constants.Fonts.h1
         label.numberOfLines = 0
         return label
     }()
