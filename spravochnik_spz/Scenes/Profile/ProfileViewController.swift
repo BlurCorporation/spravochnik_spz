@@ -17,6 +17,8 @@ final class ProfileViewController: UIViewController {
     var presenter: ProfilePresenterProtocol?
     
     // MARK: - PrivateProperties
+
+    ///
     private lazy var logoutButton: UIButton = {
         let button = UIButton()
         let image = Constants.Images.logoutImage

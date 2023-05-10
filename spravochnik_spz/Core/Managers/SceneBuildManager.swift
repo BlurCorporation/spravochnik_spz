@@ -15,6 +15,7 @@ protocol Buildable {
     func buildMainScreen() -> MainViewController
     func buildSavedCalculationsScreen() -> SavedCalculationsViewController
     func buildProfileScreen() -> ProfileViewController
+    func buildAlertScreen(coefficientType: CoefficientType) -> AlertViewController
     func buildCalculationScreen(calculationType: СalculationType) -> CalculationViewController
     func buildResultScreen() -> ResultViewController
 }
@@ -122,6 +123,16 @@ extension SceneBuildManager: Buildable {
     func buildResultScreen() -> ResultViewController {
         let viewController = ResultViewController()
         let presenter = ResultPresenter(sceneBuildManager: self)
+        
+        viewController.presenter = presenter
+        presenter.viewController = viewController
+        
+        return viewController
+    }
+    
+    func buildAlertScreen(coefficientType: CoefficientType) -> AlertViewController {
+        let viewController = AlertViewController()
+        let presenter = AlertPresenter(coefficientType: coefficientType)
         
         viewController.presenter = presenter
         presenter.viewController = viewController
