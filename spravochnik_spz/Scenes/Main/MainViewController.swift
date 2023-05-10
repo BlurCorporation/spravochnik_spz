@@ -23,7 +23,7 @@ final class MainViewController: UIViewController {
     private let headerLabel: UILabel = {
         let label = UILabel()
         label.text = Constants.TextLabels.mainHeaderLabelText
-        label.font = Constants.Fonts.bigTableHeaderFont
+        label.font = Constants.Fonts.h2
         label.numberOfLines = .zero
         label.textAlignment = .left
         return label

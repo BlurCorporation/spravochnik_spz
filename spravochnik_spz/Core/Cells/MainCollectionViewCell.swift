@@ -19,7 +19,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
     
     private let titleLabel: PaddingLabel = {
         let label = PaddingLabel()
-        label.font = Constants.Fonts.mainCellFont
+        label.font = Constants.Fonts.h4
         label.textColor = .white
         label.numberOfLines = .zero
         return label

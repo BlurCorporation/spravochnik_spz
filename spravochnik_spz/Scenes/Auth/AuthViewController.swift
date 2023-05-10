@@ -78,7 +78,7 @@ final class AuthViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.text = Constants.TextLabels.infoWithLinksLabelText
-        label.font = Constants.Fonts.infoWithLinksLabelFont
+        label.font = Constants.Fonts.b6
         label.textColor = Constants.Colors.lightGray
         label.numberOfLines = 0
         return label
@@ -90,7 +90,7 @@ final class AuthViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.text = Constants.TextLabels.authLabelText
-        label.font = Constants.Fonts.authLabelFont
+        label.font = Constants.Fonts.b4
         label.textColor = .black
         label.numberOfLines = 0
         return label
@@ -161,7 +161,7 @@ final class AuthViewController: UIViewController {
     private let infoBottomLabel: UILabel = {
         let label = UILabel()
         label.text = Constants.TextLabels.infoRegisterBottomLabelText
-        label.font = Constants.Fonts.infoWithLinksLabelFont
+        label.font = Constants.Fonts.b6
         label.textColor = Constants.Colors.lightGray
         return label
     }()
@@ -170,7 +170,7 @@ final class AuthViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitleColor(UIColor.black,
                              for: .normal)
-        button.titleLabel?.font = Constants.Fonts.infoWithLinksLabelFont
+        button.titleLabel?.font = Constants.Fonts.b6
         button.addTarget(self,
                          action: #selector(loginButtonPressed),
                          for: .touchUpInside)
@@ -182,7 +182,7 @@ final class AuthViewController: UIViewController {
         button.setTitleColor(UIColor.black,
                              for: .normal)
         button.contentHorizontalAlignment = .left
-        button.titleLabel?.font = Constants.Fonts.infoPasswordFont
+        button.titleLabel?.font = Constants.Fonts.b5
         button.setTitle(Constants.TextButtons.forgotPassword,
                         for: .normal)
         button.addTarget(self,
@@ -282,7 +282,7 @@ private extension AuthViewController {
     }
     
     func setupNavigationController() {
-        let attributes = [NSAttributedString.Key.font: Constants.Fonts.titleNavBarFont ?? .systemFont(ofSize: 50)]
+        let attributes = [NSAttributedString.Key.font: Constants.Fonts.h4 ?? .systemFont(ofSize: 50)]
         UINavigationBar.appearance().titleTextAttributes = attributes
         navigationItem.setHidesBackButton(true,
                                           animated: true)

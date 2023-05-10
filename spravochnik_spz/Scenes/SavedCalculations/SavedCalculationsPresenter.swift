@@ -36,7 +36,7 @@ extension SavedCalculationsTablePresenter: SavedCalculationsTablePresenterProtoc
     func viewDidLoad() {
         self.viewController?.update(dataSource: self.makeData())
     }
-
+    
     
     private func makeData()-> [SavedCalculationsCellModelProtocol] {
         var cells: [SavedCalculationsCellModelProtocol] = [SavedCalculationsCellModel]()
@@ -56,7 +56,6 @@ extension SavedCalculationsTablePresenter: SavedCalculationsTablePresenterProtoc
         return cells
     }
     
-
     func openCell(text: String) {
         switch text {
 //        case "Пожарная сигнализация":

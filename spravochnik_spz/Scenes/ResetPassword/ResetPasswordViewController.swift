@@ -35,7 +35,7 @@ final class ResetPasswordViewController: UIViewController {
     private let infoPasswordLabel: UILabel = {
         let label = UILabel()
         label.text = Constants.TextLabels.infoPasswordLabelText
-        label.font = Constants.Fonts.infoPasswordFont
+        label.font = Constants.Fonts.b5
         label.textColor = Constants.Colors.darkGray
         label.numberOfLines = 0
         return label
@@ -62,7 +62,7 @@ final class ResetPasswordViewController: UIViewController {
     private let infoEmailLabel: UILabel = {
         let label = UILabel()
         label.text = Constants.TextLabels.infoEmailLabelText
-        label.font = Constants.Fonts.infoPasswordFont
+        label.font = Constants.Fonts.b5
         label.textColor = Constants.Colors.darkGray
         label.numberOfLines = 0
         return label
@@ -183,7 +183,7 @@ private extension ResetPasswordViewController {
     }
     
     func setupNavigationController() {
-        let attributes = [NSAttributedString.Key.font: Constants.Fonts.titleNavBarFont ?? .systemFont(ofSize: 50)]
+        let attributes = [NSAttributedString.Key.font: Constants.Fonts.h4 ?? .systemFont(ofSize: 50)]
         UINavigationBar.appearance().titleTextAttributes = attributes
         navigationItem.setHidesBackButton(true,
                                           animated: true)

@@ -21,7 +21,7 @@ final class SavedCalculationsUITableViewCell: UITableViewCell {
     
     private let systemLabel: PaddingLabel = {
         let label = PaddingLabel()
-        label.font = Constants.Fonts.cellSystemLabel
+        label.font = Constants.Fonts.b5
         label.textColor = Constants.Colors.system
         return label
     }()
@@ -41,7 +41,7 @@ final class SavedCalculationsUITableViewCell: UITableViewCell {
     
     private let addressLabel : PaddingLabel = {
         let label = PaddingLabel()
-        label.font = Constants.Fonts.cellAddressLabel
+        label.font = Constants.Fonts.h4
         label.textColor = Constants.Colors.address
         label.contentMode = .scaleAspectFill
         label.numberOfLines = 0
@@ -59,7 +59,7 @@ final class SavedCalculationsUITableViewCell: UITableViewCell {
     
     private let dateLabel: PaddingLabel = {
         let label = PaddingLabel()
-        label.font = Constants.Fonts.cellDateLabel
+        label.font = Constants.Fonts.b3
         label.textColor = Constants.Colors.date
         return label
     }()
@@ -81,7 +81,7 @@ final class SavedCalculationsUITableViewCell: UITableViewCell {
     
     private let stagesLabel: PaddingLabel = {
         let label = PaddingLabel()
-        label.font = Constants.Fonts.cellStagesLabel
+        label.font = Constants.Fonts.b3
         label.textColor = Constants.Colors.stages
         return label
     }()
@@ -110,7 +110,7 @@ final class SavedCalculationsUITableViewCell: UITableViewCell {
     
     private let costLabel: PaddingLabel = {
         let label = PaddingLabel()
-        label.font = Constants.Fonts.cellCostLabel
+        label.font = Constants.Fonts.b3
         label.textColor = Constants.Colors.cost
         label.layer.borderWidth = Constants.Sizes.borderWidth
         label.layer.cornerRadius = Constants.Sizes.costCornerRadius

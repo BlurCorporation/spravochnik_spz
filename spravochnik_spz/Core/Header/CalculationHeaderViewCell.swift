@@ -35,7 +35,7 @@ final class CalculationHeaderViewCell: UITableViewHeaderFooterView {
     
     private let headerViewLabel: PaddingLabel = {
         let label = PaddingLabel()
-        label.font = Constants.Fonts.bigTableHeaderFont
+        label.font = Constants.Fonts.h2
         label.numberOfLines = .zero
         return label
     }()
