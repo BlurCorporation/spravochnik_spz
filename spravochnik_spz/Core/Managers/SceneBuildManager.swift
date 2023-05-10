@@ -30,7 +30,7 @@ protocol Buildable {
     func buildFirePumpStationResultsScreen() -> FirePumpStationResultsViewController
     
     
-    func buildOnboardingScreen() -> OnboardingView
+    func buildOnboardingScreen() -> OnboardingViewController
 }
 
 final class SceneBuildManager {}
@@ -76,9 +76,9 @@ extension SceneBuildManager: Buildable {
         return viewController
     }
     
-    func buildOnboardingScreen() -> OnboardingView {
-        let viewController = OnboardingView()
-        let onboardingModel = [OnboardingModel]()
+    func buildOnboardingScreen() -> OnboardingViewController {
+        let viewController = OnboardingViewController()
+        let onboardingModel = [OnboardingViewModel]()
         let presenter = OnboardingPresenter(viewController: viewController,
                                             onboardingModel: onboardingModel,
                                             sceneBuildManager: self)

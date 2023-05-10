@@ -1,29 +1,50 @@
 //
-//  OnboardingViewController.swift
+//  OnboardingView.swift
 //  spravochnik_spz
 //
-//  Created by Swift Learning on 22.01.2023.
+//  Created by Natalia Shevaldina on 23.03.2023.
 //
 
 import UIKit
 
-// MARK: - OnboardingViewProtocol
+protocol OnboardingViewProtocol: UIViewController {
+    func setData(onboardingData: [OnboardingViewModelProtocol])
+    func scrollToNextScreen(indexPath: IndexPath)
+}
 
-protocol OnboardingViewProtocol: UIViewController {}
-
-// MARK: - OnboardingViewController
-
-final class OnboardingViewController: UIViewController {
-    var presenter: OnboardingPresenterProtocol?
+class OnboardingViewController: UIViewController {
     
-    // MARK: - PrivateProperties
+    // MARK: - Subviews
+    private let collectionView: UICollectionView = {
+        let collectionLayout = UICollectionViewFlowLayout()
+        collectionLayout.scrollDirection = .horizontal
+        collectionLayout.itemSize = .init(width: UIScreen.main.bounds.width,
+                                          height: UIScreen.main.bounds.height)
+        collectionLayout.minimumLineSpacing = 0
+        let collection = UICollectionView(frame: .zero,
+                                          collectionViewLayout: collectionLayout)
+        collection.showsHorizontalScrollIndicator = false
+        collection.isPagingEnabled = true
+        collection.contentInsetAdjustmentBehavior = .never
+        collection.register(OnboardingCollectionViewCell.self,
+                            forCellWithReuseIdentifier: OnboardingCollectionViewCell.cellId)
+        return collection
+    }()
+    
+    private let pageControl: UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.currentPageIndicatorTintColor = Constants.Colors.black
+        pageControl.pageIndicatorTintColor = Constants.Colors.grey
+        pageControl.preferredIndicatorImage = Constants.Images.pgLineGray
+        return pageControl
+    }()
     
     private lazy var nextButton: CustomButton = {
         let button = CustomButton(mode: .black)
         button.setTitle(Constants.TextButtons.onboardingNextButton,
                         for: .normal)
         button.addTarget(self,
-                         action: #selector(buttonClick),
+                         action: #selector(nextButtonAction),
                          for: .touchUpInside)
         return button
     }()
@@ -33,210 +54,127 @@ final class OnboardingViewController: UIViewController {
         button.setTitle(Constants.TextButtons.onboardingSkipButton,
                         for: .normal)
         button.addTarget(self,
-                         action: #selector(closeClick),
+                         action: #selector(skipButtonAction),
                          for: .touchUpInside)
         return button
     }()
     
-    private let buttonsStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = Constants.Constraints.buttonsSpasing
-        stackView.distribution = .fillEqually
-        return stackView
-    }()
+    private var buttonStackView = UIStackView()
+    private var commonStackView = UIStackView()
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = Constants.Fonts.onboardingFont1
-        label.textColor = Constants.Colors.black
-        return label
-    }()
+    // MARK: - Properties
+    var presenter: OnboardingPresenterProtocol?
     
-    private lazy var textLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.font = Constants.Fonts.onboardingFont2
-        label.textColor = Constants.Colors.grey
-        return label
-    }()
+    private var onboardingData: [OnboardingViewModelProtocol] = [OnboardingViewModel]()
     
-    private lazy var imageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage())
-        imageView.contentMode = .scaleToFill
-        return imageView
-    }()
+    private var currentPage = 0 {
+        didSet {
+            pageControl.currentPage = currentPage
+        }
+    }
     
-    private lazy var pgControl: UIPageControl = {
-        let pgControl = UIPageControl()
-        pgControl.currentPageIndicatorTintColor = Constants.Colors.black
-        pgControl.pageIndicatorTintColor = Constants.Colors.grey
-        pgControl.preferredIndicatorImage = Constants.Images.pgLineGray
-        pgControl.currentPage = 0
-        pgControl.numberOfPages = 3
-        pgControl.addTarget(self,
-                            action: #selector(pgControlChanged),
-                            for: .valueChanged)
-        return pgControl
-    }()
-    
-    let scrollView = UIScrollView()
-    var scrollWidth: CGFloat! = 0.0
-    var scrollHeight: CGFloat! = 0.0
-    
-    // MARK: - LifeCycle
-    
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.layoutIfNeeded()
-        setupViewController()
-        setData()
+        navigationController?.navigationBar.isHidden = true
+        setupUI()
     }
     
-    override func viewDidLayoutSubviews() {
-        scrollWidth = scrollView.frame.size.width
-        scrollHeight = scrollView.frame.size.height
-        makeASlider()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presenter?.viewDidLoad()
     }
     
-    @objc private func closeClick() {
+    @objc private func skipButtonAction() {
         presenter?.getNextVC()
     }
     
-    @objc private func pgControlChanged() {
-        presenter?.changeScreen(toIndex: pgControl.currentPage)
-        setData()
-    }
-    
-    @objc private func buttonClick() {
-        guard let presenter = presenter else { return }
-        presenter.changeScreen(toIndex: pgControl.currentPage + 1)
-        if presenter.indexForScreen < 3 {
-            pgControl.currentPage = presenter.indexForScreen
-        }
-        scrollView.setContentOffset(CGPoint(x: Int(view.frame.size.width) * pgControl.currentPage, y: 0), animated: true)
-        setData()
+    @objc private func nextButtonAction() {
+        currentPage += 1
+        presenter?.nextScreenButtonTaped(currentPage: currentPage)
     }
 }
 
-// MARK: - OnboardingViewProtocol Impl
-
+// MARK: - OnboardingViewProtocol
 extension OnboardingViewController: OnboardingViewProtocol {
-    func setData() {
-        imageView.image = presenter?.image
-        titleLabel.text = presenter?.text1
-        textLabel.text = presenter?.text2
-        nextButton.setTitle(presenter?.textNextButton, for: .normal)
-        //тут надо покрутить, как скрыть кнопку "Продолжить" бескостыльно
-        
-        print("setData")
+    func setData(onboardingData: [OnboardingViewModelProtocol]) {
+        self.onboardingData = onboardingData
+        pageControl.numberOfPages = self.onboardingData.count
+        collectionView.reloadData()
+    }
+    
+    func scrollToNextScreen(indexPath: IndexPath) {
+        collectionView.scrollToItem(at: indexPath,
+                                    at: .right,
+                                    animated: true)
+        collectionView.reloadData()
     }
 }
 
-// MARK: - PrivateMethods
-
-extension OnboardingViewController: UIScrollViewDelegate {
-    func makeASlider() {
-        var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-        for index in 0..<3 {
-            frame.origin.x = scrollWidth * CGFloat(index)
-            frame.size = CGSize(width: scrollWidth, height: scrollHeight)
-            
-            presenter?.changeScreen(toIndex: index)
-            self.setData()
-            
-            let slide = UIView(frame: frame)
-            slide.addSubview(imageView)
-            slide.addSubview(titleLabel)
-            slide.addSubview(textLabel)
-            scrollView.addSubview(slide)
-        }
-        
-        scrollView.contentSize = CGSize(width: scrollWidth * 3, height: scrollHeight)
-        print("makeASlider")
+// MARK: - UICollectionViewDataSource
+extension OnboardingViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
+        return onboardingData.count
     }
     
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        pgControl.currentPage = Int(floorf(Float(scrollView.contentOffset.x / scrollView.frame.size.width)))
-//    }
-    
-    func setupViewController() {
-        view.backgroundColor = .systemBackground
-        presenter?.getImage()
-        presenter?.getText()
-        addSubViews()
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCollectionViewCell.cellId,
+                                                            for: indexPath) as? OnboardingCollectionViewCell else { return UICollectionViewCell() }
+        let model = onboardingData[indexPath.row]
+        cell.configure(model: model)
+        return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension OnboardingViewController: UICollectionViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        currentPage = Int(scrollView.contentOffset.x / UIScreen.main.bounds.width)
+    }
+}
+
+// MARK: - Private
+private extension OnboardingViewController {
+    func setupUI() {
+        setupStackViews()
+        setupViews()
         setupConstraints()
     }
     
-    func addSubViews() {
-        scrollView.delegate = self
-        scrollView.isPagingEnabled = true
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.contentSize.height = 1.0
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        
-//        makeASlider()
-        buttonsStackView.addArrangedSubviews(nextButton,
-                                             skipButton)
-//        view.addSubviews(imageView,
-//                         titleLabel,
-//                         textLabel,
-//                         pgControl,
-//                         buttonsStackView)
-        
-        view.addSubviews(scrollView,
-                         pgControl,
-                         buttonsStackView)
+    func setupStackViews() {
+        buttonStackView = .init(arrangedSubviews: [nextButton,
+                                                   skipButton],
+                                axis: .vertical,
+                                spacing: Constants.Constraints.lowerOffset)
+        commonStackView = .init(arrangedSubviews: [pageControl,
+                                                   buttonStackView],
+                                axis: .vertical,
+                                spacing: Constants.Constraints.lowerOffset)
+    }
+    
+    func setupViews() {
+        view.backgroundColor = .systemBackground
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        view.addSubviews(collectionView,
+                         commonStackView)
     }
     
     func setupConstraints() {
-//        let labelButton = CGFloat(120)
-        let imagesHeight = CGFloat(300)
-        
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
-            
-            imageView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: imagesHeight),
-            imageView.widthAnchor.constraint(equalToConstant: view.frame.width),
-//
-//            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor,
-//                                                 constant: Constants.Constraints.sideOffset),
-//            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor,
-//                                                 constant: -Constants.Constraints.sideOffset),
-//            titleLabel.bottomAnchor.constraint(equalTo: textLabel.topAnchor,
-//                                              constant: -Constants.Constraints.sideOffset),
-//
-//            textLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor,
-//                                                 constant: Constants.Constraints.sideOffset),
-//            textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor,
-//                                                 constant: -Constants.Constraints.sideOffset),
-//            textLabel.topAnchor.constraint(equalTo: pgControl.topAnchor,
-//                                              constant: -labelButton),
-//
-            pgControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            pgControl.bottomAnchor.constraint(equalTo: buttonsStackView.topAnchor,
-                                              constant: -Constants.Constraints.sideOffset),
-
-//            nextButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.authButtonHeight),
-//            skipButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.authButtonHeight),
-//
-            buttonsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor,
-                                                      constant: Constants.Constraints.sideOffset),
-            buttonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor,
-                                                       constant: -Constants.Constraints.sideOffset),
-            buttonsStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor,
-                                                     constant: -Constants.Constraints.sideOffset)
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            nextButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.authButtonHeight),
+            commonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor,
+                                                     constant: Constants.Constraints.sideOffset),
+            commonStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor,
+                                                      constant: -Constants.Constraints.sideOffset),
+            commonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+                                                    constant: -Constants.Constraints.sideOffset)
         ])
     }
 }

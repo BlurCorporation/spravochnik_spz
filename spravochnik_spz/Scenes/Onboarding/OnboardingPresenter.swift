@@ -9,8 +9,8 @@ import UIKit
 
 // MARK: - OnboardingPresenterProtocol
 protocol OnboardingPresenterProtocol: AnyObject {
+    func viewDidLoad()
     func getNextVC()
-    func setData()
     func nextScreenButtonTaped(currentPage: Int)
 }
 
@@ -20,11 +20,11 @@ class OnboardingPresenter {
     
     // MARK: - PrivateProperties
     private let sceneBuildManager: Buildable
-    private var onboardingModel: [OnboardingModel]
+    private var onboardingModel: [OnboardingViewModel]
     
     // MARK: - Initializer
     init(viewController: OnboardingViewProtocol,
-         onboardingModel: [OnboardingModel],
+         onboardingModel: [OnboardingViewModel],
          sceneBuildManager: Buildable) {
         self.viewController = viewController
         self.onboardingModel = onboardingModel
@@ -34,17 +34,8 @@ class OnboardingPresenter {
 
 //MARK: - OnboardingPresenterExtension
 extension OnboardingPresenter: OnboardingPresenterProtocol {
-    func setData() {
-        let model = [OnboardingModel(image: Model.onbording1.image,
-                                     title: Model.onbording1.title,
-                                     text: Model.onbording1.text),
-                     OnboardingModel(image: Model.onbording2.image,
-                                     title: Model.onbording2.title,
-                                     text: Model.onbording2.text),
-                     OnboardingModel(image: Model.onbording3.image,
-                                     title: Model.onbording3.title,
-                                     text: Model.onbording3.text)]
-        viewController?.setData(onboardingData: model)
+    func viewDidLoad() {
+        viewController?.setData(onboardingData: self.setData())
     }
     
     func nextScreenButtonTaped(currentPage: Int) {
@@ -52,7 +43,8 @@ extension OnboardingPresenter: OnboardingPresenterProtocol {
             getNextVC()
             return
         }
-        let indexPath = IndexPath(row: currentPage, section: 0)
+        let indexPath = IndexPath(row: currentPage,
+                                  section: 0)
         viewController?.scrollToNextScreen(indexPath: indexPath)
     }
     
@@ -60,5 +52,17 @@ extension OnboardingPresenter: OnboardingPresenterProtocol {
         let startViewController = sceneBuildManager.buildStartScreen()
         viewController?.navigationController?.pushViewController(startViewController,
                                                                  animated: true)
+    }
+}
+
+extension OnboardingPresenter {
+    private func setData() -> [OnboardingViewModelProtocol] {
+        var model: [OnboardingViewModelProtocol] = [OnboardingViewModel]()
+        OnboardingViewModel.makeModel.forEach({ oneScreen in
+            model.append(OnboardingViewModel(image: oneScreen.image,
+                                             title: oneScreen.title,
+                                             text: oneScreen.text))
+        })
+        return model
     }
 }

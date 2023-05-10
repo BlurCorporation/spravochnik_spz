@@ -56,9 +56,9 @@
 		226E6F4A297D716800846141 /* FirePumpStationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F49297D716800846141 /* FirePumpStationPresenter.swift */; };
 		226E6F4C297D717800846141 /* FirePumpStationResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F4B297D717800846141 /* FirePumpStationResultsViewController.swift */; };
 		226E6F4E297D718400846141 /* FirePumpStationResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F4D297D718400846141 /* FirePumpStationResultsPresenter.swift */; };
-		456CC64C2A094D2600692D39 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456CC64B2A094D2600692D39 /* OnboardingModel.swift */; };
-		45C02FC929CC5717002F1376 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C02FC829CC5717002F1376 /* CarouselCell.swift */; };
-		45C02FCF29CC61B8002F1376 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C02FCE29CC61B8002F1376 /* OnboardingView.swift */; };
+		456CC64C2A094D2600692D39 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456CC64B2A094D2600692D39 /* OnboardingViewModel.swift */; };
+		45C02FC929CC5717002F1376 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C02FC829CC5717002F1376 /* OnboardingCollectionViewCell.swift */; };
+		45C02FCF29CC61B8002F1376 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C02FCE29CC61B8002F1376 /* OnboardingViewController.swift */; };
 		45DA6E4C29804524008D26F8 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA6E4B29804524008D26F8 /* UIView.swift */; };
 		45DA6E4E298047CF008D26F8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA6E4D298047CF008D26F8 /* UIViewController.swift */; };
 		45F72C2C297F1C6F00D90C8F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F72C2B297F1C6F00D90C8F /* Constants.swift */; };
@@ -118,9 +118,9 @@
 		226E6F49297D716800846141 /* FirePumpStationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirePumpStationPresenter.swift; sourceTree = "<group>"; };
 		226E6F4B297D717800846141 /* FirePumpStationResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirePumpStationResultsViewController.swift; sourceTree = "<group>"; };
 		226E6F4D297D718400846141 /* FirePumpStationResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirePumpStationResultsPresenter.swift; sourceTree = "<group>"; };
-		456CC64B2A094D2600692D39 /* OnboardingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
-		45C02FC829CC5717002F1376 /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
-		45C02FCE29CC61B8002F1376 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		456CC64B2A094D2600692D39 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		45C02FC829CC5717002F1376 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		45C02FCE29CC61B8002F1376 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		45DA6E4B29804524008D26F8 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		45DA6E4D298047CF008D26F8 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		45F72C2B297F1C6F00D90C8F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -370,10 +370,10 @@
 		226E6EE0297D5D1D00846141 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				45C02FCE29CC61B8002F1376 /* OnboardingView.swift */,
+				45C02FCE29CC61B8002F1376 /* OnboardingViewController.swift */,
 				45F912352A05D43B00AB5DEA /* OnboardingPresenter.swift */,
-				45C02FC829CC5717002F1376 /* CarouselCell.swift */,
-				456CC64B2A094D2600692D39 /* OnboardingModel.swift */,
+				45C02FC829CC5717002F1376 /* OnboardingCollectionViewCell.swift */,
+				456CC64B2A094D2600692D39 /* OnboardingViewModel.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -622,9 +622,9 @@
 				226E6F40297D708500846141 /* SmokeExhaustSystemPresenter.swift in Sources */,
 				45F72C30297F24A400D90C8F /* UIStackView.swift in Sources */,
 				1BA6E00429917F77000F0F82 /* TabBarController.swift in Sources */,
-				456CC64C2A094D2600692D39 /* OnboardingModel.swift in Sources */,
+				456CC64C2A094D2600692D39 /* OnboardingViewModel.swift in Sources */,
 				226E6F37297D6FFA00846141 /* ModuleFirefightingSystemResultsViewController.swift in Sources */,
-				45C02FCF29CC61B8002F1376 /* OnboardingView.swift in Sources */,
+				45C02FCF29CC61B8002F1376 /* OnboardingViewController.swift in Sources */,
 				226E6F4C297D717800846141 /* FirePumpStationResultsViewController.swift in Sources */,
 				226E6EE6297D5E6900846141 /* SplashViewController.swift in Sources */,
 				226E6F15297D6BDE00846141 /* PerimeterAlarmSystemViewController.swift in Sources */,
@@ -649,7 +649,7 @@
 				226E6F29297D6EB100846141 /* NotificationSystemViewController.swift in Sources */,
 				226E6F0D297D6B9100846141 /* SecurityAlarmSystemPresenter.swift in Sources */,
 				45F912362A05D43B00AB5DEA /* OnboardingPresenter.swift in Sources */,
-				45C02FC929CC5717002F1376 /* CarouselCell.swift in Sources */,
+				45C02FC929CC5717002F1376 /* OnboardingCollectionViewCell.swift in Sources */,
 				45F72C2C297F1C6F00D90C8F /* Constants.swift in Sources */,
 				226E6EF7297D683200846141 /* AuthPresenter.swift in Sources */,
 				226E6F44297D70A200846141 /* SmokeExhaustSystemResultsPresenter.swift in Sources */,

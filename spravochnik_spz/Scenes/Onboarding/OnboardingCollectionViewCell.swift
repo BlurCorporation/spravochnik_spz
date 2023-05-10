@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CarouselCell: UICollectionViewCell {
+class OnboardingCollectionViewCell: UICollectionViewCell {
     
     // MARK: - SubViews
     private let imageView: UIImageView = {
@@ -34,8 +34,10 @@ class CarouselCell: UICollectionViewCell {
         return label
     }()
     
+    private var labelStackView = UIStackView()
+    
     // MARK: - Properties
-    static let cellId = "CarouselCell"
+    static let cellId = "OnboardingCollectionViewCell"
     
     // MARK: - Initializer
     override init(frame: CGRect) {
@@ -49,12 +51,15 @@ class CarouselCell: UICollectionViewCell {
 }
 
 // MARK: - Setups
-private extension CarouselCell {
+private extension OnboardingCollectionViewCell {
     func setupUI() {
         backgroundColor = .clear
+        labelStackView = .init(arrangedSubviews: [titleLabel,
+                                                  textLabel],
+                               axis: .vertical,
+                               spacing: Constants.Constraints.sideOffset)
         addSubviews(imageView,
-                    titleLabel,
-                    textLabel)
+                    labelStackView)
         
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -63,26 +68,18 @@ private extension CarouselCell {
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor,
                                               multiplier: 250/375),
             
-            titleLabel.topAnchor.constraint(equalTo: centerYAnchor,
-                                            constant: Constants.Constraints.lowerOffset),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor,
-                                                constant: Constants.Constraints.lowerOffset),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor,
-                                                 constant: -Constants.Constraints.lowerOffset),
-            
-            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
-                                           constant: Constants.Constraints.sideOffset),
-            textLabel.leadingAnchor.constraint(equalTo: leadingAnchor,
-                                               constant: Constants.Constraints.lowerOffset),
-            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor,
-                                                constant: -Constants.Constraints.lowerOffset)
+            labelStackView.topAnchor.constraint(equalTo: centerYAnchor),
+            labelStackView.leadingAnchor.constraint(equalTo: leadingAnchor,
+                                                    constant: Constants.Constraints.lowerOffset),
+            labelStackView.trailingAnchor.constraint(equalTo: trailingAnchor,
+                                                     constant: -Constants.Constraints.lowerOffset)
         ])
     }
 }
 
 // MARK: - Public
-extension CarouselCell {
-    public func configure(model: OnboardingModel) {
+extension OnboardingCollectionViewCell {
+    public func configure(model: OnboardingViewModelProtocol) {
         imageView.image = model.image
         titleLabel.text = model.title
         textLabel.text = model.text
