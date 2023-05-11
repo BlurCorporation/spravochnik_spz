@@ -74,6 +74,8 @@
 		45DA6E4E298047CF008D26F8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA6E4D298047CF008D26F8 /* UIViewController.swift */; };
 		45F72C2C297F1C6F00D90C8F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F72C2B297F1C6F00D90C8F /* Constants.swift */; };
 		45F72C30297F24A400D90C8F /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F72C2F297F24A400D90C8F /* UIStackView.swift */; };
+		45FDA9242A0D2B7200C83964 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FDA9232A0D2B7200C83964 /* OnboardingViewModel.swift */; };
+		45FDA9262A0D2B9200C83964 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FDA9252A0D2B9200C83964 /* OnboardingCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -146,6 +148,8 @@
 		45DA6E4D298047CF008D26F8 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		45F72C2B297F1C6F00D90C8F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		45F72C2F297F24A400D90C8F /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
+		45FDA9232A0D2B7200C83964 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		45FDA9252A0D2B9200C83964 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -399,6 +403,8 @@
 			children = (
 				226E6EF8297D691900846141 /* OnboardingViewController.swift */,
 				226E6EFA297D692600846141 /* OnboardingPresenter.swift */,
+				45FDA9232A0D2B7200C83964 /* OnboardingViewModel.swift */,
+				45FDA9252A0D2B9200C83964 /* OnboardingCollectionViewCell.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -600,8 +606,10 @@
 				226E6EF5297D681E00846141 /* ResetPasswordViewController.swift in Sources */,
 				228FA2FE29D0C3D9000412A7 /* CheckboxСoefficientType.swift in Sources */,
 				228FA2FA29D0C379000412A7 /* ChoiceСoefficientType.swift in Sources */,
+				45FDA9242A0D2B7200C83964 /* OnboardingViewModel.swift in Sources */,
 				226E6F05297D6A6A00846141 /* ProfileViewController.swift in Sources */,
 				1BA8702D29AA5DF0006159CB /* MainCollectionViewCell.swift in Sources */,
+				45FDA9262A0D2B9200C83964 /* OnboardingCollectionViewCell.swift in Sources */,
 				45DA6E4C29804524008D26F8 /* UIView.swift in Sources */,
 				226E6F0D297D6B9100846141 /* CalculationPresenter.swift in Sources */,
 				45F72C2C297F1C6F00D90C8F /* Constants.swift in Sources */,

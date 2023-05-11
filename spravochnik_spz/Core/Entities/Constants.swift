@@ -42,6 +42,12 @@ enum Constants {
     }
     
     enum Images {
+        //Onboarding
+        static let onboarding1 = UIImage(named: "onboarding1") ?? UIImage()
+        static let onboarding2 = UIImage(named: "onboarding2") ?? UIImage()
+        static let onboarding3 = UIImage(named: "onboarding3") ?? UIImage()
+        static let pgLineGray = UIImage(named: "pgLineGray") ?? UIImage()
+        // App
         static let logoImage = UIImage(named: "logo") ?? UIImage()
         static let tabBarMain = UIImage(named: "TabBarMain") ?? UIImage()
         static let tabBarSaved = UIImage(named: "TabBarSaved") ?? UIImage()
@@ -126,6 +132,13 @@ enum Constants {
         static let noInternetText = "Проверьте подключено ли устройство к Интернету"
         static let savedCalcTitle = "Здесь будут отображаться\nсохраненные Вами расчеты"
         static let savedCalcText = "Для выбора расчета перейдите на главный экран"
+        // Onboarding
+        static let onboarding11 = "Удобно и быстро"
+        static let onboarding12 = "С помощью нашего приложения Вы сможете быстро и удобно произвести расчеты систем безопасности"
+        static let onboarding21 = "Множество расчетов"
+        static let onboarding22 = "Расчеты стоимости проектирования, технические расчеты систем безопасности, физические расчеты, технико-экономические расчеты"
+        static let onboarding31 = "Добро пожаловать"
+        static let onboarding32 = "Благодарим, что выбрали нас. Мы поможем Вам расчитать стоимость интересующих Вас систем безопасности"
     }
     
     enum TextButtons {
@@ -143,6 +156,8 @@ enum Constants {
         static let saveChangesButtonText = "Сохранить изменения"
         static let calculationButtonText = "Расчет"
         static let otherCalculationButtonText = "Перейти к другим расчетам"
+        static let onboardingNextButton = "Дальше"
+        static let onboardingSkipButton = "Пропустить"
     }
     
     enum PlaceHolders {
