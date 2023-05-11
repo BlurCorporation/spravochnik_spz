@@ -46,6 +46,7 @@ final class CalculationPresenter {
             let viewModel = ValueСoefficientViewModel(title: model.type.title,
                                                       value: model.value,
                                                       descrpt: model.type.descrp,
+                                                      type: model.type,
                                                       delegate: self)
             return RowType.valueСoefficient(viewModel: viewModel)
         }
@@ -131,10 +132,15 @@ extension CalculationPresenter: CalculationHeaderViewCellCellDelegate {
 }
 
 extension CalculationPresenter: ValueCoefficientTableViewCellDelegate {
-    func valueCoefficientCellPressed(value: Double) {
+    func valueCoefficientCellPressed(value: Double,
+                                     type: ValueСoefficientType) {
         print("ValueCoefficientTableViewCellDelegate из презентора")
-        
-
+        let model = ValueСoefficientModel(type: type,
+                                          value: value)
+        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .value(model: model))
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        viewController?.present(vc, animated: true)
     }
 }
 

@@ -53,5 +53,6 @@ struct ValueСoefficientViewModel {
     let title: String
     let value: Double
     let descrpt: String
+    let type: ValueСoefficientType
     var delegate: ValueCoefficientTableViewCellDelegate?
 }
