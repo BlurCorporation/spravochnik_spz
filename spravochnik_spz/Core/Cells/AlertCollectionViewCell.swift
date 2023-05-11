@@ -21,8 +21,6 @@ final class AlertCollectionViewCell: UICollectionViewCell {
         label.textColor = .black
         label.numberOfLines = .zero
         label.textAlignment = .center
-        label.text = "123"
-        
         return label
     }()
     
@@ -44,9 +42,11 @@ final class AlertCollectionViewCell: UICollectionViewCell {
     }
 }
 
+
 // MARK: - MainCollectionViewCellProtocol Impl
 
 extension AlertCollectionViewCell: AlertCollectionViewCellProtocol {}
+
 
 // MARK: - Private Methods
 
@@ -59,7 +59,7 @@ extension AlertCollectionViewCell {
     }
     
     func setupConstraints() {
-        let offsets = CGFloat(0)
+        let offsets: CGFloat = .zero
         
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: contentView.topAnchor,

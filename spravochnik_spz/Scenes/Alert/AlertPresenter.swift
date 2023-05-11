@@ -42,7 +42,7 @@ extension AlertPresenter: AlertPresenterProtocol {
                                              rightButtonTitle: rightButtonTittle)
         case let .value(model):
             let title = model.type.title
-            viewController?.updateUIForVlaue(title: title,
+            viewController?.updateUIForValue(title: title,
                                              value: model.value)
         case let .choice(model):
             let axis = model.type
@@ -56,7 +56,7 @@ extension AlertPresenter: AlertPresenterProtocol {
                                               numOfItems: 0)
         case let .defaultValue(model, value):
             let title = model.type.title
-            viewController?.updateUIForVlaue(title: title, value: value)
+            viewController?.updateUIForValue(title: title, value: value)
         }
     }
     

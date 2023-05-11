@@ -26,6 +26,7 @@ final class ValueCoefficientTableViewCell: UITableViewCell {
     
     private var value: Double = .zero
     private var type: ValueСoefficientType?
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = Constants.Fonts.b1
