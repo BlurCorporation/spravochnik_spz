@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SavedCalculationView: UIView {
+class CleanSavedCalculationView: UIView {
     private let image: UIImageView = {
         let imageView = UIImageView()
         imageView.image = Constants.Images.file
@@ -57,7 +57,7 @@ class SavedCalculationView: UIView {
     }
 }
 
-extension SavedCalculationView {
+extension CleanSavedCalculationView {
     func setupView() {
         addSubViews()
         setupConstraints()
@@ -91,13 +91,13 @@ extension SavedCalculationView {
 }
 
 // Метод для отображения на контроллерах
-//func setupSavedCalculationView() {
-//    let savedCalculationView = SavedCalculationView()
-//    view.addSubviews(savedCalculationView)
+//func setupCleanSavedCalculationView() {
+//    let cleanView = CleanSavedCalculationView()
+//    view.addSubviews(cleanView)
 //    NSLayoutConstraint.activate([
-//        savedCalculationView.topAnchor.constraint(equalTo: view.topAnchor),
-//        savedCalculationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//        savedCalculationView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//        savedCalculationView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+//        cleanView.topAnchor.constraint(equalTo: view.topAnchor),
+//        cleanView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//        cleanView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//        cleanView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 //    ])
 //}

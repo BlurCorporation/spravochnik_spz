@@ -33,6 +33,8 @@ final class SavedCalculationsViewController: UIViewController {
         
         return tableView
     }()
+  
+    private var isInternet = true
     
     // MARK: - LifeCycle
     
@@ -46,7 +48,9 @@ final class SavedCalculationsViewController: UIViewController {
         SavedCalculationsTableView.dataSource = self
         SavedCalculationsTableView.delegate = self
         presenter?.viewDidLoad()
-        
+        if !isInternet {
+            setupNoInternetView()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,6 +73,9 @@ extension SavedCalculationsViewController: SavedCalculationsViewProtocol {
 extension SavedCalculationsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
+        if dataSource.isEmpty {
+            setupCleanSavedCalculationView()
+        }
         return dataSource.count
     }
     
@@ -113,9 +120,6 @@ extension SavedCalculationsViewController: UITableViewDelegate {
             tableView.deleteRows(at: [indexPath],
                                  with: .fade)
         }
-        if dataSource.isEmpty {
-            
-        }
     }
     
     func tableView(_ tableView: UITableView,
@@ -141,6 +145,29 @@ private extension SavedCalculationsViewController {
     
     func addSubViews() {
         view.addSubviews(SavedCalculationsTableView)
+    }
+    
+    func setupCleanSavedCalculationView() {
+        let cleanView = CleanSavedCalculationView()
+        self.view = cleanView
+        view.addSubviews(cleanView)
+        NSLayoutConstraint.activate([
+            cleanView.topAnchor.constraint(equalTo: view.topAnchor),
+            cleanView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            cleanView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            cleanView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
+    func setupNoInternetView() {
+        let noInternetView = NoInternetView()
+        view.addSubviews(noInternetView)
+        NSLayoutConstraint.activate([
+            noInternetView.topAnchor.constraint(equalTo: view.topAnchor),
+            noInternetView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            noInternetView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            noInternetView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
     
     func setupConstraints() {
