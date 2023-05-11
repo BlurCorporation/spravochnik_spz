@@ -44,7 +44,6 @@ extension AlertPresenter: AlertPresenterProtocol {
             let title = model.type.title
             viewController?.updateUIForVlaue(title: title,
                                              value: model.value)
-            break
         case let .choice(model):
             let axis = model.type
             let title = model.type.title
@@ -55,6 +54,9 @@ extension AlertPresenter: AlertPresenterProtocol {
             viewController?.updateUIForChoice(title: title,
                                               axis: axis,
                                               numOfItems: 0)
+        case let .defaultValue(model, value):
+            let title = model.type.title
+            viewController?.updateUIForVlaue(title: title, value: value)
         }
     }
     
@@ -82,4 +84,5 @@ enum CoefficientType {
     case clear(model: NoСoefficientModel)
     case value(model: ValueСoefficientModel)
     case choice(model: ChoiceCoefficientModel)
+    case defaultValue(model: DefaultCoefficientValueModel, value: Double)
 }

@@ -159,6 +159,7 @@ extension AlertViewController: AlertViewProtocol {
         if value != 0.0 {
             textField.placeholder = value.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", value) : String(value)
         }
+        
         textField.textAlignment = .center
         titleLabel.text = title
     }

@@ -156,6 +156,11 @@ extension CalculationPresenter: ChoiceCoefficientTypeTableViewCellDelegate {
 
 extension CalculationPresenter: DefaultValueCoefficientTableViewCellDelegate {
     func defaultValueCoefficientCellPressed(value: Double) {
-        print("DefaultValueCoefficientTableViewCellDelegate из презентора")
+        let model = DefaultCoefficientValueModel(type: .inflationRate)
+        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .defaultValue(model: model,
+                                                                                   value: value))
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        viewController?.present(vc, animated: true)
     }
 }
