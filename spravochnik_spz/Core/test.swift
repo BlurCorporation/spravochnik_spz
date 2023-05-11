@@ -20,6 +20,7 @@ struct NoСoefficientModel {
         self.rightButton = rightButton
     }
 }
+
 //
 //// MARK: - 1
 //enum ValueСoefficientType {

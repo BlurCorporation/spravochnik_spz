@@ -80,6 +80,7 @@ final class CalculationPresenter {
         let rows = choiceCoefficients.map { model -> RowType in
             let viewModel = ChoiceCoefficientViewModel(title: model.type.title,
                                                        descrpt: model.type.descrp,
+                                                       type: model.type,
                                                        delegate: self)
             return RowType.choiceСoefficient(viewModel: viewModel)
         }
@@ -132,12 +133,18 @@ extension CalculationPresenter: CalculationHeaderViewCellCellDelegate {
 extension CalculationPresenter: ValueCoefficientTableViewCellDelegate {
     func valueCoefficientCellPressed(value: Double) {
         print("ValueCoefficientTableViewCellDelegate из презентора")
+        
+
     }
 }
 
 extension CalculationPresenter: ChoiceCoefficientTypeTableViewCellDelegate {
-    func choiceCoefficientCellPressed(value: Double) {
-        print("ChoiceCoefficientTypeTableViewCellDelegate из презентора")
+    func choiceCoefficientCellPressed(value: Double, coefType: ChoiceСoefficientType) {
+        let model = ChoiceCoefficientModel(type: coefType, itemIndex: 0)
+        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .choice(model: model))
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        viewController?.present(vc, animated: true)
     }
 }
 
