@@ -106,66 +106,66 @@ enum Constants {
     }
     
     enum alarmTypesText {
-        static let securityAlarmText = "Охранная сигнализация"
-        static let fireAlarmText = "Пожарная сигнализация"
-        static let firePumpText = "Насосные станции установок пожаротушения"
-        static let moduleFirefightingText = "Модульные установки пожаротушения"
-        static let notificationText = "Система оповещения о пожаре"
-        static let perimetrAlarmText = "Охранная сигнализация периметра"
-        static let smokeExhaustText = "Система управления дымоудаления"
+        static let securityAlarmText = "securityAlarmText".localized
+        static let fireAlarmText = "fireAlarmText".localized
+        static let firePumpText = "firePumpText".localized
+        static let moduleFirefightingText = "moduleFirefightingText".localized
+        static let notificationText = "notificationText".localized
+        static let perimetrAlarmText = "perimetrAlarmText".localized
+        static let smokeExhaustText = "smokeExhaustText".localized
     }
     
     enum TextLabels {
-        static let applicationNameLabelText = "Справочник СПЗ"
-        static let infoApplicationLabelText = "Войдите в систему или зарегистрируйтесь, чтобы получить полный доступ к приложению с возможность сохранять и делиться произведенными расчетами"
-        static let infoWithLinksLabelText = "Выполняя вход в приложение вы соглашаетесь с Условиями использования и Политикой конфиденциальности"
-        static let infoRegisterBottomLabelText = "У вас уже есть аккаунт?"
-        static let infoAuthBottomLabelText = "У вас нет аккаунта?"
-        static let authLabelText = "Войти через"
-        static let savedCalculationsTitleLabelText = "Сохраненные расчеты"
-        static let username = "Роман"
-        static let infoPasswordLabelText = "Пароль должен быть длинной не менее 8 символов и минимум одна заглавная буква"
-        static let infoEmailLabelText = "Мы отправим электронное письмо на этот адрес для сброса пароля"
-        static let mainHeaderLabelText = "Расчет стоимости проектирования"
+        static let applicationNameLabelText = "applicationNameLabelText".localized
+        static let infoApplicationLabelText = "infoApplicationLabelText".localized
+        static let infoWithLinksLabelText = "infoWithLinksLabelText".localized
+        static let infoRegisterBottomLabelText = "infoRegisterBottomLabelText".localized
+        static let infoAuthBottomLabelText = "infoAuthBottomLabelText".localized
+        static let authLabelText = "authLabelText".localized
+        static let savedCalculationsTitleLabelText = "savedCalculationsTitleLabelText".localized
+        static let username = "username".localized
+        static let infoPasswordLabelText = "infoPasswordLabelText".localized
+        static let infoEmailLabelText = "infoEmailLabelText".localized
+        static let mainHeaderLabelText = "mainHeaderLabelText".localized
         // Cap Views
-        static let noInternetTitle = "Нет соединения"
-        static let noInternetText = "Проверьте подключено ли устройство к Интернету"
-        static let savedCalcTitle = "Здесь будут отображаться\nсохраненные Вами расчеты"
-        static let savedCalcText = "Для выбора расчета перейдите на главный экран"
+        static let noInternetTitle = "noInternetTitle".localized
+        static let noInternetText = "noInternetText".localized
+        static let savedCalcTitle = "savedCalcTitle".localized
+        static let savedCalcText = "savedCalcText".localized
         // Onboarding
-        static let onboarding11 = "Удобно и быстро"
-        static let onboarding12 = "С помощью нашего приложения Вы сможете быстро и удобно произвести расчеты систем безопасности"
-        static let onboarding21 = "Множество расчетов"
-        static let onboarding22 = "Расчеты стоимости проектирования, технические расчеты систем безопасности, физические расчеты, технико-экономические расчеты"
-        static let onboarding31 = "Добро пожаловать"
-        static let onboarding32 = "Благодарим, что выбрали нас. Мы поможем Вам расчитать стоимость интересующих Вас систем безопасности"
+        static let onboarding11 = "onboarding11".localized
+        static let onboarding12 = "onboarding12".localized
+        static let onboarding21 = "onboarding21".localized
+        static let onboarding22 = "onboarding22".localized
+        static let onboarding31 = "onboarding31".localized
+        static let onboarding32 = "onboarding32".localized
     }
     
     enum TextButtons {
-        static let appThemeButtonText = "Тема приложения"
-        static let colorAppThemeButtonText = "Системная"
-        static let updateDataButtonText = "Обновить данные"
-        static let usingConditionsButtonText = "Условия пользования"
-        static let privacyPolicyButtonText = "Политика конфиденциальности"
-        static let loginButton = "Войти"
-        static let registerButton = "Зарегистрироваться"
-        static let forgotPassword = "Забыли пароль?"
-        static let resetPasswordButtonText = "Отправить письмо"
-        static let updatePasswordButtonText = "Обновить пароль"
-        static let changePasswordButtonText = "Изменить пароль"
-        static let saveChangesButtonText = "Сохранить изменения"
-        static let calculationButtonText = "Расчет"
-        static let otherCalculationButtonText = "Перейти к другим расчетам"
-        static let onboardingNextButton = "Дальше"
-        static let onboardingSkipButton = "Пропустить"
+        static let appThemeButtonText = "appThemeButtonText".localized
+        static let colorAppThemeButtonText = "colorAppThemeButtonText".localized
+        static let updateDataButtonText = "updateDataButtonText".localized
+        static let usingConditionsButtonText = "usingConditionsButtonText".localized
+        static let privacyPolicyButtonText = "privacyPolicyButtonText".localized
+        static let loginButton = "loginButton".localized
+        static let registerButton = "registerButton".localized
+        static let forgotPassword = "forgotPassword".localized
+        static let resetPasswordButtonText = "resetPasswordButtonText".localized
+        static let updatePasswordButtonText = "updatePasswordButtonText".localized
+        static let changePasswordButtonText = "changePasswordButtonText".localized
+        static let saveChangesButtonText = "saveChangesButtonText".localized
+        static let calculationButtonText = "calculationButtonText".localized
+        static let otherCalculationButtonText = "otherCalculationButtonText".localized
+        static let onboardingNextButton = "onboardingNextButton".localized
+        static let onboardingSkipButton = "onboardingSkipButton".localized
     }
     
     enum PlaceHolders {
-        static let name = "Имя"
-        static let eMail = "Email"
-        static let password = "Пароль"
-        static let retypePassword = "Повторите пароль"
-        static let newPassword = "Новый пароль"
+        static let name = "name".localized
+        static let eMail = "eMail".localized
+        static let password = "password".localized
+        static let retypePassword = "retypePassword".localized
+        static let newPassword = "newPassword".localized
     }
     
     enum Constraints {
@@ -191,27 +191,27 @@ enum Constants {
     }
     
     enum NavigationController {
-        static let registerTitle = "Регистрация"
-        static let authTitle = "Войти"
-        static let resetPasswordTitle = "Сбросить пароль"
-        static let updatePasswordTitle = "Обновить пароль"
-        static let updateDataTitle = "Обновить данные"
+        static let registerTitle = "registerTitle".localized
+        static let authTitle = "authTitle".localized
+        static let resetPasswordTitle = "resetPasswordTitle".localized
+        static let updatePasswordTitle = "updatePasswordTitle".localized
+        static let updateDataTitle = "updateDataTitle".localized
         static let authButtonHeight = CGFloat(50)
         static let commonStackViewTopOffset = CGFloat(24)
     }
     
     enum Fonts {
-        static let h1 = UIFont(name: "HelveticaNeueCyr-Bold", size: 34)
-        static let h2 = UIFont(name: "HelveticaNeueCyr-Bold", size: 30)
-        static let h3 = UIFont(name: "HelveticaNeueCyr-Bold", size: 20)
-        static let h4 = UIFont(name: "HelveticaNeueCyr-Medium", size: 17)
-        static let h5 = UIFont(name: "HelveticaNeueCyr-Bold", size: 17)
-        static let b1 = UIFont(name: "HelveticaNeueCyr-Roman", size: 18)
-        static let b2 = UIFont(name: "HelveticaNeueCyr-Roman", size: 15)
-        static let b3 = UIFont(name: "HelveticaNeueCyr-Light", size: 13)
-        static let b4 = UIFont(name: "HelveticaNeueCyr-Roman", size: 13)
-        static let b5 = UIFont(name: "HelveticaNeueCyr-Roman", size: 12)
-        static let b6 = UIFont(name: "HelveticaNeueCyr-Light", size: 11)
+        static let h1 = UIFont(name: "boldFont".localized, size: 34)
+        static let h2 = UIFont(name: "boldFont".localized, size: 30)
+        static let h3 = UIFont(name: "boldFont".localized, size: 20)
+        static let h4 = UIFont(name: "mediumFont".localized, size: 17)
+        static let h5 = UIFont(name: "boldFont".localized, size: 17)
+        static let b1 = UIFont(name: "romanFont".localized, size: 18)
+        static let b2 = UIFont(name: "romanFont".localized, size: 15)
+        static let b3 = UIFont(name: "lightFont".localized, size: 13)
+        static let b4 = UIFont(name: "romanFont".localized, size: 13)
+        static let b5 = UIFont(name: "romanFont".localized, size: 12)
+        static let b6 = UIFont(name: "lightFont".localized, size: 11)
         
         
         

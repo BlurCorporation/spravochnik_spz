@@ -1,0 +1,79 @@
+/* 
+  Localizable.strings
+  spravochnik_spz
+
+  Created by Natalia Shevaldina on 12.05.2023.
+  
+*/
+
+// alarmTypesText
+"securityAlarmText" = "Охранная сигнализация";
+"fireAlarmText" = "Пожарная сигнализация";
+"firePumpText" = "Насосные станции установок пожаротушения";
+"moduleFirefightingText" = "Модульные установки пожаротушения";
+"notificationText" = "Система оповещения о пожаре";
+"perimetrAlarmText" = "Охранная сигнализация периметра";
+"smokeExhaustText" = "Система управления дымоудаления";
+
+// TextLabels
+"applicationNameLabelText" = "Справочник СПЗ";
+"infoApplicationLabelText" = "Войдите в систему или зарегистрируйтесь, чтобы получить полный доступ к приложению с возможность сохранять и делиться произведенными расчетами";
+"infoWithLinksLabelText" = "Выполняя вход в приложение вы соглашаетесь с Условиями использования и Политикой конфиденциальности";
+"infoRegisterBottomLabelText" = "У вас уже есть аккаунт?";
+"infoAuthBottomLabelText" = "У вас нет аккаунта?";
+"authLabelText" = "Войти через";
+"savedCalculationsTitleLabelText" = "Сохраненные расчеты";
+"username" = "Роман";
+"infoPasswordLabelText" = "Пароль должен быть длинной не менее 8 символов и минимум одна заглавная буква";
+"infoEmailLabelText" = "Мы отправим электронное письмо на этот адрес для сброса пароля";
+"mainHeaderLabelText" = "Расчет стоимости проектирования";
+// Cap Views
+"noInternetTitle" = "Нет соединения";
+"noInternetText" = "Проверьте подключено ли устройство к Интернету";
+"savedCalcTitle" = "Здесь будут отображаться\nсохраненные Вами расчеты";
+"savedCalcText" = "Для выбора расчета перейдите на главный экран";
+// Onboarding
+"onboarding11" = "Удобно и быстро";
+"onboarding12" = "С помощью нашего приложения Вы сможете быстро и удобно произвести расчеты систем безопасности";
+"onboarding21" = "Множество расчетов";
+"onboarding22" = "Расчеты стоимости проектирования, технические расчеты систем безопасности, физические расчеты, технико-экономические расчеты";
+"onboarding31" = "Добро пожаловать";
+"onboarding32" = "Благодарим, что выбрали нас. Мы поможем Вам расчитать стоимость интересующих Вас систем безопасности";
+
+// TextButtons
+"appThemeButtonText" = "Тема приложения";
+"colorAppThemeButtonText" = "Системная";
+"updateDataButtonText" = "Обновить данные";
+"usingConditionsButtonText" = "Условия пользования";
+"privacyPolicyButtonText" = "Политика конфиденциальности";
+"loginButton" = "Войти";
+"registerButton" = "Зарегистрироваться";
+"forgotPassword" = "Забыли пароль?";
+"resetPasswordButtonText" = "Отправить письмо";
+"updatePasswordButtonText" = "Обновить пароль";
+"changePasswordButtonText" = "Изменить пароль";
+"saveChangesButtonText" = "Сохранить изменения";
+"calculationButtonText" = "Расчет";
+"otherCalculationButtonText" = "Перейти к другим расчетам";
+"onboardingNextButton" = "Дальше";
+"onboardingSkipButton" = "Пропустить";
+
+// PlaceHolders
+"name" = "Имя";
+"eMail" = "Email";
+"password" = "Пароль";
+"retypePassword" = "Повторите пароль";
+"newPassword" = "Новый пароль";
+
+// NavigationController
+"registerTitle" = "Регистрация";
+"authTitle" = "Войти";
+"resetPasswordTitle" = "Сбросить пароль";
+"updatePasswordTitle" = "Обновить пароль";
+"updateDataTitle" = "Обновить данные";
+
+// Fonts
+"mediumFont" = "HelveticaNeueCyr-Medium";
+"boldFont" = "HelveticaNeueCyr-Bold";
+"romanFont" = "HelveticaNeueCyr-Roman";
+"lightFont" = "HelveticaNeueCyr-Light";

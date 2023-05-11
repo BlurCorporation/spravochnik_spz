@@ -76,6 +76,8 @@
 		45F72C30297F24A400D90C8F /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F72C2F297F24A400D90C8F /* UIStackView.swift */; };
 		45FDA9242A0D2B7200C83964 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FDA9232A0D2B7200C83964 /* OnboardingViewModel.swift */; };
 		45FDA9262A0D2B9200C83964 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FDA9252A0D2B9200C83964 /* OnboardingCollectionViewCell.swift */; };
+		45FDA9282A0D8F5F00C83964 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FDA9272A0D8F5F00C83964 /* String.swift */; };
+		45FDA92A2A0D8FDB00C83964 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45FDA9292A0D8FDB00C83964 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +152,8 @@
 		45F72C2F297F24A400D90C8F /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		45FDA9232A0D2B7200C83964 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		45FDA9252A0D2B9200C83964 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		45FDA9272A0D8F5F00C83964 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		45FDA9292A0D8FDB00C83964 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +314,7 @@
 				45DA6E4B29804524008D26F8 /* UIView.swift */,
 				45DA6E4D298047CF008D26F8 /* UIViewController.swift */,
 				1BA6E00A2993CC68000F0F82 /* NumberFormatter.swift */,
+				45FDA9272A0D8F5F00C83964 /* String.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -340,6 +345,7 @@
 				228FA2F329D0C1F9000412A7 /* Calculation */,
 				2265A2CC299EB968005DF662 /* TypeViewController */,
 				45F72C2B297F1C6F00D90C8F /* Constants.swift */,
+				45FDA9292A0D8FDB00C83964 /* Localizable.strings */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -566,6 +572,7 @@
 				1B9938D9299D740B00E2F8A9 /* HelveticaNeueCyr-Italic.ttf in Resources */,
 				1B9938DB299D740B00E2F8A9 /* HelveticaNeueCyr-Medium.ttf in Resources */,
 				1B9938DC299D740B00E2F8A9 /* HelveticaNeueCyr-Bold.ttf in Resources */,
+				45FDA92A2A0D8FDB00C83964 /* Localizable.strings in Resources */,
 				1B2B11F72979CFF400FFC896 /* LaunchScreen.storyboard in Resources */,
 				1B9938D7299D740B00E2F8A9 /* HelveticaNeueCyr-Black.ttf in Resources */,
 				1B2B11F42979CFF400FFC896 /* Assets.xcassets in Resources */,
@@ -619,6 +626,7 @@
 				1BCFE35429D07BD30062DB39 /* AlertCollectionViewCell.swift in Sources */,
 				228FA2FC29D0C3A6000412A7 /* DefaultCoefficientValueType.swift in Sources */,
 				22F5886A29A8EB06004053CF /* ValueCoefficientTypeTableViewCell.swift in Sources */,
+				45FDA9282A0D8F5F00C83964 /* String.swift in Sources */,
 				226E6EF7297D683200846141 /* ResetPasswordPresenter.swift in Sources */,
 				226E6F17297D6BEB00846141 /* ResultPresenter.swift in Sources */,
 				228E1D2E29AFA91C00117BDC /* SavedCalculationCellModel.swift in Sources */,
