@@ -45,9 +45,6 @@ enum Constants {
         //Onboarding
         static let onboarding1 = UIImage(named: "onboarding1") ?? UIImage()
         static let onboarding2 = UIImage(named: "onboarding2") ?? UIImage()
-        static let abr = 123
-        static let abr1 = 123
-        static let abr2 = 123
         static let onboarding3 = UIImage(named: "onboarding3") ?? UIImage()
         static let pgLineGray = UIImage(named: "pgLineGray") ?? UIImage()
         // App
