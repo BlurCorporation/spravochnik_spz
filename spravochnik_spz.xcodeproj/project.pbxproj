@@ -68,7 +68,7 @@
 		22F5886C29A8EB14004053CF /* ChoiceCoefficientTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5886B29A8EB14004053CF /* ChoiceCoefficientTypeTableViewCell.swift */; };
 		22F5886E29A8EB21004053CF /* DefaultValueCoefficientTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5886D29A8EB21004053CF /* DefaultValueCoefficientTypeTableViewCell.swift */; };
 		22F5887029A8EB30004053CF /* CheckboxCoefficientTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5886F29A8EB30004053CF /* CheckboxCoefficientTypeTableViewCell.swift */; };
-		457CFC2729F01A3E0022487A /* SavedCalculationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CFC2629F01A3E0022487A /* SavedCalculationView.swift */; };
+		457CFC2729F01A3E0022487A /* CleanSavedCalculationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CFC2629F01A3E0022487A /* CleanSavedCalculationView.swift */; };
 		457CFC2929F01A580022487A /* NoInternetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CFC2829F01A580022487A /* NoInternetView.swift */; };
 		45DA6E4C29804524008D26F8 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA6E4B29804524008D26F8 /* UIView.swift */; };
 		45DA6E4E298047CF008D26F8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA6E4D298047CF008D26F8 /* UIViewController.swift */; };
@@ -142,7 +142,7 @@
 		22F5886B29A8EB14004053CF /* ChoiceCoefficientTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceCoefficientTypeTableViewCell.swift; sourceTree = "<group>"; };
 		22F5886D29A8EB21004053CF /* DefaultValueCoefficientTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultValueCoefficientTypeTableViewCell.swift; sourceTree = "<group>"; };
 		22F5886F29A8EB30004053CF /* CheckboxCoefficientTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxCoefficientTypeTableViewCell.swift; sourceTree = "<group>"; };
-		457CFC2629F01A3E0022487A /* SavedCalculationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCalculationView.swift; sourceTree = "<group>"; };
+		457CFC2629F01A3E0022487A /* CleanSavedCalculationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanSavedCalculationView.swift; sourceTree = "<group>"; };
 		457CFC2829F01A580022487A /* NoInternetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetView.swift; sourceTree = "<group>"; };
 		45DA6E4B29804524008D26F8 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		45DA6E4D298047CF008D26F8 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -498,7 +498,7 @@
 		45F912372A0666F300AB5DEA /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				457CFC2629F01A3E0022487A /* SavedCalculationView.swift */,
+				457CFC2629F01A3E0022487A /* CleanSavedCalculationView.swift */,
 				457CFC2829F01A580022487A /* NoInternetView.swift */,
 			);
 			path = CustomViews;
@@ -580,7 +580,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				457CFC2729F01A3E0022487A /* SavedCalculationView.swift in Sources */,
+				457CFC2729F01A3E0022487A /* CleanSavedCalculationView.swift in Sources */,
 				1BA6E00229917F61000F0F82 /* CustomButton.swift in Sources */,
 				45F72C30297F24A400D90C8F /* UIStackView.swift in Sources */,
 				228E1D3029AFA92300117BDC /* SavedCalculationsUITableViewCell.swift in Sources */,
