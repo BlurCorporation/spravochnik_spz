@@ -10,7 +10,8 @@ import UIKit
 // MARK: - ChoiceCoefficientTypeTableViewCell
 
 protocol ChoiceCoefficientTypeTableViewCellDelegate: AnyObject {
-    func choiceCoefficientCellPressed(value: Double)
+    func choiceCoefficientCellPressed(value: Double,
+                                      coefType: ChoiceСoefficientType)
 }
 
 // MARK: ChoiceCoefficientTypeTableViewCell
@@ -24,6 +25,7 @@ final class ChoiceCoefficientTypeTableViewCell: UITableViewCell {
     // MARK: - PrivateProperties
     
     private var value: Double = .zero
+    private var coefficientType: ChoiceСoefficientType?
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -85,6 +87,7 @@ final class ChoiceCoefficientTypeTableViewCell: UITableViewCell {
     func configure(with viewModel: ChoiceCoefficientViewModel) {
         titleLabel.text = viewModel.title
         descriptionLabel.text = viewModel.descrpt
+        coefficientType = viewModel.type
         delegate = viewModel.delegate
     }
     
@@ -92,7 +95,8 @@ final class ChoiceCoefficientTypeTableViewCell: UITableViewCell {
     
     @objc
     private func buttonPressed() {
-        delegate?.choiceCoefficientCellPressed(value: value)
+        delegate?.choiceCoefficientCellPressed(value: value,
+                                               coefType: coefficientType ?? .terrain)
     }
 }
 

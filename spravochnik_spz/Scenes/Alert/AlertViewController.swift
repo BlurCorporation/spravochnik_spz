@@ -19,7 +19,7 @@ protocol AlertViewProtocol: UIViewController {
     func updateUIForClear(title: String,
                           leftButtonTitle: String,
                           rightButtonTitle: String)
-    func updateUIForVlaue(title: String,
+    func updateUIForValue(title: String,
                           value: Double)
     func updateUIForChoice(title: String,
                            axis: ChoiceСoefficientType,
@@ -34,14 +34,15 @@ final class AlertViewController: UIViewController {
     
     // MARK: - PrivateProperties
     private var collectionViewAxis = CollectionViewAxis.horizontal
-    private var collectionViewHeight: CGFloat = 0
+    private var collectionViewHeight: CGFloat = .zero
     private var dataSource = [String]()
+    var previousSelected : IndexPath?
+    var currentSelected : Int?
     
     private let blurView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialLight)
         let view = UIVisualEffectView(effect: blurEffect)
         view.frame = UIScreen.main.bounds
-        
         return view
     }()
     
@@ -58,7 +59,7 @@ final class AlertViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.font = Constants.Fonts.h1
-        label.numberOfLines = 0
+        label.numberOfLines = .zero
         return label
     }()
     
@@ -72,7 +73,7 @@ final class AlertViewController: UIViewController {
     
     private let choiceCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 0 // задаем минимальный интервал между ячейками
+        layout.minimumInteritemSpacing = .zero
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: layout)
         collectionView.register(AlertCollectionViewCell.self,
@@ -83,16 +84,20 @@ final class AlertViewController: UIViewController {
     private let leftButton: CustomButton = {
         let button = CustomButton()
         button.mode = .white
-        button.setTitle("Закрыть", for: .normal)
+        button.setTitle("Закрыть",
+                        for: .normal)
 //        button.addTarget(self, action: #selector(leftButtonPressed), for: .touchUpInside)
         return button
     }()
     
-    let rightButton: CustomButton = {
+    private lazy var rightButton: CustomButton = {
         let button = CustomButton()
         button.mode = .black
-        button.setTitle("Сохранить", for: .normal)
-        button.addTarget(self, action: #selector(rightButtonPressed), for: .touchUpInside)
+        button.setTitle("Сохранить",
+                        for: .normal)
+        button.addTarget(self,
+                         action: #selector(rightButtonPressed),
+                         for: .touchUpInside)
         return button
     }()
     
@@ -115,13 +120,12 @@ final class AlertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        choiceCollectionView.isHidden = true // Может это вынести куда-нибудь? Если вынести в viewWillAppear, то работать не будет
+        choiceCollectionView.isHidden = true
         textField.isHidden = true
         presenter?.viewDidLoad()
         setupViewController()
         choiceCollectionView.dataSource = self
         choiceCollectionView.delegate = self
-        
     }
     // MARK: - Action
     
@@ -131,7 +135,6 @@ final class AlertViewController: UIViewController {
             self?.presenter?.rightButtonPressed()
         }
     }
-    
 }
 
 // MARK: - AlertViewProtocol Impl
@@ -151,7 +154,7 @@ extension AlertViewController: AlertViewProtocol {
                              for: .normal)
     }
     
-    func updateUIForVlaue(title: String,
+    func updateUIForValue(title: String,
                           value: Double) {
         textField.isHidden = false
         if value != 0.0 {
@@ -167,13 +170,14 @@ extension AlertViewController: AlertViewProtocol {
                            numOfItems: Int) {
         choiceCollectionView.isHidden = false
         titleLabel.text = title
+        let cellHeight: CGFloat = 60
         switch axis {
         case .terrain:
             collectionViewAxis = .vertical
-            collectionViewHeight = CGFloat(dataSource.count * 60)
+            collectionViewHeight = CGFloat(dataSource.count) * cellHeight
             choiceCollectionView.reloadData()
         default:
-            collectionViewHeight = 60
+            collectionViewHeight = cellHeight
             collectionViewAxis = .horizontal
             choiceCollectionView.reloadData()
         }
@@ -187,14 +191,32 @@ extension AlertViewController: UICollectionViewDataSource {
         1
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return dataSource.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        currentSelected = indexPath.row
+        previousSelected = indexPath
+        self.choiceCollectionView.reloadData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell",
                                                       for: indexPath) as! AlertCollectionViewCell
         cell.label.text = dataSource[indexPath.row]
+        
+        if currentSelected != nil && currentSelected == indexPath.row {
+            cell.label.textColor = Constants.Colors.dark
+            cell.layer.borderColor = Constants.Colors.dark.cgColor
+        } else {
+            cell.label.textColor = Constants.Colors.grayCellColor
+            cell.layer.borderColor = Constants.Colors.grayCellColor.cgColor
+        }
+        
         return cell
     }
 }
@@ -202,7 +224,9 @@ extension AlertViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegateFlowLayout Impl
 
 extension AlertViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch collectionViewAxis {
         case .vertical:
             return CGSize(width: Int(choiceCollectionView.bounds.size.width),
@@ -212,7 +236,10 @@ extension AlertViewController: UICollectionViewDelegateFlowLayout {
                           height: 50)
         }
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 8
     }
 }
@@ -242,30 +269,37 @@ private extension AlertViewController {
     }
     
     func setupConstraints() {
+        let backgroundSideOffset: CGFloat = 16
+        let titleLabelMininumHeight: CGFloat = 40
+        let textFieldHeight: CGFloat = 40
+        let commonStackViewSideOffset: CGFloat = 24
+        let commonStackViewUpAndDownOffset: CGFloat = 64
+        let buttonsStackViewHeight: CGFloat = 48
+        
         NSLayoutConstraint.activate([
             backgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             backgroundView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor,
-                                                     constant: -16),
+                                                     constant: -backgroundSideOffset),
             backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor,
-                                                    constant: 16),
+                                                    constant: backgroundSideOffset),
             
             choiceCollectionView.heightAnchor.constraint(equalToConstant: collectionViewHeight),
             
-            titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 40),
+            titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: titleLabelMininumHeight),
             
-            textField.heightAnchor.constraint(equalToConstant: 40),
+            textField.heightAnchor.constraint(equalToConstant: textFieldHeight),
             
             commonStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor,
-                                                 constant: 64),
+                                                 constant: commonStackViewUpAndDownOffset),
             commonStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor,
-                                                     constant: 24),
+                                                     constant: commonStackViewSideOffset),
             commonStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor,
-                                                      constant: -24),
+                                                      constant: -commonStackViewSideOffset),
             commonStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor,
-                                                    constant: -64),
+                                                    constant: -commonStackViewUpAndDownOffset),
             
-            leftRightButtonsStackView.heightAnchor.constraint(equalToConstant: 48),
+            leftRightButtonsStackView.heightAnchor.constraint(equalToConstant: buttonsStackViewHeight),
         ])
     }
 }

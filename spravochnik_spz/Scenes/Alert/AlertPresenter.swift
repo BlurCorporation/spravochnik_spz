@@ -42,9 +42,8 @@ extension AlertPresenter: AlertPresenterProtocol {
                                              rightButtonTitle: rightButtonTittle)
         case let .value(model):
             let title = model.type.title
-            viewController?.updateUIForVlaue(title: title,
+            viewController?.updateUIForValue(title: title,
                                              value: model.value)
-            break
         case let .choice(model):
             let axis = model.type
             let title = model.type.title
@@ -55,10 +54,9 @@ extension AlertPresenter: AlertPresenterProtocol {
             viewController?.updateUIForChoice(title: title,
                                               axis: axis,
                                               numOfItems: 0)
-            
-        //TODO: - возможно использовать другой coefficientType, чтобы не было лишнего кейса в свитче
-        default:
-            break
+        case let .defaultValue(model, value):
+            let title = model.type.title
+            viewController?.updateUIForValue(title: title, value: value)
         }
     }
     
@@ -76,7 +74,9 @@ extension AlertPresenter: AlertPresenterProtocol {
     }
     
     func rightButtonPressed() {
-        viewController?.dismiss(animated: true)
+        viewController?.dismiss(animated: true) {
+            
+        }
     }
 }
 
@@ -84,5 +84,5 @@ enum CoefficientType {
     case clear(model: NoСoefficientModel)
     case value(model: ValueСoefficientModel)
     case choice(model: ChoiceCoefficientModel)
-    case defaultValue(model: DefaultCoefficientValueModel)
+    case defaultValue(model: DefaultCoefficientValueModel, value: Double)
 }

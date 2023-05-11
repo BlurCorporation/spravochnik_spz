@@ -28,7 +28,7 @@
 		1BA8702F29AA71EA006159CB /* CustomUICollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA8702E29AA71EA006159CB /* CustomUICollectionViewFlowLayout.swift */; };
 		1BA8703329AD0540006159CB /* MainCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA8703229AD0540006159CB /* MainCollectionViewModel.swift */; };
 		1BBA97F62A09204D0056254C /* AlertCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBA97F52A09204D0056254C /* AlertCollectionViewCellModel.swift */; };
-		1BCFE35229CCC0EB0062DB39 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCFE35129CCC0EB0062DB39 /* test.swift */; };
+		1BCFE35229CCC0EB0062DB39 /* NoCoefficientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCFE35129CCC0EB0062DB39 /* NoCoefficientType.swift */; };
 		1BCFE35429D07BD30062DB39 /* AlertCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCFE35329D07BD30062DB39 /* AlertCollectionViewCell.swift */; };
 		2265A2CB299BE272005DF662 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2265A2CA299BE272005DF662 /* CustomTextField.swift */; };
 		2265A2CE299EB9A6005DF662 /* AuthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2265A2CD299EB9A6005DF662 /* AuthType.swift */; };
@@ -100,7 +100,7 @@
 		1BA8702E29AA71EA006159CB /* CustomUICollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUICollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		1BA8703229AD0540006159CB /* MainCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewModel.swift; sourceTree = "<group>"; };
 		1BBA97F52A09204D0056254C /* AlertCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCollectionViewCellModel.swift; sourceTree = "<group>"; };
-		1BCFE35129CCC0EB0062DB39 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
+		1BCFE35129CCC0EB0062DB39 /* NoCoefficientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCoefficientType.swift; sourceTree = "<group>"; };
 		1BCFE35329D07BD30062DB39 /* AlertCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCollectionViewCell.swift; sourceTree = "<group>"; };
 		2265A2CA299BE272005DF662 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		2265A2CD299EB9A6005DF662 /* AuthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthType.swift; sourceTree = "<group>"; };
@@ -251,7 +251,6 @@
 				220AE4F1297D52D300DEA441 /* Extension */,
 				220AE4F0297D52CC00DEA441 /* Managers */,
 				220AE4EF297D52C500DEA441 /* Services */,
-				1BCFE35129CCC0EB0062DB39 /* test.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -455,6 +454,7 @@
 				228FA2F729D0C336000412A7 /* ValueСoefficientType.swift */,
 				228FA2F929D0C379000412A7 /* ChoiceСoefficientType.swift */,
 				228FA2FB29D0C3A6000412A7 /* DefaultCoefficientValueType.swift */,
+				1BCFE35129CCC0EB0062DB39 /* NoCoefficientType.swift */,
 				228FA2FD29D0C3D9000412A7 /* CheckboxСoefficientType.swift */,
 				228FA2FF29D0C63E000412A7 /* HeaderView.swift */,
 			);
@@ -586,7 +586,7 @@
 				226E6EE6297D5E6900846141 /* SplashViewController.swift in Sources */,
 				226E6F15297D6BDE00846141 /* ResultViewController.swift in Sources */,
 				2265A2CB299BE272005DF662 /* CustomTextField.swift in Sources */,
-				1BCFE35229CCC0EB0062DB39 /* test.swift in Sources */,
+				1BCFE35229CCC0EB0062DB39 /* NoCoefficientType.swift in Sources */,
 				1B2B11EB2979CFF300FFC896 /* AppDelegate.swift in Sources */,
 				45DA6E4E298047CF008D26F8 /* UIViewController.swift in Sources */,
 				457CFC2929F01A580022487A /* NoInternetView.swift in Sources */,

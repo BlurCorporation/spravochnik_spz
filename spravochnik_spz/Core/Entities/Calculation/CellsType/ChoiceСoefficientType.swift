@@ -64,5 +64,6 @@ struct ChoiceCoefficientModel {
 struct ChoiceCoefficientViewModel {
     let title: String
     let descrpt: String
+    let type: ChoiceСoefficientType
     var delegate: ChoiceCoefficientTypeTableViewCellDelegate?
 }

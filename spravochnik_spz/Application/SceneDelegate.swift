@@ -31,13 +31,13 @@ private extension SceneDelegate {
 //                                       leftButton: "Выйти",
 //                                       rightButton: "Сохранить")
         //TODO: убрать аргумент itemIndex
-//        let model = ChoiceCoefficientModel(type: .terrain,
+//        let model = ChoiceCoefficientModel(type: .numberOfLinesOfDefence,
 //                                           itemIndex: 3)
 //
-        let model = ValueСoefficientModel(type: .objectArea,
-                                          value: 0.1)
-        
-//        let viewController = sceneBuildManager.buildAlertScreen(coefficientType: .value(model: model))
+//        let model = ValueСoefficientModel(type: .objectArea,
+//                                          value: 0.1)
+//
+//        let viewController = sceneBuildManager.buildAlertScreen(coefficientType: .choice(model: model))
         let viewController = sceneBuildManager.buildTabBarScreen()
         let navigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigationController
