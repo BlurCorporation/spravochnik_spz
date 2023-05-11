@@ -78,7 +78,7 @@ extension SavedCalculationsViewController: UITableViewDataSource {
                                                        for: indexPath) as? SavedCalculationsUITableViewCell else {
             return UITableViewCell()
         }
-        
+//        
         cell.viewModel = dataSource[indexPath.row]
         cell.selectionStyle = .none
         return cell
