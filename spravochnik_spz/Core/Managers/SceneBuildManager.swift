@@ -65,8 +65,10 @@ extension SceneBuildManager: Buildable {
     
     func buildOnboardingScreen() -> OnboardingViewController {
         let viewController = OnboardingViewController()
-        let presenter = OnboardingPresenter(sceneBuildManager: self)
-        
+        let onboardingModel = [OnboardingViewModel]()
+        let presenter = OnboardingPresenter(viewController: viewController,
+                                            onboardingModel: onboardingModel,
+                                            sceneBuildManager: self)
         viewController.presenter = presenter
         presenter.viewController = viewController
         
