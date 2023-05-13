@@ -53,12 +53,14 @@ extension AuthPresenter: AuthPresenterProtocol {
         viewController?.navigationController?.popToRootViewController(animated: true)
     }
     
-    func identifireButtonPressed(name: String?, email: String?, password: String?, repeatPassword: String?) {
+    func identifireButtonPressed(name: String?,
+                                 email: String?,
+                                 password: String?,
+                                 repeatPassword: String?) {
         guard let email = email,
               let password = password else {
             return
         }
-        
         switch authType {
             
         case .auth:
@@ -67,7 +69,8 @@ extension AuthPresenter: AuthPresenterProtocol {
                 password: password
             )
             
-            self.authService.loginUser(with: user, typeAuth: .email) { error in
+            self.authService.loginUser(with: user,
+                                       typeAuth: .email) { error in
                 if let error = error {
                     print(error.localizedDescription)
                     return
@@ -90,10 +93,7 @@ extension AuthPresenter: AuthPresenterProtocol {
                     print(error.localizedDescription)
                     return
                 }
-                
-                print("wasRegistered", wasRegisterd)
             }
-            
             let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()
             self.viewController?.navigationController?.pushViewController(tabBarScreen, animated: true)
         }

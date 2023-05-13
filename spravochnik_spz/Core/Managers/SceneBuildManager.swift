@@ -23,21 +23,15 @@ final class SceneBuildManager {
     private let authService: AuthServicable
     
     init() {
-        let mailService = EmailService()
-        let apple = AppleService()
-        let google = GoogleService()
-        self.authService = AuthService(
-            eMailService: mailService,
-            googleService: google,
-            appleService: apple
-        )
+        self.authService = AuthService()
     }
 }
 
 extension SceneBuildManager: Buildable {
     func buildSplashScreen() -> SplashViewController {
         let viewController = SplashViewController()
-        let presenter = SplashPresenter(sceneBuildManager: self, authService: authService)
+        let presenter = SplashPresenter(sceneBuildManager: self,
+                                        authService: authService)
         
         viewController.presenter = presenter
         presenter.viewController = viewController
@@ -57,7 +51,9 @@ extension SceneBuildManager: Buildable {
     
     func buildAuthScreen(type: AuthType) -> AuthViewController {
         let viewController = AuthViewController()
-        let presenter = AuthPresenter(sceneBuildManager: self, authType: type, authService: authService)
+        let presenter = AuthPresenter(sceneBuildManager: self,
+                                      authType: type,
+                                      authService: authService)
         
         viewController.presenter = presenter
         presenter.viewController = viewController
@@ -67,7 +63,8 @@ extension SceneBuildManager: Buildable {
     
     func buildResetPasswordScreen(updateDataType: UpdateDataType) -> ResetPasswordViewController {
         let viewController = ResetPasswordViewController()
-        let presenter = ResetPasswordPresenter(sceneBuildManager: self, updateDataType: updateDataType)
+        let presenter = ResetPasswordPresenter(sceneBuildManager: self,
+                                               updateDataType: updateDataType)
         
         viewController.presenter = presenter
         presenter.viewController = viewController
@@ -113,7 +110,8 @@ extension SceneBuildManager: Buildable {
     
     func buildProfileScreen() -> ProfileViewController {
         let viewController = ProfileViewController()
-        let presenter = ProfilePresenter(sceneBuildManager: self, authService: authService)
+        let presenter = ProfilePresenter(sceneBuildManager: self,
+                                         authService: authService)
         
         viewController.presenter = presenter
         presenter.viewController = viewController

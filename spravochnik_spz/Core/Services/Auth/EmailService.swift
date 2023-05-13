@@ -10,8 +10,10 @@ import FirebaseAuth
 
 protocol EmailServicable {
     func isAuth() -> Bool
-    func registUser(with userRequest: RegisterUserRequest, completion: @escaping (Bool, Error?) -> Void)
-    func loginUser(with userRequest: LoginUserRequest,  completion: @escaping (Error?) -> Void)
+    func registUser(with userRequest: RegisterUserRequest,
+                    completion: @escaping (Bool, Error?) -> Void)
+    func loginUser(with userRequest: LoginUserRequest,
+                   completion: @escaping (Error?) -> Void)
     func logout(completion: @escaping (Error?) -> Void)
 }
 
@@ -22,12 +24,14 @@ extension EmailService: EmailServicable {
         return (Auth.auth().currentUser != nil)
     }
     
-    func registUser(with userRequest: RegisterUserRequest, completion: @escaping (Bool, Error?) -> Void) {
+    func registUser(with userRequest: RegisterUserRequest,
+                    completion: @escaping (Bool, Error?) -> Void) {
         let username = userRequest.username
         let email = userRequest.email
         let password = userRequest.password
         
-        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+        Auth.auth().createUser(withEmail: email,
+                               password: password) { result, error in
             if let error = error {
                 completion(false, error)
                 return
@@ -36,26 +40,13 @@ extension EmailService: EmailServicable {
                 completion(false, nil)
                 return
             }
-            //            let db = Firestore.firestore()
-            //
-            //            db.collection("users")
-            //                .document(resultUser.uid)
-            //                .setData([
-            //                    "username": username,
-            //                    "email": email
-            //                ]) { error in
-            //                    if let error = error {
-            //                        completion(false, error)
-            //                        return
-            //                    }
-            //
-            //                    completion(true, nil)
-            //                }
         }
     }
     
-    func loginUser(with userRequest: LoginUserRequest, completion: @escaping (Error?) -> Void) {
-        Auth.auth().signIn(withEmail: userRequest.email, password: userRequest.password) { result, error in
+    func loginUser(with userRequest: LoginUserRequest,
+                   completion: @escaping (Error?) -> Void) {
+        Auth.auth().signIn(withEmail: userRequest.email,
+                           password: userRequest.password) { result, error in
             if let error = error {
                 completion(error)
                 return

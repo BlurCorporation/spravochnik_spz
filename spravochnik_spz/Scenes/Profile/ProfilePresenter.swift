@@ -41,7 +41,6 @@ final class ProfilePresenter {
 
 extension ProfilePresenter: ProfilePresenterProtocol {
     func logoutButtonPressed() {
-        
         self.authService.logout { error in
             if let error = error {
                 print(error.localizedDescription)

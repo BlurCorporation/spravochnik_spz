@@ -11,26 +11,23 @@ enum TypeAuth {
     case apple
 }
 
-
 protocol AuthServicable {
     func isAuth() -> Bool
-    func loginUser(with userRequest: LoginUserRequest, typeAuth: TypeAuth, completion: @escaping (Error?) -> Void)
-    func registUser(with userRequest: RegisterUserRequest, typeAuth: TypeAuth, completion: @escaping (Bool, Error?) -> Void)
+    func loginUser(with userRequest: LoginUserRequest,
+                   typeAuth: TypeAuth,
+                   completion: @escaping (Error?) -> Void)
+    func registUser(with userRequest: RegisterUserRequest,
+                    typeAuth: TypeAuth,
+                    completion: @escaping (Bool, Error?) -> Void)
     func logout(completion: @escaping (Error?) -> Void)
 }
 
 final class AuthService {
-    
     private let eMailService: EmailServicable
-    private let googleService: GoogleServicable
-    private let appleService: AppleServicable
     
-    init(eMailService: EmailServicable, googleService: GoogleServicable, appleService: AppleServicable) {
-        self.eMailService = eMailService
-        self.googleService = googleService
-        self.appleService = appleService
+    init() {
+        self.eMailService = EmailService()
     }
-    
 }
 
 extension AuthService: AuthServicable {
@@ -39,42 +36,35 @@ extension AuthService: AuthServicable {
         return self.eMailService.isAuth()
     }
     
-    func loginUser(with userRequest: LoginUserRequest, typeAuth: TypeAuth, completion: @escaping (Error?) -> Void) {
+    func loginUser(with userRequest: LoginUserRequest,
+                   typeAuth: TypeAuth,
+                   completion: @escaping (Error?) -> Void) {
         switch typeAuth {
         case .email:
-            eMailService.loginUser(with: userRequest,  completion: completion)
+            eMailService.loginUser(with: userRequest,
+                                   completion: completion)
         case .google:
             print("google")
         case .apple:
             print("apple")
         }
-        
     }
-    
-    
-    /// Метод для регистрации пользователя
-    /// - Parameters:
-    ///   - userRequest: Информация о пользователе
-    ///   - completion: Завершение с 2-мя типами данных
-    ///   - Bool: Определяется, если пользователь был зарегистрирован и сохранён в базу данных
-    ///   - Error?: Опциональная ошибка
-    func registUser(with userRequest: RegisterUserRequest, typeAuth: TypeAuth, completion: @escaping (Bool, Error?) -> Void) {
-        
+     
+    func registUser(with userRequest: RegisterUserRequest,
+                    typeAuth: TypeAuth,
+                    completion: @escaping (Bool, Error?) -> Void) {
         switch typeAuth {
         case .email:
-            self.eMailService.registUser(with: userRequest, completion: completion)
+            self.eMailService.registUser(with: userRequest,
+                                         completion: completion)
         case .apple:
             print("Apple")
         case .google:
             print("Google")
         }
-        
-        
-        
     }
     
     func logout(completion: @escaping (Error?) -> Void) {
         self.eMailService.logout(completion: completion)
-        
     }
 }
