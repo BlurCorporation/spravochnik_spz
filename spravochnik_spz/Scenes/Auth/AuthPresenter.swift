@@ -10,7 +10,7 @@
 protocol AuthPresenterProtocol: AnyObject {
     func viewDidLoad()
     func backButtonPressed()
-    func identifireButtonPressed(email: String?, password: String?, repeatPassword: String?)
+    func identifireButtonPressed(name: String?, email: String?, password: String?, repeatPassword: String?)
     func appleButtonPressed()
     func googleButtonPressed()
     //func facebookButtonPressed()
@@ -53,7 +53,7 @@ extension AuthPresenter: AuthPresenterProtocol {
         viewController?.navigationController?.popToRootViewController(animated: true)
     }
     
-    func identifireButtonPressed(email: String?, password: String?, repeatPassword: String?) {
+    func identifireButtonPressed(name: String?, email: String?, password: String?, repeatPassword: String?) {
         guard let email = email,
               let password = password else {
             return
@@ -62,17 +62,40 @@ extension AuthPresenter: AuthPresenterProtocol {
         switch authType {
             
         case .auth:
-            self.authService.loginUser(email: email, password: password, typeAuth: .email) { result in
-                switch result {
-                case .success(_):
-                    print("ура")
-                case .failure(_):
-                    print("alert")
+            let user = LoginUserRequest(
+                email: email,
+                password: password
+            )
+            
+            self.authService.loginUser(with: user, typeAuth: .email) { error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
                 }
             }
             
+            let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()
+            self.viewController?.navigationController?.pushViewController(tabBarScreen, animated: true)
+            
         case .register:
-            print("reg")
+            guard let name = name else { return }
+            let newUser = RegisterUserRequest(
+                username: name,
+                email: email,
+                password: password
+            )
+            
+            self.authService.registUser(with: newUser, typeAuth: .email) { wasRegisterd, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                print("wasRegistered", wasRegisterd)
+            }
+            
+            let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()
+            self.viewController?.navigationController?.pushViewController(tabBarScreen, animated: true)
         }
         
     }

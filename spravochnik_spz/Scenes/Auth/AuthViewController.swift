@@ -222,7 +222,7 @@ final class AuthViewController: UIViewController {
     }
 
     @objc private func identifireButtonPressed() {
-        presenter?.identifireButtonPressed(email: emailTextField.text, password: passwordTextField.text, repeatPassword: retypePasswordTextField.text)
+        presenter?.identifireButtonPressed(name: nameTextField.text ,email: emailTextField.text, password: passwordTextField.text, repeatPassword: retypePasswordTextField.text)
     }
     
     @objc private func appleButtonPressed() {

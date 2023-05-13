@@ -25,7 +25,17 @@ private extension SceneDelegate {
     func setupRootViewController(windowScene: UIWindowScene) {
         let window = UIWindow(windowScene: windowScene)
         let sceneBuildManager: Buildable = SceneBuildManager()
-        let authService = AuthService()
+        
+        let emailService = EmailService()
+        let google = GoogleService()
+        let apple = AppleService()
+        let authService = AuthService(
+            eMailService: emailService,
+            googleService: google,
+            appleService: apple
+        )
+        
+        
         let viewController = sceneBuildManager.buildSplashScreen()
         let navigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigationController

@@ -23,14 +23,21 @@ final class SceneBuildManager {
     private let authService: AuthServicable
     
     init() {
-        self.authService = AuthService()
+        let mailService = EmailService()
+        let apple = AppleService()
+        let google = GoogleService()
+        self.authService = AuthService(
+            eMailService: mailService,
+            googleService: google,
+            appleService: apple
+        )
     }
 }
 
 extension SceneBuildManager: Buildable {
     func buildSplashScreen() -> SplashViewController {
         let viewController = SplashViewController()
-        let presenter = SplashPresenter(sceneBuildManager: self)
+        let presenter = SplashPresenter(sceneBuildManager: self, authService: authService)
         
         viewController.presenter = presenter
         presenter.viewController = viewController
@@ -106,7 +113,7 @@ extension SceneBuildManager: Buildable {
     
     func buildProfileScreen() -> ProfileViewController {
         let viewController = ProfileViewController()
-        let presenter = ProfilePresenter(sceneBuildManager: self)
+        let presenter = ProfilePresenter(sceneBuildManager: self, authService: authService)
         
         viewController.presenter = presenter
         presenter.viewController = viewController

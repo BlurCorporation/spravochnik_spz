@@ -1,0 +1,14 @@
+//
+//  LoginUserRequest.swift
+//  spravochnik_spz
+//
+//  Created by Николай Чунихин on 11.05.2023.
+//
+
+import Foundation
+
+
+struct LoginUserRequest {
+    let email: String
+    let password: String
+}

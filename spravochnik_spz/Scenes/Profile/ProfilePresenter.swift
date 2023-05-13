@@ -26,11 +26,14 @@ final class ProfilePresenter {
     // MARK: - PrivateProperties
     
     private let sceneBuildManager: Buildable
+    private let authService: AuthServicable
     
     // MARK: - Initializer
     
-    init(sceneBuildManager: Buildable) {
+    init(sceneBuildManager: Buildable,
+         authService: AuthServicable) {
         self.sceneBuildManager = sceneBuildManager
+        self.authService = authService
     }
 }
 
@@ -38,8 +41,14 @@ final class ProfilePresenter {
 
 extension ProfilePresenter: ProfilePresenterProtocol {
     func logoutButtonPressed() {
-        let firebase = AuthService()
-        firebase.logout()
+        
+        self.authService.logout { error in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            print("exit")
+        }
         let startViewController = sceneBuildManager.buildStartScreen()
         let rootViewController = UINavigationController.init(rootViewController: startViewController)
         UIApplication.shared.windows.first?.rootViewController = rootViewController

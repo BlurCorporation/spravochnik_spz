@@ -7,7 +7,7 @@
 
 // MARK: - SplashPresenterProtocol
 
-import Firebase
+
 
 protocol SplashPresenterProtocol: AnyObject {
     func viewDidLoad()
@@ -21,11 +21,14 @@ final class SplashPresenter {
     // MARK: - PrivateProperties
     
     private let sceneBuildManager: Buildable
+    private let authService: AuthServicable
     
     // MARK: - Initializer
     
-    init(sceneBuildManager: Buildable) {
+    init(sceneBuildManager: Buildable,
+         authService: AuthServicable) {
         self.sceneBuildManager = sceneBuildManager
+        self.authService = authService
     }
 }
 
@@ -33,15 +36,24 @@ final class SplashPresenter {
 
 extension SplashPresenter: SplashPresenterProtocol {
     func viewDidLoad() {
-        Auth.auth().addStateDidChangeListener { (auth, user) in
-            if user == nil {
-                let AuthViewController = self.sceneBuildManager.buildAuthScreen(type: .auth)
-                self.viewController?.navigationController?.pushViewController(AuthViewController, animated: true)
-            } else {
-                let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()
-                self.viewController?.navigationController?.pushViewController(tabBarScreen, animated: true)
-            }
+        
+        if self.authService.isAuth() == false {
+            let AuthViewController = self.sceneBuildManager.buildAuthScreen(type: .auth)
+            self.viewController?.navigationController?.pushViewController(AuthViewController, animated: true)
+        } else {
+            let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()
+            self.viewController?.navigationController?.pushViewController(tabBarScreen, animated: true)
         }
+        
+//        Auth.auth().addStateDidChangeListener { (auth, user) in
+//            if user == nil {
+//                let AuthViewController = self.sceneBuildManager.buildAuthScreen(type: .auth)
+//                self.viewController?.navigationController?.pushViewController(AuthViewController, animated: true)
+//            } else {
+//                let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()
+//                self.viewController?.navigationController?.pushViewController(tabBarScreen, animated: true)
+//            }
+//        }
     }
 }
 
