@@ -34,7 +34,7 @@ final class ResetPasswordViewController: UIViewController {
     
     private let infoPasswordLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.TextLabels.infoPasswordLabelText
+        label.text = "infoPasswordLabelText".localized
         label.font = Constants.Fonts.b5
         label.textColor = Constants.Colors.darkGray
         label.numberOfLines = 0
@@ -61,7 +61,7 @@ final class ResetPasswordViewController: UIViewController {
     
     private let infoEmailLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.TextLabels.infoEmailLabelText
+        label.text = "infoEmailLabelText".localized
         label.font = Constants.Fonts.b5
         label.textColor = Constants.Colors.darkGray
         label.numberOfLines = 0
@@ -138,36 +138,36 @@ final class ResetPasswordViewController: UIViewController {
 
 extension ResetPasswordViewController: ResetPasswordViewProtocol {
     func setupResetPassword() {
-        title = Constants.NavigationController.registerTitle
+        title = "resetPasswordTitle".localized
         infoPasswordLabel.isHidden = true
-        topTextField.placeholder = Constants.PlaceHolders.eMail
+        topTextField.placeholder = "eMail".localized
         bottomTextField.isHidden = true
-        bottomButton.setTitle(Constants.TextButtons.resetPasswordButtonText,
+        bottomButton.setTitle("resetPasswordButtonText".localized,
                               for: .normal)
         topButton.isHidden = true
     }
     
     func setupUpdatePassword() {
-        title = Constants.NavigationController.updatePasswordTitle
-        topTextField.placeholder = Constants.PlaceHolders.newPassword
-        bottomTextField.placeholder = Constants.PlaceHolders.retypePassword
+        title = "updatePasswordTitle".localized
+        topTextField.placeholder = "newPassword".localized
+        bottomTextField.placeholder = "retypePassword".localized
         infoEmailLabel.isHidden = true
         topButton.isHidden = true
-        bottomButton.setTitle(Constants.TextButtons.updatePasswordButtonText,
+        bottomButton.setTitle("updatePasswordButtonText".localized,
                               for: .normal)
         topTextField.isSecureTextEntry = true
         bottomTextField.isSecureTextEntry = true
     }
     
     func setupUpdateData() {
-        title = Constants.NavigationController.updateDataTitle
+        title = "updateDataTitle".localized
         infoPasswordLabel.isHidden = true
-        topTextField.placeholder = Constants.PlaceHolders.name
-        bottomTextField.placeholder = Constants.PlaceHolders.eMail
+        topTextField.placeholder = "name".localized
+        bottomTextField.placeholder = "eMail".localized
         infoEmailLabel.isHidden = true
-        topButton.setTitle(Constants.TextButtons.changePasswordButtonText,
+        topButton.setTitle("changePasswordButtonText".localized,
                            for: .normal)
-        bottomButton.setTitle(Constants.TextButtons.saveChangesButtonText,
+        bottomButton.setTitle("saveChangesButtonText".localized,
                               for: .normal)
     }
 }

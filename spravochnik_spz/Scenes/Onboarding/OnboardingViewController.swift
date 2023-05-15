@@ -42,7 +42,7 @@ class OnboardingViewController: UIViewController {
     private lazy var nextButton: CustomButton = {
         let button = CustomButton(type: .system)
         button.mode = .black
-        button.setTitle(Constants.TextButtons.onboardingNextButton,
+        button.setTitle("onboardingNextButton".localized,
                         for: .normal)
         button.addTarget(self,
                          action: #selector(nextButtonAction),
@@ -53,7 +53,7 @@ class OnboardingViewController: UIViewController {
     private lazy var skipButton: CustomButton = {
         let button = CustomButton(type: .system)
         button.mode = .transparent
-        button.setTitle(Constants.TextButtons.onboardingSkipButton,
+        button.setTitle("onboardingSkipButton".localized,
                         for: .normal)
         button.addTarget(self,
                          action: #selector(skipButtonAction),

@@ -27,7 +27,7 @@ final class StartViewController: UIViewController {
     private let applicationNameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = Constants.TextLabels.applicationNameLabelText
+        label.text = "applicationNameLabelText".localized
         label.font = Constants.Fonts.h1
         return label
     }()
@@ -35,7 +35,7 @@ final class StartViewController: UIViewController {
     private let infoApplicationLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = Constants.TextLabels.infoApplicationLabelText
+        label.text = "infoApplicationLabelText".localized
         label.font = Constants.Fonts.b3
         label.textColor = Constants.Colors.lightGray
         label.numberOfLines = 0
@@ -53,7 +53,7 @@ final class StartViewController: UIViewController {
     private lazy var loginButton: CustomButton = {
         let button = CustomButton(type: .system)
         button.mode = .white
-        button.setTitle(Constants.TextButtons.loginButton, for: .normal)
+        button.setTitle("loginButton".localized, for: .normal)
         button.addTarget(self,
                          action: #selector(loginButtonPressed),
                          for: .touchUpInside)
@@ -63,7 +63,7 @@ final class StartViewController: UIViewController {
     private lazy var registerButton: CustomButton = {
         let button = CustomButton(type: .system)
         button.mode = .black
-        button.setTitle(Constants.TextButtons.registerButton, for: .normal)
+        button.setTitle("registerButton".localized, for: .normal)
         button.addTarget(self,
                          action: #selector(registerButtonPressed),
                          for: .touchUpInside)
@@ -81,7 +81,7 @@ final class StartViewController: UIViewController {
     private let infoWithLinksLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = Constants.TextLabels.infoWithLinksLabelText
+        label.text = "infoWithLinksLabelText".localized
         label.font = Constants.Fonts.b6
         label.textColor = Constants.Colors.lightGray
         label.numberOfLines = 0

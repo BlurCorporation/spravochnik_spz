@@ -21,7 +21,7 @@ final class SavedCalcCustomHeaderCell: UITableViewHeaderFooterView {
     
     private let savedCalcLabel: PaddingLabel = {
         let label = PaddingLabel()
-        label.text = Constants.TextLabels.savedCalculationsTitleLabelText
+        label.text = "savedCalculationsTitleLabelText".localized
         label.font = Constants.Fonts.h2
         label.numberOfLines = 0
         return label
