@@ -17,7 +17,7 @@ final class CheckboxCoefficientTypeTableViewCell: UITableViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = Constants.Fonts.secondSection
+        label.font = Constants.Fonts.b2
         label.numberOfLines = .zero
         return label
     }()

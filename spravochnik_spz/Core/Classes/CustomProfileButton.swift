@@ -18,14 +18,14 @@ final class CustomProfileButton: UIButton {
     
     private let headerLabel: UILabel = {
         let label = UILabel()
-        label.font = Constants.Fonts.profileButtonFont
+        label.font = Constants.Fonts.b2
         label.textColor = Constants.Colors.dark
         return label
     }()
     
     private let themeLabel: UILabel = {
         let label = UILabel()
-        label.font = Constants.Fonts.profileButtonFont
+        label.font = Constants.Fonts.b2
         label.textColor = Constants.Colors.lightGray
         return label
     }()

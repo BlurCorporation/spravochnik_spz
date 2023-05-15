@@ -10,7 +10,8 @@ import UIKit
 // MARK: - ValueCoefficientTableViewCellDelegate
 
 protocol ValueCoefficientTableViewCellDelegate: AnyObject {
-    func valueCoefficientCellPressed(value: Double)
+    func valueCoefficientCellPressed(value: Double,
+                                     type: ValueСoefficientType)
 }
 
 // MARK: ValueCoefficientTableViewCell
@@ -24,10 +25,11 @@ final class ValueCoefficientTableViewCell: UITableViewCell {
     // MARK: - PrivateProperties
     
     private var value: Double = .zero
+    private var type: ValueСoefficientType?
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = Constants.Fonts.firstSectionResultsFont
+        label.font = Constants.Fonts.b1
         label.numberOfLines = .zero
         return label
     }()
@@ -38,7 +40,7 @@ final class ValueCoefficientTableViewCell: UITableViewCell {
         button.layer.borderColor = Constants.Colors.lightGray.cgColor
         button.setTitleColor(Constants.Colors.dark,
                              for: .normal)
-        button.titleLabel?.font = Constants.Fonts.mainCellFont
+        button.titleLabel?.font = Constants.Fonts.h4
         button.layer.cornerRadius = Constants.Sizes.buttonInCellCornerRadius
         button.clipsToBounds = true
         button.addTarget(self,
@@ -50,7 +52,7 @@ final class ValueCoefficientTableViewCell: UITableViewCell {
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = Constants.Fonts.firstSectionResultsFont
+        label.font = Constants.Fonts.b1
         return label
     }()
     
@@ -85,6 +87,7 @@ final class ValueCoefficientTableViewCell: UITableViewCell {
         titleLabel.text = viewModel.title
         descriptionLabel.text = viewModel.descrpt
         value = viewModel.value
+        type = viewModel.type
         delegate = viewModel.delegate
     }
     
@@ -92,7 +95,8 @@ final class ValueCoefficientTableViewCell: UITableViewCell {
     
     @objc
     private func buttonPressed() {
-        delegate?.valueCoefficientCellPressed(value: value)
+        delegate?.valueCoefficientCellPressed(value: value,
+                                              type: type ?? .lengthOfThePerimeter)
     }
 }
 

@@ -42,6 +42,12 @@ enum Constants {
     }
     
     enum Images {
+        //Onboarding
+        static let onboarding1 = UIImage(named: "onboarding1") ?? UIImage()
+        static let onboarding2 = UIImage(named: "onboarding2") ?? UIImage()
+        static let onboarding3 = UIImage(named: "onboarding3") ?? UIImage()
+        static let pgLineGray = UIImage(named: "pgLineGray") ?? UIImage()
+        // App
         static let logoImage = UIImage(named: "logo") ?? UIImage()
         static let tabBarMain = UIImage(named: "TabBarMain") ?? UIImage()
         static let tabBarSaved = UIImage(named: "TabBarSaved") ?? UIImage()
@@ -71,6 +77,9 @@ enum Constants {
         static let checkBoxImage = UIImage(named: "checkbox")
         static let checkBoxTrueImage = UIImage(named: "checkboxTrue")
         static let quitButtom = UIImage(named: "quitButton")
+        // Cap Views
+        static let noInternet = UIImage(named: "noInternet") ?? UIImage()
+        static let file = UIImage(named: "file") ?? UIImage()
     }
     
     enum Sizes {
@@ -118,6 +127,18 @@ enum Constants {
         static let infoPasswordLabelText = "Пароль должен быть длинной не менее 8 символов и минимум одна заглавная буква"
         static let infoEmailLabelText = "Мы отправим электронное письмо на этот адрес для сброса пароля"
         static let mainHeaderLabelText = "Расчет стоимости проектирования"
+        // Cap Views
+        static let noInternetTitle = "Нет соединения"
+        static let noInternetText = "Проверьте подключено ли устройство к Интернету"
+        static let savedCalcTitle = "Здесь будут отображаться\nсохраненные Вами расчеты"
+        static let savedCalcText = "Для выбора расчета перейдите на главный экран"
+        // Onboarding
+        static let onboarding11 = "Удобно и быстро"
+        static let onboarding12 = "С помощью нашего приложения Вы сможете быстро и удобно произвести расчеты систем безопасности"
+        static let onboarding21 = "Множество расчетов"
+        static let onboarding22 = "Расчеты стоимости проектирования, технические расчеты систем безопасности, физические расчеты, технико-экономические расчеты"
+        static let onboarding31 = "Добро пожаловать"
+        static let onboarding32 = "Благодарим, что выбрали нас. Мы поможем Вам расчитать стоимость интересующих Вас систем безопасности"
     }
     
     enum TextButtons {
@@ -135,6 +156,8 @@ enum Constants {
         static let saveChangesButtonText = "Сохранить изменения"
         static let calculationButtonText = "Расчет"
         static let otherCalculationButtonText = "Перейти к другим расчетам"
+        static let onboardingNextButton = "Дальше"
+        static let onboardingSkipButton = "Пропустить"
     }
     
     enum PlaceHolders {
@@ -163,6 +186,8 @@ enum Constants {
         static let topTableViewOffset = CGFloat(64)
         // SavedCalcTableHeader
         static let leadingHeaderOffset = CGFloat(16)
+        // CapViews
+        static let capImageSize = CGFloat(100)
     }
     
     enum NavigationController {
@@ -176,54 +201,45 @@ enum Constants {
     }
     
     enum Fonts {
+        static let h1 = UIFont(name: "HelveticaNeueCyr-Bold", size: 34)
+        static let h2 = UIFont(name: "HelveticaNeueCyr-Bold", size: 30)
+        static let h3 = UIFont(name: "HelveticaNeueCyr-Bold", size: 20)
+        static let h4 = UIFont(name: "HelveticaNeueCyr-Medium", size: 17)
+        static let h5 = UIFont(name: "HelveticaNeueCyr-Bold", size: 17)
+        static let b1 = UIFont(name: "HelveticaNeueCyr-Roman", size: 18)
+        static let b2 = UIFont(name: "HelveticaNeueCyr-Roman", size: 15)
+        static let b3 = UIFont(name: "HelveticaNeueCyr-Light", size: 13)
+        static let b4 = UIFont(name: "HelveticaNeueCyr-Roman", size: 13)
+        static let b5 = UIFont(name: "HelveticaNeueCyr-Roman", size: 12)
+        static let b6 = UIFont(name: "HelveticaNeueCyr-Light", size: 11)
+        
+        
+        
+        //SavedCalculationsHeader
+//        static let savedCalcTitle = h2 = UIFont(name: "HelveticaNeueCyr-Bold", size: 30)
+        
         // SavedCalculationsCells with sizes
-        static let cellAddressLabel = UIFont(name: "HelveticaNeueCyr-Medium", size: 16)
-        static let cellSystemLabel = UIFont(name: "HelveticaNeueCyr-Roman", size: 12)
-        static let cellDateLabel = UIFont(name: "HelveticaNeueCyr-Light", size: 13)
-        static let cellStagesLabel = UIFont(name: "HelveticaNeueCyr-Light", size: 13)
-        static let cellCostLabel = UIFont(name: "HelveticaNeueCyr-Light", size: 13)
-        // SavedCalculationsHeader
-        static let savedCalcTitle = UIFont(name: "HelveticaNeueCyr-Bold", size: 30)
-        // cap
-        static let capFont = UIFont(name: "HelveticaNeueCyr-Bold", size: 17)
-        static let smallCapFont = UIFont(name: "HelveticaNeueCyr-Roman", size: 14)
-        // start, auth
-        static let infoWithLinksLabelFont = UIFont(name: "HelveticaNeueCyr-Light", size: 11)
-        // onboarding, start, calculations, results
-        static let infoLabelFont = UIFont(name: "HelveticaNeueCyr-Light", size: 13)
-        // reset and change password
-        static let infoPasswordFont = UIFont(name: "HelveticaNeueCyr-Medium", size: 12)
-        // auth
-        static let authLabelFont = UIFont(name: "HelveticaNeueCyr-Medium", size: 13)
-        // main
-        static let mainCellFont = UIFont(name: "HelveticaNeueCyr-Medium", size: 16)
-        // titleNavBar
-        static let titleNavBarFont = UIFont(name: "HelveticaNeueCyr-Medium", size: 17)
+//        static let cellAddressLabel = h4 = UIFont(name: "HelveticaNeueCyr-Medium", size: 17)
+                
         // customAlert
-        static let alertTitle = UIFont(name: "HelveticaNeueCyr-Medium", size: 18)
-        // customTextFields
-        static let textField = UIFont(name: "HelveticaNeueCyr-Roman", size: 15)
+//        static let alertTitle = h4 = UIFont(name: "HelveticaNeueCyr-Medium", size: 18)
+        
         // profile
-        static let profileButtonFont = UIFont(name: "HelveticaNeueCyr-Roman", size: 15)
-        static let smallProfileButtonFont = UIFont(name: "HelveticaNeueCyr-Roman", size: 13)
+//        static let smallProfileButtonFont = b4 = UIFont(name: "HelveticaNeueCyr-Roman", size: 13)
+        
+        
         // results tableView
-        static let allSectionNumberFont = UIFont(name: "HelveticaNeueCyr-Medium", size: 17)
-        static let firstSectionResultsFont = UIFont(name: "HelveticaNeueCyr-Roman", size: 18)
-        static let secondSectionResultsFont = UIFont(name: "HelveticaNeueCyr-Roman", size: 15)
-        static let thirdSectionTitleResultsFont = UIFont(name: "HelveticaNeueCyr-Medium", size: 18)
-        static let thirdSectionResultsFont = UIFont(name: "HelveticaNeueCyr-Roman", size: 15)
+//        static let allSectionNumberFont = h4 = UIFont(name: "HelveticaNeueCyr-Medium", size: 17)
+//        static let secondSectionResultsFont = b2 = UIFont(name: "HelveticaNeueCyr-Roman", size: 15)
+//        static let thirdSectionTitleResultsFont = h4 = UIFont(name: "HelveticaNeueCyr-Medium", size: 18)
+//        static let thirdSectionResultsFont = b2 = UIFont(name: "HelveticaNeueCyr-Roman", size: 15)
+        
+        
         // calculation tableView
-        static let firstSectionCalculationFont = UIFont(name: "HelveticaNeueCyr-Roman", size: 18)
-        static let secondSection = UIFont(name: "HelveticaNeueCyr-Medium", size: 15)
-        // customButton
-        static let customButtonFont = UIFont(name: "HelveticaNeueCyr-Bold", size: 17)
+//        static let firstSectionCalculationFont = b1 = UIFont(name: "HelveticaNeueCyr-Roman", size: 18)
+        
         // in sections tableView in results
-        static let smallTableHeaderFont = UIFont(name: "HelveticaNeueCyr-Bold", size: 20)
-        // onboarding
-        static let onboardingTitleFont = UIFont(name: "HelveticaNeueCyr-Bold", size: 30)
-        // tableView and username in profile
-        static let bigTableHeaderFont = UIFont(name: "HelveticaNeueCyr-Bold", size: 30)
-        // start
-        static let applicationNameLabelFont = UIFont(name: "HelveticaNeueCyr-Bold", size: 34)
+//        static let smallTableHeaderFont = h3 = UIFont(name: "HelveticaNeueCyr-Bold", size: 20)
+        
     }
 }

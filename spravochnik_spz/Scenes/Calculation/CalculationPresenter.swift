@@ -46,6 +46,7 @@ final class CalculationPresenter {
             let viewModel = ValueСoefficientViewModel(title: model.type.title,
                                                       value: model.value,
                                                       descrpt: model.type.descrp,
+                                                      type: model.type,
                                                       delegate: self)
             return RowType.valueСoefficient(viewModel: viewModel)
         }
@@ -80,6 +81,7 @@ final class CalculationPresenter {
         let rows = choiceCoefficients.map { model -> RowType in
             let viewModel = ChoiceCoefficientViewModel(title: model.type.title,
                                                        descrpt: model.type.descrp,
+                                                       type: model.type,
                                                        delegate: self)
             return RowType.choiceСoefficient(viewModel: viewModel)
         }
@@ -130,19 +132,35 @@ extension CalculationPresenter: CalculationHeaderViewCellCellDelegate {
 }
 
 extension CalculationPresenter: ValueCoefficientTableViewCellDelegate {
-    func valueCoefficientCellPressed(value: Double) {
+    func valueCoefficientCellPressed(value: Double,
+                                     type: ValueСoefficientType) {
         print("ValueCoefficientTableViewCellDelegate из презентора")
+        let model = ValueСoefficientModel(type: type,
+                                          value: value)
+        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .value(model: model))
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        viewController?.present(vc, animated: true)
     }
 }
 
 extension CalculationPresenter: ChoiceCoefficientTypeTableViewCellDelegate {
-    func choiceCoefficientCellPressed(value: Double) {
-        print("ChoiceCoefficientTypeTableViewCellDelegate из презентора")
+    func choiceCoefficientCellPressed(value: Double, coefType: ChoiceСoefficientType) {
+        let model = ChoiceCoefficientModel(type: coefType, itemIndex: 0)
+        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .choice(model: model))
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        viewController?.present(vc, animated: true)
     }
 }
 
 extension CalculationPresenter: DefaultValueCoefficientTableViewCellDelegate {
     func defaultValueCoefficientCellPressed(value: Double) {
-        print("DefaultValueCoefficientTableViewCellDelegate из презентора")
+        let model = DefaultCoefficientValueModel(type: .inflationRate)
+        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .defaultValue(model: model,
+                                                                                   value: value))
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        viewController?.present(vc, animated: true)
     }
 }

@@ -17,6 +17,8 @@ final class ProfileViewController: UIViewController {
     var presenter: ProfilePresenterProtocol?
     
     // MARK: - PrivateProperties
+
+    ///
     private lazy var logoutButton: UIButton = {
         let button = UIButton()
         let image = Constants.Images.logoutImage
@@ -42,7 +44,7 @@ final class ProfileViewController: UIViewController {
     private let usernameLabel: UILabel = {
         let label = UILabel()
         label.text = Constants.TextLabels.username
-        label.font = Constants.Fonts.bigTableHeaderFont
+        label.font = Constants.Fonts.h2
         return label
     }()
     
