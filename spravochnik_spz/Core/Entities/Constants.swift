@@ -104,70 +104,7 @@ enum Constants {
         static let calculationHeaderHeight = CGFloat(100)
         static let tableViewTopOffset = CGFloat(50)
     }
-    
-    enum alarmTypesText {
-        static let securityAlarmText = "securityAlarmText".localized
-        static let fireAlarmText = "fireAlarmText".localized
-        static let firePumpText = "firePumpText".localized
-        static let moduleFirefightingText = "moduleFirefightingText".localized
-        static let notificationText = "notificationText".localized
-        static let perimetrAlarmText = "perimetrAlarmText".localized
-        static let smokeExhaustText = "smokeExhaustText".localized
-    }
-    
-    enum TextLabels {
-        static let applicationNameLabelText = "applicationNameLabelText".localized
-        static let infoApplicationLabelText = "infoApplicationLabelText".localized
-        static let infoWithLinksLabelText = "infoWithLinksLabelText".localized
-        static let infoRegisterBottomLabelText = "infoRegisterBottomLabelText".localized
-        static let infoAuthBottomLabelText = "infoAuthBottomLabelText".localized
-        static let authLabelText = "authLabelText".localized
-        static let savedCalculationsTitleLabelText = "savedCalculationsTitleLabelText".localized
-        static let username = "username".localized
-        static let infoPasswordLabelText = "infoPasswordLabelText".localized
-        static let infoEmailLabelText = "infoEmailLabelText".localized
-        static let mainHeaderLabelText = "mainHeaderLabelText".localized
-        // Cap Views
-        static let noInternetTitle = "noInternetTitle".localized
-        static let noInternetText = "noInternetText".localized
-        static let savedCalcTitle = "savedCalcTitle".localized
-        static let savedCalcText = "savedCalcText".localized
-        // Onboarding
-        static let onboarding11 = "onboarding11".localized
-        static let onboarding12 = "onboarding12".localized
-        static let onboarding21 = "onboarding21".localized
-        static let onboarding22 = "onboarding22".localized
-        static let onboarding31 = "onboarding31".localized
-        static let onboarding32 = "onboarding32".localized
-    }
-    
-    enum TextButtons {
-        static let appThemeButtonText = "appThemeButtonText".localized
-        static let colorAppThemeButtonText = "colorAppThemeButtonText".localized
-        static let updateDataButtonText = "updateDataButtonText".localized
-        static let usingConditionsButtonText = "usingConditionsButtonText".localized
-        static let privacyPolicyButtonText = "privacyPolicyButtonText".localized
-        static let loginButton = "loginButton".localized
-        static let registerButton = "registerButton".localized
-        static let forgotPassword = "forgotPassword".localized
-        static let resetPasswordButtonText = "resetPasswordButtonText".localized
-        static let updatePasswordButtonText = "updatePasswordButtonText".localized
-        static let changePasswordButtonText = "changePasswordButtonText".localized
-        static let saveChangesButtonText = "saveChangesButtonText".localized
-        static let calculationButtonText = "calculationButtonText".localized
-        static let otherCalculationButtonText = "otherCalculationButtonText".localized
-        static let onboardingNextButton = "onboardingNextButton".localized
-        static let onboardingSkipButton = "onboardingSkipButton".localized
-    }
-    
-    enum PlaceHolders {
-        static let name = "name".localized
-        static let eMail = "eMail".localized
-        static let password = "password".localized
-        static let retypePassword = "retypePassword".localized
-        static let newPassword = "newPassword".localized
-    }
-    
+
     enum Constraints {
         static let sideOffset = CGFloat(16)
         static let bottomOffset = CGFloat(16)
@@ -191,11 +128,6 @@ enum Constants {
     }
     
     enum NavigationController {
-        static let registerTitle = "registerTitle".localized
-        static let authTitle = "authTitle".localized
-        static let resetPasswordTitle = "resetPasswordTitle".localized
-        static let updatePasswordTitle = "updatePasswordTitle".localized
-        static let updateDataTitle = "updateDataTitle".localized
         static let authButtonHeight = CGFloat(50)
         static let commonStackViewTopOffset = CGFloat(24)
     }

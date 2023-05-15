@@ -16,7 +16,7 @@ class NoInternetView: UIView {
     
     private let noInternetTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.TextLabels.noInternetTitle
+        label.text = "noInternetTitle".localized
         label.font = Constants.Fonts.h5
         label.textAlignment = .center
         label.tintColor = Constants.Colors.dark
@@ -25,7 +25,7 @@ class NoInternetView: UIView {
     
     private let noInternetTextLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.TextLabels.noInternetText
+        label.text = "noInternetText".localized
         label.font = Constants.Fonts.b3
         label.numberOfLines = 0
         label.textAlignment = .center

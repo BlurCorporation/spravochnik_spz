@@ -43,7 +43,7 @@ final class ProfileViewController: UIViewController {
     
     private let usernameLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.TextLabels.username
+        label.text = "username".localized
         label.font = Constants.Fonts.h2
         return label
     }()
@@ -59,8 +59,8 @@ final class ProfileViewController: UIViewController {
     
     private lazy var themeButton: CustomProfileButton = {
         let button = CustomProfileButton(size: .big)
-        button.setTitleLabels(header: Constants.TextButtons.appThemeButtonText,
-                              theme: Constants.TextButtons.colorAppThemeButtonText)
+        button.setTitleLabels(header: "appThemeButtonText".localized,
+                              theme: "colorAppThemeButtonText".localized)
         let tap = UITapGestureRecognizer(target: self,
                                          action: #selector(themeButtonPressed))
         button.addGestureRecognizer(tap)
@@ -69,7 +69,7 @@ final class ProfileViewController: UIViewController {
     
     private lazy var updateDataButton: CustomProfileButton = {
         let button = CustomProfileButton(size: .small)
-        button.setTitleLabels(header: Constants.TextButtons.updateDataButtonText)
+        button.setTitleLabels(header: "updateDataButtonText".localized)
         let tap = UITapGestureRecognizer(target: self,
                                          action: #selector(updateDataButtonPressed))
         button.addGestureRecognizer(tap)
@@ -78,7 +78,7 @@ final class ProfileViewController: UIViewController {
     
     private lazy var conditionButton: CustomProfileButton = {
         let button = CustomProfileButton(size: .small)
-        button.setTitleLabels(header: Constants.TextButtons.usingConditionsButtonText)
+        button.setTitleLabels(header: "usingConditionsButtonText".localized)
         let tap = UITapGestureRecognizer(target: self,
                                          action: #selector(conditionButtonPressed))
         button.addGestureRecognizer(tap)
@@ -87,7 +87,7 @@ final class ProfileViewController: UIViewController {
     
     private lazy var privacyButton: CustomProfileButton = {
         let button = CustomProfileButton(size: .small)
-        button.setTitleLabels(header: Constants.TextButtons.privacyPolicyButtonText)
+        button.setTitleLabels(header: "privacyPolicyButtonText".localized)
         let tap = UITapGestureRecognizer(target: self,
                                          action: #selector(privacyButtonPressed))
         button.addGestureRecognizer(tap)

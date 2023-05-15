@@ -16,7 +16,7 @@ class CleanSavedCalculationView: UIView {
     
     private let savedCalcTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.TextLabels.savedCalcTitle
+        label.text = "savedCalcTitle".localized
         label.font = Constants.Fonts.h5
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -26,7 +26,7 @@ class CleanSavedCalculationView: UIView {
     
     private let savedCalcTextLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.TextLabels.savedCalcText
+        label.text = "savedCalcText".localized
         label.font = Constants.Fonts.b3
         label.numberOfLines = 0
         label.textAlignment = .center
