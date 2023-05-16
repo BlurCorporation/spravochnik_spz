@@ -40,6 +40,7 @@ final class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewController()
+        presenter?.viewDidLoad()
     }
 }
 
