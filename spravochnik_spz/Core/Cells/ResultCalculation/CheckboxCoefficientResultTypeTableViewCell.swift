@@ -1,17 +1,17 @@
 //
-//  CheckboxCoefficientTypeTableViewCell.swift
+//  CheckboxCoefficientResultTypeTableViewCell.swift
 //  spravochnik_spz
 //
-//  Created by Swift Learning on 24.02.2023.
+//  Created by Swift Learning on 13.05.2023.
 //
 
 import UIKit
 
-// MARK: CheckboxCoefficientTypeTableViewCell
+// MARK: CheckboxCoefficientResultTypeTableViewCell
 
-final class CheckboxCoefficientTypeTableViewCell: UITableViewCell {
+final class CheckboxCoefficientResultTypeTableViewCell: UITableViewCell {
     
-    static let reuseIdentifier = "CheckboxCoefficientTypeTableViewCell"
+    static let reuseIdentifier = "CheckboxCoefficientResultTypeTableViewCell"
     
     // MARK: - PrivateProperties
     
@@ -22,8 +22,10 @@ final class CheckboxCoefficientTypeTableViewCell: UITableViewCell {
         return label
     }()
     
-    private let checkBoxImageView: UIImageView = {
+    private let xMarkImageView: UIImageView = {
         let imageView = UIImageView()
+        let image = Constants.Images.xMark
+        imageView.image = image
         return imageView
     }()
     
@@ -32,6 +34,7 @@ final class CheckboxCoefficientTypeTableViewCell: UITableViewCell {
         stackView.spacing = 8
         stackView.alignment = .center
         stackView.layer.borderWidth = Constants.Sizes.borderWidth
+        stackView.layer.borderColor = Constants.Colors.grayCellColor.cgColor
         stackView.layer.cornerRadius = Constants.Sizes.savedCalcCellCornerRadius
         stackView.layoutMargins = UIEdgeInsets(top: 0,
                                                left: 16,
@@ -67,40 +70,29 @@ final class CheckboxCoefficientTypeTableViewCell: UITableViewCell {
     
     //MARK: - Methods
     
-    func configure(with viewModel: CheckboxСoefficientViewModel) {
+    func configure(with viewModel: CheckboxСoefficientResultViewModel) {
         titleLabel.text = viewModel.title
-        titleLabel.textColor = viewModel.isSelected
-        ? Constants.Colors.dark
-        : Constants.Colors.lightGray
-        
-        stackView.layer.borderColor = viewModel.isSelected
-        ? Constants.Colors.dark.cgColor
-        : Constants.Colors.lightGray.cgColor
-        
-        checkBoxImageView.image = viewModel.isSelected
-        ? Constants.Images.checkBoxTrueImage
-        : Constants.Images.checkBoxImage
     }
 }
 
-// MARK: - ExtensionCheckboxCoefficientTypeTableViewCell
+// MARK: - ExtensionCheckboxCoefficientResultTypeTableViewCell
 
-private extension CheckboxCoefficientTypeTableViewCell {
+private extension CheckboxCoefficientResultTypeTableViewCell {
     func setupCell() {
         selectionStyle = .none
         contentView.addSubviews(stackView)
         
         stackView.addArrangedSubviews(titleLabel,
-                                      checkBoxImageView)
+                                      xMarkImageView)
     }
     
     func setupContsraints() {
-        let checkBoxImageViewSize: CGFloat = 24
+        let checkBoxImageViewSize: CGFloat = 10
         let stackViewHeight: CGFloat = 82
         
         NSLayoutConstraint.activate([
-            checkBoxImageView.heightAnchor.constraint(equalToConstant: checkBoxImageViewSize),
-            checkBoxImageView.widthAnchor.constraint(equalToConstant: checkBoxImageViewSize),
+            xMarkImageView.heightAnchor.constraint(equalToConstant: checkBoxImageViewSize),
+            xMarkImageView.widthAnchor.constraint(equalToConstant: checkBoxImageViewSize),
             stackView.heightAnchor.constraint(equalToConstant: stackViewHeight),
             
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor),

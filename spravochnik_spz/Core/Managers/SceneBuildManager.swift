@@ -17,7 +17,12 @@ protocol Buildable {
     func buildProfileScreen() -> ProfileViewController
     func buildAlertScreen(coefficientType: CoefficientType) -> AlertViewController
     func buildCalculationScreen(calculationType: СalculationType) -> CalculationViewController
-    func buildResultScreen() -> ResultViewController
+    func buildResultScreen(navigationBarTitle: String,
+                           calculationType: СalculationType,
+                           defaulValueCoefficients: [DefaultCoefficientValueModel],
+                           valueCoefficients: [ValueСoefficientModel],
+                           choiceCoefficients: [ChoiceCoefficientModel],
+                           checkboxCoefficients: [CheckboxСoefficientModel]) -> ResultViewController
 }
 
 final class SceneBuildManager {}
@@ -122,9 +127,22 @@ extension SceneBuildManager: Buildable {
         return viewController
     }
     
-    func buildResultScreen() -> ResultViewController {
+    func buildResultScreen(navigationBarTitle: String,
+                           calculationType: СalculationType,
+                           defaulValueCoefficients: [DefaultCoefficientValueModel],
+                           valueCoefficients: [ValueСoefficientModel],
+                           choiceCoefficients: [ChoiceCoefficientModel],
+                           checkboxCoefficients: [CheckboxСoefficientModel]) -> ResultViewController {
         let viewController = ResultViewController()
-        let presenter = ResultPresenter(sceneBuildManager: self)
+        let calculationService = CalculationService()
+        let presenter = ResultPresenter(sceneBuildManager: self,
+                                        calculationService: calculationService,
+                                        calculationType: calculationType,
+                                        navigationBarTitle: navigationBarTitle,
+                                        defaulValueCoefficients: defaulValueCoefficients,
+                                        valueCoefficients: valueCoefficients,
+                                        choiceCoefficients: choiceCoefficients,
+                                        checkboxCoefficients: checkboxCoefficients)
         
         viewController.presenter = presenter
         presenter.viewController = viewController

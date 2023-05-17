@@ -30,6 +30,7 @@
 		1BBA97F62A09204D0056254C /* AlertCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBA97F52A09204D0056254C /* AlertCollectionViewCellModel.swift */; };
 		1BCFE35229CCC0EB0062DB39 /* NoCoefficientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCFE35129CCC0EB0062DB39 /* NoCoefficientType.swift */; };
 		1BCFE35429D07BD30062DB39 /* AlertCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCFE35329D07BD30062DB39 /* AlertCollectionViewCell.swift */; };
+		221E59102A10E69B0005B047 /* CalculationResultTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E590F2A10E69B0005B047 /* CalculationResultTypeTableViewCell.swift */; };
 		2265A2CB299BE272005DF662 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2265A2CA299BE272005DF662 /* CustomTextField.swift */; };
 		2265A2CE299EB9A6005DF662 /* AuthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2265A2CD299EB9A6005DF662 /* AuthType.swift */; };
 		226E6EE6297D5E6900846141 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EE5297D5E6900846141 /* SplashViewController.swift */; };
@@ -60,7 +61,17 @@
 		228FA2FA29D0C379000412A7 /* ChoiceСoefficientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228FA2F929D0C379000412A7 /* ChoiceСoefficientType.swift */; };
 		228FA2FC29D0C3A6000412A7 /* DefaultCoefficientValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228FA2FB29D0C3A6000412A7 /* DefaultCoefficientValueType.swift */; };
 		228FA2FE29D0C3D9000412A7 /* CheckboxСoefficientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228FA2FD29D0C3D9000412A7 /* CheckboxСoefficientType.swift */; };
-		228FA30029D0C63E000412A7 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228FA2FF29D0C63E000412A7 /* HeaderView.swift */; };
+		228FA30029D0C63E000412A7 /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228FA2FF29D0C63E000412A7 /* HeaderViewModel.swift */; };
+		22B29E6D2A0FBC4900670939 /* ValueСoefficientResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B29E6C2A0FBC4900670939 /* ValueСoefficientResultType.swift */; };
+		22B29E6F2A0FBC5800670939 /* ChoiceСoefficientResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B29E6E2A0FBC5800670939 /* ChoiceСoefficientResultType.swift */; };
+		22B29E712A0FBC6500670939 /* DefaultCoefficientValueResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B29E702A0FBC6500670939 /* DefaultCoefficientValueResultType.swift */; };
+		22B29E732A0FBC7800670939 /* CheckboxСoefficientResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B29E722A0FBC7800670939 /* CheckboxСoefficientResultType.swift */; };
+		22B29E752A0FC04E00670939 /* CalculationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B29E742A0FC04E00670939 /* CalculationResult.swift */; };
+		22B29E792A100F0900670939 /* ValueCoefficientResultTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B29E782A100F0900670939 /* ValueCoefficientResultTypeTableViewCell.swift */; };
+		22B29E7B2A101C6600670939 /* ChoiceCoefficientResultTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B29E7A2A101C6600670939 /* ChoiceCoefficientResultTypeTableViewCell.swift */; };
+		22B29E7D2A101EF600670939 /* DefaultValueCoefficientResultTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B29E7C2A101EF600670939 /* DefaultValueCoefficientResultTypeTableViewCell.swift */; };
+		22B29E7F2A10214E00670939 /* CheckboxCoefficientResultTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B29E7E2A10214E00670939 /* CheckboxCoefficientResultTypeTableViewCell.swift */; };
+		22DD5D3B2A13BAA000382DC8 /* CalculationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DD5D3A2A13BAA000382DC8 /* CalculationService.swift */; };
 		22F5886229A788D1004053CF /* CustomProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5886129A788D1004053CF /* CustomProfileButton.swift */; };
 		22F5886429A82C9A004053CF /* UpdateDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5886329A82C9A004053CF /* UpdateDataType.swift */; };
 		22F5886629A8E48E004053CF /* CalculationHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5886529A8E48E004053CF /* CalculationHeaderViewCell.swift */; };
@@ -104,6 +115,7 @@
 		1BBA97F52A09204D0056254C /* AlertCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCollectionViewCellModel.swift; sourceTree = "<group>"; };
 		1BCFE35129CCC0EB0062DB39 /* NoCoefficientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCoefficientType.swift; sourceTree = "<group>"; };
 		1BCFE35329D07BD30062DB39 /* AlertCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCollectionViewCell.swift; sourceTree = "<group>"; };
+		221E590F2A10E69B0005B047 /* CalculationResultTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationResultTypeTableViewCell.swift; sourceTree = "<group>"; };
 		2265A2CA299BE272005DF662 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		2265A2CD299EB9A6005DF662 /* AuthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthType.swift; sourceTree = "<group>"; };
 		226E6EE5297D5E6900846141 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -134,7 +146,17 @@
 		228FA2F929D0C379000412A7 /* ChoiceСoefficientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChoiceСoefficientType.swift"; sourceTree = "<group>"; };
 		228FA2FB29D0C3A6000412A7 /* DefaultCoefficientValueType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCoefficientValueType.swift; sourceTree = "<group>"; };
 		228FA2FD29D0C3D9000412A7 /* CheckboxСoefficientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckboxСoefficientType.swift"; sourceTree = "<group>"; };
-		228FA2FF29D0C63E000412A7 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		228FA2FF29D0C63E000412A7 /* HeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModel.swift; sourceTree = "<group>"; };
+		22B29E6C2A0FBC4900670939 /* ValueСoefficientResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ValueСoefficientResultType.swift"; sourceTree = "<group>"; };
+		22B29E6E2A0FBC5800670939 /* ChoiceСoefficientResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChoiceСoefficientResultType.swift"; sourceTree = "<group>"; };
+		22B29E702A0FBC6500670939 /* DefaultCoefficientValueResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCoefficientValueResultType.swift; sourceTree = "<group>"; };
+		22B29E722A0FBC7800670939 /* CheckboxСoefficientResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckboxСoefficientResultType.swift"; sourceTree = "<group>"; };
+		22B29E742A0FC04E00670939 /* CalculationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationResult.swift; sourceTree = "<group>"; };
+		22B29E782A100F0900670939 /* ValueCoefficientResultTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueCoefficientResultTypeTableViewCell.swift; sourceTree = "<group>"; };
+		22B29E7A2A101C6600670939 /* ChoiceCoefficientResultTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceCoefficientResultTypeTableViewCell.swift; sourceTree = "<group>"; };
+		22B29E7C2A101EF600670939 /* DefaultValueCoefficientResultTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultValueCoefficientResultTypeTableViewCell.swift; sourceTree = "<group>"; };
+		22B29E7E2A10214E00670939 /* CheckboxCoefficientResultTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxCoefficientResultTypeTableViewCell.swift; sourceTree = "<group>"; };
+		22DD5D3A2A13BAA000382DC8 /* CalculationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalculationService.swift; path = spravochnik_spz/Core/Cells/ResultCalculation/CalculationService.swift; sourceTree = SOURCE_ROOT; };
 		22F5886129A788D1004053CF /* CustomProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProfileButton.swift; sourceTree = "<group>"; };
 		22F5886329A82C9A004053CF /* UpdateDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDataType.swift; sourceTree = "<group>"; };
 		22F5886529A8E48E004053CF /* CalculationHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationHeaderViewCell.swift; sourceTree = "<group>"; };
@@ -166,11 +188,12 @@
 		1B19F236297EFCA200F34EF1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				22B29E772A100E6B00670939 /* ResultCalculation */,
+				22F5886829A8EADA004053CF /* Calculation */,
 				1BA8702C29AA5DF0006159CB /* MainCollectionViewCell.swift */,
 				1BA8703229AD0540006159CB /* MainCollectionViewModel.swift */,
 				1BCFE35329D07BD30062DB39 /* AlertCollectionViewCell.swift */,
 				1BBA97F52A09204D0056254C /* AlertCollectionViewCellModel.swift */,
-				22F5886829A8EADA004053CF /* Calculation */,
 				22F5886729A8EAC9004053CF /* SavedCalculations */,
 			);
 			path = Cells;
@@ -291,6 +314,7 @@
 		220AE4EF297D52C500DEA441 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				22DD5D3A2A13BAA000382DC8 /* CalculationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -336,6 +360,7 @@
 		220AE4F4297D52F600DEA441 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				22B29E6A2A0FBC1600670939 /* Result */,
 				45F912372A0666F300AB5DEA /* CustomViews */,
 				228FA2F329D0C1F9000412A7 /* Calculation */,
 				2265A2CC299EB968005DF662 /* TypeViewController */,
@@ -462,9 +487,49 @@
 				228FA2FB29D0C3A6000412A7 /* DefaultCoefficientValueType.swift */,
 				1BCFE35129CCC0EB0062DB39 /* NoCoefficientType.swift */,
 				228FA2FD29D0C3D9000412A7 /* CheckboxСoefficientType.swift */,
-				228FA2FF29D0C63E000412A7 /* HeaderView.swift */,
+				228FA2FF29D0C63E000412A7 /* HeaderViewModel.swift */,
 			);
 			path = CellsType;
+			sourceTree = "<group>";
+		};
+		22B29E6A2A0FBC1600670939 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				22B29E762A100E5100670939 /* New Group */,
+				22B29E6B2A0FBC2200670939 /* ResultModels */,
+			);
+			path = Result;
+			sourceTree = "<group>";
+		};
+		22B29E6B2A0FBC2200670939 /* ResultModels */ = {
+			isa = PBXGroup;
+			children = (
+				22B29E6C2A0FBC4900670939 /* ValueСoefficientResultType.swift */,
+				22B29E6E2A0FBC5800670939 /* ChoiceСoefficientResultType.swift */,
+				22B29E702A0FBC6500670939 /* DefaultCoefficientValueResultType.swift */,
+				22B29E722A0FBC7800670939 /* CheckboxСoefficientResultType.swift */,
+				22B29E742A0FC04E00670939 /* CalculationResult.swift */,
+			);
+			path = ResultModels;
+			sourceTree = "<group>";
+		};
+		22B29E762A100E5100670939 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		22B29E772A100E6B00670939 /* ResultCalculation */ = {
+			isa = PBXGroup;
+			children = (
+				22B29E782A100F0900670939 /* ValueCoefficientResultTypeTableViewCell.swift */,
+				22B29E7A2A101C6600670939 /* ChoiceCoefficientResultTypeTableViewCell.swift */,
+				22B29E7C2A101EF600670939 /* DefaultValueCoefficientResultTypeTableViewCell.swift */,
+				22B29E7E2A10214E00670939 /* CheckboxCoefficientResultTypeTableViewCell.swift */,
+				221E590F2A10E69B0005B047 /* CalculationResultTypeTableViewCell.swift */,
+			);
+			path = ResultCalculation;
 			sourceTree = "<group>";
 		};
 		22BD56F02990E6D4002762BC /* TabBar */ = {
@@ -588,23 +653,30 @@
 				228FA2F529D0C2E3000412A7 /* CalculationViewControllerType.swift in Sources */,
 				1BA6E00B2993CC68000F0F82 /* NumberFormatter.swift in Sources */,
 				1BA6E012299BEFA5000F0F82 /* SavedCalcCustomHeaderCell.swift in Sources */,
-				228FA30029D0C63E000412A7 /* HeaderView.swift in Sources */,
+				22B29E7F2A10214E00670939 /* CheckboxCoefficientResultTypeTableViewCell.swift in Sources */,
+				228FA30029D0C63E000412A7 /* HeaderViewModel.swift in Sources */,
 				226E6EE6297D5E6900846141 /* SplashViewController.swift in Sources */,
 				226E6F15297D6BDE00846141 /* ResultViewController.swift in Sources */,
 				2265A2CB299BE272005DF662 /* CustomTextField.swift in Sources */,
 				1BCFE35229CCC0EB0062DB39 /* NoCoefficientType.swift in Sources */,
+				221E59102A10E69B0005B047 /* CalculationResultTypeTableViewCell.swift in Sources */,
 				1B2B11EB2979CFF300FFC896 /* AppDelegate.swift in Sources */,
 				45DA6E4E298047CF008D26F8 /* UIViewController.swift in Sources */,
 				457CFC2929F01A580022487A /* NoInternetView.swift in Sources */,
 				228FA2F829D0C336000412A7 /* ValueСoefficientType.swift in Sources */,
+				22DD5D3B2A13BAA000382DC8 /* CalculationService.swift in Sources */,
+				22B29E7B2A101C6600670939 /* ChoiceCoefficientResultTypeTableViewCell.swift in Sources */,
 				1B2B11ED2979CFF300FFC896 /* SceneDelegate.swift in Sources */,
 				226E6F0B297D6B8500846141 /* CalculationViewController.swift in Sources */,
 				1BA8702F29AA71EA006159CB /* CustomUICollectionViewFlowLayout.swift in Sources */,
 				226E6F0B297D6B8500846141 /* CalculationViewController.swift in Sources */,
 				226E6EF1297D667400846141 /* AuthViewController.swift in Sources */,
+				22B29E6D2A0FBC4900670939 /* ValueСoefficientResultType.swift in Sources */,
 				226E6F01297D69DC00846141 /* SavedCalculationsViewController.swift in Sources */,
 				226E6EF5297D681E00846141 /* ResetPasswordViewController.swift in Sources */,
+				22B29E752A0FC04E00670939 /* CalculationResult.swift in Sources */,
 				228FA2FE29D0C3D9000412A7 /* CheckboxСoefficientType.swift in Sources */,
+				22B29E712A0FBC6500670939 /* DefaultCoefficientValueResultType.swift in Sources */,
 				228FA2FA29D0C379000412A7 /* ChoiceСoefficientType.swift in Sources */,
 				45FDA9242A0D2B7200C83964 /* OnboardingViewModel.swift in Sources */,
 				226E6F05297D6A6A00846141 /* ProfileViewController.swift in Sources */,
@@ -618,6 +690,7 @@
 				1B41442629CCB6DD00153A6F /* AlertPresenter.swift in Sources */,
 				1BCFE35429D07BD30062DB39 /* AlertCollectionViewCell.swift in Sources */,
 				228FA2FC29D0C3A6000412A7 /* DefaultCoefficientValueType.swift in Sources */,
+				22B29E7D2A101EF600670939 /* DefaultValueCoefficientResultTypeTableViewCell.swift in Sources */,
 				22F5886A29A8EB06004053CF /* ValueCoefficientTypeTableViewCell.swift in Sources */,
 				226E6EF7297D683200846141 /* ResetPasswordPresenter.swift in Sources */,
 				226E6F17297D6BEB00846141 /* ResultPresenter.swift in Sources */,
@@ -626,11 +699,14 @@
 				226E6EFD297D699000846141 /* MainViewController.swift in Sources */,
 				226E6EFB297D692600846141 /* OnboardingPresenter.swift in Sources */,
 				226E6F07297D6A7300846141 /* ProfilePresenter.swift in Sources */,
+				22B29E6F2A0FBC5800670939 /* ChoiceСoefficientResultType.swift in Sources */,
+				22B29E732A0FBC7800670939 /* CheckboxСoefficientResultType.swift in Sources */,
 				226E6F03297D69E800846141 /* SavedCalculationsPresenter.swift in Sources */,
 				22F5887029A8EB30004053CF /* CheckboxCoefficientTypeTableViewCell.swift in Sources */,
 				2265A2CE299EB9A6005DF662 /* AuthType.swift in Sources */,
 				226E6EF9297D691900846141 /* OnboardingViewController.swift in Sources */,
 				1BA8703329AD0540006159CB /* MainCollectionViewModel.swift in Sources */,
+				22B29E792A100F0900670939 /* ValueCoefficientResultTypeTableViewCell.swift in Sources */,
 				1BBA97F62A09204D0056254C /* AlertCollectionViewCellModel.swift in Sources */,
 				1B41442329CCB5D100153A6F /* AlertViewController.swift in Sources */,
 				22F5886C29A8EB14004053CF /* ChoiceCoefficientTypeTableViewCell.swift in Sources */,

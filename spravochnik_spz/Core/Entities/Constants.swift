@@ -80,6 +80,9 @@ enum Constants {
         // Cap Views
         static let noInternet = UIImage(named: "noInternet") ?? UIImage()
         static let file = UIImage(named: "file") ?? UIImage()
+        // Result Calculation
+        static let xMark = UIImage(named: "xMark") ?? UIImage()
+        static let delete = UIImage(named: "delete") ?? UIImage()
     }
     
     enum Sizes {
