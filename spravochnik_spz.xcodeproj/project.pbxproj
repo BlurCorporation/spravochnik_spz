@@ -70,6 +70,9 @@
 		22F5887029A8EB30004053CF /* CheckboxCoefficientTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5886F29A8EB30004053CF /* CheckboxCoefficientTypeTableViewCell.swift */; };
 		457CFC2729F01A3E0022487A /* CleanSavedCalculationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CFC2629F01A3E0022487A /* CleanSavedCalculationView.swift */; };
 		457CFC2929F01A580022487A /* NoInternetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CFC2829F01A580022487A /* NoInternetView.swift */; };
+		45A250DF2A17AC6800EA9236 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 45A250DE2A17AC6800EA9236 /* FirebaseFirestore */; };
+		45A250E12A191E9800EA9236 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A250E02A191E9800EA9236 /* FirebaseService.swift */; };
+		45A250E32A19406E00EA9236 /* CalculationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A250E22A19406E00EA9236 /* CalculationModel.swift */; };
 		45DA6E4C29804524008D26F8 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA6E4B29804524008D26F8 /* UIView.swift */; };
 		45DA6E4E298047CF008D26F8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA6E4D298047CF008D26F8 /* UIViewController.swift */; };
 		45F72C2C297F1C6F00D90C8F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F72C2B297F1C6F00D90C8F /* Constants.swift */; };
@@ -152,6 +155,8 @@
 		22F5886F29A8EB30004053CF /* CheckboxCoefficientTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxCoefficientTypeTableViewCell.swift; sourceTree = "<group>"; };
 		457CFC2629F01A3E0022487A /* CleanSavedCalculationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanSavedCalculationView.swift; sourceTree = "<group>"; };
 		457CFC2829F01A580022487A /* NoInternetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetView.swift; sourceTree = "<group>"; };
+		45A250E02A191E9800EA9236 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		45A250E22A19406E00EA9236 /* CalculationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationModel.swift; sourceTree = "<group>"; };
 		45DA6E4B29804524008D26F8 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		45DA6E4D298047CF008D26F8 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		45F72C2B297F1C6F00D90C8F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -173,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D9A010F2A12B9F400D229FF /* FirebaseAuth in Frameworks */,
+				45A250DF2A17AC6800EA9236 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +203,7 @@
 			children = (
 				1B2B11E92979CFF300FFC896 /* spravochnik_spz */,
 				1B2B11E82979CFF300FFC896 /* Products */,
+				45A250DD2A17AC6800EA9236 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -310,6 +317,7 @@
 			children = (
 				8D9A01092A12B58C00D229FF /* AuthService.swift */,
 				8D9A010B2A12B5D300D229FF /* EmailService.swift */,
+				45A250E02A191E9800EA9236 /* FirebaseService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -361,6 +369,7 @@
 				228FA2F329D0C1F9000412A7 /* Calculation */,
 				2265A2CC299EB968005DF662 /* TypeViewController */,
 				45F72C2B297F1C6F00D90C8F /* Constants.swift */,
+				45A250E22A19406E00EA9236 /* CalculationModel.swift */,
 				45FDA9292A0D8FDB00C83964 /* Localizable.strings */,
 			);
 			path = Entities;
@@ -517,6 +526,13 @@
 			path = Calculation;
 			sourceTree = "<group>";
 		};
+		45A250DD2A17AC6800EA9236 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		45F912372A0666F300AB5DEA /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -553,6 +569,7 @@
 			name = spravochnik_spz;
 			packageProductDependencies = (
 				8D9A010E2A12B9F400D229FF /* FirebaseAuth */,
+				45A250DE2A17AC6800EA9236 /* FirebaseFirestore */,
 			);
 			productName = spravochnik_spz;
 			productReference = 1B2B11E72979CFF300FFC896 /* spravochnik_spz.app */;
@@ -665,6 +682,7 @@
 				226E6F17297D6BEB00846141 /* ResultPresenter.swift in Sources */,
 				228E1D2E29AFA91C00117BDC /* SavedCalculationCellModel.swift in Sources */,
 				8D9A01162A12BAF200D229FF /* RegisterUserRequest.swift in Sources */,
+				45A250E12A191E9800EA9236 /* FirebaseService.swift in Sources */,
 				226E6EF3297D667F00846141 /* AuthPresenter.swift in Sources */,
 				226E6EFD297D699000846141 /* MainViewController.swift in Sources */,
 				226E6EFB297D692600846141 /* OnboardingPresenter.swift in Sources */,
@@ -672,6 +690,7 @@
 				226E6F03297D69E800846141 /* SavedCalculationsPresenter.swift in Sources */,
 				22F5887029A8EB30004053CF /* CheckboxCoefficientTypeTableViewCell.swift in Sources */,
 				2265A2CE299EB9A6005DF662 /* AuthType.swift in Sources */,
+				45A250E32A19406E00EA9236 /* CalculationModel.swift in Sources */,
 				226E6EF9297D691900846141 /* OnboardingViewController.swift in Sources */,
 				1BA8703329AD0540006159CB /* MainCollectionViewModel.swift in Sources */,
 				1BBA97F62A09204D0056254C /* AlertCollectionViewCellModel.swift in Sources */,
@@ -899,13 +918,18 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		45A250DE2A17AC6800EA9236 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8D9A010D2A12B9F400D229FF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
 		8D9A010E2A12B9F400D229FF /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8D9A010D2A12B9F400D229FF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

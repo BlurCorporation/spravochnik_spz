@@ -37,7 +37,7 @@ final class SplashPresenter {
 extension SplashPresenter: SplashPresenterProtocol {
     func viewDidLoad() {
         if self.authService.isAuth() == false {
-            let AuthViewController = self.sceneBuildManager.buildAuthScreen(type: .auth)
+          let AuthViewController = self.sceneBuildManager.buildStartScreen()
             self.viewController?.navigationController?.pushViewController(AuthViewController, animated: true)
         } else {
             let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()

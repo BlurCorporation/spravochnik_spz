@@ -34,7 +34,7 @@ extension EmailService: EmailServicable {
                                password: password) { result, error in
             if let error = error {
                 completion(false, error)
-                return
+//                return
             } else {
                 completion(true, nil)
             }
@@ -51,7 +51,7 @@ extension EmailService: EmailServicable {
                            password: userRequest.password) { result, error in
             if let error = error {
                 completion(error)
-                return
+//                return
             } else {
                 completion(nil)
             }
