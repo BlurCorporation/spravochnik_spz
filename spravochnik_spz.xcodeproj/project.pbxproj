@@ -73,6 +73,7 @@
 		45A250DF2A17AC6800EA9236 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 45A250DE2A17AC6800EA9236 /* FirebaseFirestore */; };
 		45A250E12A191E9800EA9236 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A250E02A191E9800EA9236 /* FirebaseService.swift */; };
 		45A250E32A19406E00EA9236 /* CalculationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A250E22A19406E00EA9236 /* CalculationModel.swift */; };
+		45A250E52A1A13FF00EA9236 /* FirebaseNetworkGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A250E42A1A13FF00EA9236 /* FirebaseNetworkGateway.swift */; };
 		45DA6E4C29804524008D26F8 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA6E4B29804524008D26F8 /* UIView.swift */; };
 		45DA6E4E298047CF008D26F8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA6E4D298047CF008D26F8 /* UIViewController.swift */; };
 		45F72C2C297F1C6F00D90C8F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F72C2B297F1C6F00D90C8F /* Constants.swift */; };
@@ -157,6 +158,7 @@
 		457CFC2829F01A580022487A /* NoInternetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetView.swift; sourceTree = "<group>"; };
 		45A250E02A191E9800EA9236 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		45A250E22A19406E00EA9236 /* CalculationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationModel.swift; sourceTree = "<group>"; };
+		45A250E42A1A13FF00EA9236 /* FirebaseNetworkGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseNetworkGateway.swift; sourceTree = "<group>"; };
 		45DA6E4B29804524008D26F8 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		45DA6E4D298047CF008D26F8 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		45F72C2B297F1C6F00D90C8F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				8D9A01092A12B58C00D229FF /* AuthService.swift */,
 				8D9A010B2A12B5D300D229FF /* EmailService.swift */,
 				45A250E02A191E9800EA9236 /* FirebaseService.swift */,
+				45A250E42A1A13FF00EA9236 /* FirebaseNetworkGateway.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 				457CFC2929F01A580022487A /* NoInternetView.swift in Sources */,
 				228FA2F829D0C336000412A7 /* ValueСoefficientType.swift in Sources */,
 				1B2B11ED2979CFF300FFC896 /* SceneDelegate.swift in Sources */,
+				45A250E52A1A13FF00EA9236 /* FirebaseNetworkGateway.swift in Sources */,
 				226E6F0B297D6B8500846141 /* CalculationViewController.swift in Sources */,
 				1BA8702F29AA71EA006159CB /* CustomUICollectionViewFlowLayout.swift in Sources */,
 				226E6F0B297D6B8500846141 /* CalculationViewController.swift in Sources */,

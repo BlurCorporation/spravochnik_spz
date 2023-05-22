@@ -97,7 +97,7 @@ extension FirebaseService: FirebaseServiceProtocol {
         }
     }
     
-    func getAllCalculation(userID: String,
+    func getAllCalculations(userID: String,
                            completion: @escaping (Result<[QueryDocumentSnapshot]?, Error>) -> Void) {
         let db = configureFB()
         let calcRef = db.collection(userID)
