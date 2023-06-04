@@ -30,6 +30,7 @@
 		1BBA97F62A09204D0056254C /* AlertCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBA97F52A09204D0056254C /* AlertCollectionViewCellModel.swift */; };
 		1BCFE35229CCC0EB0062DB39 /* NoCoefficientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCFE35129CCC0EB0062DB39 /* NoCoefficientType.swift */; };
 		1BCFE35429D07BD30062DB39 /* AlertCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCFE35329D07BD30062DB39 /* AlertCollectionViewCell.swift */; };
+		1BF7A2822A1D325300A1F929 /* AppleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF7A2812A1D325300A1F929 /* AppleService.swift */; };
 		2265A2CB299BE272005DF662 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2265A2CA299BE272005DF662 /* CustomTextField.swift */; };
 		2265A2CE299EB9A6005DF662 /* AuthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2265A2CD299EB9A6005DF662 /* AuthType.swift */; };
 		226E6EE6297D5E6900846141 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6EE5297D5E6900846141 /* SplashViewController.swift */; };
@@ -112,6 +113,8 @@
 		1BBA97F52A09204D0056254C /* AlertCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCollectionViewCellModel.swift; sourceTree = "<group>"; };
 		1BCFE35129CCC0EB0062DB39 /* NoCoefficientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCoefficientType.swift; sourceTree = "<group>"; };
 		1BCFE35329D07BD30062DB39 /* AlertCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCollectionViewCell.swift; sourceTree = "<group>"; };
+		1BF7A2802A1D30CF00A1F929 /* spravochnik_spz.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = spravochnik_spz.entitlements; sourceTree = "<group>"; };
+		1BF7A2812A1D325300A1F929 /* AppleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleService.swift; sourceTree = "<group>"; };
 		2265A2CA299BE272005DF662 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		2265A2CD299EB9A6005DF662 /* AuthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthType.swift; sourceTree = "<group>"; };
 		226E6EE5297D5E6900846141 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +214,7 @@
 		1B2B11E92979CFF300FFC896 /* spravochnik_spz */ = {
 			isa = PBXGroup;
 			children = (
+				1BF7A2802A1D30CF00A1F929 /* spravochnik_spz.entitlements */,
 				220AE4EB297D522D00DEA441 /* Application */,
 				220AE4EC297D524500DEA441 /* Core */,
 				220AE4ED297D524E00DEA441 /* Scenes */,
@@ -310,6 +314,7 @@
 			children = (
 				8D9A01092A12B58C00D229FF /* AuthService.swift */,
 				8D9A010B2A12B5D300D229FF /* EmailService.swift */,
+				1BF7A2812A1D325300A1F929 /* AppleService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -651,6 +656,7 @@
 				226E6F05297D6A6A00846141 /* ProfileViewController.swift in Sources */,
 				1BA8702D29AA5DF0006159CB /* MainCollectionViewCell.swift in Sources */,
 				45FDA9262A0D2B9200C83964 /* OnboardingCollectionViewCell.swift in Sources */,
+				1BF7A2822A1D325300A1F929 /* AppleService.swift in Sources */,
 				45DA6E4C29804524008D26F8 /* UIView.swift in Sources */,
 				226E6F0D297D6B9100846141 /* CalculationPresenter.swift in Sources */,
 				45F72C2C297F1C6F00D90C8F /* Constants.swift in Sources */,
@@ -822,9 +828,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = spravochnik_spz/spravochnik_spz.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = H456X98Q5T;
+				DEVELOPMENT_TEAM = B22MD3V3UZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = spravochnik_spz/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -849,9 +856,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = spravochnik_spz/spravochnik_spz.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = H456X98Q5T;
+				DEVELOPMENT_TEAM = B22MD3V3UZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = spravochnik_spz/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
