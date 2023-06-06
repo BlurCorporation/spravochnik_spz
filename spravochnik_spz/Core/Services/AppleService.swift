@@ -74,7 +74,7 @@ extension AppleService: AppleServicable {
 
 extension AppleService: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController,
-                                 didCompleteWithError error: Error) {
+                                 didCompleteWithReError error: Error) {
 #if DEBUG
         print("Sign in with Apple errored: \(error)")
 #endif
@@ -101,9 +101,11 @@ extension AppleService: ASAuthorizationControllerDelegate {
                 return
             }
             
-            let credential = OAuthProvider.appleCredential(withIDToken: idTokenString,
-                                                           rawNonce: nonce,
-                                                           fullName: appleIDCredential.fullName)
+            /// Work on latest version of Firebase
+//            let credential = OAuthProvider.appleCredential(withIDToken: idTokenString,
+//                                                           rawNonce: nonce,
+//                                                           fullName: appleIDCredential.fullName)
+            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
             
             Auth.auth().signIn(with: credential) { (authResult, error) in
                 if (error != nil) {

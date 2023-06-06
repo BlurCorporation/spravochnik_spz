@@ -24,7 +24,7 @@ protocol AuthServicable {
 
 final class AuthService {
     private let eMailService: EmailServicable
-    private let appleService: AppleService
+    private let appleService: AppleServicable
     
     
     init() {
