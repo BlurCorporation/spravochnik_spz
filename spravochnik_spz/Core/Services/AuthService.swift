@@ -16,7 +16,7 @@ protocol AuthServicable {
     func loginUser(with userRequest: LoginUserRequest,
                    typeAuth: TypeAuth,
                    completion: @escaping (Error?) -> Void)
-    func registerUser(with userRequest: RegisterUserRequest,
+    func registerUser(with userRequest: RegisterUserRequest?,
                     typeAuth: TypeAuth,
                     completion: @escaping (Bool, Error?) -> Void)
     func logout(completion: @escaping (Error?) -> Void)
@@ -24,9 +24,12 @@ protocol AuthServicable {
 
 final class AuthService {
     private let eMailService: EmailServicable
+    private let appleService: AppleService
+    
     
     init() {
         self.eMailService = EmailService()
+        self.appleService = AppleService()
     }
 }
 
@@ -50,15 +53,15 @@ extension AuthService: AuthServicable {
         }
     }
      
-    func registerUser(with userRequest: RegisterUserRequest,
+    func registerUser(with userRequest: RegisterUserRequest?,
                     typeAuth: TypeAuth,
                     completion: @escaping (Bool, Error?) -> Void) {
         switch typeAuth {
         case .email:
-            self.eMailService.registerUser(with: userRequest,
+            self.eMailService.registerUser(with: userRequest!,
                                            completion: completion)
         case .apple:
-            print("Apple")
+            appleService.handleAppleIdRequest(completion: completion)
         case .google:
             print("Google")
         }

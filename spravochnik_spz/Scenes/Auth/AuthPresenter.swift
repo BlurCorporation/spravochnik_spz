@@ -97,7 +97,15 @@ extension AuthPresenter: AuthPresenterProtocol {
     }
     
     func appleButtonPressed() {
-        print(#function)
+        self.authService.registerUser(with: nil, typeAuth: .apple) { result, error in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()
+            self.viewController?.navigationController?.pushViewController(tabBarScreen, animated: true)
+        }
     }
     
     func googleButtonPressed() {
