@@ -67,7 +67,8 @@ extension AuthPresenter: AuthPresenterProtocol {
                                         password: password)
             
             self.authService.loginUser(with: user,
-                                       typeAuth: .email) { error in
+                                       typeAuth: .email,
+                                       viewController: nil) { error in
                 if let error = error {
                     print(error.localizedDescription)
                     return
@@ -109,7 +110,17 @@ extension AuthPresenter: AuthPresenterProtocol {
     }
     
     func googleButtonPressed() {
-        print(#function)
+        self.authService.loginUser(with: nil,
+                                   typeAuth: .google,
+                                   viewController: viewController) { error in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()
+            self.viewController?.navigationController?.pushViewController(tabBarScreen, animated: true)
+        }
     }
     
     func loginButtonPressed() {
