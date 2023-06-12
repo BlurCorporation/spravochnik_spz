@@ -38,6 +38,12 @@ final class MainCollectionViewCell: UICollectionViewCell {
         stackView.axis = .vertical
         stackView.spacing = 8
         stackView.alignment = .leading
+        stackView.layoutMargins = UIEdgeInsets(top: 16,
+                                               left: 16,
+                                               bottom: 16,
+                                               right: 16)
+        
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
     
@@ -74,15 +80,12 @@ extension MainCollectionViewCell {
     }
     
     func setupConstraints() {
-        let offsets = CGFloat(20)
+        let offsets = CGFloat(16)
         
         NSLayoutConstraint.activate([
-            commonStack.topAnchor.constraint(equalTo: contentView.topAnchor,
-                                             constant: offsets),
-            commonStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
-                                                 constant: offsets),
-            commonStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,
-                                                  constant: -offsets)
+            commonStack.topAnchor.constraint(equalTo: contentView.topAnchor),
+            commonStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            commonStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
     }
 }

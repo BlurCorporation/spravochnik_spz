@@ -136,16 +136,16 @@ enum Constants {
     }
     
     enum Fonts {
-        static let h1 = UIFont(name: "boldFont".localized, size: 34)
-        static let h2 = UIFont(name: "boldFont".localized, size: 30)
-        static let h3 = UIFont(name: "boldFont".localized, size: 20)
-        static let h4 = UIFont(name: "mediumFont".localized, size: 17)
-        static let h5 = UIFont(name: "boldFont".localized, size: 17)
-        static let b1 = UIFont(name: "romanFont".localized, size: 18)
-        static let b2 = UIFont(name: "romanFont".localized, size: 15)
-        static let b3 = UIFont(name: "lightFont".localized, size: 13)
-        static let b4 = UIFont(name: "romanFont".localized, size: 13)
-        static let b5 = UIFont(name: "romanFont".localized, size: 12)
-        static let b6 = UIFont(name: "lightFont".localized, size: 11)
+        static let h1 = UIFont.systemFont(ofSize: 34, weight: .bold)
+        static let h2 = UIFont.systemFont(ofSize: 30, weight: .bold)
+        static let h3 = UIFont.systemFont(ofSize: 20, weight: .bold)
+        static let h4 = UIFont.systemFont(ofSize: 17, weight: .medium)
+        static let h5 = UIFont.systemFont(ofSize: 17, weight: .bold)
+        static let b1 = UIFont.systemFont(ofSize: 18, weight: .regular)
+        static let b2 = UIFont.systemFont(ofSize: 15, weight: .regular)
+        static let b3 = UIFont.systemFont(ofSize: 13, weight: .light)
+        static let b4 = UIFont.systemFont(ofSize: 13, weight: .regular)
+        static let b5 = UIFont.systemFont(ofSize: 12, weight: .regular)
+        static let b6 = UIFont.systemFont(ofSize: 11, weight: .light)
     }
 }
