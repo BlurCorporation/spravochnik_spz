@@ -116,30 +116,6 @@ extension CalculationPresenter: CalculationPresenterProtocol {
     }
     
     func calculationButtonPressed() {
-//        let defaulValueCoefficients = self.defaulValueCoefficients.map {
-//            DefaultCoefficientValueResultModel(title: $0.type.title,
-//                                               value: $0.type.defaultValue)
-//        }
-//
-//        let valueCoefficients = self.valueCoefficients.map {
-//            ValueСoefficientResultModel(title: $0.type.title,
-//                                        description: $0.type.descrp,
-//                                        value: $0.value)
-//        }
-//
-//        let choiceCoefficients = self.choiceCoefficients.map {
-//            ChoiceCoefficientResultModel(title: $0.type.title,
-//                                         description: $0.type.descrp,
-//                                         value: 2) // TODO
-//        }
-//
-//        let checkboxCoefficients = self.checkboxCoefficients.filter {
-//            $0.isSelected
-//        }
-//            .map {
-//                CheckboxСoefficientResultModel(title: $0.type.title, value: $0.type.value)
-//            }
-        
         let resultViewController = sceneBuildManager.buildResultScreen(
             navigationBarTitle: title,
             calculationType: calculationType,
@@ -151,7 +127,7 @@ extension CalculationPresenter: CalculationPresenterProtocol {
     }
     
     func otherCalculationButtonPressed() {
-        print(#function)
+        viewController?.navigationController?.popToRootViewController(animated: true)
     }
 }
 
@@ -164,7 +140,6 @@ extension CalculationPresenter: CalculationHeaderViewCellCellDelegate {
 extension CalculationPresenter: ValueCoefficientTableViewCellDelegate {
     func valueCoefficientCellPressed(value: Double,
                                      type: ValueСoefficientType) {
-        print("ValueCoefficientTableViewCellDelegate из презентора")
         let model = ValueСoefficientModel(type: type,
                                           value: value)
         let vc = sceneBuildManager.buildAlertScreen(coefficientType: .value(model: model))

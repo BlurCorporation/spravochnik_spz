@@ -40,16 +40,6 @@ final class  ResultViewController: UIViewController {
         return label
     }()
     
-    private lazy var deleteButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setImage(Constants.Images.delete,
-                        for: .normal)
-        button.addTarget(self,
-                         action: #selector(deleteButtonPressed),
-                         for: .touchUpInside)
-        return button
-    }()
-    
     private lazy var saveButton: CustomButton = {
         let button = CustomButton(type: .system)
         button.mode = .black
@@ -136,10 +126,6 @@ final class  ResultViewController: UIViewController {
         presenter?.backButtonPressed()
     }
     
-    @objc private func deleteButtonPressed() {
-        presenter?.deleteButtonPressed()
-    }
-    
     @objc private func calculationButtonPressed() {
         presenter?.calculationButtonPressed()
     }
@@ -184,9 +170,6 @@ private extension  ResultViewController {
         navigationItem.leftBarButtonItem = backButtom
         
         navigationItem.titleView = navigationItemTitleLabel
-        
-        let deleteButton = UIBarButtonItem(customView: deleteButton)
-        navigationItem.rightBarButtonItem = deleteButton
     }
     
     func addSubViews() {

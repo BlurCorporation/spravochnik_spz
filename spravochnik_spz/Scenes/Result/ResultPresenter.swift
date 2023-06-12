@@ -11,7 +11,6 @@
 protocol  ResultPresenterProtocol: AnyObject {
     func viewDidLoad()
     func backButtonPressed()
-    func deleteButtonPressed()
     func calculationButtonPressed()
     func shareButtonButtonPressed()
     func otherCalculationButtonPressed()
@@ -136,10 +135,6 @@ extension  ResultPresenter:  ResultPresenterProtocol {
         viewController?.navigationController?.popViewController(animated: true)
     }
     
-    func deleteButtonPressed() {
-        print(#function)
-    }
-    
     func calculationButtonPressed() {
         print(#function)
     }
@@ -149,7 +144,7 @@ extension  ResultPresenter:  ResultPresenterProtocol {
     }
     
     func otherCalculationButtonPressed() {
-        print(#function)
+        viewController?.navigationController?.popToRootViewController(animated: true)
     }
     
     func setupNavigetionItemTitle() {
