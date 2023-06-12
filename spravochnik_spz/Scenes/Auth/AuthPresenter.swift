@@ -10,7 +10,10 @@
 protocol AuthPresenterProtocol: AnyObject {
     func viewDidLoad()
     func backButtonPressed()
-    func identifireButtonPressed(name: String?, email: String?, password: String?, repeatPassword: String?)
+    func identifireButtonPressed(name: String?,
+                                 email: String?,
+                                 password: String?,
+                                 repeatPassword: String?)
     func appleButtonPressed()
     func googleButtonPressed()
     func loginButtonPressed()
@@ -76,16 +79,20 @@ extension AuthPresenter: AuthPresenterProtocol {
                     print(error.localizedDescription)
                     return
                 }
-                self.defaultsManager.saveObject(true, for: .isUserAuth)
+                self.defaultsManager.saveObject(true,
+                                                for: .isUserAuth)
                 
-                let isOnbordingWathed = self.defaultsManager.fetchObject(type: Bool.self, for: .isOnbordingWatched) ?? false
+                let isOnbordingWathed = self.defaultsManager.fetchObject(type: Bool.self,
+                                                                         for: .isOnbordingWatched) ?? false
                 
                 if isOnbordingWathed {
                     let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()
-                    self.viewController?.navigationController?.pushViewController(tabBarScreen, animated: true)
+                    self.viewController?.navigationController?.pushViewController(tabBarScreen,
+                                                                                  animated: true)
                 } else {
                     let onbordingScreen = self.sceneBuildManager.buildOnboardingScreen()
-                    self.viewController?.navigationController?.pushViewController(onbordingScreen, animated: true)
+                    self.viewController?.navigationController?.pushViewController(onbordingScreen,
+                                                                                  animated: true)
                 }
             }
             
@@ -102,9 +109,11 @@ extension AuthPresenter: AuthPresenterProtocol {
                     return
                 }
                 
-                self.defaultsManager.saveObject(true, for: .isUserAuth)
+                self.defaultsManager.saveObject(true,
+                                                for: .isUserAuth)
                 
-                let isOnbordingWatched = self.defaultsManager.fetchObject(type: Bool.self, for: .isOnbordingWatched) ?? false
+                let isOnbordingWatched = self.defaultsManager.fetchObject(type: Bool.self,
+                                                                          for: .isOnbordingWatched) ?? false
                 
                 if isOnbordingWatched == false {
                     let onbordingScreen = self.sceneBuildManager.buildOnboardingScreen()
@@ -118,15 +127,18 @@ extension AuthPresenter: AuthPresenterProtocol {
     }
     
     func appleButtonPressed() {
-        self.authService.registerUser(with: nil, typeAuth: .apple) { result, error in
+        self.authService.registerUser(with: nil,
+                                      typeAuth: .apple) { result, error in
             if let error = error {
                 print(error.localizedDescription)
                 return
             }
             
-            self.defaultsManager.saveObject(true, for: .isUserAuth)
+            self.defaultsManager.saveObject(true,
+                                            for: .isUserAuth)
             
-            let isOnbordingWatched = self.defaultsManager.fetchObject(type: Bool.self, for: .isOnbordingWatched) ?? false
+            let isOnbordingWatched = self.defaultsManager.fetchObject(type: Bool.self,
+                                                                      for: .isOnbordingWatched) ?? false
             
             if isOnbordingWatched == false {
                 let onbordingScreen = self.sceneBuildManager.buildOnboardingScreen()
@@ -149,7 +161,8 @@ extension AuthPresenter: AuthPresenterProtocol {
             
             self.defaultsManager.saveObject(true, for: .isUserAuth)
             
-            let isOnbordingWatched = self.defaultsManager.fetchObject(type: Bool.self, for: .isOnbordingWatched) ?? false
+            let isOnbordingWatched = self.defaultsManager.fetchObject(type: Bool.self,
+                                                                      for: .isOnbordingWatched) ?? false
             
             if isOnbordingWatched == false {
                 let onbordingScreen = self.sceneBuildManager.buildOnboardingScreen()

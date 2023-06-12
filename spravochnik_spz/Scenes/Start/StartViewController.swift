@@ -53,7 +53,8 @@ final class StartViewController: UIViewController {
     private lazy var loginButton: CustomButton = {
         let button = CustomButton(type: .system)
         button.mode = .white
-        button.setTitle("loginButton".localized, for: .normal)
+        button.setTitle("loginButton".localized,
+                        for: .normal)
         button.addTarget(self,
                          action: #selector(loginButtonPressed),
                          for: .touchUpInside)
@@ -63,7 +64,8 @@ final class StartViewController: UIViewController {
     private lazy var registerButton: CustomButton = {
         let button = CustomButton(type: .system)
         button.mode = .black
-        button.setTitle("registerButton".localized, for: .normal)
+        button.setTitle("registerButton".localized,
+                        for: .normal)
         button.addTarget(self,
                          action: #selector(registerButtonPressed),
                          for: .touchUpInside)
@@ -110,16 +112,16 @@ final class StartViewController: UIViewController {
     // MARK: - Action
 
     @objc private func loginButtonPressed() {
-        presenter?.loginButtonPressed()
+        loginButton.pushAnimate { [weak self] in
+            self?.presenter?.loginButtonPressed()
+        }
     }
 
     @objc private func registerButtonPressed() {
         registerButton.pushAnimate { [weak self] in
             self?.presenter?.registerButtonPressed()
         }
-//        presenter?.registerButtonPressed()
     }
-
 }
 
 // MARK: - StartViewProtocol Impl

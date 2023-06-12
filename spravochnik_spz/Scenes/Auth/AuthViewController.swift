@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 // MARK: - AuthViewProtocol
 
 protocol AuthViewProtocol: UIViewController {
@@ -212,26 +211,36 @@ final class AuthViewController: UIViewController {
     }
     
     @objc private func identifireButtonPressed() {
-        presenter?.identifireButtonPressed(name: nameTextField.text,
-                                           email: emailTextField.text,
-                                           password: passwordTextField.text,
-                                           repeatPassword: retypePasswordTextField.text)
+        identifireButton.pushAnimate { [weak self] in
+            self?.presenter?.identifireButtonPressed(name: self?.nameTextField.text,
+                                                     email: self?.emailTextField.text,
+                                                     password: self?.passwordTextField.text,
+                                                     repeatPassword: self?.retypePasswordTextField.text)
+        }
     }
     
     @objc private func appleButtonPressed() {
-        presenter?.appleButtonPressed()
+        appleButton.pushAnimate { [weak self] in
+            self?.presenter?.appleButtonPressed()
+        }
     }
     
     @objc private func googleButtonPressed() {
-        presenter?.googleButtonPressed()
+        googleButton.pushAnimate { [weak self] in
+            self?.presenter?.googleButtonPressed()
+        }
     }
     
     @objc private func loginButtonPressed() {
-        presenter?.loginButtonPressed()
+        loginButton.pushAnimate { [weak self] in
+            self?.presenter?.loginButtonPressed()
+        }
     }
     
     @objc private func forgotPasswordButtonPressed() {
-        presenter?.forgotPasswordButtonPressed()
+        forgotPasswordButton.pushAnimate { [weak self] in
+            self?.presenter?.forgotPasswordButtonPressed()
+        }
     }
 }
 
@@ -272,7 +281,7 @@ private extension AuthViewController {
     }
     
     func setupNavigationController() {
-        let attributes = [NSAttributedString.Key.font: Constants.Fonts.h4 ?? .systemFont(ofSize: 50)]
+        let attributes = [NSAttributedString.Key.font: Constants.Fonts.h4]
         UINavigationBar.appearance().titleTextAttributes = attributes
         navigationItem.setHidesBackButton(true,
                                           animated: true)

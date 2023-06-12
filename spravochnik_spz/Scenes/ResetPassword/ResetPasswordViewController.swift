@@ -126,11 +126,15 @@ final class ResetPasswordViewController: UIViewController {
     }
     
     @objc private func bottomButtonPressed() {
-        presenter?.bottomButtonPressed()
+        bottomButton.pushAnimate { [weak self] in
+            self?.presenter?.bottomButtonPressed()
+        }
     }
     
     @objc private func topButtonPressed() {
-        presenter?.topButtonPressed()
+        topButton.pushAnimate { [weak self] in
+            self?.presenter?.topButtonPressed()
+        }
     }
 }
 
