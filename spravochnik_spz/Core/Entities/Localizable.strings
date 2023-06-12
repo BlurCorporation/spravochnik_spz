@@ -39,6 +39,9 @@
 "onboarding22" = "Расчеты стоимости проектирования, технические расчеты систем безопасности, физические расчеты, технико-экономические расчеты";
 "onboarding31" = "Добро пожаловать";
 "onboarding32" = "Благодарим, что выбрали нас. Мы поможем Вам расчитать стоимость интересующих Вас систем безопасности";
+// ResultCalculation
+"dataForCalculationHeaderTitle" = "Исходные данные для расчета";
+"resultCalculationHeaderTitle" = "Результаты расчета";
 
 // TextButtons
 "appThemeButtonText" = "Тема приложения";
@@ -57,6 +60,8 @@
 "otherCalculationButtonText" = "Перейти к другим расчетам";
 "onboardingNextButton" = "Дальше";
 "onboardingSkipButton" = "Пропустить";
+"saveResultCalculation" = "Сохранить";
+"shareResultСalculation" = "Поделиться";
 
 // PlaceHolders
 "name" = "Имя";

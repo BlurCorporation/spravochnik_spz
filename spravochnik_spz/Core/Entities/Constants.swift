@@ -108,73 +108,6 @@ enum Constants {
         static let tableViewTopOffset = CGFloat(50)
     }
     
-    enum alarmTypesText {
-        static let securityAlarmText = "Охранная сигнализация"
-        static let fireAlarmText = "Пожарная сигнализация"
-        static let firePumpText = "Насосные станции установок пожаротушения"
-        static let moduleFirefightingText = "Модульные установки пожаротушения"
-        static let notificationText = "Система оповещения о пожаре"
-        static let perimetrAlarmText = "Охранная сигнализация периметра"
-        static let smokeExhaustText = "Система управления дымоудаления"
-    }
-    
-    enum TextLabels {
-        static let applicationNameLabelText = "Справочник СПЗ"
-        static let infoApplicationLabelText = "Войдите в систему или зарегистрируйтесь, чтобы получить полный доступ к приложению с возможность сохранять и делиться произведенными расчетами"
-        static let infoWithLinksLabelText = "Выполняя вход в приложение вы соглашаетесь с Условиями использования и Политикой конфиденциальности"
-        static let infoRegisterBottomLabelText = "У вас уже есть аккаунт?"
-        static let infoAuthBottomLabelText = "У вас нет аккаунта?"
-        static let authLabelText = "Войти через"
-        static let savedCalculationsTitleLabelText = "Сохраненные расчеты"
-        static let username = "Роман"
-        static let infoPasswordLabelText = "Пароль должен быть длинной не менее 8 символов и минимум одна заглавная буква"
-        static let infoEmailLabelText = "Мы отправим электронное письмо на этот адрес для сброса пароля"
-        static let mainHeaderLabelText = "Расчет стоимости проектирования"
-        // Cap Views
-        static let noInternetTitle = "Нет соединения"
-        static let noInternetText = "Проверьте подключено ли устройство к Интернету"
-        static let savedCalcTitle = "Здесь будут отображаться\nсохраненные Вами расчеты"
-        static let savedCalcText = "Для выбора расчета перейдите на главный экран"
-        // Onboarding
-        static let onboarding11 = "Удобно и быстро"
-        static let onboarding12 = "С помощью нашего приложения Вы сможете быстро и удобно произвести расчеты систем безопасности"
-        static let onboarding21 = "Множество расчетов"
-        static let onboarding22 = "Расчеты стоимости проектирования, технические расчеты систем безопасности, физические расчеты, технико-экономические расчеты"
-        static let onboarding31 = "Добро пожаловать"
-        static let onboarding32 = "Благодарим, что выбрали нас. Мы поможем Вам расчитать стоимость интересующих Вас систем безопасности"
-        static let dataForCalculationHeaderTitle = "Исходные данные для расчета"
-        static let resultCalculationHeaderTitle = "Результаты расчета"
-    }
-    
-    enum TextButtons {
-        static let appThemeButtonText = "Тема приложения"
-        static let colorAppThemeButtonText = "Системная"
-        static let updateDataButtonText = "Обновить данные"
-        static let usingConditionsButtonText = "Условия пользования"
-        static let privacyPolicyButtonText = "Политика конфиденциальности"
-        static let loginButton = "Войти"
-        static let registerButton = "Зарегистрироваться"
-        static let forgotPassword = "Забыли пароль?"
-        static let resetPasswordButtonText = "Отправить письмо"
-        static let updatePasswordButtonText = "Обновить пароль"
-        static let changePasswordButtonText = "Изменить пароль"
-        static let saveChangesButtonText = "Сохранить изменения"
-        static let calculationButtonText = "Расчет"
-        static let otherCalculationButtonText = "Перейти к другим расчетам"
-        static let onboardingNextButton = "Дальше"
-        static let onboardingSkipButton = "Пропустить"
-        static let saveResultCalculation = "Сохранить"
-        static let shareResultСalculation = "Поделиться"
-    }
-    
-    enum PlaceHolders {
-        static let name = "Имя"
-        static let eMail = "Email"
-        static let password = "Пароль"
-        static let retypePassword = "Повторите пароль"
-        static let newPassword = "Новый пароль"
-    }
-
     enum Constraints {
         static let sideOffset = CGFloat(16)
         static let bottomOffset = CGFloat(16)
@@ -214,34 +147,5 @@ enum Constants {
         static let b4 = UIFont(name: "romanFont".localized, size: 13)
         static let b5 = UIFont(name: "romanFont".localized, size: 12)
         static let b6 = UIFont(name: "lightFont".localized, size: 11)
-        
-        
-        
-        //SavedCalculationsHeader
-//        static let savedCalcTitle = h2 = UIFont(name: "HelveticaNeueCyr-Bold", size: 30)
-        
-        // SavedCalculationsCells with sizes
-//        static let cellAddressLabel = h4 = UIFont(name: "HelveticaNeueCyr-Medium", size: 17)
-                
-        // customAlert
-//        static let alertTitle = h4 = UIFont(name: "HelveticaNeueCyr-Medium", size: 18)
-        
-        // profile
-//        static let smallProfileButtonFont = b4 = UIFont(name: "HelveticaNeueCyr-Roman", size: 13)
-        
-        
-        // results tableView
-//        static let allSectionNumberFont = h4 = UIFont(name: "HelveticaNeueCyr-Medium", size: 17)
-//        static let secondSectionResultsFont = b2 = UIFont(name: "HelveticaNeueCyr-Roman", size: 15)
-//        static let thirdSectionTitleResultsFont = h4 = UIFont(name: "HelveticaNeueCyr-Medium", size: 18)
-//        static let thirdSectionResultsFont = b2 = UIFont(name: "HelveticaNeueCyr-Roman", size: 15)
-        
-        
-        // calculation tableView
-//        static let firstSectionCalculationFont = b1 = UIFont(name: "HelveticaNeueCyr-Roman", size: 18)
-        
-        // in sections tableView in results
-//        static let smallTableHeaderFont = h3 = UIFont(name: "HelveticaNeueCyr-Bold", size: 20)
-        
     }
 }

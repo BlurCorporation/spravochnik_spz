@@ -53,7 +53,7 @@ final class  ResultViewController: UIViewController {
     private lazy var saveButton: CustomButton = {
         let button = CustomButton(type: .system)
         button.mode = .black
-        button.setTitle(Constants.TextButtons.saveResultCalculation,
+        button.setTitle("saveResultCalculation".localized,
                         for: .normal)
         button.addTarget(self,
                          action: #selector(calculationButtonPressed),
@@ -64,7 +64,7 @@ final class  ResultViewController: UIViewController {
     private lazy var shareButton: CustomButton = {
         let button = CustomButton(type: .system)
         button.mode = .white
-        button.setTitle(Constants.TextButtons.shareResultСalculation,
+        button.setTitle("shareResultСalculation".localized,
                         for: .normal)
         button.addTarget(self,
                          action: #selector(shareButtonButtonPressed),
@@ -75,7 +75,7 @@ final class  ResultViewController: UIViewController {
     private lazy var otherCalculationButton: CustomButton = {
         let button = CustomButton(type: .system)
         button.mode = .transparent
-        button.setTitle(Constants.TextButtons.otherCalculationButtonText,
+        button.setTitle("otherCalculationButtonText".localized,
                         for: .normal)
         button.addTarget(self,
                          action: #selector(otherCalculationButtonPressed),
@@ -253,7 +253,7 @@ extension ResultViewController: UITableViewDataSource {
                                       y: 0,
                                       width: headerView.frame.width-10,
                                       height: headerView.frame.height-10)
-            label.text = Constants.TextLabels.dataForCalculationHeaderTitle
+            label.text = "dataForCalculationHeaderTitle".localized
             label.font = Constants.Fonts.h3
             label.textColor = Constants.Colors.dark
             
@@ -271,7 +271,7 @@ extension ResultViewController: UITableViewDataSource {
                                       y: 0,
                                       width: headerView.frame.width-10,
                                       height: headerView.frame.height-10)
-            label.text = Constants.TextLabels.resultCalculationHeaderTitle
+            label.text = "resultCalculationHeaderTitle".localized
             label.font = Constants.Fonts.h3
             label.textColor = Constants.Colors.dark
             
