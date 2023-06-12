@@ -10,8 +10,6 @@
       }
     },
     {
-<<<<<<< HEAD
-=======
       "identity" : "appauth-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/openid/AppAuth-iOS.git",
@@ -21,7 +19,6 @@
       }
     },
     {
->>>>>>> 6a77ea6 (Add Google auth)
       "identity" : "boringssl-swiftpm",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/boringssl-SwiftPM.git",
@@ -58,8 +55,6 @@
       }
     },
     {
-<<<<<<< HEAD
-=======
       "identity" : "googlesignin-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleSignIn-iOS",
@@ -69,7 +64,6 @@
       }
     },
     {
->>>>>>> 6a77ea6 (Add Google auth)
       "identity" : "googleutilities",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleUtilities.git",
@@ -97,8 +91,6 @@
       }
     },
     {
-<<<<<<< HEAD
-=======
       "identity" : "gtmappauth",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GTMAppAuth.git",
@@ -108,7 +100,6 @@
       }
     },
     {
->>>>>>> 6a77ea6 (Add Google auth)
       "identity" : "leveldb",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/leveldb.git",
