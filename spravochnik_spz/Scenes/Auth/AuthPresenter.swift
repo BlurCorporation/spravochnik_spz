@@ -27,15 +27,18 @@ final class AuthPresenter {
     private let sceneBuildManager: Buildable
     private let authType: AuthType
     private let authService: AuthServicable
+    private let defaultsManager: DefaultsManagerable
     
     // MARK: - Initializer
     
     init(sceneBuildManager: Buildable,
          authType: AuthType,
-         authService: AuthServicable) {
+         authService: AuthServicable,
+         defaultsManager: DefaultsManagerable) {
         self.sceneBuildManager = sceneBuildManager
         self.authType = authType
         self.authService = authService
+        self.defaultsManager = defaultsManager
     }
 }
 
@@ -73,8 +76,17 @@ extension AuthPresenter: AuthPresenterProtocol {
                     print(error.localizedDescription)
                     return
                 }
-                let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()
-                self.viewController?.navigationController?.pushViewController(tabBarScreen, animated: true)
+                self.defaultsManager.saveObject(true, for: .isUserAuth)
+                
+                let isOnbordingWathed = self.defaultsManager.fetchObject(type: Bool.self, for: .isOnbordingWatched) ?? false
+                
+                if isOnbordingWathed {
+                    let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()
+                    self.viewController?.navigationController?.pushViewController(tabBarScreen, animated: true)
+                } else {
+                    let onbordingScreen = self.sceneBuildManager.buildOnboardingScreen()
+                    self.viewController?.navigationController?.pushViewController(onbordingScreen, animated: true)
+                }
             }
             
         case .register:
@@ -90,11 +102,19 @@ extension AuthPresenter: AuthPresenterProtocol {
                     return
                 }
                 
-                let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()
-                self.viewController?.navigationController?.pushViewController(tabBarScreen, animated: true)
+                self.defaultsManager.saveObject(true, for: .isUserAuth)
+                
+                let isOnbordingWatched = self.defaultsManager.fetchObject(type: Bool.self, for: .isOnbordingWatched) ?? false
+                
+                if isOnbordingWatched == false {
+                    let onbordingScreen = self.sceneBuildManager.buildOnboardingScreen()
+                    self.viewController?.navigationController?.pushViewController(onbordingScreen, animated: true)
+                } else {
+                    let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()
+                    self.viewController?.navigationController?.pushViewController(tabBarScreen, animated: true)
+                }
             }
         }
-        
     }
     
     func appleButtonPressed() {
@@ -104,8 +124,17 @@ extension AuthPresenter: AuthPresenterProtocol {
                 return
             }
             
-            let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()
-            self.viewController?.navigationController?.pushViewController(tabBarScreen, animated: true)
+            self.defaultsManager.saveObject(true, for: .isUserAuth)
+            
+            let isOnbordingWatched = self.defaultsManager.fetchObject(type: Bool.self, for: .isOnbordingWatched) ?? false
+            
+            if isOnbordingWatched == false {
+                let onbordingScreen = self.sceneBuildManager.buildOnboardingScreen()
+                self.viewController?.navigationController?.pushViewController(onbordingScreen, animated: true)
+            } else {
+                let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()
+                self.viewController?.navigationController?.pushViewController(tabBarScreen, animated: true)
+            }
         }
     }
     
@@ -118,8 +147,17 @@ extension AuthPresenter: AuthPresenterProtocol {
                 return
             }
             
-            let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()
-            self.viewController?.navigationController?.pushViewController(tabBarScreen, animated: true)
+            self.defaultsManager.saveObject(true, for: .isUserAuth)
+            
+            let isOnbordingWatched = self.defaultsManager.fetchObject(type: Bool.self, for: .isOnbordingWatched) ?? false
+            
+            if isOnbordingWatched == false {
+                let onbordingScreen = self.sceneBuildManager.buildOnboardingScreen()
+                self.viewController?.navigationController?.pushViewController(onbordingScreen, animated: true)
+            } else {
+                let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()
+                self.viewController?.navigationController?.pushViewController(tabBarScreen, animated: true)
+            }
         }
     }
     
