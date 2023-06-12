@@ -60,7 +60,8 @@ extension SceneBuildManager: Buildable {
         let viewController = AuthViewController()
         let presenter = AuthPresenter(sceneBuildManager: self,
                                       authType: type,
-                                      authService: self.authService)
+                                      authService: self.authService,
+                                      defaultsManager: defaultsManager)
         
         viewController.presenter = presenter
         presenter.viewController = viewController
@@ -84,7 +85,8 @@ extension SceneBuildManager: Buildable {
         let onboardingModel = [OnboardingViewModel]()
         let presenter = OnboardingPresenter(viewController: viewController,
                                             onboardingModel: onboardingModel,
-                                            sceneBuildManager: self)
+                                            sceneBuildManager: self,
+                                            defaultsManager: defaultsManager)
         viewController.presenter = presenter
         presenter.viewController = viewController
         

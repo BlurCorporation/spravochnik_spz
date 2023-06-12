@@ -49,4 +49,5 @@ extension DefaultsManager: DefaultsManagerable {
 
 enum DefaultsKey: String {
     case isUserAuth
+    case isOnbordingWatched
 }

@@ -21,14 +21,17 @@ class OnboardingPresenter {
     // MARK: - PrivateProperties
     private let sceneBuildManager: Buildable
     private var onboardingModel: [OnboardingViewModel]
+    private let defaultsManager: DefaultsManagerable
     
     // MARK: - Initializer
     init(viewController: OnboardingViewProtocol,
          onboardingModel: [OnboardingViewModel],
-         sceneBuildManager: Buildable) {
+         sceneBuildManager: Buildable,
+         defaultsManager: DefaultsManagerable) {
         self.viewController = viewController
         self.onboardingModel = onboardingModel
         self.sceneBuildManager = sceneBuildManager
+        self.defaultsManager = defaultsManager
     }
 }
 
@@ -49,9 +52,11 @@ extension OnboardingPresenter: OnboardingPresenterProtocol {
     }
     
     func getNextVC() {
-        let startViewController = sceneBuildManager.buildStartScreen()
-        viewController?.navigationController?.pushViewController(startViewController,
-                                                                 animated: true)
+        defaultsManager.saveObject(true, for: .isOnbordingWatched)
+        let tabBarViewController = sceneBuildManager.buildTabBarScreen()
+        let rootViewController = UINavigationController(rootViewController: tabBarViewController)
+        
+        UIApplication.shared.windows.first?.rootViewController = rootViewController
     }
 }
 

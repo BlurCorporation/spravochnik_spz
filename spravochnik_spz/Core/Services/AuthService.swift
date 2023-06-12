@@ -56,11 +56,9 @@ extension AuthService: AuthServicable {
         case .email:
             eMailService.loginUser(with: userRequest!,
                                    completion: completion)
-            self.defaultsManager.saveObject(true, for: .isUserAuth)
         case .google:
             googleProvider.signIn(completion: completion,
                                   viewController: viewController!)
-            self.defaultsManager.saveObject(true, for: .isUserAuth)
         case .apple:
             print("apple")
         }
@@ -74,10 +72,8 @@ extension AuthService: AuthServicable {
             guard let userRequest = userRequest else { return }
             self.eMailService.registerUser(with: userRequest,
                                            completion: completion)
-            self.defaultsManager.saveObject(true, for: .isUserAuth)
         case .apple:
             appleService.handleAppleIdRequest(completion: completion)
-            self.defaultsManager.saveObject(true, for: .isUserAuth)
         case .google:
             print("Google")
         }
