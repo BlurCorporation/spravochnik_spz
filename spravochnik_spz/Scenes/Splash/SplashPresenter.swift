@@ -7,7 +7,7 @@
 
 // MARK: - SplashPresenterProtocol
 
-
+import UIKit
 
 protocol SplashPresenterProtocol: AnyObject {
     func viewDidLoad()
@@ -36,12 +36,11 @@ final class SplashPresenter {
 
 extension SplashPresenter: SplashPresenterProtocol {
     func viewDidLoad() {
-        if self.authService.isAuth() == false {
-            let AuthViewController = self.sceneBuildManager.buildAuthScreen(type: .auth)
-            self.viewController?.navigationController?.pushViewController(AuthViewController, animated: true)
-        } else {
-            let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()
-            self.viewController?.navigationController?.pushViewController(tabBarScreen, animated: true)
-        }
+        let rootViewController = UINavigationController(
+            rootViewController: self.authService.isAuth()
+            ? self.sceneBuildManager.buildTabBarScreen()
+            : self.sceneBuildManager.buildStartScreen()
+        )
+        UIApplication.shared.windows.first?.rootViewController = rootViewController
     }
 }

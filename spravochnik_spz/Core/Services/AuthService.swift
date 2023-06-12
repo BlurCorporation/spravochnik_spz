@@ -28,21 +28,24 @@ protocol AuthServicable {
 final class AuthService {
     private let eMailService: EmailServicable
     private let appleService: AppleServicable
+    private let defaultsManager: DefaultsManagerable
     
     
     private let googleProvider: GoogleProviderable
     
-    init() {
+    init(defaultsManager: DefaultsManagerable) {
         self.eMailService = EmailService()
         self.appleService = AppleService()
         self.googleProvider = GoogleProvider()
+        self.defaultsManager = defaultsManager
     }
 }
 
 extension AuthService: AuthServicable {
     
     func isAuth() -> Bool {
-        return self.eMailService.isAuth()
+        defaultsManager.fetchObject(type: Bool.self,
+                                    for: .isUserAuth) ?? false
     }
     
     func loginUser(with userRequest: LoginUserRequest?,
@@ -53,9 +56,11 @@ extension AuthService: AuthServicable {
         case .email:
             eMailService.loginUser(with: userRequest!,
                                    completion: completion)
+            self.defaultsManager.saveObject(true, for: .isUserAuth)
         case .google:
             googleProvider.signIn(completion: completion,
                                   viewController: viewController!)
+            self.defaultsManager.saveObject(true, for: .isUserAuth)
         case .apple:
             print("apple")
         }
@@ -69,8 +74,10 @@ extension AuthService: AuthServicable {
             guard let userRequest = userRequest else { return }
             self.eMailService.registerUser(with: userRequest,
                                            completion: completion)
+            self.defaultsManager.saveObject(true, for: .isUserAuth)
         case .apple:
             appleService.handleAppleIdRequest(completion: completion)
+            self.defaultsManager.saveObject(true, for: .isUserAuth)
         case .google:
             print("Google")
         }
@@ -78,5 +85,6 @@ extension AuthService: AuthServicable {
     
     func logout(completion: @escaping (Error?) -> Void) {
         self.eMailService.logout(completion: completion)
+        self.defaultsManager.saveObject(false, for: .isUserAuth)
     }
 }
