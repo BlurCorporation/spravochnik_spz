@@ -58,7 +58,8 @@ extension AuthService: AuthServicable {
                     completion: @escaping (Bool, Error?) -> Void) {
         switch typeAuth {
         case .email:
-            self.eMailService.registerUser(with: userRequest!,
+            guard let userRequest = userRequest else { return }
+            self.eMailService.registerUser(with: userRequest,
                                            completion: completion)
         case .apple:
             appleService.handleAppleIdRequest(completion: completion)
