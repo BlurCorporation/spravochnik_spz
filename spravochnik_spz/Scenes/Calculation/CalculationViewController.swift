@@ -11,7 +11,7 @@ import UIKit
 
 protocol CalculationViewProtocol: UIViewController {
     func updateHeader(viewModel: HeaderViewModel)
-    func update(sections: [Section])
+    func update(sections: [CalculationViewController.Section])
 }
 
 // MARK: - CalculationViewController
@@ -21,7 +21,7 @@ final class CalculationViewController: UIViewController {
     
     // MARK: - PrivateProperties
     
-    private var sections: [Section] = []
+    private var sections: [CalculationViewController.Section] = []
     
     private lazy var calculationButton: CustomButton = {
         let button = CustomButton(type: .system)
@@ -228,22 +228,23 @@ extension CalculationViewController: UITableViewDelegate {
     }
 }
 
-struct Section {
-    let type: SectionType
-    let rows: [RowType]
-}
+extension CalculationViewController {
+    struct Section {
+        let type: SectionType
+        let rows: [RowType]
+    }
 
-enum SectionType {
-    case defaultvalueСoefficients
-    case valueСoefficients
-    case choiceСoefficients
-    case checkboxСoefficient
-}
+    enum SectionType {
+        case defaultvalueСoefficients
+        case valueСoefficients
+        case choiceСoefficients
+        case checkboxСoefficient
+    }
 
-enum RowType {
-    case defaultvalueСoefficients(viewModel: DefaultCoefficientValueViewModel)
-    case valueСoefficient(viewModel: ValueСoefficientViewModel)
-    case choiceСoefficient(viewModel: ChoiceCoefficientViewModel)
-    case checkboxСoefficient(viewModel: CheckboxСoefficientViewModel)
+    enum RowType {
+        case defaultvalueСoefficients(viewModel: DefaultCoefficientValueViewModel)
+        case valueСoefficient(viewModel: ValueСoefficientViewModel)
+        case choiceСoefficient(viewModel: ChoiceCoefficientViewModel)
+        case checkboxСoefficient(viewModel: CheckboxСoefficientViewModel)
+    }
 }
-
