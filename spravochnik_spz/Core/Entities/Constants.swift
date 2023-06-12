@@ -174,7 +174,7 @@ enum Constants {
         static let retypePassword = "Повторите пароль"
         static let newPassword = "Новый пароль"
     }
-    
+
     enum Constraints {
         static let sideOffset = CGFloat(16)
         static let bottomOffset = CGFloat(16)
@@ -198,27 +198,22 @@ enum Constants {
     }
     
     enum NavigationController {
-        static let registerTitle = "Регистрация"
-        static let authTitle = "Войти"
-        static let resetPasswordTitle = "Сбросить пароль"
-        static let updatePasswordTitle = "Обновить пароль"
-        static let updateDataTitle = "Обновить данные"
         static let authButtonHeight = CGFloat(50)
         static let commonStackViewTopOffset = CGFloat(24)
     }
     
     enum Fonts {
-        static let h1 = UIFont(name: "HelveticaNeueCyr-Bold", size: 34)
-        static let h2 = UIFont(name: "HelveticaNeueCyr-Bold", size: 30)
-        static let h3 = UIFont(name: "HelveticaNeueCyr-Bold", size: 20)
-        static let h4 = UIFont(name: "HelveticaNeueCyr-Medium", size: 17)
-        static let h5 = UIFont(name: "HelveticaNeueCyr-Bold", size: 17)
-        static let b1 = UIFont(name: "HelveticaNeueCyr-Roman", size: 18)
-        static let b2 = UIFont(name: "HelveticaNeueCyr-Roman", size: 15)
-        static let b3 = UIFont(name: "HelveticaNeueCyr-Light", size: 13)
-        static let b4 = UIFont(name: "HelveticaNeueCyr-Roman", size: 13)
-        static let b5 = UIFont(name: "HelveticaNeueCyr-Roman", size: 12)
-        static let b6 = UIFont(name: "HelveticaNeueCyr-Light", size: 11)
+        static let h1 = UIFont(name: "boldFont".localized, size: 34)
+        static let h2 = UIFont(name: "boldFont".localized, size: 30)
+        static let h3 = UIFont(name: "boldFont".localized, size: 20)
+        static let h4 = UIFont(name: "mediumFont".localized, size: 17)
+        static let h5 = UIFont(name: "boldFont".localized, size: 17)
+        static let b1 = UIFont(name: "romanFont".localized, size: 18)
+        static let b2 = UIFont(name: "romanFont".localized, size: 15)
+        static let b3 = UIFont(name: "lightFont".localized, size: 13)
+        static let b4 = UIFont(name: "romanFont".localized, size: 13)
+        static let b5 = UIFont(name: "romanFont".localized, size: 12)
+        static let b6 = UIFont(name: "lightFont".localized, size: 11)
         
         
         

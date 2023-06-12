@@ -26,7 +26,7 @@ final class CalculationViewController: UIViewController {
     private lazy var calculationButton: CustomButton = {
         let button = CustomButton(type: .system)
         button.mode = .black
-        button.setTitle(Constants.TextButtons.calculationButtonText,
+        button.setTitle("calculationButtonText".localized,
                         for: .normal)
         button.addTarget(self,
                          action: #selector(calculationButtonPressed),
@@ -37,7 +37,7 @@ final class CalculationViewController: UIViewController {
     private lazy var otherCalculationButton: CustomButton = {
         let button = CustomButton(type: .system)
         button.mode = .transparent
-        button.setTitle(Constants.TextButtons.otherCalculationButtonText,
+        button.setTitle("otherCalculationButtonText".localized,
                         for: .normal)
         button.addTarget(self,
                          action: #selector(otherCalculationButtonPressed),

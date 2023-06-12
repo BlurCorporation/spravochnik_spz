@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 // MARK: - AuthViewProtocol
 
 protocol AuthViewProtocol: UIViewController {
@@ -33,26 +34,26 @@ final class AuthViewController: UIViewController {
     
     private let nameTextField: CustomTextField = {
         let textField = CustomTextField()
-        textField.placeholder = Constants.PlaceHolders.name
+        textField.placeholder = "name".localized
         return textField
     }()
     
     private let emailTextField: CustomTextField = {
         let textField = CustomTextField()
-        textField.placeholder = Constants.PlaceHolders.eMail
+        textField.placeholder = "eMail".localized
         return textField
     }()
     
     private let passwordTextField: CustomTextField = {
         let textField = CustomTextField()
-        textField.placeholder = Constants.PlaceHolders.password
+        textField.placeholder = "password".localized
         textField.isSecureTextEntry = true
         return textField
     }()
     
     private let retypePasswordTextField: CustomTextField = {
         let textField = CustomTextField()
-        textField.placeholder = Constants.PlaceHolders.retypePassword
+        textField.placeholder = "retypePassword".localized
         textField.isSecureTextEntry = true
         return textField
     }()
@@ -77,7 +78,7 @@ final class AuthViewController: UIViewController {
     private let infoWithLinksLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = Constants.TextLabels.infoWithLinksLabelText
+        label.text = "infoWithLinksLabelText".localized
         label.font = Constants.Fonts.b6
         label.textColor = Constants.Colors.lightGray
         label.numberOfLines = 0
@@ -89,7 +90,7 @@ final class AuthViewController: UIViewController {
     private let authLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = Constants.TextLabels.authLabelText
+        label.text = "authLabelText".localized
         label.font = Constants.Fonts.b4
         label.textColor = .black
         label.numberOfLines = 0
@@ -126,21 +127,11 @@ final class AuthViewController: UIViewController {
         return button
     }()
     
-    private lazy var facebookButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setBackgroundImage(Constants.Images.facebookButtonImage,
-                                  for: .normal)
-        button.addTarget(self,
-                         action: #selector(facebookButtonPressed),
-                         for: .touchUpInside)
-        return button
-    }()
-    
     private let authButtonStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.spacing = 20
         stackView.alignment = .center
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .equalCentering
         return stackView
     }()
     
@@ -160,7 +151,7 @@ final class AuthViewController: UIViewController {
     
     private let infoBottomLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.TextLabels.infoRegisterBottomLabelText
+        label.text = "infoRegisterBottomLabelText".localized
         label.font = Constants.Fonts.b6
         label.textColor = Constants.Colors.lightGray
         return label
@@ -183,7 +174,7 @@ final class AuthViewController: UIViewController {
                              for: .normal)
         button.contentHorizontalAlignment = .left
         button.titleLabel?.font = Constants.Fonts.b5
-        button.setTitle(Constants.TextButtons.forgotPassword,
+        button.setTitle("forgotPassword".localized,
                         for: .normal)
         button.addTarget(self,
                          action: #selector(forgotPasswordButtonPressed),
@@ -219,9 +210,12 @@ final class AuthViewController: UIViewController {
     @objc private func backButtonPressed() {
         presenter?.backButtonPressed()
     }
-
+    
     @objc private func identifireButtonPressed() {
-        presenter?.identifireButtonPressed()
+        presenter?.identifireButtonPressed(name: nameTextField.text,
+                                           email: emailTextField.text,
+                                           password: passwordTextField.text,
+                                           repeatPassword: retypePasswordTextField.text)
     }
     
     @objc private func appleButtonPressed() {
@@ -230,10 +224,6 @@ final class AuthViewController: UIViewController {
     
     @objc private func googleButtonPressed() {
         presenter?.googleButtonPressed()
-    }
-    
-    @objc private func facebookButtonPressed() {
-        presenter?.facebookButtonPressed()
     }
     
     @objc private func loginButtonPressed() {
@@ -249,24 +239,24 @@ final class AuthViewController: UIViewController {
 
 extension AuthViewController: AuthViewProtocol {
     func setupAuth() {
-        title = Constants.NavigationController.authTitle
-        identifireButton.setTitle(Constants.TextButtons.loginButton,
+        title = "authTitle".localized
+        identifireButton.setTitle("loginButton".localized,
                                   for: .normal)
         nameTextField.isHidden = true
         retypePasswordTextField.isHidden = true
         infoWithLinksLabel.isHidden = true
-        infoBottomLabel.text = Constants.TextLabels.infoAuthBottomLabelText
-        loginButton.setTitle(Constants.TextButtons.registerButton,
-                        for: .normal)
+        infoBottomLabel.text = "infoAuthBottomLabelText".localized
+        loginButton.setTitle("registerButton".localized,
+                             for: .normal)
         
     }
     
     func setupRegister() {
-        title = Constants.NavigationController.registerTitle
-        identifireButton.setTitle(Constants.TextButtons.registerButton,
+        title = "registerTitle".localized
+        identifireButton.setTitle("registerButton".localized,
                                   for: .normal)
-        loginButton.setTitle(Constants.TextButtons.loginButton,
-                        for: .normal)
+        loginButton.setTitle("loginButton".localized,
+                             for: .normal)
         forgotPasswordButton.isHidden = true
     }
 }
@@ -301,7 +291,8 @@ private extension AuthViewController {
         textFieldStackView.addArrangedSubviews(nameTextField,
                                                emailTextField,
                                                passwordTextField,
-                                               retypePasswordTextField, forgotPasswordButton)
+                                               retypePasswordTextField,
+                                               forgotPasswordButton)
         
         middleStackView.addArrangedSubviews(infoWithLinksLabel,
                                             authStackView,
@@ -312,8 +303,7 @@ private extension AuthViewController {
                                           trailingLineView)
         
         authButtonStackView.addArrangedSubviews(appleButton,
-                                                googleButton,
-                                                facebookButton)
+                                                googleButton)
         
         bottomStackView.addArrangedSubviews(infoBottomLabel,
                                             loginButton)

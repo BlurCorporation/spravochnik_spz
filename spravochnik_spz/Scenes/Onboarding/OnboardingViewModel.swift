@@ -20,13 +20,13 @@ struct OnboardingViewModel: OnboardingViewModelProtocol {
     
     static var makeModel: [OnboardingViewModel] {
         return [OnboardingViewModel(image: Constants.Images.onboarding1,
-                                    title: Constants.TextLabels.onboarding11,
-                                    text: Constants.TextLabels.onboarding12),
+                                    title: "onboarding11".localized,
+                                    text: "onboarding12".localized),
                 OnboardingViewModel(image: Constants.Images.onboarding2,
-                                    title: Constants.TextLabels.onboarding21,
-                                    text: Constants.TextLabels.onboarding22),
+                                    title: "onboarding21".localized,
+                                    text: "onboarding22".localized),
                 OnboardingViewModel(image: Constants.Images.onboarding3,
-                                    title: Constants.TextLabels.onboarding31,
-                                    text: Constants.TextLabels.onboarding32)]
+                                    title: "onboarding31".localized,
+                                    text: "onboarding32".localized)]
     }
 }
