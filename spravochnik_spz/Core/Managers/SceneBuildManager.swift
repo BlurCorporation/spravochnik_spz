@@ -27,9 +27,10 @@ protocol Buildable {
 
 final class SceneBuildManager {
     private let authService: AuthServicable
+    private let defaultsManager = DefaultsManager()
     
     init() {
-        self.authService = AuthService()
+        self.authService = AuthService(defaultsManager: defaultsManager)
     }
 }
 
