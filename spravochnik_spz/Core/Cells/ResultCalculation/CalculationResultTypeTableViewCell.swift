@@ -96,7 +96,6 @@ final class CalculationResultTypeTableViewCell: UITableViewCell {
     private let commonStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        
         stackView.spacing = 16
         stackView.alignment = .leading
         stackView.layer.borderWidth = Constants.Sizes.borderWidth
@@ -123,6 +122,16 @@ final class CalculationResultTypeTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - OverrideMethods
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 4,
+                                                                     left: 0,
+                                                                     bottom: 4,
+                                                                     right: 0))
+    }
+    
     //MARK: - Methods
     
     func configure(with viewModel: CalculationResultViewModel) {
@@ -135,12 +144,6 @@ final class CalculationResultTypeTableViewCell: UITableViewCell {
         costWithoutVatLabel.text = viewModel.prices[1].cost
         priceWithVatLabel.text = viewModel.prices[0].title
         priceWithoutVatLabel.text = viewModel.prices[1].title
-//        carrencyWithoutVatLabel.text = viewModel.prices.withoutVat.description
-//        carrencyWithVatLabel.text = viewModel.prices.withoutVat.description
-//        costWithVatLabel.text = viewModel.prices.withoutVat.description
-//        costWithoutVatLabel.text = viewModel.prices.withoutVat.description
-//        priceWithVatLabel.text = viewModel.prices.withoutVat.description
-//        priceWithoutVatLabel.text = viewModel.prices.withoutVat.description
     }
 }
 
@@ -163,21 +166,23 @@ private extension CalculationResultTypeTableViewCell {
                                                    costWithVatStackView)
         
         commonCostStackView.addArrangedSubviews(descriptionLabel,
-                                                 commonWithoutVatStackView,
-                                                 commonWithVatStackView)
+                                                commonWithoutVatStackView,
+                                                commonWithVatStackView)
         
         commonStackView.addArrangedSubviews(titleLabel,
                                             commonCostStackView)
-    
+        
         contentView.addSubviews(commonStackView)
     }
     
     func setupContsraints() {
         NSLayoutConstraint.activate([
             commonStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            commonStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            commonStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,
+                                                      constant: -Constants.Constraints.sideOffset),
             commonStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            commonStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant:  16)
+            commonStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
+                                                     constant:  Constants.Constraints.sideOffset)
         ])
     }
 }

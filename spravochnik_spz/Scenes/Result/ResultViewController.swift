@@ -35,7 +35,7 @@ final class  ResultViewController: UIViewController {
     
     private let navigationItemTitleLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 0
+        label.numberOfLines = .zero
         label.font = Constants.Fonts.h4
         return label
     }()
@@ -53,7 +53,7 @@ final class  ResultViewController: UIViewController {
     private lazy var saveButton: CustomButton = {
         let button = CustomButton(type: .system)
         button.mode = .black
-        button.setTitle("Сохранить",
+        button.setTitle(Constants.TextButtons.saveResultCalculation,
                         for: .normal)
         button.addTarget(self,
                          action: #selector(calculationButtonPressed),
@@ -64,7 +64,7 @@ final class  ResultViewController: UIViewController {
     private lazy var shareButton: CustomButton = {
         let button = CustomButton(type: .system)
         button.mode = .white
-        button.setTitle("Поделиться",
+        button.setTitle(Constants.TextButtons.shareResultСalculation,
                         for: .normal)
         button.addTarget(self,
                          action: #selector(shareButtonButtonPressed),
@@ -93,11 +93,15 @@ final class  ResultViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.dataSource = self
+        tableView.delegate = self
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        } else {
+            // Fallback on earlier versions
+        }
         tableView.separatorStyle = .none
         tableView.register(ValueCoefficientResultTypeTableViewCell.self,
                            forCellReuseIdentifier: ValueCoefficientResultTypeTableViewCell.reuseIdentifier)
-//        tableView.register(CalculationHeaderViewCell.self,
-//                           forHeaderFooterViewReuseIdentifier: CalculationHeaderViewCell.identifier)
         tableView.register(ChoiceCoefficientResultTypeTableViewCell.self,
                            forCellReuseIdentifier: ChoiceCoefficientResultTypeTableViewCell.reuseIdentifier)
         tableView.register(DefaultValueCoefficientResultTypeTableViewCell.self,
@@ -224,6 +228,79 @@ extension ResultViewController: UITableViewDataSource {
         sections[section].rows.count
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            return 40
+        case 4:
+            return 40
+        default:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 0:
+            let headerView = UIView.init(frame: CGRect.init(x: 0,
+                                                            y: 0,
+                                                            width: tableView.frame.width,
+                                                            height: 50))
+            
+            let label = UILabel()
+            label.backgroundColor = Constants.Colors.whiteCellColor
+            label.frame = CGRect.init(x: 16,
+                                      y: 0,
+                                      width: headerView.frame.width-10,
+                                      height: headerView.frame.height-10)
+            label.text = Constants.TextLabels.dataForCalculationHeaderTitle
+            label.font = Constants.Fonts.h3
+            label.textColor = Constants.Colors.dark
+            
+            headerView.addSubview(label)
+            
+            return headerView
+        case 4:
+            let headerView = UIView.init(frame: CGRect.init(x: 0,
+                                                            y: 0,
+                                                            width: tableView.frame.width,
+                                                            height: 50))
+            
+            let label = UILabel()
+            label.frame = CGRect.init(x: 16,
+                                      y: 0,
+                                      width: headerView.frame.width-10,
+                                      height: headerView.frame.height-10)
+            label.text = Constants.TextLabels.resultCalculationHeaderTitle
+            label.font = Constants.Fonts.h3
+            label.textColor = Constants.Colors.dark
+            
+            headerView.addSubview(label)
+            
+            return headerView
+        default:
+            return nil
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        switch section {
+        case 4:
+            return 20
+        default:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        switch section {
+        case 4:
+            return UIView()
+        default:
+            return nil
+        }
+    }
+    
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch sections[indexPath.section].rows[indexPath.row] {
@@ -291,6 +368,8 @@ extension ResultViewController: UITableViewDataSource {
         }
     }
 }
+
+extension ResultViewController: UITableViewDelegate {}
 
 extension ResultViewController {
     struct Section {

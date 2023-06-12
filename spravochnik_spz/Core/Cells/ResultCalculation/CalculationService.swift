@@ -65,18 +65,18 @@ private extension CalculationService {
         let stageRPrice: Double = 1_000_000
         
         var result: [CalculationResultModel] = [.init(title: .stageP,
-                                                      description: "description",
-                                                      prices: [.init(type: .withVat, value: 123123123),
-                                                               .init(type: .withoutVat, value: 321321321)],]
+                                                      description: "Цена разработки проектной документации:",
+                                                      prices: [.init(type: .withVat,
+                                                                     value: stageRPrice),
+                                                               .init(type: .withoutVat,
+                                                                     value: stageRPrice)])]
         
         if flag {
             let stagePPrice: Double = 1_050_000
-            let calculationResult = CalculationResultModel(
-                title: .stageP,
-                description: "description",
-                prices: (withoutVat: .init(type: .withoutVat, value: stagePPrice),
-                         withVat: .init(type: .withVat, value: stageRPrice))
-            )
+            let calculationResult = CalculationResultModel(title: .stageR,
+                                                           description: "Цена разработки проектной документации:",
+                                                           prices: [.init(type: .withVat, value: stagePPrice),
+                                                                    .init(type: .withoutVat, value: stagePPrice)])
             result.append(calculationResult)
         }
 

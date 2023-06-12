@@ -54,6 +54,7 @@
 		226E6F0D297D6B9100846141 /* CalculationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F0C297D6B9100846141 /* CalculationPresenter.swift */; };
 		226E6F15297D6BDE00846141 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F14297D6BDE00846141 /* ResultViewController.swift */; };
 		226E6F17297D6BEB00846141 /* ResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E6F16297D6BEB00846141 /* ResultPresenter.swift */; };
+		2284AAEB2A363CA3008B8127 /* ResultCalculationHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2284AAEA2A363CA3008B8127 /* ResultCalculationHeaderViewCell.swift */; };
 		228E1D2E29AFA91C00117BDC /* SavedCalculationCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228E1D2D29AFA91B00117BDC /* SavedCalculationCellModel.swift */; };
 		228E1D3029AFA92300117BDC /* SavedCalculationsUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228E1D2F29AFA92300117BDC /* SavedCalculationsUITableViewCell.swift */; };
 		228FA2F529D0C2E3000412A7 /* CalculationViewControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228FA2F429D0C2E1000412A7 /* CalculationViewControllerType.swift */; };
@@ -139,6 +140,7 @@
 		226E6F0C297D6B9100846141 /* CalculationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationPresenter.swift; sourceTree = "<group>"; };
 		226E6F14297D6BDE00846141 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		226E6F16297D6BEB00846141 /* ResultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPresenter.swift; sourceTree = "<group>"; };
+		2284AAEA2A363CA3008B8127 /* ResultCalculationHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCalculationHeaderViewCell.swift; sourceTree = "<group>"; };
 		228E1D2D29AFA91B00117BDC /* SavedCalculationCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedCalculationCellModel.swift; sourceTree = "<group>"; };
 		228E1D2F29AFA92300117BDC /* SavedCalculationsUITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedCalculationsUITableViewCell.swift; sourceTree = "<group>"; };
 		228FA2F429D0C2E1000412A7 /* CalculationViewControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationViewControllerType.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 			children = (
 				1BA6E011299BEFA5000F0F82 /* SavedCalcCustomHeaderCell.swift */,
 				22F5886529A8E48E004053CF /* CalculationHeaderViewCell.swift */,
+				2284AAEA2A363CA3008B8127 /* ResultCalculationHeaderViewCell.swift */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -495,7 +498,6 @@
 		22B29E6A2A0FBC1600670939 /* Result */ = {
 			isa = PBXGroup;
 			children = (
-				22B29E762A100E5100670939 /* New Group */,
 				22B29E6B2A0FBC2200670939 /* ResultModels */,
 			);
 			path = Result;
@@ -511,13 +513,6 @@
 				22B29E742A0FC04E00670939 /* CalculationResult.swift */,
 			);
 			path = ResultModels;
-			sourceTree = "<group>";
-		};
-		22B29E762A100E5100670939 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		22B29E772A100E6B00670939 /* ResultCalculation */ = {
@@ -701,6 +696,7 @@
 				226E6F07297D6A7300846141 /* ProfilePresenter.swift in Sources */,
 				22B29E6F2A0FBC5800670939 /* ChoiceСoefficientResultType.swift in Sources */,
 				22B29E732A0FBC7800670939 /* CheckboxСoefficientResultType.swift in Sources */,
+				2284AAEB2A363CA3008B8127 /* ResultCalculationHeaderViewCell.swift in Sources */,
 				226E6F03297D69E800846141 /* SavedCalculationsPresenter.swift in Sources */,
 				22F5887029A8EB30004053CF /* CheckboxCoefficientTypeTableViewCell.swift in Sources */,
 				2265A2CE299EB9A6005DF662 /* AuthType.swift in Sources */,
@@ -868,7 +864,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Maksimka.1spravochnik-spz1";
+				PRODUCT_BUNDLE_IDENTIFIER = "Maksimka.1spravochnik-spz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -895,7 +891,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Maksimka.1spravochnik-spz1";
+				PRODUCT_BUNDLE_IDENTIFIER = "Maksimka.1spravochnik-spz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

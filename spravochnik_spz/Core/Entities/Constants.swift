@@ -142,6 +142,8 @@ enum Constants {
         static let onboarding22 = "Расчеты стоимости проектирования, технические расчеты систем безопасности, физические расчеты, технико-экономические расчеты"
         static let onboarding31 = "Добро пожаловать"
         static let onboarding32 = "Благодарим, что выбрали нас. Мы поможем Вам расчитать стоимость интересующих Вас систем безопасности"
+        static let dataForCalculationHeaderTitle = "Исходные данные для расчета"
+        static let resultCalculationHeaderTitle = "Результаты расчета"
     }
     
     enum TextButtons {
@@ -161,6 +163,8 @@ enum Constants {
         static let otherCalculationButtonText = "Перейти к другим расчетам"
         static let onboardingNextButton = "Дальше"
         static let onboardingSkipButton = "Пропустить"
+        static let saveResultCalculation = "Сохранить"
+        static let shareResultСalculation = "Поделиться"
     }
     
     enum PlaceHolders {

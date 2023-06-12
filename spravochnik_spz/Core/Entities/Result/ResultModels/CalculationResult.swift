@@ -77,3 +77,8 @@ enum CarrencyType {
         }
     }
 }
+
+
+struct User {
+    let valueCoef: [String]
+}
