@@ -41,16 +41,25 @@ final class ProfilePresenter {
 
 extension ProfilePresenter: ProfilePresenterProtocol {
     func logoutButtonPressed() {
-        self.authService.logout { error in
-            if let error = error {
-                print(error.localizedDescription)
-                return
+        
+        let model = NoСoefficientModel(title: "Уверены, что хотите выйти из аккаунта?", leftButton: "Закрыть", rightButton: "Выйти", rightButtonHandler: {
+            self.authService.logout { error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                print("exit")
             }
-            print("exit")
-        }
-        let startViewController = sceneBuildManager.buildStartScreen()
-        let rootViewController = UINavigationController.init(rootViewController: startViewController)
-        UIApplication.shared.windows.first?.rootViewController = rootViewController
+            let startViewController = self.sceneBuildManager.buildStartScreen()
+            let rootViewController = UINavigationController.init(rootViewController: startViewController)
+            UIApplication.shared.windows.first?.rootViewController = rootViewController
+        })
+        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .clear(model: model))
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        viewController?.present(vc, animated: true)
+        
+        
     }
     
     func themeButtonPressed() {
