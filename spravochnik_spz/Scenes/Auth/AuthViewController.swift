@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 // MARK: - AuthViewProtocol
 
 protocol AuthViewProtocol: UIViewController {
@@ -126,17 +127,6 @@ final class AuthViewController: UIViewController {
         return button
     }()
     
-    //Запрещён на территории РФ
-    //    private lazy var facebookButton: UIButton = {
-    //        let button = UIButton(type: .system)
-    //        button.setBackgroundImage(Constants.Images.facebookButtonImage,
-    //                                  for: .normal)
-    //        button.addTarget(self,
-    //                         action: #selector(facebookButtonPressed),
-    //                         for: .touchUpInside)
-    //        return button
-    //    }()
-    
     private let authButtonStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.spacing = 20
@@ -222,7 +212,10 @@ final class AuthViewController: UIViewController {
     }
     
     @objc private func identifireButtonPressed() {
-        presenter?.identifireButtonPressed(name: nameTextField.text ,email: emailTextField.text, password: passwordTextField.text, repeatPassword: retypePasswordTextField.text)
+        presenter?.identifireButtonPressed(name: nameTextField.text,
+                                           email: emailTextField.text,
+                                           password: passwordTextField.text,
+                                           repeatPassword: retypePasswordTextField.text)
     }
     
     @objc private func appleButtonPressed() {
@@ -232,10 +225,6 @@ final class AuthViewController: UIViewController {
     @objc private func googleButtonPressed() {
         presenter?.googleButtonPressed()
     }
-    
-    //    @objc private func facebookButtonPressed() {
-    //        presenter?.facebookButtonPressed()
-    //    }
     
     @objc private func loginButtonPressed() {
         presenter?.loginButtonPressed()
@@ -302,7 +291,8 @@ private extension AuthViewController {
         textFieldStackView.addArrangedSubviews(nameTextField,
                                                emailTextField,
                                                passwordTextField,
-                                               retypePasswordTextField, forgotPasswordButton)
+                                               retypePasswordTextField,
+                                               forgotPasswordButton)
         
         middleStackView.addArrangedSubviews(infoWithLinksLabel,
                                             authStackView,
