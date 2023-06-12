@@ -24,6 +24,7 @@ final class CalculationResultTypeTableViewCell: UITableViewCell {
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = Constants.Fonts.b2
+        label.numberOfLines = .zero
         return label
     }()
     
@@ -102,9 +103,9 @@ final class CalculationResultTypeTableViewCell: UITableViewCell {
         stackView.layer.borderColor = Constants.Colors.grayCellColor.cgColor
         stackView.layer.cornerRadius = Constants.Sizes.savedCalcCellCornerRadius
         stackView.layoutMargins = UIEdgeInsets(top: 24,
-                                               left: 16,
+                                               left: 10,
                                                bottom: 24,
-                                               right: 16)
+                                               right: 10)
         stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
