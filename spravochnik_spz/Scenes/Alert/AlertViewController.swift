@@ -86,7 +86,7 @@ final class AlertViewController: UIViewController {
         button.mode = .white
         button.setTitle("Закрыть",
                         for: .normal)
-//        button.addTarget(self, action: #selector(leftButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(leftButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -128,6 +128,14 @@ final class AlertViewController: UIViewController {
         choiceCollectionView.delegate = self
     }
     // MARK: - Action
+    
+    @objc
+    func leftButtonPressed() {
+        leftButton.pushAnimate { [weak self] in
+            self?.presenter?.leftButtonPressed()
+        }
+    }
+    
     
     @objc
     func rightButtonPressed() {

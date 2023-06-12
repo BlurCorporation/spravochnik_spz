@@ -11,6 +11,7 @@
 protocol AlertPresenterProtocol: AnyObject {
     func viewDidLoad()
     func rightButtonPressed()
+    func leftButtonPressed()
 }
 
 // MARK: - ALertPresenter
@@ -19,8 +20,8 @@ final class AlertPresenter {
     weak var viewController: AlertViewProtocol?
     
     // MARK: PrivateProperties
+    private var rightButtonHandler: (() -> Void)?
     private let coefficientType: CoefficientType
-//    private var dataSource: [String]
     // MARK: - Initializer
     
     init(coefficientType: CoefficientType) {
@@ -37,6 +38,7 @@ extension AlertPresenter: AlertPresenterProtocol {
             let title = model.title
             let leftButtonTitle = model.leftButton
             let rightButtonTittle = model.rightButton
+            rightButtonHandler = model.rightButtonHandler
             viewController?.updateUIForClear(title: title,
                                              leftButtonTitle: leftButtonTitle,
                                              rightButtonTitle: rightButtonTittle)
@@ -47,10 +49,8 @@ extension AlertPresenter: AlertPresenterProtocol {
         case let .choice(model):
             let axis = model.type
             let title = model.type.title
-            var collectionViewDataSource = [String]()
+            let collectionViewDataSource = [String]()
             self.viewController?.update(dataSource: self.makeData(axis))
-            
-            let numOfItems = collectionViewDataSource.count
             viewController?.updateUIForChoice(title: title,
                                               axis: axis,
                                               numOfItems: 0)
@@ -73,9 +73,14 @@ extension AlertPresenter: AlertPresenterProtocol {
         }
     }
     
+    func leftButtonPressed() {
+        viewController?.dismiss(animated: true) { }
+    }
+    
     func rightButtonPressed() {
-        viewController?.dismiss(animated: true) {
-            
+        viewController?.dismiss(animated: true) { [self] in
+            guard let handler = rightButtonHandler else { return }
+            handler()
         }
     }
 }
