@@ -121,13 +121,6 @@ extension SavedCalculationsViewController: UITableViewDelegate {
                                  with: .fade)
         }
     }
-    
-    func tableView(_ tableView: UITableView,
-                   didDeselectRowAt indexPath: IndexPath) {
-        
-        presenter?.openCell(text: dataSource[indexPath.row].system)
-    }
-
 }
 
 // MARK: - PrivateMethods
