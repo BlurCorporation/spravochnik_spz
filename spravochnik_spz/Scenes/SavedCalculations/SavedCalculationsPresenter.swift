@@ -9,7 +9,7 @@
 
 protocol SavedCalculationsTablePresenterProtocol: AnyObject {
     func viewDidLoad()
-    func openCell(text: String)
+    func openCell(actionHandler: () -> Void)
 }
 
 // MARK: - SavedCalculationsPresenter
@@ -48,48 +48,19 @@ extension SavedCalculationsTablePresenter: SavedCalculationsTablePresenterProtoc
                                                     cost: result.cost,
                                                     image: result.image,
                                                     backgroundImage: result.backgroundImage,
-                                                    actionHandler: {}))
-
+                                                    actionHandler: {
+                let securityAlarmViewController = self.sceneBuildManager.buildCalculationScreen(calculationType: result.type)
+                self.viewController?.navigationController?.pushViewController(securityAlarmViewController,
+                                                                              animated: true)
+            },
+                                                    type: result.type)
+            )
             
-            
-             })
+        })
         return cells
     }
     
-    func openCell(text: String) {
-        switch text {
-//        case "Пожарная сигнализация":
-//            let nextViewController = sceneBuildManager.buildFireAlarmSystemResultsScreen()
-//            viewController?.navigationController?.pushViewController(nextViewController,
-//                                                                     animated: true)
-//        case "Охранная сигнализация":
-//            let nextViewController = sceneBuildManager.buildSecurityAlarmSystemResultsScreen()
-//            viewController?.navigationController?.pushViewController(nextViewController,
-//                                                                     animated: true)
-//        case "Насосные станции установок пожаротушения":
-//            let nextViewController = sceneBuildManager.buildFirePumpStationResultsScreen()
-//            viewController?.navigationController?.pushViewController(nextViewController,
-//                                                                     animated: true)
-//        case "Система оповещения о пожаре":
-//            let nextViewController = sceneBuildManager.buildNotificationSystemResultsScreen()
-//            viewController?.navigationController?.pushViewController(nextViewController,
-//                                                                     animated: true)
-//        case "Охранная сигнализация периметра":
-//            let nextViewController = sceneBuildManager.buildPerimeterAlarmSystemResultsScreen()
-//            viewController?.navigationController?.pushViewController(nextViewController,
-//                                                                     animated: true)
-//        case "Система управления дымоудаления":
-//            let nextViewController = sceneBuildManager.buildSmokeExhaustSystemResultsScreen()
-//            viewController?.navigationController?.pushViewController(nextViewController,
-//                                                                     animated: true)
-//        case "Модульные установки пожаротушения":
-//            let nextViewController = sceneBuildManager.buildModuleFirefightingSystemResultsScreen()
-//            viewController?.navigationController?.pushViewController(nextViewController,
-//                                                                     animated: true)
-        default:
-            let nextViewController = sceneBuildManager.buildTabBarScreen()
-            viewController?.navigationController?.pushViewController(nextViewController,
-                                                                     animated: true)
-        }
+    func openCell(actionHandler: () -> Void) {
+        actionHandler()
     }
 }

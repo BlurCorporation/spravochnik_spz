@@ -145,7 +145,7 @@ final class SavedCalculationsUITableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setupCell()
         self.setupContsraints()
-//        self.setupGesture()
+        self.setupGesture()
     }
     
     required init?(coder: NSCoder) {
