@@ -104,6 +104,7 @@ extension FirebaseService: FirebaseServiceProtocol {
                 completion(.success(nil))
                 return
             }
+            
             if let error = error {
                 print("Error getting documents: \(error)")
                 completion(.failure(error))
