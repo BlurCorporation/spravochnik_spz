@@ -10,7 +10,21 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 protocol FirebaseServiceProtocol {
+    func setCalculation(userID: String,
+                        calcName: String,
+                        calcModel: Calculation,
+                        completion: @escaping (Result<Bool, Error>) -> Void)
     
+    func getCalculation(userID: String,
+                        calcName: String,
+                        completion: @escaping (Result<Calculation, Error>) -> Void)
+    
+    func getAllCalculations(userID: String,
+                            completion: @escaping (Result<[QueryDocumentSnapshot]?, Error>) -> Void)
+    
+    func deleteCalculation(userID: String,
+                           calcName: String,
+                           completion: @escaping (Result<String, Error>) -> Void)
 }
 
 final class FirebaseService {
@@ -26,11 +40,11 @@ final class FirebaseService {
 extension FirebaseService: FirebaseServiceProtocol {
     func setCalculation(userID: String,
                         calcName: String,
-                        calcDictionary: CalculationModel,
-                        completion: @escaping (Result<String, Error>) -> Void) {
+                        calcModel: Calculation,
+                        completion: @escaping (Result<Bool, Error>) -> Void) {
         let db = configureFB()
         let calcRef = db.collection(userID).document(calcName)
-//        calcRef.setData(calcDictionary) { error in
+//        calcRef.setData(calcModel) { error in
 //            if let error = error {
 //                print("FirebaseService setCalculation: Error writing document: \(error)")
 //                completion(.failure(error))
@@ -40,13 +54,13 @@ extension FirebaseService: FirebaseServiceProtocol {
 //            }
 //        }
         do {
-            try calcRef.setData(from: calcDictionary) { error in
+            try calcRef.setData(from: calcModel) { error in
                 if let error = error {
                     print("FirebaseService setCalculation: Error writing document: \(error)")
                     completion(.failure(error))
                 } else {
                     print("FirebaseService setCalculation: Document successfully written!")
-                    completion(.success(""))
+                    completion(.success(true))
                 }
             }
         } catch let error {
@@ -55,26 +69,9 @@ extension FirebaseService: FirebaseServiceProtocol {
         }
     }
     
-    func updateCalculation(userID: String,
-                           calcName: String,
-                           calcDictionary: [String: Any],
-                           completion: @escaping (Result<String, Error>) -> Void) {
-        let db = configureFB()
-        let calcRef = db.collection(userID).document(calcName)
-        calcRef.updateData(calcDictionary) { error in
-            if let error = error {
-                print("FirebaseService updateCalculation: Error updating document: \(error)")
-                completion(.failure(error))
-            } else {
-                print("FirebaseService updateCalculation: Document successfully updated")
-                completion(.success(""))
-            }
-        }
-    }
-    
     func getCalculation(userID: String,
                         calcName: String,
-                        completion: @escaping (Result<CalculationModel, Error>) -> Void) {
+                        completion: @escaping (Result<Calculation, Error>) -> Void) {
         let db = configureFB()
         let calcRef = db.collection(userID).document(calcName)
 //        calcRef.getDocument { (document, error) in
@@ -85,7 +82,7 @@ extension FirebaseService: FirebaseServiceProtocol {
 //                print("Document does not exist")
 //            }
 //        }
-        calcRef.getDocument(as: CalculationModel.self) { result in
+        calcRef.getDocument(as: Calculation.self) { result in
             switch result {
             case .success(let calc):
                 print("CalculationModel: \(calc)")
@@ -102,14 +99,16 @@ extension FirebaseService: FirebaseServiceProtocol {
         let db = configureFB()
         let calcRef = db.collection(userID)
         calcRef.getDocuments() { (querySnapshot, error) in
+            guard let querySnapshot = querySnapshot else {
+                print("ERROR getAllCalculations querySnapshot")
+                completion(.success(nil))
+                return
+            }
             if let error = error {
                 print("Error getting documents: \(error)")
                 completion(.failure(error))
             } else {
-                for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
-                }
-                completion(.success(querySnapshot!.documents))
+                completion(.success(querySnapshot.documents))
             }
         }
     }

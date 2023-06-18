@@ -8,83 +8,53 @@
 import Foundation
 
 struct CalculationModel: Codable {
-    let param1: String
-    let param2: String
-    let param3: String
-    
-    enum CodingKeys: String, CodingKey {
-        case param1
-        case param2
-        case param3
-    }
+    let userID: String
+    var calcName: String = ""
+    let calculation: [Calculation]
 }
 
 
-struct Calculation {
+struct Calculation: Codable {
     let valueCoef: [ValueСoefficientResultModel]
     let choiceCoef: [ChoiceCoefficientResultModel]
     let defaultCoef: [DefaultCoefficientValueResultModel]
     let checkboxСoef: [CheckboxСoefficientResultModel]
-    let calculationResultModel: [CalculationResultModel]
+    let calculationResult: [CalculationResultModel]
 }
 
-struct ValueСoefficientResultModel {
+struct ValueСoefficientResultModel: Codable {
     let title: String
     let description: String
     let value: Double
 }
-struct ChoiceCoefficientResultModel {
+
+struct ChoiceCoefficientResultModel: Codable {
     let title: String
     let description: String
     let value: Double
 }
-struct DefaultCoefficientValueResultModel {
+
+struct DefaultCoefficientValueResultModel: Codable {
     let title: String
     let value: Double
 }
-struct CheckboxСoefficientResultModel {
+
+struct CheckboxСoefficientResultModel: Codable {
     let title: String
     let value: Double
 }
-struct CalculationResultModel {
+
+struct CalculationResultModel: Codable {
     let title: String
     let value: Double
     let prices: [PriceModel]
 }
 
-
-struct PriceModel {
+struct PriceModel: Codable {
     let type: PriceModelType
 }
-struct PriceModelType {
+
+struct PriceModelType: Codable {
     let title: String
     let value: Double
 }
-
-//struct Calculation {
-//    ValueСoefficientResultModel: [
-//        title: String,
-//        description: String,
-//        value: Double
-//    ],
-//    ChoiceCoefficientResultModel: [
-//        title: String,
-//        description: String,
-//        value: Double
-//    ],
-//    DefaultCoefficientValueResultModel: [
-//        title: String,
-//        value: Double
-//    ],
-//    CheckboxСoefficientResultModel: [
-//        title: String,
-//        value: Double
-//    ],
-//    CalculationResultModel: [
-//        title: String,
-//        value: Double,
-//        prices: [PriceModel: {type: title: String,
-//                              value: Double}
-//                ]
-//    ],
-//}

@@ -27,6 +27,48 @@ final class SavedCalculationsTablePresenter {
     
     init(sceneBuildManager: Buildable) {
         self.sceneBuildManager = sceneBuildManager
+        testSetGetCalcFromFB()
+    }
+    
+    // Тест работы с ФБ через репозиторий, удалить после
+    private func testSetGetCalcFromFB() {
+        let fbService: FirebaseServiceProtocol = FirebaseService()
+        let testCalcModel: [Calculation] = [Calculation(valueCoef: [ValueСoefficientResultModel(title: "ValueСoefTitle",
+                                                                                                description: "ValueСoefDesc",
+                                                                                                value: 1.1),
+                                                                    ValueСoefficientResultModel(title: "ValueСoefTitle2",
+                                                                                                description: "ValueСoefDesc2",
+                                                                                                value: 1.2)],
+                                                        choiceCoef: [ChoiceCoefficientResultModel(title: "ChoiceCoefTitle",
+                                                                                                  description: "ChoiceCoefDesc",
+                                                                                                  value: 2.2)],
+                                                        defaultCoef: [DefaultCoefficientValueResultModel(title: "DefaultCoefTitle",
+                                                                                                         value: 3.3),
+                                                                      DefaultCoefficientValueResultModel(title: "DefaultCoefTitle2",
+                                                                                                         value: 3.4)],
+                                                        checkboxСoef: [CheckboxСoefficientResultModel(title: "CheckboxСoefTitle",
+                                                                                                      value: 4.4)],
+                                                        calculationResult: [CalculationResultModel(title: "CalculationResultTitle",
+                                                                                                   value: 5.5,
+                                                                                                   prices: [PriceModel(type: PriceModelType(title: "PriceModelTypeTitle",
+                                                                                                                                            value: 6.6))])])]
+//        let calcModel = CalculationModel(userID: "UserID 222", calcName: "Test Calc3", calculation: testCalcModel)
+//        FirebaseRepository(firebaseService: fbService).setCalculation(calcModel: calcModel) { result in
+//            switch result {
+//            case .success(let calc):
+//                print("MODEL GET: ", calc)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+        FirebaseRepository(firebaseService: fbService).getAllCalculations(userID: "UserID 222") { result in
+            switch result {
+            case .success(let calc):
+                print("MODEL GET: ", calc)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 
