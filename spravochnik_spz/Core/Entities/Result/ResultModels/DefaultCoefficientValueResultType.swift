@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DefaultCoefficientValueResultModel {
+struct DefaultCoefficientValueResultModel: Codable {
     let title: String
     let value: Double
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ValueСoefficientResultModel {
+struct ValueСoefficientResultModel: Codable {
     let title: String
     let description: String
     let value: Double

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ChoiceCoefficientResultModel {
+struct ChoiceCoefficientResultModel: Codable {
     let title: String
     let description: String
     let value: Double

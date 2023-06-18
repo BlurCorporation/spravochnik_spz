@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CalculationResultModel {
+struct CalculationResultModel: Codable {
     let title: TitleType
     let description: String
     let prices: [PriceModel]
@@ -19,7 +19,7 @@ struct CalculationResultViewModel {
     let prices: [PriceViewModel]
 }
 
-enum TitleType {
+enum TitleType: Codable {
     case stageP
     case stageR
     
@@ -33,7 +33,7 @@ enum TitleType {
     }
 }
 
-struct PriceModel {
+struct PriceModel: Codable {
     let type: PriceType
     let value: Double
 }
@@ -44,7 +44,7 @@ struct PriceViewModel {
     let cost: String
 }
 
-enum PriceType {
+enum PriceType: Codable {
     case withVat
     case withoutVat
     
