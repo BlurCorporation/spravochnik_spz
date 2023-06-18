@@ -68,6 +68,7 @@ final class AlertViewController: UIViewController {
         textField.layer.borderColor = UIColor.black.cgColor
         textField.layer.cornerRadius = 11
         textField.layer.borderWidth = 1
+        textField.tintColor = .black
         return textField
     }()
     
@@ -126,7 +127,18 @@ final class AlertViewController: UIViewController {
         setupViewController()
         choiceCollectionView.dataSource = self
         choiceCollectionView.delegate = self
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification,
+                                               object: nil,
+                                               queue: nil) { (nc) in
+            self.view.frame.origin.y = -130
+        }
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification,
+                                               object: nil,
+                                               queue: nil) { (nc) in
+            self.view.frame.origin.y = 0.0
+        }
     }
+    
     // MARK: - Action
     
     @objc
@@ -142,6 +154,10 @@ final class AlertViewController: UIViewController {
         rightButton.pushAnimate { [weak self] in
             self?.presenter?.rightButtonPressed()
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }
 
