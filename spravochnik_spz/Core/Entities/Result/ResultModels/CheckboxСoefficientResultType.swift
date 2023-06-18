@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CheckboxСoefficientResultModel {
+struct CheckboxСoefficientResultModel: Codable {
     let title: String
     let value: Double
 }
