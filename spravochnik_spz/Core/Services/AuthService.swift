@@ -26,16 +26,14 @@ protocol AuthServicable {
 }
 
 final class AuthService {
-    private let eMailService: EmailServicable
-    private let appleService: AppleServicable
+    private let eMailProvider: EmailProviderable
+    private let appleProvider: AppleProviderable
+    private let googleProvider: GoogleProviderable
     private let defaultsManager: DefaultsManagerable
     
-    
-    private let googleProvider: GoogleProviderable
-    
     init(defaultsManager: DefaultsManagerable) {
-        self.eMailService = EmailService()
-        self.appleService = AppleService()
+        self.eMailProvider = EmailProvider()
+        self.appleProvider = AppleProvider()
         self.googleProvider = GoogleProvider()
         self.defaultsManager = defaultsManager
     }
@@ -54,7 +52,7 @@ extension AuthService: AuthServicable {
                    completion: @escaping (Error?) -> Void) {
         switch typeAuth {
         case .email:
-            eMailService.loginUser(with: userRequest!,
+            eMailProvider.loginUser(with: userRequest!,
                                    completion: completion)
         case .google:
             googleProvider.signIn(completion: completion,
@@ -70,17 +68,17 @@ extension AuthService: AuthServicable {
         switch typeAuth {
         case .email:
             guard let userRequest = userRequest else { return }
-            self.eMailService.registerUser(with: userRequest,
+            self.eMailProvider.registerUser(with: userRequest,
                                            completion: completion)
         case .apple:
-            appleService.handleAppleIdRequest(completion: completion)
+            appleProvider.handleAppleIdRequest(completion: completion)
         case .google:
             print("Google")
         }
     }
     
     func logout(completion: @escaping (Error?) -> Void) {
-        self.eMailService.logout(completion: completion)
+        self.eMailProvider.logout(completion: completion)
         self.defaultsManager.saveObject(false, for: .isUserAuth)
     }
 }

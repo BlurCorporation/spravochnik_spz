@@ -10,19 +10,19 @@ import FirebaseAuth
 import AuthenticationServices
 import CryptoKit
 
-protocol AppleServicable {
+protocol AppleProviderable {
     func handleAppleIdRequest(completion: @escaping (Bool, Error?) -> Void)
     func randomNonceString(length: Int) -> String
     func sha256(_ input: String) -> String
     
 }
 
-final class AppleService: NSObject {
+final class AppleProvider: NSObject {
     private var currentNonce: String?
     var completion: ((Bool, Error?) -> Void)?
 }
 
-extension AppleService: AppleServicable {
+extension AppleProvider: AppleProviderable {
     func handleAppleIdRequest(completion: @escaping (Bool, Error?) -> Void) {
         let nonce = randomNonceString()
         currentNonce = nonce
@@ -72,7 +72,7 @@ extension AppleService: AppleServicable {
     }
 }
 
-extension AppleService: ASAuthorizationControllerDelegate {
+extension AppleProvider: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController,
                                  didCompleteWithError error: Error) {
 #if DEBUG
