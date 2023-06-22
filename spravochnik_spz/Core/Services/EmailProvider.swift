@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseAuth
 
-protocol EmailServicable {
+protocol EmailProviderable {
     func isAuth() -> Bool
     func registerUser(with userRequest: RegisterUserRequest,
                     completion: @escaping (Bool, Error?) -> Void)
@@ -17,9 +17,9 @@ protocol EmailServicable {
     func logout(completion: @escaping (Error?) -> Void)
 }
 
-final class EmailService {}
+final class EmailProvider {}
 
-extension EmailService: EmailServicable {
+extension EmailProvider: EmailProviderable {
     func isAuth() -> Bool {
         return (Auth.auth().currentUser != nil)
     }
