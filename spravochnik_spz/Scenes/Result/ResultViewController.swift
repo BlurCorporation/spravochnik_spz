@@ -24,7 +24,7 @@ final class  ResultViewController: UIViewController {
     private var sections: [ResultViewController.Section] = []
     
     private lazy var backButton: UIButton = {
-        let button = UIButton(type: .custom)
+        let button = UIButton(type: .system)
         button.setImage(Constants.Images.backButtomImage,
                         for: .normal)
         button.addTarget(self,
@@ -36,12 +36,15 @@ final class  ResultViewController: UIViewController {
     private let navigationItemTitleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = .zero
+        label.textAlignment = .center
         label.font = Constants.Fonts.h4
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
         return label
     }()
     
     private lazy var saveButton: CustomButton = {
-        let button = CustomButton(type: .system)
+        let button = CustomButton()
         button.mode = .black
         button.setTitle("saveResultCalculation".localized,
                         for: .normal)
@@ -51,20 +54,9 @@ final class  ResultViewController: UIViewController {
         return button
     }()
     
-    private lazy var shareButton: CustomButton = {
-        let button = CustomButton(type: .system)
-        button.mode = .white
-        button.setTitle("shareResultСalculation".localized,
-                        for: .normal)
-        button.addTarget(self,
-                         action: #selector(shareButtonButtonPressed),
-                         for: .touchUpInside)
-        return button
-    }()
-    
     private lazy var otherCalculationButton: CustomButton = {
-        let button = CustomButton(type: .system)
-        button.mode = .transparent
+        let button = CustomButton()
+        button.mode = .white
         button.setTitle("otherCalculationButtonText".localized,
                         for: .normal)
         button.addTarget(self,
@@ -127,7 +119,9 @@ final class  ResultViewController: UIViewController {
     }
     
     @objc private func calculationButtonPressed() {
-        presenter?.calculationButtonPressed()
+        saveButton.pushAnimate { [weak self] in
+            self?.presenter?.calculationButtonPressed()
+        }
     }
     
     @objc private func shareButtonButtonPressed() {
@@ -135,7 +129,10 @@ final class  ResultViewController: UIViewController {
     }
     
     @objc private func otherCalculationButtonPressed() {
-        presenter?.otherCalculationButtonPressed()
+        otherCalculationButton.pushAnimate { [weak self] in
+            self?.presenter?.otherCalculationButtonPressed()
+        }
+        
     }
 }
 
@@ -167,9 +164,13 @@ private extension  ResultViewController {
         navigationItem.setHidesBackButton(true,
                                           animated: true)
         let backButtom = UIBarButtonItem(customView: backButton)
+        let shareBarButton = UIBarButtonItem(barButtonSystemItem: .action,
+                                             target: self,
+                                             action: #selector(shareButtonButtonPressed))
         navigationItem.leftBarButtonItem = backButtom
-        
+        navigationItem.rightBarButtonItem = shareBarButton
         navigationItem.titleView = navigationItemTitleLabel
+        navigationController?.navigationBar.tintColor = UIColor.black
     }
     
     func addSubViews() {
@@ -177,19 +178,19 @@ private extension  ResultViewController {
                          buttonStackView)
         
         buttonStackView.addArrangedSubviews(saveButton,
-                                            shareButton,
                                             otherCalculationButton)
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
             saveButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.buttonHeight),
-            shareButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.buttonHeight),
+
             otherCalculationButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.buttonHeight),
             
             buttonStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,
                                                      constant: Constants.Constraints.sideOffset),
-            buttonStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -Constants.Constraints.sideOffset),
+            buttonStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
+                                                      constant: -Constants.Constraints.sideOffset),
             buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
             tableView.topAnchor.constraint(equalTo: view.topAnchor,

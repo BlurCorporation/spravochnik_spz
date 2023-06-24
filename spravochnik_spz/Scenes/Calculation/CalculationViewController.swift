@@ -24,7 +24,7 @@ final class CalculationViewController: UIViewController {
     private var sections: [CalculationViewController.Section] = []
     
     private lazy var calculationButton: CustomButton = {
-        let button = CustomButton(type: .system)
+        let button = CustomButton()
         button.mode = .black
         button.setTitle("calculationButtonText".localized,
                         for: .normal)
@@ -35,8 +35,8 @@ final class CalculationViewController: UIViewController {
     }()
     
     private lazy var otherCalculationButton: CustomButton = {
-        let button = CustomButton(type: .system)
-        button.mode = .transparent
+        let button = CustomButton()
+        button.mode = .white
         button.setTitle("otherCalculationButtonText".localized,
                         for: .normal)
         button.addTarget(self,
@@ -82,11 +82,15 @@ final class CalculationViewController: UIViewController {
     // MARK: - Action
     
     @objc private func calculationButtonPressed() {
-        presenter?.calculationButtonPressed()
+        calculationButton.pushAnimate { [weak self] in
+            self?.presenter?.calculationButtonPressed()
+        }
     }
     
     @objc private func otherCalculationButtonPressed() {
-        presenter?.otherCalculationButtonPressed()
+        otherCalculationButton.pushAnimate { [weak self] in
+            self?.presenter?.otherCalculationButtonPressed()
+        }
     }
 }
 
@@ -133,7 +137,8 @@ private extension CalculationViewController {
             
             buttonStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,
                                                      constant: Constants.Constraints.sideOffset),
-            buttonStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -Constants.Constraints.sideOffset),
+            buttonStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
+                                                      constant: -Constants.Constraints.sideOffset),
             buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
             tableView.topAnchor.constraint(equalTo: view.topAnchor,
