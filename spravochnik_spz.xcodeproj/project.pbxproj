@@ -300,6 +300,24 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
+		1BE380052A46E37000FA384D /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				1BF7A2892A2F64F400A1F929 /* GoogleProvider.swift */,
+				8D9A010B2A12B5D300D229FF /* EmailProvider.swift */,
+				1BF7A2812A1D325300A1F929 /* AppleProvider.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		1BE380062A46E38D00FA384D /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				45A830212A3F8B3600713E43 /* FirebaseRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		220AE4EB297D522D00DEA441 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +331,7 @@
 		220AE4EC297D524500DEA441 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				1BE380062A46E38D00FA384D /* Repository */,
 				1BA6E00E2996A71C000F0F82 /* Header */,
 				1B19F236297EFCA200F34EF1 /* Cells */,
 				220AE4F4297D52F600DEA441 /* Entities */,
@@ -357,13 +376,10 @@
 		220AE4EF297D52C500DEA441 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				22DD5D3A2A13BAA000382DC8 /* CalculationService.swift */,
+				1BE380052A46E37000FA384D /* Providers */,
 				8D9A01092A12B58C00D229FF /* AuthService.swift */,
-				8D9A010B2A12B5D300D229FF /* EmailProvider.swift */,
-				1BF7A2812A1D325300A1F929 /* AppleProvider.swift */,
-				1BF7A2892A2F64F400A1F929 /* GoogleProvider.swift */,
+				22DD5D3A2A13BAA000382DC8 /* CalculationService.swift */,
 				45A8301F2A3F8B0000713E43 /* FirebaseService.swift */,
-				45A830212A3F8B3600713E43 /* FirebaseRepository.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";

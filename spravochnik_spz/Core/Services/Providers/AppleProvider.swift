@@ -11,7 +11,7 @@ import AuthenticationServices
 import CryptoKit
 
 protocol AppleProviderable {
-    func handleAppleIdRequest(completion: @escaping (Bool, Error?) -> Void)
+    func handleAppleIdRequest(completion: @escaping (Error?) -> Void)
     func randomNonceString(length: Int) -> String
     func sha256(_ input: String) -> String
     
@@ -19,11 +19,11 @@ protocol AppleProviderable {
 
 final class AppleProvider: NSObject {
     private var currentNonce: String?
-    var completion: ((Bool, Error?) -> Void)?
+    var completion: ((Error?) -> Void)?
 }
 
 extension AppleProvider: AppleProviderable {
-    func handleAppleIdRequest(completion: @escaping (Bool, Error?) -> Void) {
+    func handleAppleIdRequest(completion: @escaping (Error?) -> Void) {
         let nonce = randomNonceString()
         currentNonce = nonce
         let provider = ASAuthorizationAppleIDProvider()
@@ -133,8 +133,8 @@ extension AppleProvider: ASAuthorizationControllerDelegate {
     func hasAccount(firstName: String?,
                     lastName: String?,
                     email: String?,
-                    completion: @escaping (Bool, Error?) -> Void) {
+                    completion: @escaping (Error?) -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else { return }
-        completion(true, nil)
+        completion(nil)
     }
 }
