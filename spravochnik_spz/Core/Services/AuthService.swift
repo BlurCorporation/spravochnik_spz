@@ -20,8 +20,7 @@ protocol AuthServicable {
                    viewController: UIViewController?,
                    completion: @escaping (Error?) -> Void)
     func registerUser(with userRequest: RegisterUserRequest?,
-                    typeAuth: TypeAuth,
-                    completion: @escaping (Bool, Error?) -> Void)
+                      completion: @escaping (Bool, Error?) -> Void)
     func logout(completion: @escaping (Error?) -> Void)
 }
 
@@ -52,29 +51,23 @@ extension AuthService: AuthServicable {
                    completion: @escaping (Error?) -> Void) {
         switch typeAuth {
         case .email:
-            eMailProvider.loginUser(with: userRequest!,
-                                   completion: completion)
-        case .google:
-            googleProvider.signIn(completion: completion,
-                                  viewController: viewController!)
-        case .apple:
-            print("apple")
-        }
-    }
-     
-    func registerUser(with userRequest: RegisterUserRequest?,
-                    typeAuth: TypeAuth,
-                    completion: @escaping (Bool, Error?) -> Void) {
-        switch typeAuth {
-        case .email:
             guard let userRequest = userRequest else { return }
-            self.eMailProvider.registerUser(with: userRequest,
-                                           completion: completion)
+            eMailProvider.loginUser(with: userRequest,
+                                    completion: completion)
+        case .google:
+            guard let viewController = viewController else { return }
+            googleProvider.signIn(completion: completion,
+                                  viewController: viewController)
         case .apple:
             appleProvider.handleAppleIdRequest(completion: completion)
-        case .google:
-            print("Google")
         }
+    }
+    
+    func registerUser(with userRequest: RegisterUserRequest?,
+                      completion: @escaping (Bool, Error?) -> Void) {
+        guard let userRequest = userRequest else { return }
+        self.eMailProvider.registerUser(with: userRequest,
+                                        completion: completion)
     }
     
     func logout(completion: @escaping (Error?) -> Void) {

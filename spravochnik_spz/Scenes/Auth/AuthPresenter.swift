@@ -102,8 +102,7 @@ extension AuthPresenter: AuthPresenterProtocol {
                                               email: email,
                                               password: password)
             
-            self.authService.registerUser(with: newUser,
-                                          typeAuth: .email) { wasRegistered, error in
+            self.authService.registerUser(with: newUser) { wasRegistered, error in
                 if let error = error {
                     print(error.localizedDescription)
                     return
@@ -127,8 +126,9 @@ extension AuthPresenter: AuthPresenterProtocol {
     }
     
     func appleButtonPressed() {
-        self.authService.registerUser(with: nil,
-                                      typeAuth: .apple) { result, error in
+        self.authService.loginUser(with: nil,
+                                   typeAuth: .apple,
+                                   viewController: nil) { error in
             if let error = error {
                 print(error.localizedDescription)
                 return
@@ -169,6 +169,7 @@ extension AuthPresenter: AuthPresenterProtocol {
                 self.viewController?.navigationController?.pushViewController(onbordingScreen, animated: true)
             } else {
                 let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()
+                
                 self.viewController?.navigationController?.pushViewController(tabBarScreen, animated: true)
             }
         }
