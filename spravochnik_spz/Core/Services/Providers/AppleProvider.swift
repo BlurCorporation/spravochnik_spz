@@ -122,10 +122,11 @@ extension AppleProvider: ASAuthorizationControllerDelegate {
                 let lastName = appleIDCredential.fullName?.familyName
                 let email = appleIDCredential.email
                 
+                guard let completion = self.completion else { return }
                 self.hasAccount(firstName: firstName,
                                 lastName: lastName,
                                 email: email,
-                                completion: self.completion!)
+                                completion: completion)
             }
         }
     }

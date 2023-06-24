@@ -51,11 +51,13 @@ extension AuthService: AuthServicable {
                    completion: @escaping (Error?) -> Void) {
         switch typeAuth {
         case .email:
-            eMailProvider.loginUser(with: userRequest!,
+            guard let userRequest = userRequest else { return }
+            eMailProvider.loginUser(with: userRequest,
                                     completion: completion)
         case .google:
+            guard let viewController = viewController else { return }
             googleProvider.signIn(completion: completion,
-                                  viewController: viewController!)
+                                  viewController: viewController)
         case .apple:
             appleProvider.handleAppleIdRequest(completion: completion)
         }
