@@ -31,6 +31,8 @@ final class ValueCoefficientTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = Constants.Fonts.b1
         label.numberOfLines = .zero
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
         return label
     }()
     
