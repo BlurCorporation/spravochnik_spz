@@ -5,7 +5,7 @@
 //  Created by Swift Learning on 26.03.2023.
 //
 
-enum ValueСoefficientType {
+enum ValueСoefficientType: Codable {
     case objectArea
     case lengthOfThePerimeter
     case numberOfBlockingSections
@@ -38,7 +38,7 @@ enum ValueСoefficientType {
     }
 }
 
-struct ValueСoefficientModel {
+struct ValueСoefficientModel: Codable {
     let type: ValueСoefficientType
     var value: Double
     

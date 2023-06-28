@@ -7,11 +7,6 @@
 
 import Foundation
 
-struct DefaultCoefficientValueResultModel: Codable {
-    let title: String
-    let value: Double
-}
-
 struct DefaultCoefficientValueResultViewModel {
     let title: String
 }

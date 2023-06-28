@@ -5,7 +5,7 @@
 //  Created by Swift Learning on 26.03.2023.
 //
 
-enum ChoiceСoefficientType {
+enum ChoiceСoefficientType: Codable {
     case numberOfLinesOfDefence
     case terrain
     case typeOfNotificationSystem
@@ -56,7 +56,7 @@ struct ChoiceСoefficientItemsModel {
     let value: Double
 }
 
-struct ChoiceCoefficientModel {
+struct ChoiceCoefficientModel: Codable {
     let type: ChoiceСoefficientType
     var itemIndex: Int
 }
