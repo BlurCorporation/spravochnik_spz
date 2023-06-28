@@ -17,7 +17,8 @@ protocol Buildable {
     func buildProfileScreen() -> ProfileViewController
     func buildAlertScreen(coefficientType: CoefficientType) -> AlertViewController
     func buildCalculationScreen(calculationType: СalculationType) -> CalculationViewController
-    func buildResultScreen(navigationBarTitle: String,
+    func buildResultScreen(resultType: ResultType,
+                           navigationBarTitle: String,
                            calculationType: СalculationType,
                            defaulValueCoefficients: [DefaultCoefficientValueModel],
                            valueCoefficients: [ValueСoefficientModel],
@@ -141,7 +142,8 @@ extension SceneBuildManager: Buildable {
         return viewController
     }
     
-    func buildResultScreen(navigationBarTitle: String,
+    func buildResultScreen(resultType: ResultType,
+                           navigationBarTitle: String,
                            calculationType: СalculationType,
                            defaulValueCoefficients: [DefaultCoefficientValueModel],
                            valueCoefficients: [ValueСoefficientModel],
@@ -150,6 +152,7 @@ extension SceneBuildManager: Buildable {
         let viewController = ResultViewController()
         let calculationService = CalculationService()
         let presenter = ResultPresenter(sceneBuildManager: self,
+                                        resultType: resultType,
                                         calculationService: calculationService,
                                         calculationType: calculationType,
                                         navigationBarTitle: navigationBarTitle,

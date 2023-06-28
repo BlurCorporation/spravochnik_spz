@@ -12,12 +12,15 @@ import UIKit
 protocol  ResultViewProtocol: UIViewController {
     func update(sections: [ResultViewController.Section])
     func setupNavigationItem(title: String)
+    func hideButtonsForCloseType()
+    var resultType: ResultType { get set }
 }
 
 // MARK: -  ResultViewController
 
 final class  ResultViewController: UIViewController {
     var presenter:  ResultPresenterProtocol?
+    var resultType: ResultType = .save
     
     // MARK: - PrivateProperties
     
@@ -106,10 +109,12 @@ final class  ResultViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false
+        tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
+        tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - Action
@@ -139,6 +144,10 @@ final class  ResultViewController: UIViewController {
 // MARK: -  ResultSystemViewProtocol Impl
 
 extension  ResultViewController: ResultViewProtocol {
+    func hideButtonsForCloseType() {
+        buttonStackView.isHidden = true
+    }
+    
     func update(sections: [ResultViewController.Section]) {
         self.sections = sections
         tableView.reloadData()
@@ -197,7 +206,9 @@ private extension  ResultViewController {
                                            constant: Constants.Sizes.tableViewTopOffset),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: buttonStackView.topAnchor)
+            tableView.bottomAnchor.constraint(equalTo: resultType == .close
+                                              ? view.safeAreaLayoutGuide.bottomAnchor
+                                              : buttonStackView.topAnchor)
         ])
     }
 }
