@@ -20,7 +20,15 @@ final class SavedCalculationsTablePresenter {
     // MARK: - PrivateProperties
     
     private let sceneBuildManager: Buildable
-    
+    private var data: Calculation = Calculation(navigationBarTitle: "",
+                                                calculationType: .fireAlarmSystem,
+                                                valueCoef: [ValueСoefficientModel(type: .lengthOfThePerimeter, value: 20)],
+                                                 choiceCoef: [ChoiceCoefficientModel(type: .numberOfFirePumpGroups, itemIndex: 3)],
+                                                 defaultCoef: [DefaultCoefficientValueModel(type: .inflationRate)],
+                                                 checkboxСoef: [CheckboxСoefficientModel(type: .availabilityOfAlertsForIndividualEvacuationZones, isSelected: true)],
+                                                calculationResult: [CalculationResultModel(title: TitleType.stageP,                                                                       description: "",
+                                                                                           prices: [PriceModel(type: PriceType.withVat,
+                                                                                                               value: 0.5)])])
     
     
     // MARK: - Initializer
@@ -33,35 +41,18 @@ final class SavedCalculationsTablePresenter {
     // Тест работы с ФБ через репозиторий, удалить после
     private func testSetGetCalcFromFB() {
         let fbService: FirebaseServiceProtocol = FirebaseService()
-        let testCalcModel: [Calculation] = [Calculation(valueCoef: [ValueСoefficientResultModel(title: "ValueСoefTitle",
-                                                                                                description: "ValueСoefDesc",
-                                                                                                value: 1.1),
-                                                                    ValueСoefficientResultModel(title: "ValueСoefTitle2",
-                                                                                                description: "ValueСoefDesc2",
-                                                                                                value: 1.2)],
-                                                        choiceCoef: [ChoiceCoefficientResultModel(title: "ChoiceCoefTitle",
-                                                                                                  description: "ChoiceCoefDesc",
-                                                                                                  value: 2.2)],
-                                                        defaultCoef: [DefaultCoefficientValueResultModel(title: "DefaultCoefTitle",
-                                                                                                         value: 3.3),
-                                                                      DefaultCoefficientValueResultModel(title: "DefaultCoefTitle2",
-                                                                                                         value: 3.4)],
-                                                        checkboxСoef: [CheckboxСoefficientResultModel(title: "CheckboxСoefTitle",
-                                                                                                      value: 4.4)],
-                                                        calculationResult: [CalculationResultModel(title: TitleType.stageP,
-                                                                                                   description: "",
+        let testCalcModel: [Calculation] = [Calculation(navigationBarTitle: "111",
+                                                        calculationType: .fireAlarmSystem,
+                                                        valueCoef: [ValueСoefficientModel(type: .lengthOfThePerimeter, value: 20)],
+                                                        choiceCoef: [ChoiceCoefficientModel(type: .numberOfFirePumpGroups, itemIndex: 3)],
+                                                        defaultCoef: [DefaultCoefficientValueModel(type: .inflationRate)],
+                                                        checkboxСoef: [CheckboxСoefficientModel(type: .availabilityOfAlertsForIndividualEvacuationZones, isSelected: true)],
+                                                        calculationResult: [CalculationResultModel(title: TitleType.stageP,                                                                       description: "",
                                                                                                    prices: [PriceModel(type: PriceType.withVat,
                                                                                                                        value: 0.5)])])]
-//        let calcModel = CalculationModel(userID: "UserID 222", calcName: "Test Calc3", calculation: testCalcModel)
-//        FirebaseRepository(firebaseService: fbService).setCalculation(calcModel: calcModel) { result in
-//            switch result {
-//            case .success(let calc):
-//                print("MODEL GET: ", calc)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-        FirebaseRepository(firebaseService: fbService).getAllCalculations(userID: "UserID 222") { result in
+        
+        let calcModel = CalculationModel(userID: "UserID 1", calcName: "Correct Coefs2", calculation: testCalcModel)
+        FirebaseRepository(firebaseService: fbService).setCalculation(calcModel: calcModel) { result in
             switch result {
             case .success(let calc):
                 print("MODEL GET: ", calc)
@@ -69,6 +60,25 @@ final class SavedCalculationsTablePresenter {
                 print(error)
             }
         }
+
+        FirebaseRepository(firebaseService: fbService).getCalculation(userID: "UserID 1", calcName: "Correct Coefs2") { result in
+            switch result {
+            case .success(let calc):
+                self.data = calc
+                print("MODEL GET: ", calc)
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
+//        FirebaseRepository(firebaseService: fbService).getAllCalculations(userID: "UserID 222") { result in
+//            switch result {
+//            case .success(let calc):
+//                print("MODEL GET: ", calc)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
     }
 }
 
@@ -91,8 +101,9 @@ extension SavedCalculationsTablePresenter: SavedCalculationsTablePresenterProtoc
                                                     image: result.image,
                                                     backgroundImage: result.backgroundImage,
                                                     actionHandler: {
-                let securityAlarmViewController = self.sceneBuildManager.buildCalculationScreen(calculationType: result.type)
-                self.viewController?.navigationController?.pushViewController(securityAlarmViewController,
+//                let vc = self.sceneBuildManager.buildCalculationScreen(calculationType: result.type)
+                let vc = self.sceneBuildManager.buildResultScreen(navigationBarTitle: self.data.navigationBarTitle, calculationType: self.data.calculationType, defaulValueCoefficients: self.data.defaultCoef, valueCoefficients: self.data.valueCoef, choiceCoefficients: self.data.choiceCoef, checkboxCoefficients: self.data.checkboxСoef)
+                self.viewController?.navigationController?.pushViewController(vc,
                                                                               animated: true)
             },
                                                     type: result.type)

@@ -84,26 +84,22 @@ class FirebaseRepository: FirebaseRepositoryProtocol {
     
     private func oneCalculation(from calcDict: [String: Any]) -> Calculation {
         let decoder = JSONDecoder()
-        var model = Calculation(valueCoef: [ValueСoefficientResultModel(title: "",
-                                                                        description: "",
-                                                                        value: 0)],
-                                choiceCoef: [ChoiceCoefficientResultModel(title: "",
-                                                                          description: "",
-                                                                          value: 0)],
-                                defaultCoef: [DefaultCoefficientValueResultModel(title: "",
-                                                                                 value: 0)],
-                                checkboxСoef: [CheckboxСoefficientResultModel(title: "",
-                                                                              value: 0)],
-                                calculationResult: [CalculationResultModel(title: TitleType.stageR,
-                                                                           description: "",
-                                                                           prices: [PriceModel(type: PriceType.withoutVat,
-                                                                                               value: 0)])])
+        
+        var model = Calculation(navigationBarTitle: "",
+                                calculationType: .fireAlarmSystem,
+                                valueCoef: [ValueСoefficientModel(type: .lengthOfThePerimeter, value: 20)],
+                                choiceCoef: [ChoiceCoefficientModel(type: .numberOfFirePumpGroups, itemIndex: 3)],
+                                defaultCoef: [DefaultCoefficientValueModel(type: .inflationRate)],
+                                checkboxСoef: [CheckboxСoefficientModel(type: .availabilityOfAlertsForIndividualEvacuationZones, isSelected: true)],
+                                calculationResult: [CalculationResultModel(title: TitleType.stageP,                                                                       description: "",
+                                                                           prices: [PriceModel(type: PriceType.withVat,
+                                                                                               value: 0.5)])])
         
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: calcDict,
                                                       options: JSONSerialization.WritingOptions.prettyPrinted)
             model = try decoder.decode(Calculation.self,
-                                         from: jsonData)
+                                       from: jsonData)
         } catch {
             print("Error", error)
         }

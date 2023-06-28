@@ -5,7 +5,7 @@
 //  Created by Swift Learning on 26.03.2023.
 //
 
-enum СalculationType: CaseIterable {
+enum СalculationType: CaseIterable, Codable {
     case securityAlarm
     case perimeterSecurityAlarm
     case fireAlarmSystem

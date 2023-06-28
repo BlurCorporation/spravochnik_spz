@@ -7,12 +7,6 @@
 
 import Foundation
 
-struct ValueСoefficientResultModel: Codable {
-    let title: String
-    let description: String
-    let value: Double
-}
-
 struct ValueСoefficientResultViewModel {
     let title: String
 }

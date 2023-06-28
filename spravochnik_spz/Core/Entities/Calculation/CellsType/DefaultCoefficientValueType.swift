@@ -5,7 +5,7 @@
 //  Created by Swift Learning on 26.03.2023.
 //
 
-enum DefaultCoefficientValueType {
+enum DefaultCoefficientValueType: Codable {
     case inflationRate
     
     var title: String {
@@ -23,7 +23,7 @@ enum DefaultCoefficientValueType {
     }
 }
 
-struct DefaultCoefficientValueModel {
+struct DefaultCoefficientValueModel: Codable {
     let type: DefaultCoefficientValueType
 }
 

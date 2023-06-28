@@ -5,7 +5,7 @@
 //  Created by Swift Learning on 26.03.2023.
 //
 
-enum CheckboxСoefficientType {
+enum CheckboxСoefficientType: Codable {
     case twoStageDocumentationDevelopment
     case objectOfArchitecturalAndHistoricalValue
     case thePresenceOfHiddenLayingOfEngineeringCommunications
@@ -138,7 +138,7 @@ enum CheckboxСoefficientType {
     }
 }
 
-struct CheckboxСoefficientModel {
+struct CheckboxСoefficientModel: Codable {
     let type: CheckboxСoefficientType
     var isSelected: Bool
     

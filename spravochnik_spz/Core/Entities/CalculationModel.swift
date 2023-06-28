@@ -14,9 +14,11 @@ struct CalculationModel: Codable {
 }
 
 struct Calculation: Codable {
-    let valueCoef: [ValueСoefficientResultModel]
-    let choiceCoef: [ChoiceCoefficientResultModel]
-    let defaultCoef: [DefaultCoefficientValueResultModel]
-    let checkboxСoef: [CheckboxСoefficientResultModel]
+    let navigationBarTitle: String
+    let calculationType: СalculationType
+    let valueCoef: [ValueСoefficientModel]
+    let choiceCoef: [ChoiceCoefficientModel]
+    let defaultCoef: [DefaultCoefficientValueModel]
+    let checkboxСoef: [CheckboxСoefficientModel]
     let calculationResult: [CalculationResultModel]
 }
