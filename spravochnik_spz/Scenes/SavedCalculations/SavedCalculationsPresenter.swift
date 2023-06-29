@@ -59,7 +59,7 @@ final class SavedCalculationsTablePresenter {
                                                                                                    prices: [PriceModel(type: PriceType.withVat,
                                                                                                                        value: 0.5)])])]
         
-        let calcModel = CalculationModel(userID: "UserID", calcName: "Correct Coefs4", calculation: testCalcModel)
+        let calcModel = CalculationModel(userID: "UserID", calcName: "Correct Coefs2", calculation: testCalcModel)
         FirebaseRepository(firebaseService: fbService).setCalculation(calcModel: calcModel) { result in
             switch result {
             case .success(let calc):
@@ -101,15 +101,45 @@ extension SavedCalculationsTablePresenter: SavedCalculationsTablePresenterProtoc
     
     
     private func makeData()-> [SavedCalculationsCellModelProtocol] {
-        print(data)
-        let result: [SavedCalculationsCellModelProtocol] = self.data.compactMap { item in
+        return self.data.lazy.enumerated().compactMap { (index, item) in
+            
+            var background = Constants.Images.empty
+            switch index % 3 {
+            case 0:
+                background = Constants.Images.blackBackground
+            case 1:
+                background = Constants.Images.grayBackground
+            case 2:
+                background = Constants.Images.brownBackground
+            default:
+                background = Constants.Images.empty
+            }
+            
+            var typeIcon = Constants.Images.empty
+            switch item.calculationType {
+            case .securityAlarm:
+                typeIcon = Constants.Images.securityAlarmIcon
+            case .perimeterSecurityAlarm:
+                typeIcon = Constants.Images.perimetrAlarmIcon
+            case .fireAlarmSystem:
+                typeIcon = Constants.Images.fireAlarmIcon
+            case .fireWarningSystem:
+                typeIcon = Constants.Images.notificationIcon
+            case .modularFireExtinguishingSystems:
+                typeIcon = Constants.Images.moduleFirefightingIcon
+            case .smokeRemovalControlSystem:
+                typeIcon = Constants.Images.smokeExhaustIcon
+            case .pumpingStationsOfFireExtinguishingInstallations:
+                typeIcon = Constants.Images.firePumpIcon
+            }
+            
             return SavedCalculationsCellModel(address: item.address,
                                               system: item.calculationType.title,
                                               date: item.date,
                                               stages: item.stages,
                                               cost: item.cost,
-                                              image: Constants.Images.perimetrAlarmIcon,
-                                              backgroundImage: Constants.Images.grayBackground,
+                                              image: typeIcon,
+                                              backgroundImage: background,
                                               type: item.calculationType,
                                               actionHandler: {
                                                             let vc = self.sceneBuildManager.buildResultScreen(resultType: .close,
@@ -123,7 +153,6 @@ extension SavedCalculationsTablePresenter: SavedCalculationsTablePresenterProtoc
                                                                                                                           animated: true)
             })
         }
-        return result
     }
     
     func openCell(actionHandler: () -> Void) {

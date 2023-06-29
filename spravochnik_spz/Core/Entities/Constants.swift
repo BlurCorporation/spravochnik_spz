@@ -42,6 +42,8 @@ enum Constants {
     }
     
     enum Images {
+        //Empty
+        static let empty = UIImage(named: "emptyImage") ?? UIImage()
         //Onboarding
         static let onboarding1 = UIImage(named: "onboarding1") ?? UIImage()
         static let onboarding2 = UIImage(named: "onboarding2") ?? UIImage()
