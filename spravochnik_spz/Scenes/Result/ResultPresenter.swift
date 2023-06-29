@@ -26,6 +26,7 @@ final class  ResultPresenter {
     // MARK: - PrivateProperties
     
     private let sceneBuildManager: Buildable
+    private let resultType: ResultType
     private let calculationService: CalculationServicable
     private let calculationType: СalculationType
     private let defaulValueCoefficients: [DefaultCoefficientValueModel]
@@ -37,6 +38,7 @@ final class  ResultPresenter {
     // MARK: - Initializer
     
     init(sceneBuildManager: Buildable,
+         resultType: ResultType,
          calculationService: CalculationServicable,
          calculationType: СalculationType,
          navigationBarTitle: String,
@@ -45,6 +47,7 @@ final class  ResultPresenter {
          choiceCoefficients: [ChoiceCoefficientModel],
          checkboxCoefficients: [CheckboxСoefficientModel]) {
         self.sceneBuildManager = sceneBuildManager
+        self.resultType = resultType
         self.calculationService = calculationService
         self.calculationType = calculationType
         self.navigationItemTitle = navigationBarTitle
@@ -129,6 +132,12 @@ extension  ResultPresenter:  ResultPresenterProtocol {
                         makeCheckBoxCoefficientValueResultSection(),
                         makeCalculationResultSection()]
         viewController?.update(sections: sections)
+        switch resultType {
+        case .close:
+            viewController?.hideButtonsForCloseType()
+            viewController?.resultType = .close
+        case .save: break
+        }
     }
     
     func backButtonPressed() {

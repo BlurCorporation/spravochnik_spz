@@ -117,6 +117,7 @@ extension CalculationPresenter: CalculationPresenterProtocol {
     
     func calculationButtonPressed() {
         let resultViewController = sceneBuildManager.buildResultScreen(
+            resultType: .save,
             navigationBarTitle: title,
             calculationType: calculationType,
             defaulValueCoefficients: defaulValueCoefficients,

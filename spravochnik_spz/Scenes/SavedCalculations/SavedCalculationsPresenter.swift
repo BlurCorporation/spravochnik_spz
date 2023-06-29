@@ -23,10 +23,10 @@ final class SavedCalculationsTablePresenter {
     private var data: Calculation = Calculation(navigationBarTitle: "",
                                                 calculationType: .fireAlarmSystem,
                                                 valueCoef: [ValueСoefficientModel(type: .lengthOfThePerimeter, value: 20)],
-                                                 choiceCoef: [ChoiceCoefficientModel(type: .numberOfFirePumpGroups, itemIndex: 3)],
-                                                 defaultCoef: [DefaultCoefficientValueModel(type: .inflationRate)],
-                                                 checkboxСoef: [CheckboxСoefficientModel(type: .availabilityOfAlertsForIndividualEvacuationZones, isSelected: true)],
-                                                calculationResult: [CalculationResultModel(title: TitleType.stageP,                                                                       description: "",
+                                                choiceCoef: [ChoiceCoefficientModel(type: .numberOfFirePumpGroups, itemIndex: 3)],
+                                                defaultCoef: [DefaultCoefficientValueModel(type: .inflationRate)],
+                                                checkboxСoef: [CheckboxСoefficientModel(type: .availabilityOfAlertsForIndividualEvacuationZones,                                               isSelected: true)],
+                                                calculationResult: [CalculationResultModel(title: TitleType.stageP,                                                                               description: "",
                                                                                            prices: [PriceModel(type: PriceType.withVat,
                                                                                                                value: 0.5)])])
     
@@ -46,7 +46,7 @@ final class SavedCalculationsTablePresenter {
                                                         valueCoef: [ValueСoefficientModel(type: .lengthOfThePerimeter, value: 20)],
                                                         choiceCoef: [ChoiceCoefficientModel(type: .numberOfFirePumpGroups, itemIndex: 3)],
                                                         defaultCoef: [DefaultCoefficientValueModel(type: .inflationRate)],
-                                                        checkboxСoef: [CheckboxСoefficientModel(type: .availabilityOfAlertsForIndividualEvacuationZones, isSelected: true)],
+                                                        checkboxСoef: [CheckboxСoefficientModel(type: .availabilityOfAlertsForIndividualEvacuationZones,                                       isSelected: true)],
                                                         calculationResult: [CalculationResultModel(title: TitleType.stageP,                                                                       description: "",
                                                                                                    prices: [PriceModel(type: PriceType.withVat,
                                                                                                                        value: 0.5)])])]
@@ -101,8 +101,13 @@ extension SavedCalculationsTablePresenter: SavedCalculationsTablePresenterProtoc
                                                     image: result.image,
                                                     backgroundImage: result.backgroundImage,
                                                     actionHandler: {
-//                let vc = self.sceneBuildManager.buildCalculationScreen(calculationType: result.type)
-                let vc = self.sceneBuildManager.buildResultScreen(navigationBarTitle: self.data.navigationBarTitle, calculationType: self.data.calculationType, defaulValueCoefficients: self.data.defaultCoef, valueCoefficients: self.data.valueCoef, choiceCoefficients: self.data.choiceCoef, checkboxCoefficients: self.data.checkboxСoef)
+                let vc = self.sceneBuildManager.buildResultScreen(resultType: .close,
+                                                                  navigationBarTitle: self.data.navigationBarTitle,
+                                                                  calculationType: self.data.calculationType,
+                                                                  defaulValueCoefficients: self.data.defaultCoef,
+                                                                  valueCoefficients: self.data.valueCoef,
+                                                                  choiceCoefficients: self.data.choiceCoef,
+                                                                  checkboxCoefficients: self.data.checkboxСoef)
                 self.viewController?.navigationController?.pushViewController(vc,
                                                                               animated: true)
             },
