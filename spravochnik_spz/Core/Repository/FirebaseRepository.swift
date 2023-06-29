@@ -85,7 +85,11 @@ class FirebaseRepository: FirebaseRepositoryProtocol {
     private func oneCalculation(from calcDict: [String: Any]) -> Calculation {
         let decoder = JSONDecoder()
         
-        var model = Calculation(navigationBarTitle: "",
+        var model = Calculation(address: "",
+                                date: "",
+                                stages: "",
+                                cost: 0,
+                                navigationBarTitle: "",
                                 calculationType: .fireAlarmSystem,
                                 valueCoef: [ValueСoefficientModel(type: .lengthOfThePerimeter, value: 20)],
                                 choiceCoef: [ChoiceCoefficientModel(type: .numberOfFirePumpGroups, itemIndex: 3)],
