@@ -20,15 +20,19 @@ final class SavedCalculationsTablePresenter {
     // MARK: - PrivateProperties
     
     private let sceneBuildManager: Buildable
-    private var data: Calculation = Calculation(navigationBarTitle: "",
-                                                calculationType: .fireAlarmSystem,
-                                                valueCoef: [ValueСoefficientModel(type: .lengthOfThePerimeter, value: 20)],
-                                                choiceCoef: [ChoiceCoefficientModel(type: .numberOfFirePumpGroups, itemIndex: 3)],
-                                                defaultCoef: [DefaultCoefficientValueModel(type: .inflationRate)],
-                                                checkboxСoef: [CheckboxСoefficientModel(type: .availabilityOfAlertsForIndividualEvacuationZones,                                               isSelected: true)],
-                                                calculationResult: [CalculationResultModel(title: TitleType.stageP,                                                                               description: "",
-                                                                                           prices: [PriceModel(type: PriceType.withVat,
-                                                                                                               value: 0.5)])])
+    private var data: [Calculation] = [Calculation(address: "",
+                                                   date: "",
+                                                   stages: "",
+                                                   cost: 0,
+                                                   navigationBarTitle: "",
+                                                   calculationType: .fireAlarmSystem,
+                                                   valueCoef: [ValueСoefficientModel(type: .lengthOfThePerimeter, value: 20)],
+                                                   choiceCoef: [ChoiceCoefficientModel(type: .numberOfFirePumpGroups, itemIndex: 3)],
+                                                   defaultCoef: [DefaultCoefficientValueModel(type: .inflationRate)],
+                                                   checkboxСoef: [CheckboxСoefficientModel(type: .availabilityOfAlertsForIndividualEvacuationZones,                                               isSelected: true)],
+                                                   calculationResult: [CalculationResultModel(title: TitleType.stageP,                                                                               description: "",
+                                                                                              prices: [PriceModel(type: PriceType.withVat,
+                                                                                                                  value: 0.5)])])]
     
     
     // MARK: - Initializer
@@ -41,7 +45,11 @@ final class SavedCalculationsTablePresenter {
     // Тест работы с ФБ через репозиторий, удалить после
     private func testSetGetCalcFromFB() {
         let fbService: FirebaseServiceProtocol = FirebaseService()
-        let testCalcModel: [Calculation] = [Calculation(navigationBarTitle: "111",
+        let testCalcModel: [Calculation] = [Calculation(address: "Москва",
+                                                        date: "01.01.2022",
+                                                        stages: "2-х стадийный",
+                                                        cost: 89_006.53,
+                                                        navigationBarTitle: "111",
                                                         calculationType: .fireAlarmSystem,
                                                         valueCoef: [ValueСoefficientModel(type: .lengthOfThePerimeter, value: 20)],
                                                         choiceCoef: [ChoiceCoefficientModel(type: .numberOfFirePumpGroups, itemIndex: 3)],
@@ -51,34 +59,36 @@ final class SavedCalculationsTablePresenter {
                                                                                                    prices: [PriceModel(type: PriceType.withVat,
                                                                                                                        value: 0.5)])])]
         
-        let calcModel = CalculationModel(userID: "UserID 1", calcName: "Correct Coefs2", calculation: testCalcModel)
+        let calcModel = CalculationModel(userID: "UserID", calcName: "Correct Coefs2", calculation: testCalcModel)
         FirebaseRepository(firebaseService: fbService).setCalculation(calcModel: calcModel) { result in
             switch result {
             case .success(let calc):
-                print("MODEL GET: ", calc)
+                print("MODEL SET: ", calc)
             case .failure(let error):
                 print(error)
             }
         }
 
-        FirebaseRepository(firebaseService: fbService).getCalculation(userID: "UserID 1", calcName: "Correct Coefs2") { result in
+//        FirebaseRepository(firebaseService: fbService).getCalculation(userID: "UserID 1", calcName: "Correct Coefs2") { result in
+//            switch result {
+//            case .success(let calc):
+//                self.data = calc
+//                print("MODEL GET: ", calc)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+        
+        FirebaseRepository(firebaseService: fbService).getAllCalculations(userID: "UserID") { result in
             switch result {
             case .success(let calc):
+                guard let calc = calc else { return }
                 self.data = calc
                 print("MODEL GET: ", calc)
             case .failure(let error):
                 print(error)
             }
         }
-        
-//        FirebaseRepository(firebaseService: fbService).getAllCalculations(userID: "UserID 222") { result in
-//            switch result {
-//            case .success(let calc):
-//                print("MODEL GET: ", calc)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
     }
 }
 
@@ -91,31 +101,58 @@ extension SavedCalculationsTablePresenter: SavedCalculationsTablePresenterProtoc
     
     
     private func makeData()-> [SavedCalculationsCellModelProtocol] {
-        var cells: [SavedCalculationsCellModelProtocol] = [SavedCalculationsCellModel]()
-        SavedCalculationsCellModel.calculations.compactMap({ result in
-            cells.append(SavedCalculationsCellModel(address: result.address,
-                                                    system: result.system,
-                                                    date: result.date,
-                                                    stages: result.stages,
-                                                    cost: result.cost,
-                                                    image: result.image,
-                                                    backgroundImage: result.backgroundImage,
-                                                    actionHandler: {
-                let vc = self.sceneBuildManager.buildResultScreen(resultType: .close,
-                                                                  navigationBarTitle: self.data.navigationBarTitle,
-                                                                  calculationType: self.data.calculationType,
-                                                                  defaulValueCoefficients: self.data.defaultCoef,
-                                                                  valueCoefficients: self.data.valueCoef,
-                                                                  choiceCoefficients: self.data.choiceCoef,
-                                                                  checkboxCoefficients: self.data.checkboxСoef)
-                self.viewController?.navigationController?.pushViewController(vc,
-                                                                              animated: true)
-            },
-                                                    type: result.type)
-            )
+        return self.data.lazy.enumerated().compactMap { (index, item) in
             
-        })
-        return cells
+            var background = Constants.Images.empty
+            switch index % 3 {
+            case 0:
+                background = Constants.Images.blackBackground
+            case 1:
+                background = Constants.Images.grayBackground
+            case 2:
+                background = Constants.Images.brownBackground
+            default:
+                background = Constants.Images.empty
+            }
+            
+            var typeIcon = Constants.Images.empty
+            switch item.calculationType {
+            case .securityAlarm:
+                typeIcon = Constants.Images.securityAlarmIcon
+            case .perimeterSecurityAlarm:
+                typeIcon = Constants.Images.perimetrAlarmIcon
+            case .fireAlarmSystem:
+                typeIcon = Constants.Images.fireAlarmIcon
+            case .fireWarningSystem:
+                typeIcon = Constants.Images.notificationIcon
+            case .modularFireExtinguishingSystems:
+                typeIcon = Constants.Images.moduleFirefightingIcon
+            case .smokeRemovalControlSystem:
+                typeIcon = Constants.Images.smokeExhaustIcon
+            case .pumpingStationsOfFireExtinguishingInstallations:
+                typeIcon = Constants.Images.firePumpIcon
+            }
+            
+            return SavedCalculationsCellModel(address: item.address,
+                                              system: item.calculationType.title,
+                                              date: item.date,
+                                              stages: item.stages,
+                                              cost: item.cost,
+                                              image: typeIcon,
+                                              backgroundImage: background,
+                                              type: item.calculationType,
+                                              actionHandler: {
+                                                            let vc = self.sceneBuildManager.buildResultScreen(resultType: .close,
+                                                                                                              navigationBarTitle: item.navigationBarTitle,
+                                                                                                              calculationType: item.calculationType,
+                                                                                                              defaulValueCoefficients: item.defaultCoef,
+                                                                                                              valueCoefficients: item.valueCoef,
+                                                                                                              choiceCoefficients: item.choiceCoef,
+                                                                                                              checkboxCoefficients: item.checkboxСoef)
+                                                            self.viewController?.navigationController?.pushViewController(vc,
+                                                                                                                          animated: true)
+            })
+        }
     }
     
     func openCell(actionHandler: () -> Void) {
