@@ -55,6 +55,19 @@ extension CalculationService: CalculationServicable {
 
 private extension CalculationService {
     private func calculateSecurityAlarm() -> [CalculationResultModel] {
+        //Value - м2
+        var price: Double = 0
+        guard let value = valueCoefficients.first?.value else { fatalError() } 
+        switch value {
+        case 0..<100:
+            price = SecurityAlarmCoef.under100.rawValue
+        case 100..<200:
+            price = SecurityAlarmCoef.under200.rawValue
+        default:
+            break
+        }
+        
+        //Checkbox
         var flag = false
         checkboxCoefficients.forEach {
             if $0.type == .twoStageDocumentationDevelopment && $0.isSelected {
@@ -107,4 +120,22 @@ private extension CalculationService {
         print(#function)
         return []
     }
+}
+
+
+enum SecurityAlarmCoef: Double {
+    case under100 = 540
+    case under200 = 623
+    case under400 = 738
+    case under700 = 875
+    case under1000 = 1037
+    case under2000 = 2074
+    case under3000 = 2696
+    case under5000 = 3317
+    case under7000 = 3940
+    case under10000 = 4561
+    case under13000 = 5184
+    case under17000 = 5702
+    case under21000 = 6140
+    case under25000 = 6530
 }
