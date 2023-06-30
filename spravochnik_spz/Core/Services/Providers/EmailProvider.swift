@@ -17,12 +17,17 @@ protocol EmailProviderable {
     func logout(completion: @escaping (Error?) -> Void)
 }
 
-final class EmailProvider {}
+final class EmailProvider {
+    private let firestore: FirebaseServiceProtocol
+    init(firestore: FirebaseServiceProtocol) {
+        self.firestore = firestore
+    }
+}
 
 extension EmailProvider: EmailProviderable {
     func isAuth() -> Bool {
         guard let userId = Auth.auth().currentUser?.uid else { return false }
-        FirebaseService.shared.addUserID(userID: userId)
+        firestore.addUserID(userID: userId)
         return true
 //        return (Auth.auth().currentUser != nil)
     }
@@ -40,7 +45,7 @@ extension EmailProvider: EmailProviderable {
                 return
             } else {
                 guard let userId = Auth.auth().currentUser?.uid else { return }
-                FirebaseService.shared.addUserID(userID: userId)
+                self.firestore.addUserID(userID: userId)
                 completion(true, nil)
             }
             guard let resultUser = result?.user else {
@@ -59,7 +64,7 @@ extension EmailProvider: EmailProviderable {
                 return
             } else {
                 guard let userId = Auth.auth().currentUser?.uid else { return }
-                FirebaseService.shared.addUserID(userID: userId)
+                self.firestore.addUserID(userID: userId)
                 completion(nil)
             }
         }

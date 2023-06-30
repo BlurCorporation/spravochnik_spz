@@ -29,9 +29,11 @@ protocol Buildable {
 final class SceneBuildManager {
     private let authService: AuthServicable
     private let defaultsManager = DefaultsManager()
+    private let firestore = FirebaseService.shared
     
     init() {
-        self.authService = AuthService(defaultsManager: defaultsManager)
+        self.authService = AuthService(defaultsManager: defaultsManager,
+                                       firestore: firestore)
     }
 }
 
@@ -112,7 +114,8 @@ extension SceneBuildManager: Buildable {
     
     func buildSavedCalculationsScreen() -> SavedCalculationsViewController {
         let viewController = SavedCalculationsViewController()
-        let presenter = SavedCalculationsTablePresenter(sceneBuildManager: self)
+        let presenter = SavedCalculationsTablePresenter(sceneBuildManager: self,
+                                                        firestore: firestore)
         
         viewController.presenter = presenter
         presenter.viewController = viewController

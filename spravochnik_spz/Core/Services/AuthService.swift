@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 enum TypeAuth {
     case email
@@ -29,12 +30,15 @@ final class AuthService {
     private let appleProvider: AppleProviderable
     private let googleProvider: GoogleProviderable
     private let defaultsManager: DefaultsManagerable
+    private let firestore: FirebaseServiceProtocol
     
-    init(defaultsManager: DefaultsManagerable) {
-        self.eMailProvider = EmailProvider()
-        self.appleProvider = AppleProvider()
-        self.googleProvider = GoogleProvider()
+    init(defaultsManager: DefaultsManagerable,
+         firestore: FirebaseServiceProtocol) {
+        self.eMailProvider = EmailProvider(firestore: firestore)
+        self.appleProvider = AppleProvider(firestore: firestore)
+        self.googleProvider = GoogleProvider(firestore: firestore)
         self.defaultsManager = defaultsManager
+        self.firestore = firestore
     }
 }
 

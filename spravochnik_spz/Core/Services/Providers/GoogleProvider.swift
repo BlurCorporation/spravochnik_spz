@@ -15,7 +15,12 @@ protocol GoogleProviderable {
                 viewController: UIViewController)
 }
 
-final class GoogleProvider {}
+final class GoogleProvider {
+    private let firestore: FirebaseServiceProtocol
+    init(firestore: FirebaseServiceProtocol) {
+        self.firestore = firestore
+    }
+}
 
 extension GoogleProvider: GoogleProviderable {
     func signIn(completion: @escaping (Error?) -> Void,
@@ -25,7 +30,7 @@ extension GoogleProvider: GoogleProviderable {
         let config = GIDConfiguration(clientID: clientID)
         GIDSignIn.sharedInstance.configuration = config
 
-        GIDSignIn.sharedInstance.signIn(withPresenting: viewController) { [unowned self] result, error in
+        GIDSignIn.sharedInstance.signIn(withPresenting: viewController) { result, error in
           guard error == nil else {
               completion(error)
             return
@@ -42,7 +47,7 @@ extension GoogleProvider: GoogleProviderable {
 
             Auth.auth().signIn(with: credential) { result, error in
                 guard let userId = Auth.auth().currentUser?.uid else { return }
-                FirebaseService.shared.addUserID(userID: userId)
+                self.firestore.addUserID(userID: userId)
                 completion(nil)
             }
         }
