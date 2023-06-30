@@ -20,6 +20,7 @@ final class SavedCalculationsTablePresenter {
     // MARK: - PrivateProperties
     
     private let sceneBuildManager: Buildable
+    private let firestore: FirebaseServiceProtocol
     private var data: [Calculation] = [Calculation(address: "",
                                                    date: "",
                                                    stages: "",
@@ -37,8 +38,10 @@ final class SavedCalculationsTablePresenter {
     
     // MARK: - Initializer
     
-    init(sceneBuildManager: Buildable) {
+    init(sceneBuildManager: Buildable,
+         firestore: FirebaseServiceProtocol) {
         self.sceneBuildManager = sceneBuildManager
+        self.firestore = firestore
         testSetGetCalcFromFB()
     }
     
@@ -59,7 +62,7 @@ final class SavedCalculationsTablePresenter {
                                                                                                    prices: [PriceModel(type: PriceType.withVat,
                                                                                                                        value: 0.5)])])]
         
-//        let calcModel = CalculationModel(userID: FirebaseService.shared.getUserID(), calcName: "Correct Coefs", calculation: testCalcModel)
+//        let calcModel = CalculationModel(userID: firestore.getUserID(), calcName: "Correct Coefs", calculation: testCalcModel)
 //        FirebaseRepository(firebaseService: fbService).setCalculation(calcModel: calcModel) { result in
 //            switch result {
 //            case .success(let calc):
@@ -79,7 +82,7 @@ final class SavedCalculationsTablePresenter {
 //            }
 //        }
         
-        FirebaseRepository(firebaseService: fbService).getAllCalculations(userID: FirebaseService.shared.getUserID()) { result in
+        FirebaseRepository(firebaseService: fbService).getAllCalculations(userID: firestore.getUserID()) { result in
             switch result {
             case .success(let calc):
                 guard let calc = calc else { return }

@@ -9,24 +9,20 @@ import Foundation
 import FirebaseAuth
 
 protocol EmailProviderable {
-    func isAuth() -> Bool
     func registerUser(with userRequest: RegisterUserRequest,
                     completion: @escaping (Bool, Error?) -> Void)
     func loginUser(with userRequest: LoginUserRequest,
                    completion: @escaping (Error?) -> Void)
-    func logout(completion: @escaping (Error?) -> Void)
 }
 
-final class EmailProvider {}
+final class EmailProvider {
+    private let firestore: FirebaseServiceProtocol
+    init(firestore: FirebaseServiceProtocol) {
+        self.firestore = firestore
+    }
+}
 
 extension EmailProvider: EmailProviderable {
-    func isAuth() -> Bool {
-        guard let userId = Auth.auth().currentUser?.uid else { return false }
-        FirebaseService.shared.addUserID(userID: userId)
-        return true
-//        return (Auth.auth().currentUser != nil)
-    }
-    
     func registerUser(with userRequest: RegisterUserRequest,
                       completion: @escaping (Bool, Error?) -> Void) {
         let username = userRequest.username
@@ -40,7 +36,7 @@ extension EmailProvider: EmailProviderable {
                 return
             } else {
                 guard let userId = Auth.auth().currentUser?.uid else { return }
-                FirebaseService.shared.addUserID(userID: userId)
+                self.firestore.addUserID(userID: userId)
                 completion(true, nil)
             }
             guard let resultUser = result?.user else {
@@ -59,18 +55,9 @@ extension EmailProvider: EmailProviderable {
                 return
             } else {
                 guard let userId = Auth.auth().currentUser?.uid else { return }
-                FirebaseService.shared.addUserID(userID: userId)
+                self.firestore.addUserID(userID: userId)
                 completion(nil)
             }
-        }
-    }
-    
-    func logout(completion: @escaping (Error?) -> Void) {
-        do {
-            try Auth.auth().signOut()
-            completion(nil)
-        } catch let error {
-            completion(error)
         }
     }
 }

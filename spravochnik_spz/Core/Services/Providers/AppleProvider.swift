@@ -20,6 +20,10 @@ protocol AppleProviderable {
 final class AppleProvider: NSObject {
     private var currentNonce: String?
     var completion: ((Error?) -> Void)?
+    private let firestore: FirebaseServiceProtocol
+    init(firestore: FirebaseServiceProtocol) {
+        self.firestore = firestore
+    }
 }
 
 extension AppleProvider: AppleProviderable {
@@ -118,11 +122,11 @@ extension AppleProvider: ASAuthorizationControllerDelegate {
                     return
                 }
                 
-                let firstName = appleIDCredential.fullName?.givenName
-                
+                let firstName = appleIDCredential.fullName?.familyName
+                print(appleIDCredential.email)
                 guard let completion = self.completion else { return }
                 guard let userId = Auth.auth().currentUser?.uid else { return }
-                FirebaseService.shared.addUserID(userID: userId)
+                self.firestore.addUserID(userID: userId)
                 completion(nil)
             }
         }

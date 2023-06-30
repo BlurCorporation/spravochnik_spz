@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 enum TypeAuth {
     case email
@@ -15,6 +16,7 @@ enum TypeAuth {
 
 protocol AuthServicable {
     func isAuth() -> Bool
+    func getUserName() -> String
     func loginUser(with userRequest: LoginUserRequest?,
                    typeAuth: TypeAuth,
                    viewController: UIViewController?,
@@ -29,21 +31,29 @@ final class AuthService {
     private let appleProvider: AppleProviderable
     private let googleProvider: GoogleProviderable
     private let defaultsManager: DefaultsManagerable
+    private let firestore: FirebaseServiceProtocol
     
-    init(defaultsManager: DefaultsManagerable) {
-        self.eMailProvider = EmailProvider()
-        self.appleProvider = AppleProvider()
-        self.googleProvider = GoogleProvider()
+    init(defaultsManager: DefaultsManagerable,
+         firestore: FirebaseServiceProtocol) {
+        self.eMailProvider = EmailProvider(firestore: firestore)
+        self.appleProvider = AppleProvider(firestore: firestore)
+        self.googleProvider = GoogleProvider(firestore: firestore)
         self.defaultsManager = defaultsManager
+        self.firestore = firestore
     }
 }
 
 extension AuthService: AuthServicable {
+    func getUserName() -> String {
+        guard let userId = Auth.auth().currentUser?.displayName else { return "" }
+        return userId
+    }
+    
     
     func isAuth() -> Bool {
-        return eMailProvider.isAuth()
-//        defaultsManager.fetchObject(type: Bool.self,
-//                                    for: .isUserAuth) ?? false
+        guard let userId = Auth.auth().currentUser?.uid else { return false }
+        firestore.addUserID(userID: userId)
+        return true
     }
     
     func loginUser(with userRequest: LoginUserRequest?,
@@ -72,7 +82,12 @@ extension AuthService: AuthServicable {
     }
     
     func logout(completion: @escaping (Error?) -> Void) {
-        self.eMailProvider.logout(completion: completion)
+        do {
+            try Auth.auth().signOut()
+            completion(nil)
+        } catch let error {
+            completion(error)
+        }
         self.defaultsManager.saveObject(false, for: .isUserAuth)
     }
 }
