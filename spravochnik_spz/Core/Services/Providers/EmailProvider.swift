@@ -21,7 +21,10 @@ final class EmailProvider {}
 
 extension EmailProvider: EmailProviderable {
     func isAuth() -> Bool {
-        return (Auth.auth().currentUser != nil)
+        guard let userId = Auth.auth().currentUser?.uid else { return false }
+        FirebaseService.shared.addUserID(userID: userId)
+        return true
+//        return (Auth.auth().currentUser != nil)
     }
     
     func registerUser(with userRequest: RegisterUserRequest,
@@ -36,6 +39,8 @@ extension EmailProvider: EmailProviderable {
                 completion(false, error)
                 return
             } else {
+                guard let userId = Auth.auth().currentUser?.uid else { return }
+                FirebaseService.shared.addUserID(userID: userId)
                 completion(true, nil)
             }
             guard let resultUser = result?.user else {
@@ -53,6 +58,8 @@ extension EmailProvider: EmailProviderable {
                 completion(error)
                 return
             } else {
+                guard let userId = Auth.auth().currentUser?.uid else { return }
+                FirebaseService.shared.addUserID(userID: userId)
                 completion(nil)
             }
         }

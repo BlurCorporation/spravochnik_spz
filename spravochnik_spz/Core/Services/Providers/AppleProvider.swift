@@ -119,23 +119,12 @@ extension AppleProvider: ASAuthorizationControllerDelegate {
                 }
                 
                 let firstName = appleIDCredential.fullName?.givenName
-                let lastName = appleIDCredential.fullName?.familyName
-                let email = appleIDCredential.email
                 
                 guard let completion = self.completion else { return }
-                self.hasAccount(firstName: firstName,
-                                lastName: lastName,
-                                email: email,
-                                completion: completion)
+                guard let userId = Auth.auth().currentUser?.uid else { return }
+                FirebaseService.shared.addUserID(userID: userId)
+                completion(nil)
             }
         }
-    }
-    
-    func hasAccount(firstName: String?,
-                    lastName: String?,
-                    email: String?,
-                    completion: @escaping (Error?) -> Void) {
-        guard let userId = Auth.auth().currentUser?.uid else { return }
-        completion(nil)
     }
 }

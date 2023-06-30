@@ -41,6 +41,8 @@ extension GoogleProvider: GoogleProviderable {
                                                          accessToken: user.accessToken.tokenString)
 
             Auth.auth().signIn(with: credential) { result, error in
+                guard let userId = Auth.auth().currentUser?.uid else { return }
+                FirebaseService.shared.addUserID(userID: userId)
                 completion(nil)
             }
         }
