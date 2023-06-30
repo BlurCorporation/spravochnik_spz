@@ -104,20 +104,9 @@ extension SavedCalculationsTablePresenter: SavedCalculationsTablePresenterProtoc
         
         // TODO: - исправить это
         if data.isEmpty {
-        data = [Calculation(address: "",
-                                                       date: "",
-                                                       stages: "",
-                                                       cost: 0,
-                                                       navigationBarTitle: "",
-                                                       calculationType: .fireAlarmSystem,
-                                                       valueCoef: [ValueСoefficientModel(type: .lengthOfThePerimeter, value: 20)],
-                                                       choiceCoef: [ChoiceCoefficientModel(type: .numberOfFirePumpGroups, itemIndex: 3)],
-                                                       defaultCoef: [DefaultCoefficientValueModel(type: .inflationRate)],
-                                                       checkboxСoef: [CheckboxСoefficientModel(type: .availabilityOfAlertsForIndividualEvacuationZones,                                               isSelected: true)],
-                                                       calculationResult: [CalculationResultModel(title: TitleType.stageP,                                                                               description: "",
-                                                                                                  prices: [PriceModel(type: PriceType.withVat,
-                                                                                                                      value: 0.5)])])]
+            return []
         }
+        
         return self.data.lazy.enumerated().compactMap { (index, item) in
             
             var background = Constants.Images.empty
