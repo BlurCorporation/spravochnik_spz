@@ -45,9 +45,9 @@ final class AuthService {
 extension AuthService: AuthServicable {
     
     func isAuth() -> Bool {
-        return eMailProvider.isAuth()
-//        defaultsManager.fetchObject(type: Bool.self,
-//                                    for: .isUserAuth) ?? false
+        guard let userId = Auth.auth().currentUser?.uid else { return false }
+        firestore.addUserID(userID: userId)
+        return true
     }
     
     func loginUser(with userRequest: LoginUserRequest?,

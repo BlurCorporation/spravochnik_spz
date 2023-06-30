@@ -9,7 +9,6 @@ import Foundation
 import FirebaseAuth
 
 protocol EmailProviderable {
-    func isAuth() -> Bool
     func registerUser(with userRequest: RegisterUserRequest,
                     completion: @escaping (Bool, Error?) -> Void)
     func loginUser(with userRequest: LoginUserRequest,
@@ -25,13 +24,6 @@ final class EmailProvider {
 }
 
 extension EmailProvider: EmailProviderable {
-    func isAuth() -> Bool {
-        guard let userId = Auth.auth().currentUser?.uid else { return false }
-        firestore.addUserID(userID: userId)
-        return true
-//        return (Auth.auth().currentUser != nil)
-    }
-    
     func registerUser(with userRequest: RegisterUserRequest,
                       completion: @escaping (Bool, Error?) -> Void) {
         let username = userRequest.username
