@@ -16,6 +16,7 @@ enum TypeAuth {
 
 protocol AuthServicable {
     func isAuth() -> Bool
+    func getUserName() -> String
     func loginUser(with userRequest: LoginUserRequest?,
                    typeAuth: TypeAuth,
                    viewController: UIViewController?,
@@ -43,6 +44,11 @@ final class AuthService {
 }
 
 extension AuthService: AuthServicable {
+    func getUserName() -> String {
+        guard let userId = Auth.auth().currentUser?.displayName else { return "" }
+        return userId
+    }
+    
     
     func isAuth() -> Bool {
         guard let userId = Auth.auth().currentUser?.uid else { return false }

@@ -16,6 +16,7 @@ protocol ProfilePresenterProtocol: AnyObject {
     func conditionButtonPressed()
     func privacyButtonPressed()
     func logoutButtonPressed()
+    func viewDidLoad()
 }
 
 // MARK: - ProfilePresenter
@@ -40,6 +41,10 @@ final class ProfilePresenter {
 //MARK: - ProfilePresenterExtension
 
 extension ProfilePresenter: ProfilePresenterProtocol {
+    func viewDidLoad() {
+        viewController?.changeUsernameLabel(authService.getUserName())
+    }
+    
     func logoutButtonPressed() {
         
         let model = NoСoefficientModel(title: "Уверены, что хотите выйти из аккаунта?", leftButton: "Закрыть", rightButton: "Выйти", rightButtonHandler: {

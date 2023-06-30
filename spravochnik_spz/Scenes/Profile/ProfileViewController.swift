@@ -9,7 +9,9 @@ import UIKit
 
 // MARK: - ProfileViewProtocol
 
-protocol ProfileViewProtocol: UIViewController {}
+protocol ProfileViewProtocol: UIViewController {
+    func changeUsernameLabel(_ name: String)
+}
 
 // MARK: - ProfileViewController
 
@@ -116,6 +118,7 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewController()
+        presenter?.viewDidLoad()
     }
     
     // MARK: - Actions
@@ -151,7 +154,11 @@ final class ProfileViewController: UIViewController {
 
 // MARK: - ProfileViewProtocol Impl
 
-extension ProfileViewController: ProfileViewProtocol {}
+extension ProfileViewController: ProfileViewProtocol {
+    func changeUsernameLabel(_ name: String) {
+        usernameLabel.text = name
+    }
+}
 
 // MARK: - PrivateMethods
 
