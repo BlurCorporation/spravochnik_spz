@@ -25,9 +25,13 @@ protocol FirebaseServiceProtocol {
     func deleteCalculation(userID: String,
                            calcName: String,
                            completion: @escaping (Result<String, Error>) -> Void)
+    func addUserID(userID: String)
+    func getUserID() -> String
 }
 
 final class FirebaseService {
+    var uid: String?
+    static let shared = FirebaseService()
     func configureFB() -> Firestore {
         var database: Firestore
         let settings = FirestoreSettings()
@@ -38,6 +42,17 @@ final class FirebaseService {
 }
 
 extension FirebaseService: FirebaseServiceProtocol {
+    func getUserID() -> String {
+        print(self.uid)
+        guard let uid = self.uid else { return "" }
+        return uid
+    }
+    
+    func addUserID(userID: String) {
+        self.uid = userID
+        print(self.uid)
+    }
+    
     func setCalculation(userID: String,
                         calcName: String,
                         calcModel: Calculation,

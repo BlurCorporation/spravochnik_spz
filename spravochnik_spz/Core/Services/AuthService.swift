@@ -41,8 +41,9 @@ final class AuthService {
 extension AuthService: AuthServicable {
     
     func isAuth() -> Bool {
-        defaultsManager.fetchObject(type: Bool.self,
-                                    for: .isUserAuth) ?? false
+        return eMailProvider.isAuth()
+//        defaultsManager.fetchObject(type: Bool.self,
+//                                    for: .isUserAuth) ?? false
     }
     
     func loginUser(with userRequest: LoginUserRequest?,
