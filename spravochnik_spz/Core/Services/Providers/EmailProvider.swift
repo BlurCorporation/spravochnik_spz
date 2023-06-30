@@ -13,7 +13,6 @@ protocol EmailProviderable {
                     completion: @escaping (Bool, Error?) -> Void)
     func loginUser(with userRequest: LoginUserRequest,
                    completion: @escaping (Error?) -> Void)
-    func logout(completion: @escaping (Error?) -> Void)
 }
 
 final class EmailProvider {
@@ -59,15 +58,6 @@ extension EmailProvider: EmailProviderable {
                 self.firestore.addUserID(userID: userId)
                 completion(nil)
             }
-        }
-    }
-    
-    func logout(completion: @escaping (Error?) -> Void) {
-        do {
-            try Auth.auth().signOut()
-            completion(nil)
-        } catch let error {
-            completion(error)
         }
     }
 }

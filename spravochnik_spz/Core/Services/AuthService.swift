@@ -76,7 +76,12 @@ extension AuthService: AuthServicable {
     }
     
     func logout(completion: @escaping (Error?) -> Void) {
-        self.eMailProvider.logout(completion: completion)
+        do {
+            try Auth.auth().signOut()
+            completion(nil)
+        } catch let error {
+            completion(error)
+        }
         self.defaultsManager.saveObject(false, for: .isUserAuth)
     }
 }
