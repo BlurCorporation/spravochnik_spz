@@ -75,6 +75,12 @@ extension SavedCalculationsViewController: UITableViewDataSource {
                    numberOfRowsInSection section: Int) -> Int {
         if dataSource.isEmpty {
             setupCleanSavedCalculationView()
+        } else {
+            for view in self.view.subviews {
+                if view is CleanSavedCalculationView {
+                    view.removeFromSuperview()
+                }
+            }
         }
         return dataSource.count
     }
@@ -142,7 +148,6 @@ private extension SavedCalculationsViewController {
     
     func setupCleanSavedCalculationView() {
         let cleanView = CleanSavedCalculationView()
-        self.view = cleanView
         view.addSubviews(cleanView)
         NSLayoutConstraint.activate([
             cleanView.topAnchor.constraint(equalTo: view.topAnchor),
