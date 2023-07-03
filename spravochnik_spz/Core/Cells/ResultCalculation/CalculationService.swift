@@ -19,6 +19,7 @@ final class CalculationService {
     private var valueCoefficients: [ValueСoefficientModel] = []
     private var choiceCoefficients: [ChoiceCoefficientModel] = []
     private var checkboxCoefficients: [CheckboxСoefficientModel] = []
+
 }
 
 extension CalculationService: CalculationServicable {
@@ -56,26 +57,106 @@ extension CalculationService: CalculationServicable {
 private extension CalculationService {
     private func calculateSecurityAlarm() -> [CalculationResultModel] {
         //Value - м2
-        var price: Double = 0
-        guard let value = valueCoefficients.first?.value else { fatalError() } 
-        switch value {
-        case 0..<100:
-            price = SecurityAlarmCoef.under100.rawValue
-        case 100..<200:
-            price = SecurityAlarmCoef.under200.rawValue
-        default:
-            break
+        var price: Double = .zero
+        valueCoefficients.forEach { value in
+            if value.type == .objectArea {
+                switch value.value {
+                case 0..<100:
+                    price = 540
+                case 100..<200:
+                    price = 623
+                case 200..<400:
+                    price = 738
+                case 400..<700:
+                    price = 875
+                case 700..<1_000:
+                    price = 1_037
+                case 1_000..<2_000:
+                    price = 2_074
+                case 2_000..<3_000:
+                    price = 2_696
+                case 3_000..<5_000:
+                    price = 3317
+                case 5_000..<7_000:
+                    price = 3_940
+                case 7_000..<10_000:
+                    price = 4561
+                case 10_000..<13_000:
+                    price = 5_184
+                case 13_000..<17_000:
+                    price = 5_702
+                case 17_000..<21_000:
+                    price = 6_140
+                case 21_000..<25_000:
+                    price = 6_530
+                default:
+                    price = 540
+                }
+            }
+        }
+        
+        //Choice
+        var linesOfDefCoef: Double = .zero
+        choiceCoefficients.forEach{ lines in
+            if lines.type == .numberOfLinesOfDefence {
+                switch lines.itemIndex {
+                case 1:
+                    linesOfDefCoef = 1
+                case 2:
+                    linesOfDefCoef = 1.2
+                case 3:
+                    linesOfDefCoef = 1.3
+                default:
+                    linesOfDefCoef = 1
+                }
+            }
+        }
+        
+        //Default
+        var inflCoef: Double = .zero
+        defaulValueCoefficients.forEach { coef in
+            if coef.type == .inflationRate {
+                inflCoef = coef.type.defaultValue
+            }
         }
         
         //Checkbox
         var flag = false
-        checkboxCoefficients.forEach {
-            if $0.type == .twoStageDocumentationDevelopment && $0.isSelected {
-                flag = true
+        var specialPurposeCoef: Double = 1
+        var outdoorEquipCoef: Double = 1
+        var architectCoef: Double = 1
+        var importOrNewCoef: Double = 1
+        var explosivesZonezCoef: Double = 1
+        var highOrLowTempCoef: Double = 1
+        var hiddenLayingCoef: Double = 1
+        checkboxCoefficients.forEach { checkbox in
+            if checkbox.isSelected == true {
+                switch checkbox.type {
+                case .twoStageDocumentationDevelopment:
+                    flag.toggle()
+                case .objectOfArchitecturalAndHistoricalValue:
+                    architectCoef = 1.3
+                case .thePresenceOfHiddenLayingOfEngineeringCommunications:
+                    hiddenLayingCoef = 1.2
+                case .outdoorEquipmentInstallation:
+                    outdoorEquipCoef = 1.2
+                case .specialPurposeObject:
+                    specialPurposeCoef = 1.4
+                case .usingImportedOrNewEquipment:
+                    importOrNewCoef = 1.3
+                case .presenceOfExplosiveZones:
+                    explosivesZonezCoef = 1.3
+                case .presenceOfHighOrLowTemperatures:
+                    highOrLowTempCoef = 1.2
+                default:
+                    break
+                }
             }
         }
         
-        let stageRPrice: Double = 1_000_000
+        price *= (linesOfDefCoef * inflCoef * specialPurposeCoef * outdoorEquipCoef * architectCoef * importOrNewCoef * explosivesZonezCoef * highOrLowTempCoef * hiddenLayingCoef)
+        
+        let stageRPrice: Double = price * 0.25
         
         var result: [CalculationResultModel] = [.init(title: .stageP,
                                                       description: "Цена разработки проектной документации:",
@@ -85,7 +166,7 @@ private extension CalculationService {
                                                                      value: stageRPrice)])]
         
         if flag {
-            let stagePPrice: Double = 1_050_000
+            let stagePPrice: Double = price * 0.75
             let calculationResult = CalculationResultModel(title: .stageR,
                                                            description: "Цена разработки проектной документации:",
                                                            prices: [.init(type: .withVat, value: stagePPrice),
@@ -120,22 +201,4 @@ private extension CalculationService {
         print(#function)
         return []
     }
-}
-
-
-enum SecurityAlarmCoef: Double {
-    case under100 = 540
-    case under200 = 623
-    case under400 = 738
-    case under700 = 875
-    case under1000 = 1037
-    case under2000 = 2074
-    case under3000 = 2696
-    case under5000 = 3317
-    case under7000 = 3940
-    case under10000 = 4561
-    case under13000 = 5184
-    case under17000 = 5702
-    case under21000 = 6140
-    case under25000 = 6530
 }
