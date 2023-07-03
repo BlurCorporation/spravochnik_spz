@@ -49,7 +49,7 @@ extension CalculationService: CalculationServicable {
         case .smokeRemovalControlSystem:
             return calculateSmokeRemovalControlSystem()
         case .pumpingStationsOfFireExtinguishingInstallations:
-            return calculateSecurityAlarm()
+            return calculatePumpingStationsOfFireExtinguishingInstallations()
         }
     }
 }
@@ -813,7 +813,103 @@ private extension CalculationService {
     }
     
     private func calculatePumpingStationsOfFireExtinguishingInstallations() -> [CalculationResultModel] {
-        print(#function)
-        return []
+        //Value
+        var price: Double = 2_048
+        
+        //Default
+        var inflCoef: Double = 1
+        defaulValueCoefficients.forEach { coef in
+            if coef.type == .inflationRate {
+                inflCoef = coef.type.defaultValue
+            }
+        }
+        
+        //Choice
+        var pumpGroupCoef: Double = 1
+        choiceCoefficients.forEach{ lines in
+            switch lines.type {
+            case .numberOfFirePumpGroups:
+                switch lines.itemIndex {
+                case 1:
+                    pumpGroupCoef = 1
+                case 2:
+                    pumpGroupCoef = 1.1
+                case 3:
+                    pumpGroupCoef = 1.2
+                case 4:
+                    pumpGroupCoef = 1.3
+                default:
+                    pumpGroupCoef = 1
+                }
+            default:
+                break
+            }
+        }
+        
+        //Checkbox
+        var flag = false
+        var specialPurposeCoef: Double = 1
+        var architectCoef: Double = 1
+        var importOrNewCoef: Double = 1
+        var explosivesZonezCoef: Double = 1
+        var highOrLowTempCoef: Double = 1
+        var motorsWithAVCoef: Double = 1
+        var twoPumpCoef: Double = 1
+        var enginesCoef: Double = 1
+        var pneumaticStationsCoef: Double = 1
+        checkboxCoefficients.forEach { checkbox in
+            if checkbox.isSelected == true {
+                switch checkbox.type {
+                case .twoStageDocumentationDevelopment:
+                    flag.toggle()
+                case .motorsWithAVoltageOfMoreThaFourHundred:
+                    motorsWithAVCoef = 1.4
+                case .availabilityOfMoreThanTwoPumpsInEachGroup:
+                    if pumpGroupCoef > 1 {
+                        twoPumpCoef = 1.2
+                    }
+                case .pumpingInternalCombustionEngines:
+                    enginesCoef = 1.1
+                case .designOfPneumaticStations:
+                    pneumaticStationsCoef = 0.6
+                case .objectOfArchitecturalAndHistoricalValue:
+                    architectCoef = 1.3
+                case .specialPurposeObject:
+                    specialPurposeCoef = 1.4
+                case .usingImportedOrNewEquipment:
+                    importOrNewCoef = 1.3
+                case .presenceOfExplosiveZones:
+                    explosivesZonezCoef = 1.3
+                case .presenceOfHighOrLowTemperatures:
+                    highOrLowTempCoef = 1.2
+                default:
+                    break
+                }
+            }
+        }
+        
+        price *= (inflCoef * pumpGroupCoef * specialPurposeCoef * architectCoef * importOrNewCoef * explosivesZonezCoef * highOrLowTempCoef * motorsWithAVCoef * twoPumpCoef * enginesCoef * pneumaticStationsCoef)
+        
+        let stageRPrice: Double = price * 0.25
+        
+        var result: [CalculationResultModel] = [.init(title: .stageP,
+                                                      description: "Цена разработки проектной документации:",
+                                                      prices: [.init(type: .withVat,
+                                                                     value: stageRPrice),
+                                                               .init(type: .withoutVat,
+                                                                     value: stageRPrice)])]
+        
+        if flag {
+            let stagePPrice: Double = price * 0.75
+            let calculationResult = CalculationResultModel(title: .stageR,
+                                                           description: "Цена разработки проектной документации:",
+                                                           prices: [.init(type: .withVat,
+                                                                          value: stagePPrice),
+                                                                    .init(type: .withoutVat,
+                                                                          value: stagePPrice)])
+            result.append(calculationResult)
+        }
+
+        return result
     }
 }
