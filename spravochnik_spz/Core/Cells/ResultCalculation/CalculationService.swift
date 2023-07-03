@@ -327,8 +327,137 @@ private extension CalculationService {
         return result
     }
     
+    //TODO: - Should be fixed
     private func calculateFireAlarmSystem() -> [CalculationResultModel] {
-        return []
+        //Value - м2
+        var price: Double = .zero
+        valueCoefficients.forEach { value in
+            switch value.type {
+            case .objectArea:
+                switch value.value {
+                case 0..<100:
+                    price = 600
+                case 100..<200:
+                    price = 692
+                case 200..<400:
+                    price = 820
+                case 400..<700:
+                    price = 972
+                case 700..<1_000:
+                    price = 1_152
+                case 1_000..<2_000:
+                    price = 2_304
+                case 2_000..<3_000:
+                    price = 2_996
+                case 3_000..<5_000:
+                    price = 3_686
+                case 5_000..<7_000:
+                    price = 4_378
+                case 7_000..<10_000:
+                    price = 5_068
+                case 10_000..<13_0000:
+                    price = 5_760
+                case 13_000..<17_000:
+                    price = 6_336
+                case 17_000..<21_000:
+                    price = 6_822
+                case 21_000..<25_000:
+                    price = 7_256
+                case 25000..<9999999:
+                    price = (value.value - 25000) / 1000 * 108
+                default:
+                    price = 600
+                }
+            default:
+                break
+            }
+        }
+        
+        //Default
+        var inflCoef: Double = 1
+        defaulValueCoefficients.forEach { coef in
+            if coef.type == .inflationRate {
+                inflCoef = coef.type.defaultValue
+            }
+        }
+        
+        //Checkbox
+        var flag = false
+        var manualFlag = false
+        var automaticFlag = false
+        var specialPurposeCoef: Double = 1
+        var architectCoef: Double = 1
+        var importOrNewCoef: Double = 1
+        var explosivesZonezCoef: Double = 1
+        var highOrLowTempCoef: Double = 1
+        var individualEvacuationZonesCoef: Double = 1
+        var evacuationProjectCoef: Double = 1
+        var hiddenGasketCoef: Double = 1
+        var outdoorEquipment: Double = 1
+        var automaticFireDetectorsCoef: Double = 1
+        var manualFireDetectorsCoef: Double = 1
+        var commandPulseCoef: Double = 1
+        var opticalLinearDetectors: Double = 1
+        checkboxCoefficients.forEach { checkbox in
+            if checkbox.isSelected {
+                switch checkbox.type {
+                case .twoStageDocumentationDevelopment:
+                    flag.toggle()
+                case .availabilityOfAlertsForIndividualEvacuationZones:
+                    individualEvacuationZonesCoef = 1.3
+                case .availabilityOfAutomaticFireDetectors:
+                    automaticFireDetectorsCoef = 1.15
+                    automaticFlag = true
+                case .availabilityOfManualFireDetectors:
+                    manualFireDetectorsCoef = 1 // Какая-то херь здесь
+                    manualFlag = true
+                case .presenceOfACommandPulse:
+                    commandPulseCoef = 1.5
+                case .availabilityOfOpticalLinearDetectors:
+                    opticalLinearDetectors = 1.2
+                case .thePresenceOfAHiddenGasket:
+                    hiddenGasketCoef = 1.2
+                case .outdoorEquipmentInstallation:
+                    outdoorEquipment = 1.1
+                case .objectOfArchitecturalAndHistoricalValue:
+                    architectCoef = 1.3
+                case .specialPurposeObject:
+                    specialPurposeCoef = 1.4
+                case .usingImportedOrNewEquipment:
+                    importOrNewCoef = 1.3
+                case .presenceOfExplosiveZones:
+                    explosivesZonezCoef = 1.3
+                case .presenceOfHighOrLowTemperatures:
+                    highOrLowTempCoef = 1.2
+                default:
+                    break
+                }
+            }
+        }
+        
+        price *= (inflCoef * specialPurposeCoef * architectCoef * importOrNewCoef * explosivesZonezCoef * highOrLowTempCoef * individualEvacuationZonesCoef * evacuationProjectCoef * hiddenGasketCoef * outdoorEquipment * automaticFireDetectorsCoef * manualFireDetectorsCoef * commandPulseCoef * opticalLinearDetectors)
+        
+        let stageRPrice: Double = price * 0.25
+        
+        var result: [CalculationResultModel] = [.init(title: .stageP,
+                                                      description: "Цена разработки проектной документации:",
+                                                      prices: [.init(type: .withVat,
+                                                                     value: stageRPrice),
+                                                               .init(type: .withoutVat,
+                                                                     value: stageRPrice)])]
+        
+        if flag {
+            let stagePPrice: Double = price * 0.75
+            let calculationResult = CalculationResultModel(title: .stageR,
+                                                           description: "Цена разработки проектной документации:",
+                                                           prices: [.init(type: .withVat,
+                                                                          value: stagePPrice),
+                                                                    .init(type: .withoutVat,
+                                                                          value: stagePPrice)])
+            result.append(calculationResult)
+        }
+
+        return result
     }
     
     private func calculateFireWarningSystem() -> [CalculationResultModel] {
