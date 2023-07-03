@@ -156,27 +156,7 @@ private extension CalculationService {
         
         price *= (linesOfDefCoef * inflCoef * specialPurposeCoef * outdoorEquipCoef * architectCoef * importOrNewCoef * explosivesZonezCoef * highOrLowTempCoef * hiddenLayingCoef)
         
-        let stageRPrice: Double = price * 0.25
-        
-        var result: [CalculationResultModel] = [.init(title: .stageP,
-                                                      description: "Цена разработки проектной документации:",
-                                                      prices: [.init(type: .withVat,
-                                                                     value: stageRPrice),
-                                                               .init(type: .withoutVat,
-                                                                     value: stageRPrice)])]
-        
-        if flag {
-            let stagePPrice: Double = price * 0.75
-            let calculationResult = CalculationResultModel(title: .stageR,
-                                                           description: "Цена разработки проектной документации:",
-                                                           prices: [.init(type: .withVat,
-                                                                          value: stagePPrice),
-                                                                    .init(type: .withoutVat,
-                                                                          value: stagePPrice)])
-            result.append(calculationResult)
-        }
-
-        return result
+        return makeResult(flag: flag, price: price)
     }
     
     private func calculatePerimeterSecurityAlarm() -> [CalculationResultModel] {
@@ -304,27 +284,7 @@ private extension CalculationService {
         
         price *= (linesOfDefCoef * inflCoef * specialPurposeCoef * lightingCoef * architectCoef * importOrNewCoef * explosivesZonezCoef * highOrLowTempCoef * blockSectionsCoef * terrainCoef)
         
-        let stageRPrice: Double = price * 0.25
-        
-        var result: [CalculationResultModel] = [.init(title: .stageP,
-                                                      description: "Цена разработки проектной документации:",
-                                                      prices: [.init(type: .withVat,
-                                                                     value: stageRPrice),
-                                                               .init(type: .withoutVat,
-                                                                     value: stageRPrice)])]
-        
-        if flag {
-            let stagePPrice: Double = price * 0.75
-            let calculationResult = CalculationResultModel(title: .stageR,
-                                                           description: "Цена разработки проектной документации:",
-                                                           prices: [.init(type: .withVat,
-                                                                          value: stagePPrice),
-                                                                    .init(type: .withoutVat,
-                                                                          value: stagePPrice)])
-            result.append(calculationResult)
-        }
-
-        return result
+        return makeResult(flag: flag, price: price)
     }
     
     //TODO: - Should be fixed
@@ -391,7 +351,6 @@ private extension CalculationService {
         var explosivesZonezCoef: Double = 1
         var highOrLowTempCoef: Double = 1
         var individualEvacuationZonesCoef: Double = 1
-        var evacuationProjectCoef: Double = 1
         var hiddenGasketCoef: Double = 1
         var outdoorEquipment: Double = 1
         var automaticFireDetectorsCoef: Double = 1
@@ -435,29 +394,9 @@ private extension CalculationService {
             }
         }
         
-        price *= (inflCoef * specialPurposeCoef * architectCoef * importOrNewCoef * explosivesZonezCoef * highOrLowTempCoef * individualEvacuationZonesCoef * evacuationProjectCoef * hiddenGasketCoef * outdoorEquipment * automaticFireDetectorsCoef * manualFireDetectorsCoef * commandPulseCoef * opticalLinearDetectors)
+        price *= (inflCoef * specialPurposeCoef * architectCoef * importOrNewCoef * explosivesZonezCoef * highOrLowTempCoef * individualEvacuationZonesCoef * hiddenGasketCoef * outdoorEquipment * automaticFireDetectorsCoef * manualFireDetectorsCoef * commandPulseCoef * opticalLinearDetectors)
         
-        let stageRPrice: Double = price * 0.25
-        
-        var result: [CalculationResultModel] = [.init(title: .stageP,
-                                                      description: "Цена разработки проектной документации:",
-                                                      prices: [.init(type: .withVat,
-                                                                     value: stageRPrice),
-                                                               .init(type: .withoutVat,
-                                                                     value: stageRPrice)])]
-        
-        if flag {
-            let stagePPrice: Double = price * 0.75
-            let calculationResult = CalculationResultModel(title: .stageR,
-                                                           description: "Цена разработки проектной документации:",
-                                                           prices: [.init(type: .withVat,
-                                                                          value: stagePPrice),
-                                                                    .init(type: .withoutVat,
-                                                                          value: stagePPrice)])
-            result.append(calculationResult)
-        }
-
-        return result
+        return makeResult(flag: flag, price: price)
     }
     
     private func calculateFireWarningSystem() -> [CalculationResultModel] {
@@ -578,27 +517,7 @@ private extension CalculationService {
         
         price *= (notificationTypeCoef * inflCoef * specialPurposeCoef * architectCoef * importOrNewCoef * explosivesZonezCoef * highOrLowTempCoef * individualEvacuationZonesCoef * evacuationProjectCoef * hiddenGasketCoef * outdoorEquipment)
         
-        let stageRPrice: Double = price * 0.25
-        
-        var result: [CalculationResultModel] = [.init(title: .stageP,
-                                                      description: "Цена разработки проектной документации:",
-                                                      prices: [.init(type: .withVat,
-                                                                     value: stageRPrice),
-                                                               .init(type: .withoutVat,
-                                                                     value: stageRPrice)])]
-        
-        if flag {
-            let stagePPrice: Double = price * 0.75
-            let calculationResult = CalculationResultModel(title: .stageR,
-                                                           description: "Цена разработки проектной документации:",
-                                                           prices: [.init(type: .withVat,
-                                                                          value: stagePPrice),
-                                                                    .init(type: .withoutVat,
-                                                                          value: stagePPrice)])
-            result.append(calculationResult)
-        }
-
-        return result
+        return makeResult(flag: flag, price: price)
     }
     
     private func calculateModularFireExtinguishingSystems() -> [CalculationResultModel] {
@@ -677,27 +596,7 @@ private extension CalculationService {
         
         price *= (inflCoef * specialPurposeCoef * architectCoef * importOrNewCoef * explosivesZonezCoef * highOrLowTempCoef * hiddenGasketCoef * protectedPremises * manualInstallation * extinguishingCoef)
         
-        let stageRPrice: Double = price * 0.25
-        
-        var result: [CalculationResultModel] = [.init(title: .stageP,
-                                                      description: "Цена разработки проектной документации:",
-                                                      prices: [.init(type: .withVat,
-                                                                     value: stageRPrice),
-                                                               .init(type: .withoutVat,
-                                                                     value: stageRPrice)])]
-        
-        if flag {
-            let stagePPrice: Double = price * 0.75
-            let calculationResult = CalculationResultModel(title: .stageR,
-                                                           description: "Цена разработки проектной документации:",
-                                                           prices: [.init(type: .withVat,
-                                                                          value: stagePPrice),
-                                                                    .init(type: .withoutVat,
-                                                                          value: stagePPrice)])
-            result.append(calculationResult)
-        }
-
-        return result
+        return makeResult(flag: flag, price: price)
     }
     
     private func calculateSmokeRemovalControlSystem() -> [CalculationResultModel] {
@@ -789,27 +688,7 @@ private extension CalculationService {
         
         price *= (inflCoef * specialPurposeCoef * architectCoef * importOrNewCoef * explosivesZonezCoef * highOrLowTempCoef * hiddenGasketCoef * smokeRemovalCoef * outdoorCoef)
         
-        let stageRPrice: Double = price * 0.25
-        
-        var result: [CalculationResultModel] = [.init(title: .stageP,
-                                                      description: "Цена разработки проектной документации:",
-                                                      prices: [.init(type: .withVat,
-                                                                     value: stageRPrice),
-                                                               .init(type: .withoutVat,
-                                                                     value: stageRPrice)])]
-        
-        if flag {
-            let stagePPrice: Double = price * 0.75
-            let calculationResult = CalculationResultModel(title: .stageR,
-                                                           description: "Цена разработки проектной документации:",
-                                                           prices: [.init(type: .withVat,
-                                                                          value: stagePPrice),
-                                                                    .init(type: .withoutVat,
-                                                                          value: stagePPrice)])
-            result.append(calculationResult)
-        }
-
-        return result
+        return makeResult(flag: flag, price: price)
     }
     
     private func calculatePumpingStationsOfFireExtinguishingInstallations() -> [CalculationResultModel] {
@@ -890,26 +769,41 @@ private extension CalculationService {
         
         price *= (inflCoef * pumpGroupCoef * specialPurposeCoef * architectCoef * importOrNewCoef * explosivesZonezCoef * highOrLowTempCoef * motorsWithAVCoef * twoPumpCoef * enginesCoef * pneumaticStationsCoef)
         
-        let stageRPrice: Double = price * 0.25
+       
         
-        var result: [CalculationResultModel] = [.init(title: .stageP,
-                                                      description: "Цена разработки проектной документации:",
-                                                      prices: [.init(type: .withVat,
-                                                                     value: stageRPrice),
-                                                               .init(type: .withoutVat,
-                                                                     value: stageRPrice)])]
+        return makeResult(flag: flag, price: price)
+    }
+    
+    func makeResult(flag: Bool,
+                    price: Double) -> [CalculationResultModel] {
         
+        var result: [CalculationResultModel] = []
         if flag {
+            let stageRPrice: Double = price * 0.25
+            
+            result.append(.init(title: .stageP,
+                                                          description: "Цена разработки проектной документации:",
+                                                          prices: [.init(type: .withVat,
+                                                                         value: stageRPrice),
+                                                                   .init(type: .withoutVat,
+                                                                         value: stageRPrice)]))
             let stagePPrice: Double = price * 0.75
-            let calculationResult = CalculationResultModel(title: .stageR,
+            result.append(CalculationResultModel(title: .stageR,
                                                            description: "Цена разработки проектной документации:",
                                                            prices: [.init(type: .withVat,
                                                                           value: stagePPrice),
                                                                     .init(type: .withoutVat,
-                                                                          value: stagePPrice)])
-            result.append(calculationResult)
+                                                                          value: stagePPrice)]))
+            
+        } else {
+            result.append(.init(title: .stageP,
+                                                          description: "Цена разработки проектной документации:",
+                                                          prices: [.init(type: .withVat,
+                                                                         value: price),
+                                                                   .init(type: .withoutVat,
+                                                                         value: price)]))
         }
-
+        
         return result
     }
 }
