@@ -41,9 +41,9 @@ extension CalculationService: CalculationServicable {
         case .perimeterSecurityAlarm:
             return calculatePerimeterSecurityAlarm()
         case .fireAlarmSystem:
-            return calculateSecurityAlarm()
+            return calculateFireAlarmSystem()
         case .fireWarningSystem:
-            return calculateSecurityAlarm()
+            return calculateFireWarningSystem()
         case .modularFireExtinguishingSystems:
             return calculateSecurityAlarm()
         case .smokeRemovalControlSystem:
@@ -302,8 +302,6 @@ private extension CalculationService {
             }
         }
         
-        print(price, linesOfDefCoef, inflCoef, specialPurposeCoef, lightingCoef, architectCoef, importOrNewCoef, explosivesZonezCoef, highOrLowTempCoef, blockSectionsCoef, terrainCoef)
-        
         price *= (linesOfDefCoef * inflCoef * specialPurposeCoef * lightingCoef * architectCoef * importOrNewCoef * explosivesZonezCoef * highOrLowTempCoef * blockSectionsCoef * terrainCoef)
         
         let stageRPrice: Double = price * 0.25
@@ -330,8 +328,148 @@ private extension CalculationService {
     }
     
     private func calculateFireAlarmSystem() -> [CalculationResultModel] {
-        print(#function)
         return []
+    }
+    
+    private func calculateFireWarningSystem() -> [CalculationResultModel] {
+        //Value - м2
+        var price: Double = .zero
+        valueCoefficients.forEach { value in
+            switch value.type {
+            case .objectArea:
+                switch value.value {
+                case 0..<100:
+                    price = 480
+                case 100..<200:
+                    price = 554
+                case 200..<400:
+                    price = 656
+                case 400..<700:
+                    price = 778
+                case 700..<1_000:
+                    price = 922
+                case 1_000..<2_000:
+                    price = 1_843
+                case 2_000..<3_000:
+                    price = 2_397
+                case 3_000..<5_000:
+                    price = 2_949
+                case 5_000..<7_000:
+                    price = 3_502
+                case 7_000..<10_000:
+                    price = 4_054
+                case 10_000..<13_0000:
+                    price = 4_608
+                case 13_000..<17_000:
+                    price = 5_069
+                case 17_000..<21_000:
+                    price = 5_458
+                case 21_000..<25_000:
+                    price = 5_805
+                default:
+                    price = 480
+                }
+            default:
+                break
+            }
+        }
+        
+        //Choice
+        var notificationTypeCoef: Double = 1
+        choiceCoefficients.forEach { lines in
+            switch lines.type {
+            case .typeOfNotificationSystem:
+                switch lines.itemIndex {
+                case 1:
+                    notificationTypeCoef = 1
+                case 2:
+                    notificationTypeCoef = 1.2
+                case 3:
+                    notificationTypeCoef = 1.4
+                case 4:
+                    notificationTypeCoef = 1.6
+                case 5:
+                    notificationTypeCoef = 1.8
+                default:
+                    notificationTypeCoef = 1
+                }
+            default:
+                break
+            }
+        }
+        
+        //Default
+        var inflCoef: Double = 1
+        defaulValueCoefficients.forEach { coef in
+            if coef.type == .inflationRate {
+                inflCoef = coef.type.defaultValue
+            }
+        }
+        
+        //Checkbox
+        var flag = false
+        var specialPurposeCoef: Double = 1
+        var architectCoef: Double = 1
+        var importOrNewCoef: Double = 1
+        var explosivesZonezCoef: Double = 1
+        var highOrLowTempCoef: Double = 1
+        var individualEvacuationZonesCoef: Double = 1
+        var evacuationProjectCoef: Double = 1
+        var hiddenGasketCoef: Double = 1
+        var outdoorEquipment: Double = 1
+        checkboxCoefficients.forEach { checkbox in
+            if checkbox.isSelected == true {
+                switch checkbox.type {
+                case .twoStageDocumentationDevelopment:
+                    flag.toggle()
+                case .availabilityOfAlertsForIndividualEvacuationZones:
+                    individualEvacuationZonesCoef = 1.3
+                case .developmentOfTheEvacuationProject:
+                    evacuationProjectCoef = 1.5
+                case .thePresenceOfAHiddenGasket:
+                    hiddenGasketCoef = 1.2
+                case .outdoorEquipmentInstallation:
+                    outdoorEquipment = 1.1
+                case .objectOfArchitecturalAndHistoricalValue:
+                    architectCoef = 1.3
+                case .specialPurposeObject:
+                    specialPurposeCoef = 1.4
+                case .usingImportedOrNewEquipment:
+                    importOrNewCoef = 1.3
+                case .presenceOfExplosiveZones:
+                    explosivesZonezCoef = 1.3
+                case .presenceOfHighOrLowTemperatures:
+                    highOrLowTempCoef = 1.2
+                default:
+                    break
+                }
+            }
+        }
+        
+        
+        price *= (notificationTypeCoef * inflCoef * specialPurposeCoef * architectCoef * importOrNewCoef * explosivesZonezCoef * highOrLowTempCoef * individualEvacuationZonesCoef * evacuationProjectCoef * hiddenGasketCoef * outdoorEquipment)
+        
+        let stageRPrice: Double = price * 0.25
+        
+        var result: [CalculationResultModel] = [.init(title: .stageP,
+                                                      description: "Цена разработки проектной документации:",
+                                                      prices: [.init(type: .withVat,
+                                                                     value: stageRPrice),
+                                                               .init(type: .withoutVat,
+                                                                     value: stageRPrice)])]
+        
+        if flag {
+            let stagePPrice: Double = price * 0.75
+            let calculationResult = CalculationResultModel(title: .stageR,
+                                                           description: "Цена разработки проектной документации:",
+                                                           prices: [.init(type: .withVat,
+                                                                          value: stagePPrice),
+                                                                    .init(type: .withoutVat,
+                                                                          value: stagePPrice)])
+            result.append(calculationResult)
+        }
+
+        return result
     }
     
     private func calculateModularFireExtinguishingSystems() -> [CalculationResultModel] {
