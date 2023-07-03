@@ -39,7 +39,7 @@ extension CalculationService: CalculationServicable {
         case .securityAlarm:
             return calculateSecurityAlarm()
         case .perimeterSecurityAlarm:
-            return calculateSecurityAlarm()
+            return calculatePerimeterSecurityAlarm()
         case .fireAlarmSystem:
             return calculateSecurityAlarm()
         case .fireWarningSystem:
@@ -113,7 +113,7 @@ private extension CalculationService {
         }
         
         //Default
-        var inflCoef: Double = .zero
+        var inflCoef: Double = 1
         defaulValueCoefficients.forEach { coef in
             if coef.type == .inflationRate {
                 inflCoef = coef.type.defaultValue
@@ -139,7 +139,7 @@ private extension CalculationService {
                 case .thePresenceOfHiddenLayingOfEngineeringCommunications:
                     hiddenLayingCoef = 1.2
                 case .outdoorEquipmentInstallation:
-                    outdoorEquipCoef = 1.2
+                    outdoorEquipCoef = 1.1
                 case .specialPurposeObject:
                     specialPurposeCoef = 1.4
                 case .usingImportedOrNewEquipment:
@@ -169,8 +169,10 @@ private extension CalculationService {
             let stagePPrice: Double = price * 0.75
             let calculationResult = CalculationResultModel(title: .stageR,
                                                            description: "Цена разработки проектной документации:",
-                                                           prices: [.init(type: .withVat, value: stagePPrice),
-                                                                    .init(type: .withoutVat, value: stagePPrice)])
+                                                           prices: [.init(type: .withVat,
+                                                                          value: stagePPrice),
+                                                                    .init(type: .withoutVat,
+                                                                          value: stagePPrice)])
             result.append(calculationResult)
         }
 
@@ -178,8 +180,153 @@ private extension CalculationService {
     }
     
     private func calculatePerimeterSecurityAlarm() -> [CalculationResultModel] {
-        print(#function)
-        return []
+        //Value - км
+        var price: Double = .zero
+        var blockSectionsCoef: Double = 1
+        valueCoefficients.forEach { value in
+            switch value.type {
+            case .lengthOfThePerimeter:
+                switch value.value {
+                case 0..<0.2:
+                    price = 800
+                case 0.2..<0.4:
+                    price = 1_314
+                case 0.4..<0.6:
+                    price = 1_724
+                case 0.6..<0.8:
+                    price = 2_000
+                case 0.8..<1:
+                    price = 2_206
+                case 1..<2:
+                    price = 3_556
+                case 2..<3:
+                    price = 4_636
+                case 3..<4:
+                    price = 5_518
+                case 4..<5:
+                    price = 6_400
+                case 5..<6:
+                    price = 7_234
+                case 6..<7:
+                    price = 8_068
+                case 7..<9:
+                    price = 8_852
+                case 9..<11:
+                    price = 9_636
+                case 11..<13:
+                    price = 10_374
+                case 13..<15:
+                    price = 11_108
+                default:
+                    price = 800
+                }
+            case .numberOfBlockingSections:
+                if value.value > 5 {
+                    blockSectionsCoef = 1 + Double(((Int(value.value) + Int(value.value) % 4) / 4) - 1) * 0.15
+                } else {
+                    blockSectionsCoef = 1
+                }
+            default:
+                break
+            }
+        }
+        
+        //Choice
+        var linesOfDefCoef: Double = 1
+        var terrainCoef: Double = 1
+        choiceCoefficients.forEach{ lines in
+            switch lines.type {
+            case .numberOfLinesOfDefence:
+                switch lines.itemIndex {
+                case 1:
+                    linesOfDefCoef = 1
+                case 2:
+                    linesOfDefCoef = 1.5
+                case 3:
+                    linesOfDefCoef = 1.7
+                default:
+                    linesOfDefCoef = 1
+                }
+            case .terrain:
+                switch lines.itemIndex {
+                case 1: // Нормальный
+                    terrainCoef = 1
+                case 2: // Холмистый
+                    terrainCoef = 1.3
+                case 3: // Гористый
+                    terrainCoef = 1.6
+                default:
+                    terrainCoef = 1
+                }
+            default:
+                break
+            }
+        }
+        
+        //Default
+        var inflCoef: Double = 1
+        defaulValueCoefficients.forEach { coef in
+            if coef.type == .inflationRate {
+                inflCoef = coef.type.defaultValue
+            }
+        }
+        
+        //Checkbox
+        var flag = false
+        var specialPurposeCoef: Double = 1
+        var architectCoef: Double = 1
+        var importOrNewCoef: Double = 1
+        var explosivesZonezCoef: Double = 1
+        var highOrLowTempCoef: Double = 1
+        var lightingCoef: Double = 1
+        checkboxCoefficients.forEach { checkbox in
+            if checkbox.isSelected == true {
+                switch checkbox.type {
+                case .twoStageDocumentationDevelopment:
+                    flag.toggle()
+                case .securityLightingProjectDevelopment:
+                    lightingCoef = 1.5
+                case .objectOfArchitecturalAndHistoricalValue:
+                    architectCoef = 1.3
+                case .specialPurposeObject:
+                    specialPurposeCoef = 1.4
+                case .usingImportedOrNewEquipment:
+                    importOrNewCoef = 1.3
+                case .presenceOfExplosiveZones:
+                    explosivesZonezCoef = 1.3
+                case .presenceOfHighOrLowTemperatures:
+                    highOrLowTempCoef = 1.2
+                default:
+                    break
+                }
+            }
+        }
+        
+        print(price, linesOfDefCoef, inflCoef, specialPurposeCoef, lightingCoef, architectCoef, importOrNewCoef, explosivesZonezCoef, highOrLowTempCoef, blockSectionsCoef, terrainCoef)
+        
+        price *= (linesOfDefCoef * inflCoef * specialPurposeCoef * lightingCoef * architectCoef * importOrNewCoef * explosivesZonezCoef * highOrLowTempCoef * blockSectionsCoef * terrainCoef)
+        
+        let stageRPrice: Double = price * 0.25
+        
+        var result: [CalculationResultModel] = [.init(title: .stageP,
+                                                      description: "Цена разработки проектной документации:",
+                                                      prices: [.init(type: .withVat,
+                                                                     value: stageRPrice),
+                                                               .init(type: .withoutVat,
+                                                                     value: stageRPrice)])]
+        
+        if flag {
+            let stagePPrice: Double = price * 0.75
+            let calculationResult = CalculationResultModel(title: .stageR,
+                                                           description: "Цена разработки проектной документации:",
+                                                           prices: [.init(type: .withVat,
+                                                                          value: stagePPrice),
+                                                                    .init(type: .withoutVat,
+                                                                          value: stagePPrice)])
+            result.append(calculationResult)
+        }
+
+        return result
     }
     
     private func calculateFireAlarmSystem() -> [CalculationResultModel] {
