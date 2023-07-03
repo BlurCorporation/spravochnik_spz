@@ -47,7 +47,7 @@ extension CalculationService: CalculationServicable {
         case .modularFireExtinguishingSystems:
             return calculateModularFireExtinguishingSystems()
         case .smokeRemovalControlSystem:
-            return calculateSecurityAlarm()
+            return calculateSmokeRemovalControlSystem()
         case .pumpingStationsOfFireExtinguishingInstallations:
             return calculateSecurityAlarm()
         }
@@ -642,10 +642,7 @@ private extension CalculationService {
         var importOrNewCoef: Double = 1
         var explosivesZonezCoef: Double = 1
         var highOrLowTempCoef: Double = 1
-//        var individualEvacuationZonesCoef: Double = 1
-//        var evacuationProjectCoef: Double = 1
         var hiddenGasketCoef: Double = 1
-//        var outdoorEquipment: Double = 1
         var protectedPremises: Double = 1
         var manualInstallation: Double = 1
         var extinguishingCoef: Double = 1
@@ -704,8 +701,115 @@ private extension CalculationService {
     }
     
     private func calculateSmokeRemovalControlSystem() -> [CalculationResultModel] {
-        print(#function)
-        return []
+        //Value - м2
+        var price: Double = .zero
+        valueCoefficients.forEach { value in
+            if value.type == .objectArea {
+                switch value.value {
+                case 0..<100:
+                    price = 420
+                case 100..<200:
+                    price = 484
+                case 200..<400:
+                    price = 574
+                case 400..<700:
+                    price = 680
+                case 700..<1_000:
+                    price = 806
+                case 1_000..<2_000:
+                    price = 1_613
+                case 2_000..<3_000:
+                    price = 2_097
+                case 3_000..<5_000:
+                    price = 2_580
+                case 5_000..<7_000:
+                    price = 3_065
+                case 7_000..<10_000:
+                    price = 3_548
+                case 10_000..<13_000:
+                    price = 4_032
+                case 13_000..<17_000:
+                    price = 4_435
+                case 17_000..<21_000:
+                    price = 4_775
+                case 21_000..<25_000:
+                    price = 5_079
+                case 25_000..<9999999:
+                    price = (value.value - 25_000) / 1000 * 108
+                default:
+                    price = 540
+                }
+            }
+        }
+        
+        //Default
+        var inflCoef: Double = 1
+        defaulValueCoefficients.forEach { coef in
+            if coef.type == .inflationRate {
+                inflCoef = coef.type.defaultValue
+            }
+        }
+        
+        //Checkbox
+        var flag = false
+        var specialPurposeCoef: Double = 1
+        var architectCoef: Double = 1
+        var importOrNewCoef: Double = 1
+        var explosivesZonezCoef: Double = 1
+        var highOrLowTempCoef: Double = 1
+        var hiddenGasketCoef: Double = 1
+        var smokeRemovalCoef: Double = 1
+        var outdoorCoef: Double = 1
+        checkboxCoefficients.forEach { checkbox in
+            if checkbox.isSelected == true {
+                switch checkbox.type {
+                case .twoStageDocumentationDevelopment:
+                    flag.toggle()
+                case .thePresenceOfAHiddenGasket:
+                    hiddenGasketCoef = 1.2
+                case .manualTypeOfControlOfSmokeRemovalInstallations:
+                    smokeRemovalCoef = 0.7
+                case .outdoorEquipmentInstallation:
+                    outdoorCoef = 1.1
+                case .objectOfArchitecturalAndHistoricalValue:
+                    architectCoef = 1.3
+                case .specialPurposeObject:
+                    specialPurposeCoef = 1.4
+                case .usingImportedOrNewEquipment:
+                    importOrNewCoef = 1.3
+                case .presenceOfExplosiveZones:
+                    explosivesZonezCoef = 1.3
+                case .presenceOfHighOrLowTemperatures:
+                    highOrLowTempCoef = 1.2
+                default:
+                    break
+                }
+            }
+        }
+        
+        price *= (inflCoef * specialPurposeCoef * architectCoef * importOrNewCoef * explosivesZonezCoef * highOrLowTempCoef * hiddenGasketCoef * smokeRemovalCoef * outdoorCoef)
+        
+        let stageRPrice: Double = price * 0.25
+        
+        var result: [CalculationResultModel] = [.init(title: .stageP,
+                                                      description: "Цена разработки проектной документации:",
+                                                      prices: [.init(type: .withVat,
+                                                                     value: stageRPrice),
+                                                               .init(type: .withoutVat,
+                                                                     value: stageRPrice)])]
+        
+        if flag {
+            let stagePPrice: Double = price * 0.75
+            let calculationResult = CalculationResultModel(title: .stageR,
+                                                           description: "Цена разработки проектной документации:",
+                                                           prices: [.init(type: .withVat,
+                                                                          value: stagePPrice),
+                                                                    .init(type: .withoutVat,
+                                                                          value: stagePPrice)])
+            result.append(calculationResult)
+        }
+
+        return result
     }
     
     private func calculatePumpingStationsOfFireExtinguishingInstallations() -> [CalculationResultModel] {
