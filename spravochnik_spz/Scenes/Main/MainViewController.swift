@@ -68,11 +68,6 @@ final class MainViewController: UIViewController {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        tabBarController?.tabBar.isHidden = true
-    }
-    
     // MARK: - Actions
     
     @objc private func helpButtonPressed() {

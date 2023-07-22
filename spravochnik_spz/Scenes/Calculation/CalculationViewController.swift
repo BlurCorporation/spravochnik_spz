@@ -78,9 +78,6 @@ final class CalculationViewController: UIViewController {
     }()
     
     // MARK: - LifeCycle
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
