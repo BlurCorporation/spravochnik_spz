@@ -21,6 +21,13 @@ final class CalculationViewController: UIViewController {
     
     // MARK: - PrivateProperties
     
+    private var isBottom: Bool {
+        if #available(iOS 11.0, *), let keyWindow = UIApplication.shared.keyWindow, keyWindow.safeAreaInsets.bottom > 0 {
+            return true
+        }
+        return false
+    }
+    
     private var sections: [CalculationViewController.Section] = []
     
     private lazy var calculationButton: CustomButton = {
@@ -131,6 +138,14 @@ private extension CalculationViewController {
     }
     
     func setupConstraints() {
+        var bottomOffset: CGFloat {
+            if isBottom {
+                return .zero
+            } else {
+                return -Constants.Constraints.bottomOffset
+            }
+        }
+        
         NSLayoutConstraint.activate([
             calculationButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.buttonHeight),
             otherCalculationButton.heightAnchor.constraint(equalToConstant: Constants.Constraints.buttonHeight),
@@ -139,7 +154,7 @@ private extension CalculationViewController {
                                                      constant: Constants.Constraints.sideOffset),
             buttonStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
                                                       constant: -Constants.Constraints.sideOffset),
-            buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: bottomOffset),
             
             tableView.topAnchor.constraint(equalTo: view.topAnchor,
                                            constant: Constants.Sizes.tableViewTopOffset),
