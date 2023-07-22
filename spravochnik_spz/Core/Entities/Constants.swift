@@ -115,7 +115,7 @@ enum Constants {
         static let bottomOffset = CGFloat(16)
         static let buttonsSpasing = CGFloat(8)
         static let labelsStackViewSpasing = CGFloat(8)
-        static let buttonHeight = CGFloat(50)
+        static let buttonHeight = CGFloat(44)
         static let commonStartStackViewTopOffset = CGFloat(128)
         static let registerTextFieldStackViewHeight = CGFloat(224)
         static let registerLineViewHeight = CGFloat(1.5)

@@ -71,7 +71,9 @@ final class MainViewController: UIViewController {
     // MARK: - Actions
     
     @objc private func helpButtonPressed() {
-        presenter?.helpButtonPressed()
+        helpButton.pushAnimate { [weak self] in
+            self?.presenter?.helpButtonPressed()
+        }
     }
 }
 
@@ -137,7 +139,9 @@ extension MainViewController: UICollectionViewDataSource {
 
 extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter?.openCalculationCellSelected(index: indexPath.row)
+        collectionView.cellForItem(at: indexPath)?.pushAnimate { [weak self] in
+            self?.presenter?.openCalculationCellSelected(index: indexPath.row)
+        }
     }
 }
 
