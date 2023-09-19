@@ -11,7 +11,8 @@ import UIKit
 
 protocol ValueCoefficientTableViewCellDelegate: AnyObject {
     func valueCoefficientCellPressed(value: Double,
-                                     type: ValueСoefficientType)
+                                     type: ValueСoefficientType,
+                                     index: Int)
 }
 
 // MARK: ValueCoefficientTableViewCell
@@ -26,6 +27,7 @@ final class ValueCoefficientTableViewCell: UITableViewCell {
     
     private var value: Double = .zero
     private var type: ValueСoefficientType?
+    private var index: Int = .zero
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -85,12 +87,18 @@ final class ValueCoefficientTableViewCell: UITableViewCell {
     
     //MARK: - Methods
     
-    func configure(with viewModel: ValueСoefficientViewModel) {
+    func configure(with viewModel: ValueСoefficientViewModel, index: Int) {
         titleLabel.text = viewModel.title
         descriptionLabel.text = viewModel.descrpt
         value = viewModel.value
         type = viewModel.type
         delegate = viewModel.delegate
+        
+        self.index = index // Это не то же самое, что self.value? проверить
+        
+        if viewModel.value != .zero {
+            button.setTitle("\(viewModel.value)", for: .normal)
+        }
     }
     
     // MARK: - Actions
@@ -98,7 +106,8 @@ final class ValueCoefficientTableViewCell: UITableViewCell {
     @objc
     private func buttonPressed() {
         delegate?.valueCoefficientCellPressed(value: value,
-                                              type: type ?? .lengthOfThePerimeter)
+                                              type: type ?? .lengthOfThePerimeter,
+                                              index: index)
     }
 }
 

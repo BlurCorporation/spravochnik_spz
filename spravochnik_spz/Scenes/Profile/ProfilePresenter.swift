@@ -47,7 +47,10 @@ extension ProfilePresenter: ProfilePresenterProtocol {
     
     func logoutButtonPressed() {
         
-        let model = NoСoefficientModel(title: "Уверены, что хотите выйти из аккаунта?", leftButton: "Закрыть", rightButton: "Выйти", rightButtonHandler: {
+        let model = NoСoefficientModel(title: "Уверены, что хотите выйти из аккаунта?",
+                                       leftButton: "Закрыть",
+                                       rightButton: "Выйти",
+                                       rightButtonHandler: {
             self.authService.logout { error in
                 if let error = error {
                     print(error.localizedDescription)
@@ -59,7 +62,7 @@ extension ProfilePresenter: ProfilePresenterProtocol {
             let rootViewController = UINavigationController.init(rootViewController: startViewController)
             UIApplication.shared.windows.first?.rootViewController = rootViewController
         })
-        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .clear(model: model))
+        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .clear(model: model), index: .zero, delegate: self)
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         viewController?.present(vc, animated: true)
@@ -83,5 +86,26 @@ extension ProfilePresenter: ProfilePresenterProtocol {
     
     func privacyButtonPressed() {
         print(#function)
+    }
+}
+
+extension ProfilePresenter: AlertPresenterDelegate {
+    func saveButtonPressed(type: CoefficientType, index: Int) {
+        print(type)
+        switch type {
+        case .clear:
+            self.authService.logout { error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                print("exit")
+            }
+            let startViewController = self.sceneBuildManager.buildStartScreen()
+            let rootViewController = UINavigationController.init(rootViewController: startViewController)
+            UIApplication.shared.windows.first?.rootViewController = rootViewController
+        default:
+            break
+        }
     }
 }

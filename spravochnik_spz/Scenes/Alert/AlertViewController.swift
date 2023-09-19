@@ -16,6 +16,7 @@ enum CollectionViewAxis {
 
 //TODO: добавить value
 protocol AlertViewProtocol: UIViewController {
+    func method(type: CoefficientType)
     func updateUIForClear(title: String,
                           leftButtonTitle: String,
                           rightButtonTitle: String)
@@ -38,6 +39,8 @@ final class AlertViewController: UIViewController {
     private var dataSource = [String]()
     var previousSelected : IndexPath?
     var currentSelected : Int?
+    
+    private var type: CoefficientType?
     
     private let blurView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialLight)
@@ -152,7 +155,9 @@ final class AlertViewController: UIViewController {
     @objc
     func rightButtonPressed() {
         rightButton.pushAnimate { [weak self] in
-            self?.presenter?.rightButtonPressed()
+//            self?.presenter?.rightButtonPressed()
+            guard let type = self?.type else { return }
+            self?.presenter?.method(type: type, value: self?.textField.text)
         }
     }
     
@@ -164,6 +169,22 @@ final class AlertViewController: UIViewController {
 // MARK: - AlertViewProtocol Impl
 
 extension AlertViewController: AlertViewProtocol {
+    func method(type: CoefficientType) {
+        self.type = type
+        switch type {
+        case .clear(let model):
+            updateUIForClear(title: model.title, leftButtonTitle: model.leftButton, rightButtonTitle: model.rightButton)
+        case .value(let model):
+            updateUIForValue(title: model.type.title, value: model.value)
+        case .choice(let model):
+            updateUIForChoice(title: model.type.title,
+                              axis: model.type,
+                              numOfItems: 0)
+        case .defaultValue(let model, let value):
+            updateUIForValue(title: model.type.title, value: value)
+        }
+    }
+    
     func update(dataSource: [String]) {
         self.dataSource = dataSource
     }

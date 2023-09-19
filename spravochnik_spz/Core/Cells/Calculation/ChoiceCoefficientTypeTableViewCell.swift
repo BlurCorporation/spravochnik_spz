@@ -11,7 +11,8 @@ import UIKit
 
 protocol ChoiceCoefficientTypeTableViewCellDelegate: AnyObject {
     func choiceCoefficientCellPressed(value: Double,
-                                      coefType: ChoiceСoefficientType)
+                                      coefType: ChoiceСoefficientType,
+                                      index: Int)
 }
 
 // MARK: ChoiceCoefficientTypeTableViewCell
@@ -96,7 +97,8 @@ final class ChoiceCoefficientTypeTableViewCell: UITableViewCell {
     @objc
     private func buttonPressed() {
         delegate?.choiceCoefficientCellPressed(value: value,
-                                               coefType: coefficientType ?? .terrain)
+                                               coefType: coefficientType ?? .terrain,
+                                               index: .zero)
     }
 }
 

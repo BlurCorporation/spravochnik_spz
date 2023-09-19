@@ -9,7 +9,7 @@ import UIKit
 // MARK: - DefaultValueCoefficientTableViewCellDelegate
 
 protocol DefaultValueCoefficientTableViewCellDelegate: AnyObject {
-    func defaultValueCoefficientCellPressed(value: Double)
+    func defaultValueCoefficientCellPressed(value: Double, index: Int)
 }
 
 // MARK: DefaultValueCoefficientTableViewCell
@@ -92,7 +92,7 @@ final class DefaultValueCoefficientTableViewCell: UITableViewCell {
     
     @objc
     private func buttonPressed() {
-        delegate?.defaultValueCoefficientCellPressed(value: value)
+        delegate?.defaultValueCoefficientCellPressed(value: value, index: .zero)
     }
 }
 

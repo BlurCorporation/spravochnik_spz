@@ -23,9 +23,13 @@ final class CalculationPresenter {
     private let title: String
     private let calculationType: СalculationType
     private let defaulValueCoefficients: [DefaultCoefficientValueModel]
-    private let valueCoefficients: [ValueСoefficientModel]
+    private var valueCoefficients: [ValueСoefficientModel]
     private let choiceCoefficients: [ChoiceCoefficientModel]
     private var checkboxCoefficients: [CheckboxСoefficientModel]
+    
+    private var saveButtonPressed: ((CoefficientType) -> Void)? = { type in
+        print(type)
+    }
     
     // MARK: - Initializer
     
@@ -100,6 +104,13 @@ final class CalculationPresenter {
                                                       delegate: self))
         viewController?.update(sections: sections)
     }
+    
+    private func routeToAlert(coefficientType: CoefficientType, index: Int) {
+        let vc = sceneBuildManager.buildAlertScreen(coefficientType: coefficientType, index: index, delegate: self)
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        viewController?.present(vc, animated: true)
+    }
 }
 
 //MARK: - CalculationPresenterExtension
@@ -124,6 +135,7 @@ extension CalculationPresenter: CalculationPresenterProtocol {
             valueCoefficients: valueCoefficients,
             choiceCoefficients: choiceCoefficients,
             checkboxCoefficients: checkboxCoefficients)
+        
         viewController?.navigationController?.pushViewController(resultViewController, animated: true)
     }
     
@@ -140,33 +152,43 @@ extension CalculationPresenter: CalculationHeaderViewCellCellDelegate {
 
 extension CalculationPresenter: ValueCoefficientTableViewCellDelegate {
     func valueCoefficientCellPressed(value: Double,
-                                     type: ValueСoefficientType) {
+                                     type: ValueСoefficientType,
+                                     index: Int) {
         let model = ValueСoefficientModel(type: type,
                                           value: value)
-        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .value(model: model))
-        vc.modalPresentationStyle = .overFullScreen
-        vc.modalTransitionStyle = .crossDissolve
-        viewController?.present(vc, animated: true)
+        let coefficientsType = CoefficientType.value(model: model)
+        routeToAlert(coefficientType: coefficientsType, index: index)
     }
 }
 
 extension CalculationPresenter: ChoiceCoefficientTypeTableViewCellDelegate {
-    func choiceCoefficientCellPressed(value: Double, coefType: ChoiceСoefficientType) {
+    func choiceCoefficientCellPressed(value: Double,
+                                      coefType: ChoiceСoefficientType,
+                                      index: Int) {
         let model = ChoiceCoefficientModel(type: coefType, itemIndex: 0)
-        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .choice(model: model))
-        vc.modalPresentationStyle = .overFullScreen
-        vc.modalTransitionStyle = .crossDissolve
-        viewController?.present(vc, animated: true)
+        let coefficientsType = CoefficientType.choice(model: model)
+        routeToAlert(coefficientType: coefficientsType, index: index)
+        
     }
 }
 
 extension CalculationPresenter: DefaultValueCoefficientTableViewCellDelegate {
-    func defaultValueCoefficientCellPressed(value: Double) {
+    func defaultValueCoefficientCellPressed(value: Double, index: Int) {
         let model = DefaultCoefficientValueModel(type: .inflationRate)
-        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .defaultValue(model: model,
-                                                                                   value: value))
-        vc.modalPresentationStyle = .overFullScreen
-        vc.modalTransitionStyle = .crossDissolve
-        viewController?.present(vc, animated: true)
+        let coefficientType = CoefficientType.defaultValue(model: model,
+                                                           value: value)
+        routeToAlert(coefficientType: coefficientType, index: index)
+    }
+}
+
+extension CalculationPresenter: AlertPresenterDelegate {
+    func saveButtonPressed(type: CoefficientType, index: Int) {
+        switch type {
+        case let .value(model):
+            valueCoefficients[index] = model
+        default:
+            break
+        }
+        makeSections()
     }
 }
