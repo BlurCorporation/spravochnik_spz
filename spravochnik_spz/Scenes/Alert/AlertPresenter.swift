@@ -41,6 +41,7 @@ final class AlertPresenter {
 
 extension AlertPresenter: AlertPresenterProtocol {
     func viewDidLoad() {
+        
         switch coefficientType {
         case let .clear(model):
             let title = model.title
@@ -57,6 +58,7 @@ extension AlertPresenter: AlertPresenterProtocol {
                                              value: model.value)
             
         case let .choice(model):
+            viewController?.changeCurrectSelected(index: model.itemIndex)
             let axis = model.type
             let title = model.type.title
             let collectionViewDataSource = [String]()
@@ -106,8 +108,12 @@ extension AlertPresenter: AlertPresenterProtocol {
             let coefficientType = CoefficientType.value(model: newModel)
             viewController?.dismiss(animated: true)
             delegate?.saveButtonPressed(type: coefficientType, index: index)
-        //case .choice(let model):
-            //coefficientType = .choice(model: <#T##ChoiceCoefficientModel#>)
+        case .choice(let model):
+//            let newValue = Int(value ?? "") ?? 0
+            let newModel = ChoiceCoefficientModel(type: model.type, itemIndex: viewController?.currentSelected)
+            let coefficientType = CoefficientType.choice(model: newModel)
+            viewController?.dismiss(animated: true)
+            delegate?.saveButtonPressed(type: coefficientType, index: index)
         //case .defaultValue(let model, let value):
             //coefficientType = .defaultValue(model: <#T##DefaultCoefficientValueModel#>, value: <#T##Double#>)
         default:

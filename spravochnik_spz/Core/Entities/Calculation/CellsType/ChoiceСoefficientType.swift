@@ -58,12 +58,13 @@ struct ChoiceСoefficientItemsModel {
 
 struct ChoiceCoefficientModel: Codable {
     let type: ChoiceСoefficientType
-    var itemIndex: Int
+    var itemIndex: Int?
 }
 
 struct ChoiceCoefficientViewModel {
     let title: String
     let descrpt: String
+    let itemIndex: Int?
     let type: ChoiceСoefficientType
     var delegate: ChoiceCoefficientTypeTableViewCellDelegate?
 }

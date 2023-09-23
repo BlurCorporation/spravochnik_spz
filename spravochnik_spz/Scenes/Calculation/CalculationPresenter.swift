@@ -24,7 +24,7 @@ final class CalculationPresenter {
     private let calculationType: СalculationType
     private let defaulValueCoefficients: [DefaultCoefficientValueModel]
     private var valueCoefficients: [ValueСoefficientModel]
-    private let choiceCoefficients: [ChoiceCoefficientModel]
+    private var choiceCoefficients: [ChoiceCoefficientModel]
     private var checkboxCoefficients: [CheckboxСoefficientModel]
     
     private var saveButtonPressed: ((CoefficientType) -> Void)? = { type in
@@ -84,6 +84,7 @@ final class CalculationPresenter {
         let rows = choiceCoefficients.map { model -> CalculationViewController.RowType in
             let viewModel = ChoiceCoefficientViewModel(title: model.type.title,
                                                        descrpt: model.type.descrp,
+                                                       itemIndex: model.itemIndex,
                                                        type: model.type,
                                                        delegate: self)
             return CalculationViewController.RowType.choiceСoefficient(viewModel: viewModel)
@@ -162,10 +163,10 @@ extension CalculationPresenter: ValueCoefficientTableViewCellDelegate {
 }
 
 extension CalculationPresenter: ChoiceCoefficientTypeTableViewCellDelegate {
-    func choiceCoefficientCellPressed(value: Double,
+    func choiceCoefficientCellPressed(value: Int?,
                                       coefType: ChoiceСoefficientType,
                                       index: Int) {
-        let model = ChoiceCoefficientModel(type: coefType, itemIndex: 0)
+        let model = ChoiceCoefficientModel(type: coefType, itemIndex: value)
         let coefficientsType = CoefficientType.choice(model: model)
         routeToAlert(coefficientType: coefficientsType, index: index)
         
@@ -186,6 +187,8 @@ extension CalculationPresenter: AlertPresenterDelegate {
         switch type {
         case let .value(model):
             valueCoefficients[index] = model
+        case let .choice(model):
+            choiceCoefficients[index] = model
         default:
             break
         }

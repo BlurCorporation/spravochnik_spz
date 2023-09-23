@@ -103,21 +103,21 @@ enum СalculationType: CaseIterable, Codable {
         case .securityAlarm:
             return [
                 .init(type: .numberOfLinesOfDefence,
-                      itemIndex: 0)
+                      itemIndex: nil)
             ]
         case .perimeterSecurityAlarm:
             return [
                 .init(type: .numberOfLinesOfDefence,
-                      itemIndex: 0),
+                      itemIndex: nil),
                 .init(type: .terrain,
-                      itemIndex: 0)
+                      itemIndex: nil)
             ]
         case .fireAlarmSystem:
             return []
         case .fireWarningSystem:
             return [
                 .init(type: .typeOfNotificationSystem,
-                      itemIndex: 0)
+                      itemIndex: nil)
             ]
         case .modularFireExtinguishingSystems:
             return []
@@ -126,7 +126,7 @@ enum СalculationType: CaseIterable, Codable {
         case .pumpingStationsOfFireExtinguishingInstallations:
             return [
                 .init(type: .numberOfFirePumpGroups,
-                      itemIndex: 0)
+                      itemIndex: nil)
             ]
         }
     }

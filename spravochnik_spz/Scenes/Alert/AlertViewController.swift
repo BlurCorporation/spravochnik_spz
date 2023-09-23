@@ -26,6 +26,8 @@ protocol AlertViewProtocol: UIViewController {
                            axis: ChoiceСoefficientType,
                            numOfItems: Int)
     func update(dataSource: [String])
+    func changeCurrectSelected(index: Int?)
+    var currentSelected : Int? { get }
 }
 
 // MARK: - CalculationViewController
@@ -85,7 +87,7 @@ final class AlertViewController: UIViewController {
         return collectionView
     }()
     
-    private let leftButton: CustomButton = {
+    private lazy var leftButton: CustomButton = {
         let button = CustomButton()
         button.mode = .white
         button.setTitle("Закрыть",
@@ -169,6 +171,10 @@ final class AlertViewController: UIViewController {
 // MARK: - AlertViewProtocol Impl
 
 extension AlertViewController: AlertViewProtocol {
+    func changeCurrectSelected(index: Int?) {
+        self.currentSelected = index
+    }
+    
     func method(type: CoefficientType) {
         self.type = type
         switch type {

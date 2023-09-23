@@ -94,7 +94,7 @@ final class ValueCoefficientTableViewCell: UITableViewCell {
         type = viewModel.type
         delegate = viewModel.delegate
         
-        self.index = index // Это не то же самое, что self.value? проверить
+        self.index = index
         
         if viewModel.value != .zero {
             button.setTitle("\(viewModel.value)", for: .normal)
