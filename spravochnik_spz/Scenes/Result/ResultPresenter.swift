@@ -79,7 +79,7 @@ final class  ResultPresenter {
     
     private func makeDefaultCoefficientValueResultSection() -> ResultViewController.Section {
         let rows = defaulValueCoefficients.map { model -> ResultViewController.RowType in
-            let viewModel = DefaultCoefficientValueResultViewModel(title: "\(model.type.title) \(model.value)")
+            let viewModel = DefaultCoefficientValueResultViewModel(title: "\(model.type.title) \(model.value ?? model.type.defaultValue)")
             return ResultViewController.RowType.defaultvalueСoefficients(viewModel: viewModel)
         }
         return ResultViewController.Section(type: .defaultvalueСoefficients,
@@ -111,7 +111,7 @@ final class  ResultPresenter {
                 PriceViewModel(
                     title: model.type.title,
                     description: "\(model.type.carrency)",
-                    cost: "\(model.value)"
+                    cost: String(format: "%.2f", Double(model.value))
                 )
             }
             let viewModel = CalculationResultViewModel(title: model.title.title, description: model.description, prices: prices)
