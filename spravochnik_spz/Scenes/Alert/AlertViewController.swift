@@ -74,6 +74,7 @@ final class AlertViewController: UIViewController {
         textField.layer.cornerRadius = 11
         textField.layer.borderWidth = 1
         textField.tintColor = .black
+        textField.keyboardType = .decimalPad
         return textField
     }()
     
@@ -186,8 +187,8 @@ extension AlertViewController: AlertViewProtocol {
             updateUIForChoice(title: model.type.title,
                               axis: model.type,
                               numOfItems: 0)
-        case .defaultValue(let model, let value):
-            updateUIForValue(title: model.type.title, value: value)
+        case .defaultValue(let model):
+            updateUIForValue(title: model.type.title, value: model.value ?? model.type.defaultValue)
         }
     }
     

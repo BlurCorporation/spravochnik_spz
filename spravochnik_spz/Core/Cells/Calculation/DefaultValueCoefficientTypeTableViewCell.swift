@@ -23,6 +23,7 @@ final class DefaultValueCoefficientTableViewCell: UITableViewCell {
     // MARK: - PrivateProperties
     
     private var value: Double = .zero
+    private var index: Int = .zero
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -81,11 +82,16 @@ final class DefaultValueCoefficientTableViewCell: UITableViewCell {
     
     //MARK: - Methods
     
-    func configure(with viewModel: DefaultCoefficientValueViewModel) {
+    func configure(with viewModel: DefaultCoefficientValueViewModel, index: Int) {
         titleLabel.text = viewModel.title
-        button.setTitle("\(viewModel.value)", for: .normal)
         value = viewModel.value
         delegate = viewModel.delegate
+        
+        self.index = index
+        
+        if viewModel.value != .zero {
+            button.setTitle("\(viewModel.value)", for: .normal)
+        }
     }
     
     // MARK: - Actions

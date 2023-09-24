@@ -22,7 +22,7 @@ final class CalculationPresenter {
     private let sceneBuildManager: Buildable
     private let title: String
     private let calculationType: СalculationType
-    private let defaulValueCoefficients: [DefaultCoefficientValueModel]
+    private var defaulValueCoefficients: [DefaultCoefficientValueModel]
     private var valueCoefficients: [ValueСoefficientModel]
     private var choiceCoefficients: [ChoiceCoefficientModel]
     private var checkboxCoefficients: [CheckboxСoefficientModel]
@@ -61,7 +61,8 @@ final class CalculationPresenter {
         let rows = defaulValueCoefficients.map { model -> CalculationViewController.RowType in
             let viewModel = DefaultCoefficientValueViewModel(
                 title: model.type.title,
-                value: model.type.defaultValue,
+                value: model.value ?? model.type.defaultValue,
+                
                 delegate: self
             )
             return CalculationViewController.RowType.defaultvalueСoefficients(viewModel: viewModel)
@@ -175,9 +176,8 @@ extension CalculationPresenter: ChoiceCoefficientTypeTableViewCellDelegate {
 
 extension CalculationPresenter: DefaultValueCoefficientTableViewCellDelegate {
     func defaultValueCoefficientCellPressed(value: Double, index: Int) {
-        let model = DefaultCoefficientValueModel(type: .inflationRate)
-        let coefficientType = CoefficientType.defaultValue(model: model,
-                                                           value: value)
+        let model = DefaultCoefficientValueModel(type: .inflationRate, value: value)
+        let coefficientType = CoefficientType.defaultValue(model: model)
         routeToAlert(coefficientType: coefficientType, index: index)
     }
 }
@@ -189,6 +189,8 @@ extension CalculationPresenter: AlertPresenterDelegate {
             valueCoefficients[index] = model
         case let .choice(model):
             choiceCoefficients[index] = model
+        case let .defaultValue(model):
+            defaulValueCoefficients[index] = model
         default:
             break
         }

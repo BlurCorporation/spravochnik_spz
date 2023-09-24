@@ -116,7 +116,7 @@ private extension CalculationService {
         var inflCoef: Double = 1
         defaulValueCoefficients.forEach { coef in
             if coef.type == .inflationRate {
-                inflCoef = coef.type.defaultValue
+                inflCoef = coef.value ?? coef.type.defaultValue
             }
         }
         
@@ -247,7 +247,7 @@ private extension CalculationService {
         var inflCoef: Double = 1
         defaulValueCoefficients.forEach { coef in
             if coef.type == .inflationRate {
-                inflCoef = coef.type.defaultValue
+                inflCoef = coef.value ?? coef.type.defaultValue
             }
         }
         
@@ -337,7 +337,7 @@ private extension CalculationService {
         var inflCoef: Double = 1
         defaulValueCoefficients.forEach { coef in
             if coef.type == .inflationRate {
-                inflCoef = coef.type.defaultValue
+                inflCoef = coef.value ?? coef.type.defaultValue
             }
         }
         
@@ -470,7 +470,7 @@ private extension CalculationService {
         var inflCoef: Double = 1
         defaulValueCoefficients.forEach { coef in
             if coef.type == .inflationRate {
-                inflCoef = coef.type.defaultValue
+                inflCoef = coef.value ?? coef.type.defaultValue
             }
         }
         
@@ -550,7 +550,7 @@ private extension CalculationService {
         var inflCoef: Double = 1
         defaulValueCoefficients.forEach { coef in
             if coef.type == .inflationRate {
-                inflCoef = coef.type.defaultValue
+                inflCoef = coef.value ?? coef.type.defaultValue
             }
         }
         
@@ -645,7 +645,7 @@ private extension CalculationService {
         var inflCoef: Double = 1
         defaulValueCoefficients.forEach { coef in
             if coef.type == .inflationRate {
-                inflCoef = coef.type.defaultValue
+                inflCoef = coef.value ?? coef.type.defaultValue
             }
         }
         
@@ -699,7 +699,7 @@ private extension CalculationService {
         var inflCoef: Double = 1
         defaulValueCoefficients.forEach { coef in
             if coef.type == .inflationRate {
-                inflCoef = coef.type.defaultValue
+                inflCoef = coef.value ?? coef.type.defaultValue
             }
         }
         

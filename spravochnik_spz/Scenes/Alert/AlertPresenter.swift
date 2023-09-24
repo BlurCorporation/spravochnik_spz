@@ -66,8 +66,9 @@ extension AlertPresenter: AlertPresenterProtocol {
             viewController?.updateUIForChoice(title: title,
                                               axis: axis,
                                               numOfItems: 0)
-        case let .defaultValue(model, value):
+        case let .defaultValue(model):
             let title = model.type.title
+            let value = model.value ?? model.type.defaultValue
             viewController?.updateUIForValue(title: title, value: value)
         }
         viewController?.method(type: coefficientType)
@@ -114,8 +115,12 @@ extension AlertPresenter: AlertPresenterProtocol {
             let coefficientType = CoefficientType.choice(model: newModel)
             viewController?.dismiss(animated: true)
             delegate?.saveButtonPressed(type: coefficientType, index: index)
-        //case .defaultValue(let model, let value):
-            //coefficientType = .defaultValue(model: <#T##DefaultCoefficientValueModel#>, value: <#T##Double#>)
+        case .defaultValue(let model):
+            let newValue = Double(value ?? "") ?? 0.0
+            let newModel = DefaultCoefficientValueModel(type: model.type, value: newValue)
+            let coefficientType = CoefficientType.defaultValue(model: newModel)
+            viewController?.dismiss(animated: true)
+            delegate?.saveButtonPressed(type: coefficientType, index: index)
         default:
             break
         }
@@ -128,5 +133,5 @@ enum CoefficientType {
     case clear(model: NoСoefficientModel)
     case value(model: ValueСoefficientModel)
     case choice(model: ChoiceCoefficientModel)
-    case defaultValue(model: DefaultCoefficientValueModel, value: Double)
+    case defaultValue(model: DefaultCoefficientValueModel)
 }
