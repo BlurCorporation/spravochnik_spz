@@ -128,8 +128,7 @@ final class  ResultPresenter {
                        rows: rows)
     }
     
-    private func setCalcToFB() {
-        let fbService: FirebaseServiceProtocol = FirebaseService()
+    private func makeRequestData() -> [Calculation]{
         format.dateFormat = "dd.MM.yyyy"
         let date = format.string(from: Date())
         var price: Double = 0
@@ -138,9 +137,16 @@ final class  ResultPresenter {
             price += model.prices.first?.value ?? 0.0
         }
         
+        var stages: String = ""
+        if calculationResult.count == 2 {
+            stages = "1-стадийная разработка"
+        } else {
+            stages = "2-хстадийная разработка"
+        }
+        
         let data: [Calculation] = [Calculation(address: "",
                                                date: date,
-                                               stages: "",
+                                               stages: stages,
                                                cost: price,
                                                navigationBarTitle: "",
                                                calculationType: calculationType,
@@ -149,7 +155,13 @@ final class  ResultPresenter {
                                                defaultCoef: defaulValueCoefficients,
                                                checkboxСoef: checkboxCoefficients,
                                                calculationResult: calculationResult)]
-        let calcModel = CalculationModel(userID: firestore.getUserID(), calcName: "Correct Coefs", calculation: data)
+        return data
+    }
+    
+    private func setCalcToFB() {
+        let fbService: FirebaseServiceProtocol = FirebaseService()
+        let calculation = makeRequestData()
+        let calcModel = CalculationModel(userID: firestore.getUserID(), calcName: "Correct Coefs", calculation: calculation)
         FirebaseRepository(firebaseService: fbService).setCalculation(calcModel: calcModel) { result in
             switch result {
             case .success(let calc):
