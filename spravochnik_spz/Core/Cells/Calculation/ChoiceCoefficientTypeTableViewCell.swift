@@ -10,8 +10,9 @@ import UIKit
 // MARK: - ChoiceCoefficientTypeTableViewCell
 
 protocol ChoiceCoefficientTypeTableViewCellDelegate: AnyObject {
-    func choiceCoefficientCellPressed(value: Double,
-                                      coefType: ChoiceСoefficientType)
+    func choiceCoefficientCellPressed(value: Int?,
+                                      coefType: ChoiceСoefficientType,
+                                      index: Int)
 }
 
 // MARK: ChoiceCoefficientTypeTableViewCell
@@ -24,8 +25,9 @@ final class ChoiceCoefficientTypeTableViewCell: UITableViewCell {
     
     // MARK: - PrivateProperties
     
-    private var value: Double = .zero
+    private var value: Int?
     private var coefficientType: ChoiceСoefficientType?
+    private var index: Int = .zero
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -84,11 +86,36 @@ final class ChoiceCoefficientTypeTableViewCell: UITableViewCell {
     
     //MARK: - Methods
     
-    func configure(with viewModel: ChoiceCoefficientViewModel) {
+    func configure(with viewModel: ChoiceCoefficientViewModel, index: Int) {
         titleLabel.text = viewModel.title
         descriptionLabel.text = viewModel.descrpt
         coefficientType = viewModel.type
         delegate = viewModel.delegate
+        
+        self.index = index
+        
+        if let itemIndex = viewModel.itemIndex {
+            if viewModel.type == .terrain {
+                switch viewModel.itemIndex {
+                case 0:
+                    button.setTitle("Норм", for: .normal)
+                    value = 0
+                case 1:
+                    button.setTitle("Холм", for: .normal)
+                    value = 1
+                case 2:
+                    button.setTitle("Гор", for: .normal)
+                    value = 2
+                default:
+                    button.setTitle("", for: .normal)
+                    value = nil
+                }
+            } else {
+                button.setTitle("\(itemIndex + 1)", for: .normal)
+                value = itemIndex
+            }
+        }
+            
     }
     
     // MARK: - Actions
@@ -96,7 +123,8 @@ final class ChoiceCoefficientTypeTableViewCell: UITableViewCell {
     @objc
     private func buttonPressed() {
         delegate?.choiceCoefficientCellPressed(value: value,
-                                               coefType: coefficientType ?? .terrain)
+                                               coefType: coefficientType ?? .terrain,
+                                               index: index)
     }
 }
 

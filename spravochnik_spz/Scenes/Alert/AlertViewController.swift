@@ -16,6 +16,7 @@ enum CollectionViewAxis {
 
 //TODO: добавить value
 protocol AlertViewProtocol: UIViewController {
+    func method(type: CoefficientType)
     func updateUIForClear(title: String,
                           leftButtonTitle: String,
                           rightButtonTitle: String)
@@ -25,6 +26,8 @@ protocol AlertViewProtocol: UIViewController {
                            axis: ChoiceСoefficientType,
                            numOfItems: Int)
     func update(dataSource: [String])
+    func changeCurrectSelected(index: Int?)
+    var currentSelected : Int? { get }
 }
 
 // MARK: - CalculationViewController
@@ -38,6 +41,8 @@ final class AlertViewController: UIViewController {
     private var dataSource = [String]()
     var previousSelected : IndexPath?
     var currentSelected : Int?
+    
+    private var type: CoefficientType?
     
     private let blurView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialLight)
@@ -69,6 +74,7 @@ final class AlertViewController: UIViewController {
         textField.layer.cornerRadius = 11
         textField.layer.borderWidth = 1
         textField.tintColor = .black
+        textField.keyboardType = .decimalPad
         return textField
     }()
     
@@ -82,7 +88,7 @@ final class AlertViewController: UIViewController {
         return collectionView
     }()
     
-    private let leftButton: CustomButton = {
+    private lazy var leftButton: CustomButton = {
         let button = CustomButton()
         button.mode = .white
         button.setTitle("Закрыть",
@@ -152,7 +158,9 @@ final class AlertViewController: UIViewController {
     @objc
     func rightButtonPressed() {
         rightButton.pushAnimate { [weak self] in
-            self?.presenter?.rightButtonPressed()
+//            self?.presenter?.rightButtonPressed()
+            guard let type = self?.type else { return }
+            self?.presenter?.method(type: type, value: self?.textField.text)
         }
     }
     
@@ -164,6 +172,26 @@ final class AlertViewController: UIViewController {
 // MARK: - AlertViewProtocol Impl
 
 extension AlertViewController: AlertViewProtocol {
+    func changeCurrectSelected(index: Int?) {
+        self.currentSelected = index
+    }
+    
+    func method(type: CoefficientType) {
+        self.type = type
+        switch type {
+        case .clear(let model):
+            updateUIForClear(title: model.title, leftButtonTitle: model.leftButton, rightButtonTitle: model.rightButton)
+        case .value(let model):
+            updateUIForValue(title: model.type.title, value: model.value)
+        case .choice(let model):
+            updateUIForChoice(title: model.type.title,
+                              axis: model.type,
+                              numOfItems: 0)
+        case .defaultValue(let model):
+            updateUIForValue(title: model.type.title, value: model.value ?? model.type.defaultValue)
+        }
+    }
+    
     func update(dataSource: [String]) {
         self.dataSource = dataSource
     }

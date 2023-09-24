@@ -25,6 +25,13 @@ enum DefaultCoefficientValueType: Codable {
 
 struct DefaultCoefficientValueModel: Codable {
     let type: DefaultCoefficientValueType
+    let value: Double?
+    
+    init(type: DefaultCoefficientValueType,
+         value: Double? = nil) {
+        self.type = type
+        self.value = value
+    }
 }
 
 struct DefaultCoefficientValueViewModel {

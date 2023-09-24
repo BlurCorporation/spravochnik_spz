@@ -192,7 +192,7 @@ extension CalculationViewController: UITableViewDataSource {
                 return UITableViewCell()
 #endif
             }
-            cell.configure(with: viewModel)
+            cell.configure(with: viewModel, index: indexPath.row)
             return cell
             
         case let .valueСoefficient(viewModel):
@@ -204,7 +204,7 @@ extension CalculationViewController: UITableViewDataSource {
                 return UITableViewCell()
 #endif
             }
-            cell.configure(with: viewModel)
+            cell.configure(with: viewModel, index: indexPath.row)
             return cell
             
         case let .choiceСoefficient(viewModel):
@@ -216,7 +216,7 @@ extension CalculationViewController: UITableViewDataSource {
                 return UITableViewCell()
 #endif
             }
-            cell.configure(with: viewModel)
+            cell.configure(with: viewModel, index: indexPath.row)
             return cell
             
         case let .checkboxСoefficient(viewModel):

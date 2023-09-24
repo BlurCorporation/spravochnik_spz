@@ -22,10 +22,14 @@ final class CalculationPresenter {
     private let sceneBuildManager: Buildable
     private let title: String
     private let calculationType: СalculationType
-    private let defaulValueCoefficients: [DefaultCoefficientValueModel]
-    private let valueCoefficients: [ValueСoefficientModel]
-    private let choiceCoefficients: [ChoiceCoefficientModel]
+    private var defaulValueCoefficients: [DefaultCoefficientValueModel]
+    private var valueCoefficients: [ValueСoefficientModel]
+    private var choiceCoefficients: [ChoiceCoefficientModel]
     private var checkboxCoefficients: [CheckboxСoefficientModel]
+    
+    private var saveButtonPressed: ((CoefficientType) -> Void)? = { type in
+        print(type)
+    }
     
     // MARK: - Initializer
     
@@ -57,7 +61,8 @@ final class CalculationPresenter {
         let rows = defaulValueCoefficients.map { model -> CalculationViewController.RowType in
             let viewModel = DefaultCoefficientValueViewModel(
                 title: model.type.title,
-                value: model.type.defaultValue,
+                value: model.value ?? model.type.defaultValue,
+                
                 delegate: self
             )
             return CalculationViewController.RowType.defaultvalueСoefficients(viewModel: viewModel)
@@ -80,6 +85,7 @@ final class CalculationPresenter {
         let rows = choiceCoefficients.map { model -> CalculationViewController.RowType in
             let viewModel = ChoiceCoefficientViewModel(title: model.type.title,
                                                        descrpt: model.type.descrp,
+                                                       itemIndex: model.itemIndex,
                                                        type: model.type,
                                                        delegate: self)
             return CalculationViewController.RowType.choiceСoefficient(viewModel: viewModel)
@@ -99,6 +105,13 @@ final class CalculationPresenter {
         viewController?.updateHeader(viewModel: .init(title: title,
                                                       delegate: self))
         viewController?.update(sections: sections)
+    }
+    
+    private func routeToAlert(coefficientType: CoefficientType, index: Int) {
+        let vc = sceneBuildManager.buildAlertScreen(coefficientType: coefficientType, index: index, delegate: self)
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        viewController?.present(vc, animated: true)
     }
 }
 
@@ -124,6 +137,7 @@ extension CalculationPresenter: CalculationPresenterProtocol {
             valueCoefficients: valueCoefficients,
             choiceCoefficients: choiceCoefficients,
             checkboxCoefficients: checkboxCoefficients)
+        
         viewController?.navigationController?.pushViewController(resultViewController, animated: true)
     }
     
@@ -140,33 +154,46 @@ extension CalculationPresenter: CalculationHeaderViewCellCellDelegate {
 
 extension CalculationPresenter: ValueCoefficientTableViewCellDelegate {
     func valueCoefficientCellPressed(value: Double,
-                                     type: ValueСoefficientType) {
+                                     type: ValueСoefficientType,
+                                     index: Int) {
         let model = ValueСoefficientModel(type: type,
                                           value: value)
-        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .value(model: model))
-        vc.modalPresentationStyle = .overFullScreen
-        vc.modalTransitionStyle = .crossDissolve
-        viewController?.present(vc, animated: true)
+        let coefficientsType = CoefficientType.value(model: model)
+        routeToAlert(coefficientType: coefficientsType, index: index)
     }
 }
 
 extension CalculationPresenter: ChoiceCoefficientTypeTableViewCellDelegate {
-    func choiceCoefficientCellPressed(value: Double, coefType: ChoiceСoefficientType) {
-        let model = ChoiceCoefficientModel(type: coefType, itemIndex: 0)
-        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .choice(model: model))
-        vc.modalPresentationStyle = .overFullScreen
-        vc.modalTransitionStyle = .crossDissolve
-        viewController?.present(vc, animated: true)
+    func choiceCoefficientCellPressed(value: Int?,
+                                      coefType: ChoiceСoefficientType,
+                                      index: Int) {
+        let model = ChoiceCoefficientModel(type: coefType, itemIndex: value)
+        let coefficientsType = CoefficientType.choice(model: model)
+        routeToAlert(coefficientType: coefficientsType, index: index)
+        
     }
 }
 
 extension CalculationPresenter: DefaultValueCoefficientTableViewCellDelegate {
-    func defaultValueCoefficientCellPressed(value: Double) {
-        let model = DefaultCoefficientValueModel(type: .inflationRate)
-        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .defaultValue(model: model,
-                                                                                   value: value))
-        vc.modalPresentationStyle = .overFullScreen
-        vc.modalTransitionStyle = .crossDissolve
-        viewController?.present(vc, animated: true)
+    func defaultValueCoefficientCellPressed(value: Double, index: Int) {
+        let model = DefaultCoefficientValueModel(type: .inflationRate, value: value)
+        let coefficientType = CoefficientType.defaultValue(model: model)
+        routeToAlert(coefficientType: coefficientType, index: index)
+    }
+}
+
+extension CalculationPresenter: AlertPresenterDelegate {
+    func saveButtonPressed(type: CoefficientType, index: Int) {
+        switch type {
+        case let .value(model):
+            valueCoefficients[index] = model
+        case let .choice(model):
+            choiceCoefficients[index] = model
+        case let .defaultValue(model):
+            defaulValueCoefficients[index] = model
+        default:
+            break
+        }
+        makeSections()
     }
 }

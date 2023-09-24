@@ -8,24 +8,32 @@
 
 // MARK: - AlertPresenterProtocol
 
+protocol AlertPresenterDelegate: AnyObject {
+    func saveButtonPressed(type: CoefficientType, index: Int)
+}
+
 protocol AlertPresenterProtocol: AnyObject {
     func viewDidLoad()
     func rightButtonPressed()
     func leftButtonPressed()
+    func method(type: CoefficientType, value: String?)
 }
 
 // MARK: - ALertPresenter
 
 final class AlertPresenter {
     weak var viewController: AlertViewProtocol?
+    weak var delegate: AlertPresenterDelegate?
     
     // MARK: PrivateProperties
     private var rightButtonHandler: (() -> Void)?
     private let coefficientType: CoefficientType
+    private let index: Int
     // MARK: - Initializer
     
-    init(coefficientType: CoefficientType) {
+    init(coefficientType: CoefficientType, index: Int) {
         self.coefficientType = coefficientType
+        self.index = index
     }
 }
 
@@ -33,6 +41,7 @@ final class AlertPresenter {
 
 extension AlertPresenter: AlertPresenterProtocol {
     func viewDidLoad() {
+        
         switch coefficientType {
         case let .clear(model):
             let title = model.title
@@ -42,11 +51,14 @@ extension AlertPresenter: AlertPresenterProtocol {
             viewController?.updateUIForClear(title: title,
                                              leftButtonTitle: leftButtonTitle,
                                              rightButtonTitle: rightButtonTittle)
+            
         case let .value(model):
             let title = model.type.title
             viewController?.updateUIForValue(title: title,
                                              value: model.value)
+            
         case let .choice(model):
+            viewController?.changeCurrectSelected(index: model.itemIndex)
             let axis = model.type
             let title = model.type.title
             let collectionViewDataSource = [String]()
@@ -54,10 +66,12 @@ extension AlertPresenter: AlertPresenterProtocol {
             viewController?.updateUIForChoice(title: title,
                                               axis: axis,
                                               numOfItems: 0)
-        case let .defaultValue(model, value):
+        case let .defaultValue(model):
             let title = model.type.title
+            let value = model.value ?? model.type.defaultValue
             viewController?.updateUIForValue(title: title, value: value)
         }
+        viewController?.method(type: coefficientType)
     }
     
     private func makeData(_ axis: ChoiceСoefficientType) -> [String] {
@@ -83,11 +97,41 @@ extension AlertPresenter: AlertPresenterProtocol {
             handler()
         }
     }
+    
+    func method(type: CoefficientType, value: String?) {
+        //let coefficientType: CoefficientType
+        switch type {
+        //case .clear(let model):
+            //coefficientType = .clear(model: <#T##NoСoefficientModel#>)
+        case .value(let model):
+            let newValue = Double(value ?? "") ?? 0.0
+            let newModel = ValueСoefficientModel(type: model.type, value: newValue)
+            let coefficientType = CoefficientType.value(model: newModel)
+            viewController?.dismiss(animated: true)
+            delegate?.saveButtonPressed(type: coefficientType, index: index)
+        case .choice(let model):
+//            let newValue = Int(value ?? "") ?? 0
+            let newModel = ChoiceCoefficientModel(type: model.type, itemIndex: viewController?.currentSelected)
+            let coefficientType = CoefficientType.choice(model: newModel)
+            viewController?.dismiss(animated: true)
+            delegate?.saveButtonPressed(type: coefficientType, index: index)
+        case .defaultValue(let model):
+            let newValue = Double(value ?? "") ?? 0.0
+            let newModel = DefaultCoefficientValueModel(type: model.type, value: newValue)
+            let coefficientType = CoefficientType.defaultValue(model: newModel)
+            viewController?.dismiss(animated: true)
+            delegate?.saveButtonPressed(type: coefficientType, index: index)
+        default:
+            break
+        }
+    
+        //saveButtonHandler?(coefficientType)
+    }
 }
 
 enum CoefficientType {
     case clear(model: NoСoefficientModel)
     case value(model: ValueСoefficientModel)
     case choice(model: ChoiceCoefficientModel)
-    case defaultValue(model: DefaultCoefficientValueModel, value: Double)
+    case defaultValue(model: DefaultCoefficientValueModel)
 }

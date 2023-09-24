@@ -93,7 +93,7 @@ class FirebaseRepository: FirebaseRepositoryProtocol {
                                 calculationType: .fireAlarmSystem,
                                 valueCoef: [ValueСoefficientModel(type: .lengthOfThePerimeter, value: 20)],
                                 choiceCoef: [ChoiceCoefficientModel(type: .numberOfFirePumpGroups, itemIndex: 3)],
-                                defaultCoef: [DefaultCoefficientValueModel(type: .inflationRate)],
+                                defaultCoef: [DefaultCoefficientValueModel(type: .inflationRate, value: nil)],
                                 checkboxСoef: [CheckboxСoefficientModel(type: .availabilityOfAlertsForIndividualEvacuationZones, isSelected: true)],
                                 calculationResult: [CalculationResultModel(title: TitleType.stageP,                                                                       description: "",
                                                                            prices: [PriceModel(type: PriceType.withVat,
