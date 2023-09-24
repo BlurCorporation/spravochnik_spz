@@ -5,6 +5,8 @@
 //  Created by Swift Learning on 22.01.2023.
 //
 
+import Foundation
+
 protocol Buildable {
     func buildSplashScreen() -> SplashViewController
     func buildStartScreen() -> StartViewController
@@ -32,6 +34,7 @@ final class SceneBuildManager {
     private let authService: AuthServicable
     private let defaultsManager = DefaultsManager()
     private let firestore = FirebaseService.shared
+    private let format = DateFormatter()
     
     init() {
         self.authService = AuthService(defaultsManager: defaultsManager,
@@ -159,12 +162,14 @@ extension SceneBuildManager: Buildable {
         let presenter = ResultPresenter(sceneBuildManager: self,
                                         resultType: resultType,
                                         calculationService: calculationService,
+                                        firestore: firestore,
                                         calculationType: calculationType,
                                         navigationBarTitle: navigationBarTitle,
                                         defaulValueCoefficients: defaulValueCoefficients,
                                         valueCoefficients: valueCoefficients,
                                         choiceCoefficients: choiceCoefficients,
-                                        checkboxCoefficients: checkboxCoefficients)
+                                        checkboxCoefficients: checkboxCoefficients,
+                                        format: format)
         
         viewController.presenter = presenter
         presenter.viewController = viewController
