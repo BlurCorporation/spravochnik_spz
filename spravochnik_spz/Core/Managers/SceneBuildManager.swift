@@ -19,7 +19,8 @@ protocol Buildable {
     func buildProfileScreen() -> ProfileViewController
     func buildAlertScreen(coefficientType: CoefficientType,
                           index: Int,
-                          delegate: AlertPresenterDelegate) -> AlertViewController
+                          delegate: AlertPresenterDelegate,
+                          handler: (() -> Void)?) -> AlertViewController
     func buildCalculationScreen(calculationType: СalculationType) -> CalculationViewController
     func buildResultScreen(resultType: ResultType,
                            navigationBarTitle: String,
@@ -179,11 +180,13 @@ extension SceneBuildManager: Buildable {
     
     func buildAlertScreen(coefficientType: CoefficientType,
                           index: Int,
-                          delegate: AlertPresenterDelegate) -> AlertViewController {
+                          delegate: AlertPresenterDelegate,
+                          handler: (() -> Void)?) -> AlertViewController {
         let viewController = AlertViewController()
         let presenter = AlertPresenter(coefficientType: coefficientType, index: index)
-        
+        presenter.changeRightHandler(handler: handler)
         viewController.presenter = presenter
+        
         presenter.viewController = viewController
         presenter.delegate = delegate
         return viewController

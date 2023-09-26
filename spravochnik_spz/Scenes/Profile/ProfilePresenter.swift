@@ -62,7 +62,7 @@ extension ProfilePresenter: ProfilePresenterProtocol {
             let rootViewController = UINavigationController.init(rootViewController: startViewController)
             UIApplication.shared.windows.first?.rootViewController = rootViewController
         })
-        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .clear(model: model), index: .zero, delegate: self)
+        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .clear(model: model), index: .zero, delegate: self, handler: nil)
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         viewController?.present(vc, animated: true)

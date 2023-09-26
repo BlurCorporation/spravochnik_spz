@@ -22,7 +22,6 @@ protocol  ResultPresenterProtocol: AnyObject {
 
 final class  ResultPresenter {
     weak var viewController:  ResultViewProtocol?
-    private let navigationItemTitle: String
     
     // MARK: - PrivateProperties
     
@@ -37,6 +36,8 @@ final class  ResultPresenter {
     private let checkboxCoefficients: [CheckboxСoefficientModel]
     private var calculationResult: [CalculationResultModel] = []
     private let format: DateFormatter
+    private let navigationItemTitle: String
+    private var address: String? = nil
     
     // MARK: - Initializer
     
@@ -128,7 +129,7 @@ final class  ResultPresenter {
                        rows: rows)
     }
     
-    private func makeRequestData() -> [Calculation]{
+    private func makeRequestData() -> [Calculation] {
         format.dateFormat = "dd.MM.yyyy"
         let date = format.string(from: Date())
         var price: Double = 0
@@ -144,7 +145,7 @@ final class  ResultPresenter {
             stages = "2-хстадийная разработка"
         }
         
-        let data: [Calculation] = [Calculation(address: "",
+        let data: [Calculation] = [Calculation(address: address ?? "",
                                                date: date,
                                                stages: stages,
                                                cost: price,
@@ -171,6 +172,17 @@ final class  ResultPresenter {
             }
         }
     }
+    
+    private func routeToAlert(coefficientType: CoefficientType) {
+        let handler = { [weak self] in
+            self?.setCalcToFB()
+            self?.viewController?.navigationController?.popToRootViewController(animated: true)
+        }
+        let vc = sceneBuildManager.buildAlertScreen(coefficientType: coefficientType, index: 0, delegate: self, handler: handler)
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        viewController?.present(vc, animated: true)
+    }
 }
 
 //MARK: -  ResultPresenterExtension
@@ -196,8 +208,12 @@ extension  ResultPresenter:  ResultPresenterProtocol {
     }
     
     func calculationButtonPressed() {
-        setCalcToFB()
-        viewController?.navigationController?.popToRootViewController(animated: true)
+        let model = ValueСoefficientModel(type: .address,
+                                          value: 0)
+        let coefficientsType = CoefficientType.value(model: model)
+        routeToAlert(coefficientType: coefficientsType)
+//        setCalcToFB()
+//        viewController?.navigationController?.popToRootViewController(animated: true)
     }
     
     func shareButtonButtonPressed() {
@@ -210,5 +226,20 @@ extension  ResultPresenter:  ResultPresenterProtocol {
     
     func setupNavigetionItemTitle() {
         viewController?.setupNavigationItem(title: navigationItemTitle)
+    }
+}
+
+extension ResultPresenter: AlertPresenterDelegate {
+    func saveButtonPressed(type: CoefficientType, index: Int) {
+        switch type {
+        case .clear(_):
+            break
+        case .value(model: let model):
+            self.address = model.stringValue
+        case .choice(_):
+            break
+        case .defaultValue(_):
+            break
+        }
     }
 }
