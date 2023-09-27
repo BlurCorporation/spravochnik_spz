@@ -149,7 +149,7 @@ final class  ResultPresenter {
                                                date: date,
                                                stages: stages,
                                                cost: price,
-                                               navigationBarTitle: "",
+                                               navigationBarTitle: navigationItemTitle,
                                                calculationType: calculationType,
                                                valueCoef: valueCoefficients,
                                                choiceCoef: choiceCoefficients,
