@@ -95,6 +95,15 @@ final class ProfileViewController: UIViewController {
         button.addGestureRecognizer(tap)
         return button
     }()
+
+    private lazy var deleteAccountButton: CustomProfileButton = {
+        let button = CustomProfileButton(size: .small)
+        button.setTitleLabels(header: "deleteAccountButtonText".localized)
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(deleteAccountButtonPressed))
+        button.addGestureRecognizer(tap)
+        return button
+    }()
     
     private let buttonsStack: UIStackView = {
         let stackView = UIStackView()
@@ -150,6 +159,12 @@ final class ProfileViewController: UIViewController {
             self?.presenter?.privacyButtonPressed()
         }
     }
+    
+    @objc private func deleteAccountButtonPressed() {
+        deleteAccountButton.pushAnimate { [weak self] in
+            self?.presenter?.deleteAccountButtonPressed()
+        }
+    }
 }
 
 // MARK: - ProfileViewProtocol Impl
@@ -183,7 +198,8 @@ private extension ProfileViewController {
         buttonsStack.addArrangedSubviews(themeButton,
                                          updateDataButton,
                                          conditionButton,
-                                         privacyButton)
+                                         privacyButton,
+                                         deleteAccountButton)
         commonButtonsStack.addArrangedSubviews(logoUsernameStack,
                                                     buttonsStack)
         view.addSubviews(commonButtonsStack)
