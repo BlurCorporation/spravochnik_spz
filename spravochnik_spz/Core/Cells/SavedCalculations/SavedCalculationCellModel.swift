@@ -8,6 +8,7 @@
 import UIKit
 
 protocol SavedCalculationsCellModelProtocol {
+    var uuid: String { get}
     var address: String { get }
     var system: String { get }
     var date: String { get }
@@ -17,10 +18,10 @@ protocol SavedCalculationsCellModelProtocol {
     var backgroundImage: UIImage  { get }
     var type: СalculationType { get }
     var actionHandler: (() -> Void)?  { get }
-   
 }
 
 struct SavedCalculationsCellModel: SavedCalculationsCellModelProtocol {
+    var uuid: String
     var address: String
     var system: String
     var date: String

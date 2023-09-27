@@ -21,9 +21,7 @@ final class SavedCalculationsViewController: UIViewController {
     
     // MARK: - PrivateProperties
     
-    private var dataSource: [SavedCalculationsCellModelProtocol] = [SavedCalculationsCellModelProtocol]()
-    
-    
+    private var dataSource = [SavedCalculationsCellModelProtocol]()
     
     private let headerView = SavedCalcCustomHeaderCell()
     
@@ -56,6 +54,7 @@ final class SavedCalculationsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
+        presenter?.viewWillAppear()
     }
 }
 
@@ -122,6 +121,7 @@ extension SavedCalculationsViewController: UITableViewDelegate {
         if editingStyle == .delete {
             let object = dataSource[indexPath.row]
 //            object.removeHandler?()
+            presenter?.deleteCalc(uuid: object.uuid)
             dataSource.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath],
                                  with: .fade)
