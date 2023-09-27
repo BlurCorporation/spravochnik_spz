@@ -168,6 +168,8 @@ private extension ProfileViewController {
         setupNavBar()
         setupConstraints()
         view.backgroundColor = .systemBackground
+        themeButton.isHidden = true
+        updateDataButton.isHidden = true
     }
     
     func setupNavBar() {
