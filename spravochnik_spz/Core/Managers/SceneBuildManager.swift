@@ -5,6 +5,8 @@
 //  Created by Swift Learning on 22.01.2023.
 //
 
+import Foundation
+
 protocol Buildable {
     func buildSplashScreen() -> SplashViewController
     func buildStartScreen() -> StartViewController
@@ -17,7 +19,8 @@ protocol Buildable {
     func buildProfileScreen() -> ProfileViewController
     func buildAlertScreen(coefficientType: CoefficientType,
                           index: Int,
-                          delegate: AlertPresenterDelegate) -> AlertViewController
+                          delegate: AlertPresenterDelegate,
+                          handler: (() -> Void)?) -> AlertViewController
     func buildCalculationScreen(calculationType: СalculationType) -> CalculationViewController
     func buildResultScreen(resultType: ResultType,
                            navigationBarTitle: String,
@@ -32,6 +35,7 @@ final class SceneBuildManager {
     private let authService: AuthServicable
     private let defaultsManager = DefaultsManager()
     private let firestore = FirebaseService.shared
+    private let format = DateFormatter()
     
     init() {
         self.authService = AuthService(defaultsManager: defaultsManager,
@@ -159,12 +163,14 @@ extension SceneBuildManager: Buildable {
         let presenter = ResultPresenter(sceneBuildManager: self,
                                         resultType: resultType,
                                         calculationService: calculationService,
+                                        firestore: firestore,
                                         calculationType: calculationType,
                                         navigationBarTitle: navigationBarTitle,
                                         defaulValueCoefficients: defaulValueCoefficients,
                                         valueCoefficients: valueCoefficients,
                                         choiceCoefficients: choiceCoefficients,
-                                        checkboxCoefficients: checkboxCoefficients)
+                                        checkboxCoefficients: checkboxCoefficients,
+                                        format: format)
         
         viewController.presenter = presenter
         presenter.viewController = viewController
@@ -174,11 +180,13 @@ extension SceneBuildManager: Buildable {
     
     func buildAlertScreen(coefficientType: CoefficientType,
                           index: Int,
-                          delegate: AlertPresenterDelegate) -> AlertViewController {
+                          delegate: AlertPresenterDelegate,
+                          handler: (() -> Void)?) -> AlertViewController {
         let viewController = AlertViewController()
         let presenter = AlertPresenter(coefficientType: coefficientType, index: index)
-        
+        presenter.changeRightHandler(handler: handler)
         viewController.presenter = presenter
+        
         presenter.viewController = viewController
         presenter.delegate = delegate
         return viewController

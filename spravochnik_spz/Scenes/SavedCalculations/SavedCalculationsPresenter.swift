@@ -35,7 +35,6 @@ final class SavedCalculationsTablePresenter {
                                                                                               prices: [PriceModel(type: PriceType.withVat,
                                                                                                                   value: 0.5)])])]
     
-    
     // MARK: - Initializer
     
     init(sceneBuildManager: Buildable,
@@ -57,8 +56,8 @@ final class SavedCalculationsTablePresenter {
                                                         valueCoef: [ValueСoefficientModel(type: .lengthOfThePerimeter, value: 20)],
                                                         choiceCoef: [ChoiceCoefficientModel(type: .numberOfFirePumpGroups, itemIndex: 3)],
                                                         defaultCoef: [DefaultCoefficientValueModel(type: .inflationRate, value: 37)],
-                                                        checkboxСoef: [CheckboxСoefficientModel(type: .availabilityOfAlertsForIndividualEvacuationZones,                                       isSelected: true)],
-                                                        calculationResult: [CalculationResultModel(title: TitleType.stageP,                                                                       description: "",
+                                                        checkboxСoef: [CheckboxСoefficientModel(type: .availabilityOfAlertsForIndividualEvacuationZones,                                                isSelected: true)],
+                                                        calculationResult: [CalculationResultModel(title: TitleType.stageP,                                                                                description: "",
                                                                                                    prices: [PriceModel(type: PriceType.withVat,
                                                                                                                        value: 0.5)])])]
         

@@ -108,7 +108,7 @@ final class CalculationPresenter {
     }
     
     private func routeToAlert(coefficientType: CoefficientType, index: Int) {
-        let vc = sceneBuildManager.buildAlertScreen(coefficientType: coefficientType, index: index, delegate: self)
+        let vc = sceneBuildManager.buildAlertScreen(coefficientType: coefficientType, index: index, delegate: self, handler: nil)
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         viewController?.present(vc, animated: true)

@@ -17,6 +17,7 @@ protocol AlertPresenterProtocol: AnyObject {
     func rightButtonPressed()
     func leftButtonPressed()
     func method(type: CoefficientType, value: String?)
+    func changeRightHandler(handler: (() -> Void)?)
 }
 
 // MARK: - ALertPresenter
@@ -105,10 +106,12 @@ extension AlertPresenter: AlertPresenterProtocol {
             //coefficientType = .clear(model: <#T##NoСoefficientModel#>)
         case .value(let model):
             let newValue = Double(value ?? "") ?? 0.0
-            let newModel = ValueСoefficientModel(type: model.type, value: newValue)
+            let newModel = ValueСoefficientModel(type: model.type, value: newValue, stringValue: value) //TODO: переделать внесение stringValue
             let coefficientType = CoefficientType.value(model: newModel)
-            viewController?.dismiss(animated: true)
             delegate?.saveButtonPressed(type: coefficientType, index: index)
+            (rightButtonHandler ?? {})()
+            viewController?.dismiss(animated: true)
+            
         case .choice(let model):
 //            let newValue = Int(value ?? "") ?? 0
             let newModel = ChoiceCoefficientModel(type: model.type, itemIndex: viewController?.currentSelected)
@@ -126,6 +129,10 @@ extension AlertPresenter: AlertPresenterProtocol {
         }
     
         //saveButtonHandler?(coefficientType)
+    }
+    
+    func changeRightHandler(handler: (() -> Void)?) {
+        rightButtonHandler = handler
     }
 }
 
