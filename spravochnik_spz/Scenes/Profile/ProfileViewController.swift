@@ -133,7 +133,9 @@ final class ProfileViewController: UIViewController {
     // MARK: - Actions
     
     @objc private func logoutButtonPressed() {
-        presenter?.logoutButtonPressed()
+        logoutButton.pushAnimate { [weak self] in
+            self?.presenter?.logoutButtonPressed()
+        }
     }
     
     @objc private func themeButtonPressed() {
