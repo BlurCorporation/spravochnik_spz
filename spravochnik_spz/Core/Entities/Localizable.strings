@@ -49,6 +49,7 @@
 "updateDataButtonText" = "Обновить данные";
 "usingConditionsButtonText" = "Условия пользования";
 "privacyPolicyButtonText" = "Политика конфиденциальности";
+"deleteAccountButtonText" = "Удалить аккаунт";
 "loginButton" = "Войти";
 "registerButton" = "Зарегистрироваться";
 "forgotPassword" = "Забыли пароль?";

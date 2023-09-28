@@ -163,7 +163,7 @@ final class SavedCalculationsUITableViewCell: UITableViewCell {
             self.systemLabel.text = "\(_object.system)"
             self.dateLabel.text = "\(_object.date)"
             self.stagesLabel.text = "\(_object.stages)"
-            self.costLabel.text = "\(_object.cost.formattedWithSeparator)"
+            self.costLabel.text = "₽ \(_object.cost.formattedWithSeparator)"
         }
     }
     

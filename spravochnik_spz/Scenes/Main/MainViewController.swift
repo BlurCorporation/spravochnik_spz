@@ -153,6 +153,7 @@ private extension MainViewController {
         addSubViews()
         setupConstraints()
         view.backgroundColor = .systemBackground
+        helpButton.isHidden = true
     }
     
     func addSubViews() {

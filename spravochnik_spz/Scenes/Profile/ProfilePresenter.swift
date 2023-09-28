@@ -15,6 +15,7 @@ protocol ProfilePresenterProtocol: AnyObject {
     func updateDataButtonPressed()
     func conditionButtonPressed()
     func privacyButtonPressed()
+    func deleteAccountButtonPressed()
     func logoutButtonPressed()
     func viewDidLoad()
 }
@@ -87,6 +88,11 @@ extension ProfilePresenter: ProfilePresenterProtocol {
     func privacyButtonPressed() {
         print(#function)
     }
+    
+    func deleteAccountButtonPressed() {
+        print(#function)
+    }
+
 }
 
 extension ProfilePresenter: AlertPresenterDelegate {

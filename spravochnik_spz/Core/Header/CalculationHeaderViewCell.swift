@@ -60,7 +60,10 @@ final class CalculationHeaderViewCell: UITableViewHeaderFooterView {
     
     @objc
     private func quitButtonPressed() {
-        delegate?.quitButtonPressed()
+        quitButton.pushAnimate { [weak self] in
+            self?.delegate?.quitButtonPressed()
+        }
+        
     }
 }
 

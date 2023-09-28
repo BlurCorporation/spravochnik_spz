@@ -5,11 +5,19 @@
 //  Created by Swift Learning on 22.01.2023.
 //
 
+struct SavedCalculationsCellData {
+    let key: String
+    let value: Calculation
+}
+
 // MARK: - SavedCalculationsPresenterProtocol
 
 protocol SavedCalculationsTablePresenterProtocol: AnyObject {
     func viewDidLoad()
+    func viewWillAppear()
     func openCell(actionHandler: () -> Void)
+    func deleteCalc(uuid: String)
+    func downloadAndUpdateCells(completion: @escaping (Result<String, Error>) -> Void)
 }
 
 // MARK: - SavedCalculationsPresenter
@@ -21,19 +29,7 @@ final class SavedCalculationsTablePresenter {
     
     private let sceneBuildManager: Buildable
     private let firestore: FirebaseServiceProtocol
-    private var data: [Calculation] = [Calculation(address: "",
-                                                   date: "",
-                                                   stages: "",
-                                                   cost: 0,
-                                                   navigationBarTitle: "",
-                                                   calculationType: .fireAlarmSystem,
-                                                   valueCoef: [ValueСoefficientModel(type: .lengthOfThePerimeter, value: 20)],
-                                                   choiceCoef: [ChoiceCoefficientModel(type: .numberOfFirePumpGroups, itemIndex: 3)],
-                                                   defaultCoef: [DefaultCoefficientValueModel(type: .inflationRate, value: nil)],
-                                                   checkboxСoef: [CheckboxСoefficientModel(type: .availabilityOfAlertsForIndividualEvacuationZones,                                               isSelected: true)],
-                                                   calculationResult: [CalculationResultModel(title: TitleType.stageP,                                                                               description: "",
-                                                                                              prices: [PriceModel(type: PriceType.withVat,
-                                                                                                                  value: 0.5)])])]
+    private var data = [SavedCalculationsCellData]()
     
     // MARK: - Initializer
     
@@ -97,10 +93,47 @@ final class SavedCalculationsTablePresenter {
 //MARK: - SavedCalculationsPresenterExtension
 
 extension SavedCalculationsTablePresenter: SavedCalculationsTablePresenterProtocol {
+    func downloadAndUpdateCells(completion: @escaping (Result<String, Error>) -> Void) {
+        let fbService: FirebaseServiceProtocol = FirebaseService()
+        FirebaseRepository(firebaseService: fbService).getAllCalculations(userID: firestore.getUserID()) { result in
+            switch result {
+            case .success(let calc):
+                guard let calc = calc else { return }
+                self.data = calc
+                completion(.success(""))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func deleteCalc(uuid: String) {
+        let fbService: FirebaseServiceProtocol = FirebaseService()
+        FirebaseRepository(firebaseService: fbService).deleteCalculation(userID: firestore.getUserID(), calcName: uuid) { result in
+            switch result {
+            case .success(_):
+                print("успешно удалено")
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
+    }
+    
     func viewDidLoad() {
         self.viewController?.update(dataSource: self.makeData())
     }
     
+    func viewWillAppear() {
+//        testSetGetCalcFromFB()
+        downloadAndUpdateCells { result in
+            switch result {
+            case .success(let success):
+                self.viewController?.update(dataSource: self.makeData())
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
+    }
     
     private func makeData()-> [SavedCalculationsCellModelProtocol] {
         
@@ -124,7 +157,7 @@ extension SavedCalculationsTablePresenter: SavedCalculationsTablePresenterProtoc
             }
             
             var typeIcon = Constants.Images.empty
-            switch item.calculationType {
+            switch item.value.calculationType {
             case .securityAlarm:
                 typeIcon = Constants.Images.securityAlarmIcon
             case .perimeterSecurityAlarm:
@@ -141,22 +174,23 @@ extension SavedCalculationsTablePresenter: SavedCalculationsTablePresenterProtoc
                 typeIcon = Constants.Images.firePumpIcon
             }
             
-            return SavedCalculationsCellModel(address: item.address,
-                                              system: item.calculationType.title,
-                                              date: item.date,
-                                              stages: item.stages,
-                                              cost: item.cost,
+            return SavedCalculationsCellModel(uuid: item.key,
+                                              address: item.value.address,
+                                              system: item.value.calculationType.title,
+                                              date: item.value.date,
+                                              stages: item.value.stages,
+                                              cost: item.value.cost,
                                               image: typeIcon,
                                               backgroundImage: background,
-                                              type: item.calculationType,
+                                              type: item.value.calculationType,
                                               actionHandler: {
                                                             let vc = self.sceneBuildManager.buildResultScreen(resultType: .close,
-                                                                                                              navigationBarTitle: item.navigationBarTitle,
-                                                                                                              calculationType: item.calculationType,
-                                                                                                              defaulValueCoefficients: item.defaultCoef,
-                                                                                                              valueCoefficients: item.valueCoef,
-                                                                                                              choiceCoefficients: item.choiceCoef,
-                                                                                                              checkboxCoefficients: item.checkboxСoef)
+                                                                                                              navigationBarTitle: item.value.navigationBarTitle,
+                                                                                                              calculationType: item.value.calculationType,
+                                                                                                              defaulValueCoefficients: item.value.defaultCoef,
+                                                                                                              valueCoefficients: item.value.valueCoef,
+                                                                                                              choiceCoefficients: item.value.choiceCoef,
+                                                                                                              checkboxCoefficients: item.value.checkboxСoef)
                                                             self.viewController?.navigationController?.pushViewController(vc,
                                                                                                                           animated: true)
             })

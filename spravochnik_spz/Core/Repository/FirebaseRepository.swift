@@ -14,7 +14,7 @@ protocol FirebaseRepositoryProtocol {
                         calcName: String,
                         completion: @escaping (Result<Calculation, Error>) -> Void)
     func getAllCalculations(userID: String,
-                            completion: @escaping (Result<[Calculation]?, Error>) -> Void)
+                            completion: @escaping (Result<[SavedCalculationsCellData]?, Error>) -> Void)
     func deleteCalculation(userID: String,
                            calcName: String,
                            completion: @escaping (Result<String, Error>) -> Void)
@@ -63,7 +63,7 @@ class FirebaseRepository: FirebaseRepositoryProtocol {
     }
     
     func getAllCalculations(userID: String,
-                            completion: @escaping (Result<[Calculation]?, Error>) -> Void) {
+                            completion: @escaping (Result<[SavedCalculationsCellData]?, Error>) -> Void) {
         firebaseService.getAllCalculations(userID: userID) { result in
             switch result {
             case .success(let calc):
@@ -71,9 +71,11 @@ class FirebaseRepository: FirebaseRepositoryProtocol {
                     completion(.success(nil))
                     return
                 }
-                var allCalcModel: [Calculation] = []
+                var allCalcModel: [SavedCalculationsCellData] = []
                 for element in calc {
-                    allCalcModel.append(self.oneCalculation(from: element.data()))
+//                    print()
+//                    allCalcModel self.oneCalculation(from: element.data())
+                    allCalcModel.append(SavedCalculationsCellData(key: element.documentID, value: self.oneCalculation(from: element.data())))
                 }
                 completion(.success(allCalcModel))
             case .failure(let error):
@@ -113,6 +115,15 @@ class FirebaseRepository: FirebaseRepositoryProtocol {
     func deleteCalculation(userID: String,
                            calcName: String,
                            completion: @escaping (Result<String, Error>) -> Void) {
-        
+        firebaseService.deleteCalculation(userID: userID,
+                                          calcName: calcName) { result in
+            switch result {
+            case .success(_):
+                completion(.success(""))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }
+

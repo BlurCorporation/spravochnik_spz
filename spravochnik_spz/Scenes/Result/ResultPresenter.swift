@@ -162,7 +162,8 @@ final class  ResultPresenter {
     private func setCalcToFB() {
         let fbService: FirebaseServiceProtocol = FirebaseService()
         let calculation = makeRequestData()
-        let calcModel = CalculationModel(userID: firestore.getUserID(), calcName: "Correct Coefs", calculation: calculation)
+        let uuid = UUID().uuidString
+        let calcModel = CalculationModel(userID: firestore.getUserID(), calcName: uuid, calculation: calculation)
         FirebaseRepository(firebaseService: fbService).setCalculation(calcModel: calcModel) { result in
             switch result {
             case .success(let calc):
