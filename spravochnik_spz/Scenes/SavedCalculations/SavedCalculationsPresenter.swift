@@ -17,6 +17,7 @@ protocol SavedCalculationsTablePresenterProtocol: AnyObject {
     func viewWillAppear()
     func openCell(actionHandler: () -> Void)
     func deleteCalc(uuid: String)
+    func downloadAndUpdateCells(completion: @escaping (Result<String, Error>) -> Void)
 }
 
 // MARK: - SavedCalculationsPresenter
@@ -28,19 +29,7 @@ final class SavedCalculationsTablePresenter {
     
     private let sceneBuildManager: Buildable
     private let firestore: FirebaseServiceProtocol
-    private var data = [SavedCalculationsCellData]()//[Calculation(address: "",
-//                                                   date: "",
-//                                                   stages: "",
-//                                                   cost: 0,
-//                                                   navigationBarTitle: "",
-//                                                   calculationType: .fireAlarmSystem,
-//                                                   valueCoef: [ValueСoefficientModel(type: .lengthOfThePerimeter, value: 20)],
-//                                                   choiceCoef: [ChoiceCoefficientModel(type: .numberOfFirePumpGroups, itemIndex: 3)],
-//                                                   defaultCoef: [DefaultCoefficientValueModel(type: .inflationRate, value: nil)],
-//                                                   checkboxСoef: [CheckboxСoefficientModel(type: .availabilityOfAlertsForIndividualEvacuationZones,                                               isSelected: true)],
-//                                                   calculationResult: [CalculationResultModel(title: TitleType.stageP,                                                                               description: "",
-//                                                                                              prices: [PriceModel(type: PriceType.withVat,
-//                                                                                                                  value: 0.5)])])]
+    private var data = [SavedCalculationsCellData]()
     
     // MARK: - Initializer
     
@@ -104,11 +93,25 @@ final class SavedCalculationsTablePresenter {
 //MARK: - SavedCalculationsPresenterExtension
 
 extension SavedCalculationsTablePresenter: SavedCalculationsTablePresenterProtocol {
+    func downloadAndUpdateCells(completion: @escaping (Result<String, Error>) -> Void) {
+        let fbService: FirebaseServiceProtocol = FirebaseService()
+        FirebaseRepository(firebaseService: fbService).getAllCalculations(userID: firestore.getUserID()) { result in
+            switch result {
+            case .success(let calc):
+                guard let calc = calc else { return }
+                self.data = calc
+                completion(.success(""))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
     func deleteCalc(uuid: String) {
         let fbService: FirebaseServiceProtocol = FirebaseService()
         FirebaseRepository(firebaseService: fbService).deleteCalculation(userID: firestore.getUserID(), calcName: uuid) { result in
             switch result {
-            case .success(let success):
+            case .success(_):
                 print("успешно удалено")
             case .failure(let failure):
                 print(failure.localizedDescription)
@@ -121,8 +124,15 @@ extension SavedCalculationsTablePresenter: SavedCalculationsTablePresenterProtoc
     }
     
     func viewWillAppear() {
-        testSetGetCalcFromFB()
-        self.viewController?.update(dataSource: self.makeData())
+//        testSetGetCalcFromFB()
+        downloadAndUpdateCells { result in
+            switch result {
+            case .success(let success):
+                self.viewController?.update(dataSource: self.makeData())
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
     }
     
     private func makeData()-> [SavedCalculationsCellModelProtocol] {

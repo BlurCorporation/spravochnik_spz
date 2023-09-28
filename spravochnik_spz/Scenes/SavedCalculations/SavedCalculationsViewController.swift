@@ -31,7 +31,13 @@ final class SavedCalculationsViewController: UIViewController {
         
         return tableView
     }()
-  
+    
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
+        return refreshControl
+    }()
+    
     private var isInternet = true
     
     // MARK: - LifeCycle
@@ -55,6 +61,22 @@ final class SavedCalculationsViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
         presenter?.viewWillAppear()
+    }
+    
+    //MARK: - Private Methods
+    
+    @objc func refreshTableView(sender: UIRefreshControl) {
+        DispatchQueue.main.async {
+            self.presenter?.downloadAndUpdateCells(completion: { result in
+                switch result {
+                case .success(_):
+                    self.refreshControl.endRefreshing()
+                case .failure(let failure):
+                    print(failure.localizedDescription)
+                }
+            })
+            
+        }
     }
 }
 
@@ -120,7 +142,6 @@ extension SavedCalculationsViewController: UITableViewDelegate {
                    forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let object = dataSource[indexPath.row]
-//            object.removeHandler?()
             presenter?.deleteCalc(uuid: object.uuid)
             dataSource.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath],
@@ -144,6 +165,7 @@ private extension SavedCalculationsViewController {
     
     func addSubViews() {
         view.addSubviews(SavedCalculationsTableView)
+        SavedCalculationsTableView.addSubview(refreshControl)
     }
     
     func setupCleanSavedCalculationView() {
