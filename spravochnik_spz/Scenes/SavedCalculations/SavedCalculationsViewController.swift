@@ -159,7 +159,7 @@ private extension SavedCalculationsViewController {
         setupConstraints()
         view.backgroundColor = .systemBackground
         SavedCalculationsTableView.register(SavedCalculationsUITableViewCell.self,
-                           forCellReuseIdentifier: SavedCalculationsUITableViewCell.identifier)
+                                            forCellReuseIdentifier: SavedCalculationsUITableViewCell.identifier)
         SavedCalculationsTableView.separatorColor = Constants.Colors.clear
     }
     

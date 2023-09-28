@@ -5,6 +5,8 @@
 //  Created by Swift Learning on 22.01.2023.
 //
 
+import UIKit
+
 // MARK: - AuthPresenterProtocol
 
 protocol AuthPresenterProtocol: AnyObject {
@@ -77,8 +79,19 @@ extension AuthPresenter: AuthPresenterProtocol {
                                        viewController: nil) { error in
                 if let error = error {
                     print(error.localizedDescription)
+                    let alertController = UIAlertController(title: "Ошибка",
+                                                            message: error.localizedDescription,
+                                                            preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK",
+                                                 style: .default,
+                                                 handler: nil)
+                    alertController.addAction(okAction)
+                    self.viewController?.present(alertController,
+                                                 animated: true,
+                                                 completion: nil)
                     return
                 }
+                
                 self.defaultsManager.saveObject(true,
                                                 for: .isUserAuth)
                 

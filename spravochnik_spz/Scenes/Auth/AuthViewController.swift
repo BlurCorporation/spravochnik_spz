@@ -257,7 +257,7 @@ extension AuthViewController: AuthViewProtocol {
         infoBottomLabel.text = "infoAuthBottomLabelText".localized
         loginButton.setTitle("registerButton".localized,
                              for: .normal)
-        
+        forgotPasswordButton.isHidden = true
     }
     
     func setupRegister() {
