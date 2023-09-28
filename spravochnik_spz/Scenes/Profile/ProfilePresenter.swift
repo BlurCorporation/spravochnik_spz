@@ -37,6 +37,14 @@ final class ProfilePresenter {
         self.sceneBuildManager = sceneBuildManager
         self.authService = authService
     }
+    
+    // MARK: - PrivateMethods
+    private func routeToAlert(coefficientType: CoefficientType, index: Int) {
+        let vc = sceneBuildManager.buildAlertScreen(coefficientType: coefficientType, index: index, delegate: self, handler: nil)
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        viewController?.present(vc, animated: true)
+    }
 }
 
 //MARK: - ProfilePresenterExtension
@@ -47,7 +55,6 @@ extension ProfilePresenter: ProfilePresenterProtocol {
     }
     
     func logoutButtonPressed() {
-        
         let model = NoСoefficientModel(title: "Уверены, что хотите выйти из аккаунта?",
                                        leftButton: "Закрыть",
                                        rightButton: "Выйти",
@@ -63,12 +70,10 @@ extension ProfilePresenter: ProfilePresenterProtocol {
             let rootViewController = UINavigationController.init(rootViewController: startViewController)
             UIApplication.shared.windows.first?.rootViewController = rootViewController
         })
-        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .clear(model: model), index: .zero, delegate: self, handler: nil)
+        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .clear(model: model), index: .zero, delegate: self, handler: model.rightButtonHandler)
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         viewController?.present(vc, animated: true)
-        
-        
     }
     
     func themeButtonPressed() {
@@ -90,28 +95,47 @@ extension ProfilePresenter: ProfilePresenterProtocol {
     }
     
     func deleteAccountButtonPressed() {
-        print(#function)
-    }
-
-}
-
-extension ProfilePresenter: AlertPresenterDelegate {
-    func saveButtonPressed(type: CoefficientType, index: Int) {
-        print(type)
-        switch type {
-        case .clear:
-            self.authService.logout { error in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
+        let model = NoСoefficientModel(title: "Уверены, что хотите удалить аккаунт?",
+                                       leftButton: "Оставить",
+                                       rightButton: "Удалить",
+                                       rightButtonHandler: {
+            self.authService.deleteUser { result in
+                switch result {
+                case .success(_):
+                    let startViewController = self.sceneBuildManager.buildStartScreen()
+                    let rootViewController = UINavigationController.init(rootViewController: startViewController)
+                    UIApplication.shared.windows.first?.rootViewController = rootViewController
+                case .failure(let failure):
+                    print(failure.localizedDescription)
                 }
-                print("exit")
             }
             let startViewController = self.sceneBuildManager.buildStartScreen()
             let rootViewController = UINavigationController.init(rootViewController: startViewController)
             UIApplication.shared.windows.first?.rootViewController = rootViewController
-        default:
-            break
-        }
+        })
+        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .clear(model: model), index: .zero, delegate: self, handler: model.rightButtonHandler)
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        viewController?.present(vc, animated: true)
+    }
+}
+
+extension ProfilePresenter: AlertPresenterDelegate {
+    func saveButtonPressed(type: CoefficientType, index: Int) {
+//        switch type {
+//        case .clear:
+//            self.authService.logout { error in
+//                if let error = error {
+//                    print(error.localizedDescription)
+//                    return
+//                }
+//                print("exit")
+//            }
+//            let startViewController = self.sceneBuildManager.buildStartScreen()
+//            let rootViewController = UINavigationController.init(rootViewController: startViewController)
+//            UIApplication.shared.windows.first?.rootViewController = rootViewController
+//        default:
+//            break
+//        }
     }
 }

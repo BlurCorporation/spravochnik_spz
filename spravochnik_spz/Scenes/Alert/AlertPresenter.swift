@@ -42,7 +42,6 @@ final class AlertPresenter {
 
 extension AlertPresenter: AlertPresenterProtocol {
     func viewDidLoad() {
-        
         switch coefficientType {
         case let .clear(model):
             let title = model.title
@@ -100,10 +99,12 @@ extension AlertPresenter: AlertPresenterProtocol {
     }
     
     func method(type: CoefficientType, value: String?) {
-        //let coefficientType: CoefficientType
         switch type {
-        //case .clear(let model):
-            //coefficientType = .clear(model: <#T##NoСoefficientModel#>)
+        case .clear(let model):
+//            let coefficientType = CoefficientType.clear(model: model)
+//            delegate?.saveButtonPressed(type: coefficientType, index: 0)
+//            viewController?.dismiss(animated: true)
+            rightButtonPressed()
         case .value(let model):
             let newValue = Double(value ?? "") ?? 0.0
             let newModel = ValueСoefficientModel(type: model.type, value: newValue, stringValue: value) //TODO: переделать внесение stringValue
@@ -111,9 +112,7 @@ extension AlertPresenter: AlertPresenterProtocol {
             delegate?.saveButtonPressed(type: coefficientType, index: index)
             (rightButtonHandler ?? {})()
             viewController?.dismiss(animated: true)
-            
         case .choice(let model):
-//            let newValue = Int(value ?? "") ?? 0
             let newModel = ChoiceCoefficientModel(type: model.type, itemIndex: viewController?.currentSelected)
             let coefficientType = CoefficientType.choice(model: newModel)
             viewController?.dismiss(animated: true)
@@ -124,8 +123,6 @@ extension AlertPresenter: AlertPresenterProtocol {
             let coefficientType = CoefficientType.defaultValue(model: newModel)
             viewController?.dismiss(animated: true)
             delegate?.saveButtonPressed(type: coefficientType, index: index)
-        default:
-            break
         }
     
         //saveButtonHandler?(coefficientType)

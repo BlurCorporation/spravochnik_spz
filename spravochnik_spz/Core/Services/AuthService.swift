@@ -24,6 +24,7 @@ protocol AuthServicable {
     func registerUser(with userRequest: RegisterUserRequest?,
                       completion: @escaping (Bool, Error?) -> Void)
     func logout(completion: @escaping (Error?) -> Void)
+    func deleteUser(completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 final class AuthService {
@@ -89,5 +90,17 @@ extension AuthService: AuthServicable {
             completion(error)
         }
         self.defaultsManager.saveObject(false, for: .isUserAuth)
+    }
+    
+    func deleteUser(completion: @escaping (Result<Void, Error>) -> Void) {
+        let user = Auth.auth().currentUser
+
+        user?.delete { error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(Void()))
+            }
+        }
     }
 }
