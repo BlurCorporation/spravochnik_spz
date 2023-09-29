@@ -24,16 +24,16 @@ enum ChoiceСoefficientType: Codable {
         }
     }
     
-    var items: [ChoiceСoefficientItemsModel] {
+    var items: [String] {
         switch self {
         case .numberOfLinesOfDefence:
-            return []
+            return ["1", "2", "3"]
         case .terrain:
-            return []
+            return ["Нормальный (перепад менее 1,5 м)", "Холмистый (перепад более 1,5 м)", "Гористый"]
         case .typeOfNotificationSystem:
-            return []
+            return ["1", "2", "3", "4", "5"]
         case .numberOfFirePumpGroups:
-            return []
+            return ["1", "2", "3", "4"]
         }
     }
     

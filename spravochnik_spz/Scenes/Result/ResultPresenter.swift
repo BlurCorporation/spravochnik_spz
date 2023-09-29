@@ -81,8 +81,7 @@ final class  ResultPresenter {
     
     private func makeChoiceСoefficientResultSection() -> ResultViewController.Section {
         let rows = choiceCoefficients.map { model -> ResultViewController.RowType in
-            // подставить, когда будут заполнены все сущности
-            let value = 2//model.type.items[model.itemIndex].value
+            let value = model.type.items[model.itemIndex ?? 0]
             let viewModel = ChoiceCoefficientResultViewModel(title: "\(model.type.title) \(value) \(model.type.descrp)")
             return ResultViewController.RowType.choiceСoefficient(viewModel: viewModel)
         }
