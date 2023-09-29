@@ -12,8 +12,9 @@ import UIKit
 protocol MainPresenterProtocol: AnyObject {
     func cellSet(object: MainCollectionViewModel,
                  cell: MainCollectionViewCell)
-    func helpButtonPressed()
+    func closeDemoButtonPressed() // Раньше это была helpButton
     func openCalculationCellSelected(index: Int)
+    func viewDidLoad()
 }
 
 // MARK: - MainPresenter
@@ -24,25 +25,44 @@ final class MainPresenter {
     // MARK: - PrivateProperties
     
     private let sceneBuildManager: Buildable
-    
+    private let defaultsManager: DefaultsManagerable
     
     // MARK: - Initializer
     
-    init(sceneBuildManager: Buildable) {
+    init(sceneBuildManager: Buildable,
+         defaultsManager: DefaultsManagerable) {
         self.sceneBuildManager = sceneBuildManager
+        self.defaultsManager = defaultsManager
     }
 }
 
 //MARK: - MainPresenterExtension
 
 extension MainPresenter: MainPresenterProtocol {
+    func viewDidLoad() {
+        let isFullMode = defaultsManager.fetchObject(type: Bool.self, for: .isFullMode) ?? true
+        if isFullMode {
+            viewController?.hideCloseDemoButton()
+        }
+    }
     func cellSet(object: MainCollectionViewModel,
                  cell: MainCollectionViewCell) {
         cell.set(object: object)
     }
     
-    func helpButtonPressed() {
-        print(#function)
+    func closeDemoButtonPressed() {
+        let model = NoСoefficientModel(title: "Хотите выйти из демо режима",
+                                       leftButton: "Вернуться",
+                                       rightButton: "Выйти",
+                                       rightButtonHandler: {
+            let startViewController = self.sceneBuildManager.buildStartScreen()
+            let rootViewController = UINavigationController.init(rootViewController: startViewController)
+            UIApplication.shared.windows.first?.rootViewController = rootViewController
+        })
+        let vc = sceneBuildManager.buildAlertScreen(coefficientType: .clear(model: model), index: .zero, delegate: self, handler: model.rightButtonHandler)
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        viewController?.present(vc, animated: true)
     }
     
     func openCalculationCellSelected(index: Int) {
@@ -77,4 +97,8 @@ extension MainPresenter: MainPresenterProtocol {
                                                                      animated: true)
         }
     }
+}
+
+extension MainPresenter: AlertPresenterDelegate {
+    func saveButtonPressed(type: CoefficientType, index: Int) {}
 }

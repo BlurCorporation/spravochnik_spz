@@ -52,6 +52,7 @@
 "deleteAccountButtonText" = "Удалить аккаунт";
 "loginButton" = "Войти";
 "registerButton" = "Зарегистрироваться";
+"demoButton" = "Продолжить без регистрации";
 "forgotPassword" = "Забыли пароль?";
 "resetPasswordButtonText" = "Отправить письмо";
 "updatePasswordButtonText" = "Обновить пароль";

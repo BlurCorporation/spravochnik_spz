@@ -12,6 +12,7 @@ import UIKit
 protocol AuthViewProtocol: UIViewController {
     func setupAuth()
     func setupRegister()
+    
 }
 
 // MARK: - AuthViewController

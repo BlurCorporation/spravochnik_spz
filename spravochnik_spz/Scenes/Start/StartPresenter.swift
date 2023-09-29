@@ -10,6 +10,7 @@
 protocol StartPresenterProtocol: AnyObject {
     func loginButtonPressed()
     func registerButtonPressed()
+    func demoButtonPressed()
 }
 
 // MARK: - StartPresenter
@@ -20,24 +21,35 @@ final class StartPresenter {
     // MARK: - PrivateProperties
     
     private let sceneBuildManager: Buildable
+    private let defaultsManager: DefaultsManagerable
     
     // MARK: - Initializer
     
-    init(sceneBuildManager: Buildable) {
+    init(sceneBuildManager: Buildable,
+         defaultsManager: DefaultsManagerable) {
         self.sceneBuildManager = sceneBuildManager
+        self.defaultsManager = defaultsManager
     }
 }
 
 //MARK: - StartPresenterExtension
 
 extension StartPresenter: StartPresenterProtocol {
+    func demoButtonPressed() {
+        defaultsManager.saveObject(false, for: .isFullMode)
+        let onbordingScreen = self.sceneBuildManager.buildOnboardingScreen()
+        self.viewController?.navigationController?.pushViewController(onbordingScreen, animated: true)
+    }
+    
     func loginButtonPressed() {
+        defaultsManager.saveObject(true, for: .isFullMode)
         let authViewController = sceneBuildManager.buildAuthScreen(type: .auth)
         viewController?.navigationController?.pushViewController(authViewController,
                                                                  animated: true)
     }
     
     func registerButtonPressed() {
+        defaultsManager.saveObject(true, for: .isFullMode)
         let registerViewController = sceneBuildManager.buildAuthScreen(type: .register)
         viewController?.navigationController?.pushViewController(registerViewController,
                                                                  animated: true)

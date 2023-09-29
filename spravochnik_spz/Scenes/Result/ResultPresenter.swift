@@ -32,6 +32,7 @@ final class  ResultPresenter {
     private let calculationService: CalculationServicable
     private let firestore: FirebaseServiceProtocol
     private let pdfService: PDFServiceProtocol
+    private let defaultsManager: DefaultsManagerable
     private let calculationType: СalculationType
     private let defaulValueCoefficients: [DefaultCoefficientValueModel]
     private let valueCoefficients: [ValueСoefficientModel]
@@ -49,6 +50,7 @@ final class  ResultPresenter {
          calculationService: CalculationServicable,
          firestore: FirebaseServiceProtocol,
          pdfService: PDFServiceProtocol,
+         defaultsManager: DefaultsManagerable,
          calculationType: СalculationType,
          navigationBarTitle: String,
          defaulValueCoefficients: [DefaultCoefficientValueModel],
@@ -61,6 +63,7 @@ final class  ResultPresenter {
         self.calculationService = calculationService
         self.firestore = firestore
         self.pdfService = pdfService
+        self.defaultsManager = defaultsManager
         self.calculationType = calculationType
         self.navigationItemTitle = navigationBarTitle
         self.defaulValueCoefficients = defaulValueCoefficients
@@ -222,24 +225,54 @@ extension  ResultPresenter:  ResultPresenterProtocol {
     }
     
     func calculationButtonPressed() {
-        let model = ValueСoefficientModel(type: .address,
-                                          value: 0)
-        let coefficientsType = CoefficientType.value(model: model)
-        routeToAlert(coefficientType: coefficientsType)
-//        setCalcToFB()
-//        viewController?.navigationController?.popToRootViewController(animated: true)
+        let isFullMode = defaultsManager.fetchObject(type: Bool.self, for: .isFullMode) ?? true
+        if isFullMode {
+            let model = ValueСoefficientModel(type: .address,
+                                              value: 0)
+            let coefficientsType = CoefficientType.value(model: model)
+            routeToAlert(coefficientType: coefficientsType)
+        } else {
+            let model = NoСoefficientModel(title: "Для сохранения необходимо авторизоваться",
+                                           leftButton: "Вернуться",
+                                           rightButton: "Авторизоваться",
+                                           rightButtonHandler: {
+                let startViewController = self.sceneBuildManager.buildStartScreen()
+                let rootViewController = UINavigationController.init(rootViewController: startViewController)
+                UIApplication.shared.windows.first?.rootViewController = rootViewController
+            })
+            let vc = sceneBuildManager.buildAlertScreen(coefficientType: .clear(model: model), index: .zero, delegate: self, handler: model.rightButtonHandler)
+            vc.modalPresentationStyle = .overFullScreen
+            vc.modalTransitionStyle = .crossDissolve
+            viewController?.present(vc, animated: true)
+        }
     }
     
     func shareButtonButtonPressed() {
-        guard let pdfURL = pdfService.generatePDF(from: "123") else {
-            // Handle the case where saving the PDF to a temporary directory failed
-            return
+        let isFullMode = defaultsManager.fetchObject(type: Bool.self, for: .isFullMode) ?? true
+        if isFullMode {
+            guard let pdfURL = pdfService.generatePDF(from: "123") else {
+                // Handle the case where saving the PDF to a temporary directory failed
+                return
+            }
+
+            let activityViewController = UIActivityViewController(activityItems: [pdfURL], applicationActivities: nil)
+
+            // Present the activity view controller
+            viewController?.present(activityViewController, animated: true, completion: nil)
+        } else {
+            let model = NoСoefficientModel(title: "Поделиться можно после авторизации",
+                                           leftButton: "Вернуться",
+                                           rightButton: "Авторизоваться",
+                                           rightButtonHandler: {
+                let startViewController = self.sceneBuildManager.buildStartScreen()
+                let rootViewController = UINavigationController.init(rootViewController: startViewController)
+                UIApplication.shared.windows.first?.rootViewController = rootViewController
+            })
+            let vc = sceneBuildManager.buildAlertScreen(coefficientType: .clear(model: model), index: .zero, delegate: self, handler: model.rightButtonHandler)
+            vc.modalPresentationStyle = .overFullScreen
+            vc.modalTransitionStyle = .crossDissolve
+            viewController?.present(vc, animated: true)
         }
-
-        let activityViewController = UIActivityViewController(activityItems: [pdfURL], applicationActivities: nil)
-
-        // Present the activity view controller
-        viewController?.present(activityViewController, animated: true, completion: nil)
     }
     
     func otherCalculationButtonPressed() {

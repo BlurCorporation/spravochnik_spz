@@ -9,7 +9,9 @@ import UIKit
 
 // MARK: - MainViewProtocol
 
-protocol MainViewProtocol: UIViewController {}
+protocol MainViewProtocol: UIViewController {
+    func hideCloseDemoButton()
+}
 
 // MARK: - MainViewController
 
@@ -29,16 +31,19 @@ final class MainViewController: UIViewController {
         return label
     }()
     
-    private lazy var helpButton: UIButton = {
+    private lazy var closeDemoButton: UIButton = {
         let button = UIButton()
-        let image = Constants.Images.helpImage
+//        let image = Constants.Images.helpImage
+        let image = UIImage(systemName: "arrow.uturn.left")
         button.setImage(image,
                         for: .normal)
+        
+        button.tintColor = .black
         button.layer.borderWidth = Constants.Sizes.borderWidth
         button.layer.borderColor = Constants.Colors.lightGray.cgColor
         button.layer.cornerRadius = 7
         button.addTarget(self,
-                         action: #selector(helpButtonPressed),
+                         action: #selector(closeDemoButtonPressed),
                          for: .touchUpInside)
         return button
     }()
@@ -66,20 +71,25 @@ final class MainViewController: UIViewController {
         if let layout = collectionView.collectionViewLayout as? CustomUICollectionViewFlowLayout {
             layout.layoutDelegate = self
         }
+        presenter?.viewDidLoad()
     }
     
     // MARK: - Actions
     
-    @objc private func helpButtonPressed() {
-        helpButton.pushAnimate { [weak self] in
-            self?.presenter?.helpButtonPressed()
+    @objc private func closeDemoButtonPressed() {
+        closeDemoButton.pushAnimate { [weak self] in
+            self?.presenter?.closeDemoButtonPressed()
         }
     }
 }
 
 // MARK: - MainViewProtocol Impl
 
-extension MainViewController: MainViewProtocol {}
+extension MainViewController: MainViewProtocol {
+    func hideCloseDemoButton() {
+        closeDemoButton.isHidden = true
+    }
+}
 
 // MARK: - CustomLayoutDelegate Impl
 
@@ -153,13 +163,12 @@ private extension MainViewController {
         addSubViews()
         setupConstraints()
         view.backgroundColor = .systemBackground
-        helpButton.isHidden = true
     }
     
     func addSubViews() {
         view.addSubviews(headerLabel,
                          collectionView,
-                         helpButton)
+                         closeDemoButton)
     }
     
     func setupConstraints() {
@@ -173,11 +182,11 @@ private extension MainViewController {
                                                  constant: Constants.Constraints.sideOffset),
             headerLabel.heightAnchor.constraint(equalToConstant: Constants.Sizes.headerHeight),
             
-            helpButton.heightAnchor.constraint(equalToConstant: mainButtonSize),
-            helpButton.widthAnchor.constraint(equalToConstant: mainButtonSize),
-            helpButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
+            closeDemoButton.heightAnchor.constraint(equalToConstant: mainButtonSize),
+            closeDemoButton.widthAnchor.constraint(equalToConstant: mainButtonSize),
+            closeDemoButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
                                                  constant: -Constants.Constraints.sideOffset),
-            helpButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+            closeDemoButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
                                             constant: Constants.Constraints.sideOffset),
             
             collectionView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor),

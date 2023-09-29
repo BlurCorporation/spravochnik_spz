@@ -31,6 +31,7 @@
 		1BCFE35229CCC0EB0062DB39 /* NoCoefficientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCFE35129CCC0EB0062DB39 /* NoCoefficientType.swift */; };
 		1BCFE35429D07BD30062DB39 /* AlertCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCFE35329D07BD30062DB39 /* AlertCollectionViewCell.swift */; };
 		1BD328A32AC6E47D00758A5D /* PDFService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD328A22AC6E47D00758A5D /* PDFService.swift */; };
+		1BD328A52AC718AC00758A5D /* AppModeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD328A42AC718AC00758A5D /* AppModeType.swift */; };
 		1BE3800D2A4C7D1E00FA384D /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE3800C2A4C7D1E00FA384D /* ResultType.swift */; };
 		1BF7A2822A1D325300A1F929 /* AppleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF7A2812A1D325300A1F929 /* AppleProvider.swift */; };
 		1BF7A28A2A2F64F400A1F929 /* GoogleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF7A2892A2F64F400A1F929 /* GoogleProvider.swift */; };
@@ -137,6 +138,7 @@
 		1BCFE35129CCC0EB0062DB39 /* NoCoefficientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCoefficientType.swift; sourceTree = "<group>"; };
 		1BCFE35329D07BD30062DB39 /* AlertCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCollectionViewCell.swift; sourceTree = "<group>"; };
 		1BD328A22AC6E47D00758A5D /* PDFService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFService.swift; sourceTree = "<group>"; };
+		1BD328A42AC718AC00758A5D /* AppModeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModeType.swift; sourceTree = "<group>"; };
 		1BE3800C2A4C7D1E00FA384D /* ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
 		1BF7A2802A1D30CF00A1F929 /* spravochnik_spz.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = spravochnik_spz.entitlements; sourceTree = "<group>"; };
 		1BF7A2812A1D325300A1F929 /* AppleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProvider.swift; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				2265A2CD299EB9A6005DF662 /* AuthType.swift */,
 				22F5886329A82C9A004053CF /* UpdateDataType.swift */,
 				1BE3800C2A4C7D1E00FA384D /* ResultType.swift */,
+				1BD328A42AC718AC00758A5D /* AppModeType.swift */,
 			);
 			path = TypeViewController;
 			sourceTree = "<group>";
@@ -762,6 +765,7 @@
 				1BCFE35229CCC0EB0062DB39 /* NoCoefficientType.swift in Sources */,
 				221E59102A10E69B0005B047 /* CalculationResultTypeTableViewCell.swift in Sources */,
 				1B2B11EB2979CFF300FFC896 /* AppDelegate.swift in Sources */,
+				1BD328A52AC718AC00758A5D /* AppModeType.swift in Sources */,
 				45DA6E4E298047CF008D26F8 /* UIViewController.swift in Sources */,
 				8D9A010A2A12B58C00D229FF /* AuthService.swift in Sources */,
 				457CFC2929F01A580022487A /* NoInternetView.swift in Sources */,

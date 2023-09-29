@@ -22,13 +22,15 @@ final class SplashPresenter {
     
     private let sceneBuildManager: Buildable
     private let authService: AuthServicable
-    
+    private let defaultsManager: DefaultsManagerable
     // MARK: - Initializer
     
     init(sceneBuildManager: Buildable,
-         authService: AuthServicable) {
+         authService: AuthServicable,
+         defaultsManager: DefaultsManagerable) {
         self.sceneBuildManager = sceneBuildManager
         self.authService = authService
+        self.defaultsManager = defaultsManager
     }
 }
 
