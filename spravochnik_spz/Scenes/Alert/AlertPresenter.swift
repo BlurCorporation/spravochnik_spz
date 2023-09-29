@@ -56,6 +56,7 @@ extension AlertPresenter: AlertPresenterProtocol {
             let title = model.type.title
             viewController?.updateUIForValue(title: title,
                                              value: model.value)
+            viewController?.changeKeyboard(type: model.type)
             
         case let .choice(model):
             viewController?.changeCurrectSelected(index: model.itemIndex)

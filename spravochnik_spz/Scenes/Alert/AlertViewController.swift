@@ -27,6 +27,7 @@ protocol AlertViewProtocol: UIViewController {
                            numOfItems: Int)
     func update(dataSource: [String])
     func changeCurrectSelected(index: Int?)
+    func changeKeyboard(type: ValueСoefficientType)
     var currentSelected : Int? { get }
 }
 
@@ -74,7 +75,6 @@ final class AlertViewController: UIViewController {
         textField.layer.cornerRadius = 11
         textField.layer.borderWidth = 1
         textField.tintColor = .black
-        textField.keyboardType = .decimalPad
         return textField
     }()
     
@@ -172,6 +172,21 @@ final class AlertViewController: UIViewController {
 // MARK: - AlertViewProtocol Impl
 
 extension AlertViewController: AlertViewProtocol {
+    func changeKeyboard(type: ValueСoefficientType) {
+        switch type {
+        case .objectArea:
+            textField.keyboardType = .decimalPad
+        case .lengthOfThePerimeter:
+            textField.keyboardType = .decimalPad
+        case .numberOfBlockingSections:
+            textField.keyboardType = .decimalPad
+        case .numberOfProtectedPremises:
+            textField.keyboardType = .decimalPad
+        case .address:
+            textField.keyboardType = .default
+        }
+    }
+    
     func changeCurrectSelected(index: Int?) {
         self.currentSelected = index
     }
