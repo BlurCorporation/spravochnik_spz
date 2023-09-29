@@ -114,6 +114,8 @@ final class ChoiceCoefficientTypeTableViewCell: UITableViewCell {
                 button.setTitle("\(itemIndex + 1)", for: .normal)
                 value = itemIndex
             }
+        } else {
+            button.setTitle(nil, for: .normal)
         }
             
     }
