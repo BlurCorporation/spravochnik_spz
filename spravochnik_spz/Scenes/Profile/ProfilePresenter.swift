@@ -87,11 +87,21 @@ extension ProfilePresenter: ProfilePresenterProtocol {
     }
     
     func conditionButtonPressed() {
-        print(#function)
+        if let url = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/") {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+        else {
+            print("huinya")
+        }
     }
     
     func privacyButtonPressed() {
-        print(#function)
+        if let url = URL(string: "https://doc-hosting.flycricket.io/spravochnikspz-privacy-policy/0f689628-f6c6-4a08-8ab9-cac397c8cba2/privacy") {
+            UIApplication.shared.open(url)
+        }
+        else {
+            print("huinya")
+        }
     }
     
     func deleteAccountButtonPressed() {
