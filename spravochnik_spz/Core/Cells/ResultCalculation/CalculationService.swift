@@ -100,11 +100,11 @@ private extension CalculationService {
         choiceCoefficients.forEach{ lines in
             if lines.type == .numberOfLinesOfDefence {
                 switch lines.itemIndex {
-                case 1:
+                case 0:
                     linesOfDefCoef = 1
-                case 2:
+                case 1:
                     linesOfDefCoef = 1.2
-                case 3:
+                case 2:
                     linesOfDefCoef = 1.3
                 default:
                     linesOfDefCoef = 1
@@ -218,22 +218,22 @@ private extension CalculationService {
             switch lines.type {
             case .numberOfLinesOfDefence:
                 switch lines.itemIndex {
-                case 1:
+                case 0:
                     linesOfDefCoef = 1
-                case 2:
+                case 1:
                     linesOfDefCoef = 1.5
-                case 3:
+                case 2:
                     linesOfDefCoef = 1.7
                 default:
                     linesOfDefCoef = 1
                 }
             case .terrain:
                 switch lines.itemIndex {
-                case 1: // Нормальный
+                case 0: // Нормальный
                     terrainCoef = 1
-                case 2: // Холмистый
+                case 1: // Холмистый
                     terrainCoef = 1.3
-                case 3: // Гористый
+                case 2: // Гористый
                     terrainCoef = 1.6
                 default:
                     terrainCoef = 1
@@ -448,15 +448,15 @@ private extension CalculationService {
             switch lines.type {
             case .typeOfNotificationSystem:
                 switch lines.itemIndex {
-                case 1:
+                case 0:
                     notificationTypeCoef = 1
-                case 2:
+                case 1:
                     notificationTypeCoef = 1.2
-                case 3:
+                case 2:
                     notificationTypeCoef = 1.4
-                case 4:
+                case 3:
                     notificationTypeCoef = 1.6
-                case 5:
+                case 4:
                     notificationTypeCoef = 1.8
                 default:
                     notificationTypeCoef = 1
@@ -709,13 +709,13 @@ private extension CalculationService {
             switch lines.type {
             case .numberOfFirePumpGroups:
                 switch lines.itemIndex {
-                case 1:
+                case 0:
                     pumpGroupCoef = 1
-                case 2:
+                case 1:
                     pumpGroupCoef = 1.1
-                case 3:
+                case 2:
                     pumpGroupCoef = 1.2
-                case 4:
+                case 3:
                     pumpGroupCoef = 1.3
                 default:
                     pumpGroupCoef = 1
@@ -780,18 +780,17 @@ private extension CalculationService {
         var result: [CalculationResultModel] = []
         if flag {
             let stageRPrice: Double = price * 0.25
-            
             result.append(.init(title: .stageP,
                                                           description: "Цена разработки проектной документации:",
                                                           prices: [.init(type: .withVat,
-                                                                         value: stageRPrice),
+                                                                         value: stageRPrice * 1.2),
                                                                    .init(type: .withoutVat,
                                                                          value: stageRPrice)]))
             let stagePPrice: Double = price * 0.75
             result.append(CalculationResultModel(title: .stageR,
                                                            description: "Цена разработки проектной документации:",
                                                            prices: [.init(type: .withVat,
-                                                                          value: stagePPrice),
+                                                                          value: stagePPrice * 1.2),
                                                                     .init(type: .withoutVat,
                                                                           value: stagePPrice)]))
             
@@ -799,7 +798,7 @@ private extension CalculationService {
             result.append(.init(title: .stageP,
                                                           description: "Цена разработки проектной документации:",
                                                           prices: [.init(type: .withVat,
-                                                                         value: price),
+                                                                         value: price * 1.20),
                                                                    .init(type: .withoutVat,
                                                                          value: price)]))
         }
