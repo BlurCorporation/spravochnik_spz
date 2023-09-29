@@ -160,10 +160,12 @@ extension SceneBuildManager: Buildable {
                            checkboxCoefficients: [CheckboxСoefficientModel]) -> ResultViewController {
         let viewController = ResultViewController()
         let calculationService = CalculationService()
+        let pdfService = PDFService()
         let presenter = ResultPresenter(sceneBuildManager: self,
                                         resultType: resultType,
                                         calculationService: calculationService,
                                         firestore: firestore,
+                                        pdfService: pdfService,
                                         calculationType: calculationType,
                                         navigationBarTitle: navigationBarTitle,
                                         defaulValueCoefficients: defaulValueCoefficients,
