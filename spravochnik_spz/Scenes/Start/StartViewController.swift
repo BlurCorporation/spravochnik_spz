@@ -72,6 +72,17 @@ final class StartViewController: UIViewController {
         return button
     }()
     
+    private lazy var demoButton: CustomButton = {
+        let button = CustomButton(type: .system)
+        button.mode = .transparent
+        button.setTitle("demoButton".localized,
+                        for: .normal)
+        button.addTarget(self,
+                         action: #selector(demoButtonPressed),
+                         for: .touchUpInside)
+        return button
+    }()
+    
     private let buttonsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -122,6 +133,12 @@ final class StartViewController: UIViewController {
             self?.presenter?.registerButtonPressed()
         }
     }
+    
+    @objc private func demoButtonPressed() {
+        demoButton.pushAnimate { [weak self] in
+            self?.presenter?.demoButtonPressed()
+        }
+    }
 }
 
 // MARK: - StartViewProtocol Impl
@@ -142,7 +159,8 @@ private extension StartViewController {
                          commonStackView)
         
         buttonsStackView.addArrangedSubviews(loginButton,
-                                             registerButton)
+                                             registerButton,
+                                             demoButton)
         
         labelsStackView.addArrangedSubviews(applicationNameLabel,
                                             infoApplicationLabel)

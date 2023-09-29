@@ -47,7 +47,8 @@ extension SceneBuildManager: Buildable {
     func buildSplashScreen() -> SplashViewController {
         let viewController = SplashViewController()
         let presenter = SplashPresenter(sceneBuildManager: self,
-                                        authService: self.authService)
+                                        authService: self.authService,
+                                        defaultsManager: defaultsManager)
         
         viewController.presenter = presenter
         presenter.viewController = viewController
@@ -57,7 +58,8 @@ extension SceneBuildManager: Buildable {
     
     func buildStartScreen() -> StartViewController {
         let viewController = StartViewController()
-        let presenter = StartPresenter(sceneBuildManager: self)
+        let presenter = StartPresenter(sceneBuildManager: self,
+                                       defaultsManager: defaultsManager)
         
         viewController.presenter = presenter
         presenter.viewController = viewController
@@ -110,7 +112,8 @@ extension SceneBuildManager: Buildable {
     
     func buildMainScreen() -> MainViewController {
         let viewController = MainViewController()
-        let presenter = MainPresenter(sceneBuildManager: self)
+        let presenter = MainPresenter(sceneBuildManager: self,
+                                      defaultsManager: defaultsManager)
         
         viewController.presenter = presenter
         presenter.viewController = viewController
@@ -166,6 +169,7 @@ extension SceneBuildManager: Buildable {
                                         calculationService: calculationService,
                                         firestore: firestore,
                                         pdfService: pdfService,
+                                        defaultsManager: defaultsManager,
                                         calculationType: calculationType,
                                         navigationBarTitle: navigationBarTitle,
                                         defaulValueCoefficients: defaulValueCoefficients,

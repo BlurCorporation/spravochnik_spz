@@ -53,10 +53,17 @@ extension OnboardingPresenter: OnboardingPresenterProtocol {
     
     func getNextVC() {
         defaultsManager.saveObject(true, for: .isOnbordingWatched)
-        let tabBarViewController = sceneBuildManager.buildTabBarScreen()
-        let rootViewController = UINavigationController(rootViewController: tabBarViewController)
-        
-        UIApplication.shared.windows.first?.rootViewController = rootViewController
+        let isFullMode = defaultsManager.fetchObject(type: Bool.self, for: .isFullMode) ?? true
+        if isFullMode {
+            let tabBarViewController = sceneBuildManager.buildTabBarScreen()
+            let rootViewController = UINavigationController(rootViewController: tabBarViewController)
+            UIApplication.shared.windows.first?.rootViewController = rootViewController
+        } else {
+            let mainViewController = sceneBuildManager.buildMainScreen()
+            let rootViewController = UINavigationController(rootViewController: mainViewController)
+            UIApplication.shared.windows.first?.rootViewController = rootViewController
+            
+        }
     }
 }
 

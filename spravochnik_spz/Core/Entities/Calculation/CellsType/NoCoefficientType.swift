@@ -1,9 +1,9 @@
-////
-////  Test.swift
-////  spravochnik_spz
-////
-////  Created by Swift Learning on 25.02.2023.
-////
+//
+//  Test.swift
+//  spravochnik_spz
+//
+//  Created by Swift Learning on 25.02.2023.
+//
 
 protocol NoCoefficientModelProtocol {
     var title: String { get }

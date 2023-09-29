@@ -11,7 +11,6 @@ final class TabBarController: UITabBarController {
     // MARK: - PrivateProperties
     
     private let sceneBuildManager: Buildable = SceneBuildManager()
-    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
