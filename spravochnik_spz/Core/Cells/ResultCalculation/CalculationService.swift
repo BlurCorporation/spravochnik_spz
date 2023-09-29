@@ -780,18 +780,17 @@ private extension CalculationService {
         var result: [CalculationResultModel] = []
         if flag {
             let stageRPrice: Double = price * 0.25
-            
             result.append(.init(title: .stageP,
                                                           description: "Цена разработки проектной документации:",
                                                           prices: [.init(type: .withVat,
-                                                                         value: stageRPrice),
+                                                                         value: stageRPrice * 1.2),
                                                                    .init(type: .withoutVat,
                                                                          value: stageRPrice)]))
             let stagePPrice: Double = price * 0.75
             result.append(CalculationResultModel(title: .stageR,
                                                            description: "Цена разработки проектной документации:",
                                                            prices: [.init(type: .withVat,
-                                                                          value: stagePPrice),
+                                                                          value: stagePPrice * 1.2),
                                                                     .init(type: .withoutVat,
                                                                           value: stagePPrice)]))
             
@@ -799,7 +798,7 @@ private extension CalculationService {
             result.append(.init(title: .stageP,
                                                           description: "Цена разработки проектной документации:",
                                                           prices: [.init(type: .withVat,
-                                                                         value: price),
+                                                                         value: price * 1.20),
                                                                    .init(type: .withoutVat,
                                                                          value: price)]))
         }
