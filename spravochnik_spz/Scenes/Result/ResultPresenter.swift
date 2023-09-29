@@ -192,16 +192,10 @@ final class  ResultPresenter {
     private func savePDFToTemporaryDirectory(pdfDocument: PDFDocument?) -> URL? {
         guard let pdfDocument = pdfDocument else { return nil }
 
-        do {
-            let tempDirectory = FileManager.default.temporaryDirectory
-            let pdfURL = tempDirectory.appendingPathComponent("shared.pdf")
+        let tempDirectory = FileManager.default.temporaryDirectory
+        let pdfURL = tempDirectory.appendingPathComponent("shared.pdf")
 
-            try pdfDocument.write(to: pdfURL)
-            return pdfURL
-        } catch {
-            print("Error saving PDF: \(error.localizedDescription)")
-            return nil
-        }
+        return pdfURL
     }
 }
 
