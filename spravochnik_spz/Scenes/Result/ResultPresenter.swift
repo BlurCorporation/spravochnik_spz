@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import PDFKit
+import UIKit
 
 // MARK: -  ResultPresenterProtocol
 
@@ -29,6 +31,7 @@ final class  ResultPresenter {
     private let resultType: ResultType
     private let calculationService: CalculationServicable
     private let firestore: FirebaseServiceProtocol
+    private let pdfService: PDFServiceProtocol
     private let calculationType: СalculationType
     private let defaulValueCoefficients: [DefaultCoefficientValueModel]
     private let valueCoefficients: [ValueСoefficientModel]
@@ -45,6 +48,7 @@ final class  ResultPresenter {
          resultType: ResultType,
          calculationService: CalculationServicable,
          firestore: FirebaseServiceProtocol,
+         pdfService: PDFServiceProtocol,
          calculationType: СalculationType,
          navigationBarTitle: String,
          defaulValueCoefficients: [DefaultCoefficientValueModel],
@@ -56,6 +60,7 @@ final class  ResultPresenter {
         self.resultType = resultType
         self.calculationService = calculationService
         self.firestore = firestore
+        self.pdfService = pdfService
         self.calculationType = calculationType
         self.navigationItemTitle = navigationBarTitle
         self.defaulValueCoefficients = defaulValueCoefficients
@@ -184,6 +189,21 @@ final class  ResultPresenter {
         vc.modalTransitionStyle = .crossDissolve
         viewController?.present(vc, animated: true)
     }
+    
+    private func savePDFToTemporaryDirectory(pdfDocument: PDFDocument?) -> URL? {
+        guard let pdfDocument = pdfDocument else { return nil }
+
+        do {
+            let tempDirectory = FileManager.default.temporaryDirectory
+            let pdfURL = tempDirectory.appendingPathComponent("shared.pdf")
+
+            try pdfDocument.write(to: pdfURL)
+            return pdfURL
+        } catch {
+            print("Error saving PDF: \(error.localizedDescription)")
+            return nil
+        }
+    }
 }
 
 //MARK: -  ResultPresenterExtension
@@ -218,7 +238,15 @@ extension  ResultPresenter:  ResultPresenterProtocol {
     }
     
     func shareButtonButtonPressed() {
-        print(#function)
+        guard let pdfURL = pdfService.generatePDF(from: "123") else {
+            // Handle the case where saving the PDF to a temporary directory failed
+            return
+        }
+
+        let activityViewController = UIActivityViewController(activityItems: [pdfURL], applicationActivities: nil)
+
+        // Present the activity view controller
+        viewController?.present(activityViewController, animated: true, completion: nil)
     }
     
     func otherCalculationButtonPressed() {
