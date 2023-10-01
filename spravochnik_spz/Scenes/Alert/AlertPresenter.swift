@@ -42,6 +42,7 @@ final class AlertPresenter {
 
 extension AlertPresenter: AlertPresenterProtocol {
     func viewDidLoad() {
+        viewController?.changeKeyboard(type: coefficientType)
         switch coefficientType {
         case let .clear(model):
             let title = model.title
@@ -51,13 +52,10 @@ extension AlertPresenter: AlertPresenterProtocol {
             viewController?.updateUIForClear(title: title,
                                              leftButtonTitle: leftButtonTitle,
                                              rightButtonTitle: rightButtonTittle)
-            
         case let .value(model):
             let title = model.type.title
             viewController?.updateUIForValue(title: title,
                                              value: model.value)
-            viewController?.changeKeyboard(type: model.type)
-            
         case let .choice(model):
             viewController?.changeCurrectSelected(index: model.itemIndex)
             let axis = model.type

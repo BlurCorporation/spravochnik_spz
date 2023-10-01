@@ -142,8 +142,8 @@ final class CalculationResultTypeTableViewCell: UITableViewCell {
         descriptionLabel.text = viewModel.description
         carrencyWithoutVatLabel.text = viewModel.prices[0].description
         carrencyWithVatLabel.text = viewModel.prices[1].description
-        costWithVatLabel.text = viewModel.prices[0].cost
-        costWithoutVatLabel.text = viewModel.prices[1].cost
+        costWithVatLabel.text = Double(viewModel.prices[0].cost)?.formattedWithSeparator
+        costWithoutVatLabel.text = Double(viewModel.prices[1].cost)?.formattedWithSeparator
         priceWithVatLabel.text = viewModel.prices[0].title
         priceWithoutVatLabel.text = viewModel.prices[1].title
     }
