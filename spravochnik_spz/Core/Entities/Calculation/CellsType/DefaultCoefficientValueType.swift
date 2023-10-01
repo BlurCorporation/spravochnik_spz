@@ -18,7 +18,7 @@ enum DefaultCoefficientValueType: Codable {
     var defaultValue: Double {
         switch self {
         case .inflationRate:
-            return 37.59
+            return 41.48
         }
     }
 }

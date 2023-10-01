@@ -152,6 +152,7 @@ private extension StartViewController {
         addSubViews()
         setupConstraints()
         view.backgroundColor = .systemBackground
+        infoWithLinksLabel.isHidden = true
     }
     
     func addSubViews() {

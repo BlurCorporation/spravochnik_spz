@@ -61,34 +61,37 @@ private extension CalculationService {
         valueCoefficients.forEach { value in
             if value.type == .objectArea {
                 switch value.value {
-                case 0..<100:
+                case 0...100:
                     price = 540
-                case 100..<200:
+                case 100...200:
                     price = 623
-                case 200..<400:
+                case 200...400:
                     price = 738
-                case 400..<700:
+                case 400...700:
                     price = 875
-                case 700..<1_000:
+                case 700...1_000:
                     price = 1_037
-                case 1_000..<2_000:
+                case 1_000...2_000:
                     price = 2_074
-                case 2_000..<3_000:
+                case 2_000...3_000:
                     price = 2_696
-                case 3_000..<5_000:
+                case 3_000...5_000:
                     price = 3317
-                case 5_000..<7_000:
+                case 5_000...7_000:
                     price = 3_940
-                case 7_000..<10_000:
+                case 7_000...10_000:
                     price = 4561
-                case 10_000..<13_000:
+                case 10_000...13_000:
                     price = 5_184
-                case 13_000..<17_000:
+                case 13_000...17_000:
                     price = 5_702
-                case 17_000..<21_000:
+                case 17_000...21_000:
                     price = 6_140
-                case 21_000..<25_000:
+                case 21_000...25_000:
                     price = 6_530
+                case let x where x > 25_000:
+                    let temp = Int(x - 25_000)
+                    price = 6_530 + (0.366 * Double(temp))
                 default:
                     price = 540
                 }
@@ -167,36 +170,39 @@ private extension CalculationService {
             switch value.type {
             case .lengthOfThePerimeter:
                 switch value.value {
-                case 0..<0.2:
+                case 0...0.2:
                     price = 800
-                case 0.2..<0.4:
+                case 0.2...0.4:
                     price = 1_314
-                case 0.4..<0.6:
+                case 0.4...0.6:
                     price = 1_724
-                case 0.6..<0.8:
+                case 0.6...0.8:
                     price = 2_000
-                case 0.8..<1:
+                case 0.8...1:
                     price = 2_206
-                case 1..<2:
+                case 1...2:
                     price = 3_556
-                case 2..<3:
+                case 2...3:
                     price = 4_636
-                case 3..<4:
+                case 3...4:
                     price = 5_518
-                case 4..<5:
+                case 4...5:
                     price = 6_400
-                case 5..<6:
+                case 5...6:
                     price = 7_234
-                case 6..<7:
+                case 6...7:
                     price = 8_068
-                case 7..<9:
+                case 7...9:
                     price = 8_852
-                case 9..<11:
+                case 9...11:
                     price = 9_636
-                case 11..<13:
+                case 11...13:
                     price = 10_374
-                case 13..<15:
+                case 13...15:
                     price = 11_108
+                case let x where x > 15:
+                    let temp = x - 15
+                    price = 11_108 + (366 * Double(Int(temp)))
                 default:
                     price = 800
                 }
@@ -295,36 +301,37 @@ private extension CalculationService {
             switch value.type {
             case .objectArea:
                 switch value.value {
-                case 0..<100:
+                case 0...100:
                     price = 600
-                case 100..<200:
+                case 100...200:
                     price = 692
-                case 200..<400:
+                case 200...400:
                     price = 820
-                case 400..<700:
+                case 400...700:
                     price = 972
-                case 700..<1_000:
+                case 700...1_000:
                     price = 1_152
-                case 1_000..<2_000:
+                case 1_000...2_000:
                     price = 2_304
-                case 2_000..<3_000:
+                case 2_000...3_000:
                     price = 2_996
-                case 3_000..<5_000:
+                case 3_000...5_000:
                     price = 3_686
-                case 5_000..<7_000:
+                case 5_000...7_000:
                     price = 4_378
-                case 7_000..<10_000:
+                case 7_000...10_000:
                     price = 5_068
-                case 10_000..<13_0000:
+                case 10_000...13_000:
                     price = 5_760
-                case 13_000..<17_000:
+                case 13_000...17_000:
                     price = 6_336
-                case 17_000..<21_000:
+                case 17_000...21_000:
                     price = 6_822
-                case 21_000..<25_000:
+                case 21_000...25_000:
                     price = 7_256
-                case 25000..<9999999:
-                    price = (value.value - 25000) / 1000 * 108
+                case let x where x > 25_000:
+                    let temp = Int(x - 25000)
+                    price = 7_256 + (0.108 * Double(temp))
                 default:
                     price = 600
                 }
@@ -406,34 +413,37 @@ private extension CalculationService {
             switch value.type {
             case .objectArea:
                 switch value.value {
-                case 0..<100:
+                case 0...100:
                     price = 480
-                case 100..<200:
+                case 100...200:
                     price = 554
-                case 200..<400:
+                case 200...400:
                     price = 656
-                case 400..<700:
+                case 400...700:
                     price = 778
-                case 700..<1_000:
+                case 700...1_000:
                     price = 922
-                case 1_000..<2_000:
+                case 1_000...2_000:
                     price = 1_843
-                case 2_000..<3_000:
+                case 2_000...3_000:
                     price = 2_397
-                case 3_000..<5_000:
+                case 3_000...5_000:
                     price = 2_949
-                case 5_000..<7_000:
+                case 5_000...7_000:
                     price = 3_502
-                case 7_000..<10_000:
+                case 7_000...10_000:
                     price = 4_054
-                case 10_000..<13_0000:
+                case 10_000...13_000:
                     price = 4_608
-                case 13_000..<17_000:
+                case 13_000...17_000:
                     price = 5_069
-                case 17_000..<21_000:
+                case 17_000...21_000:
                     price = 5_458
-                case 21_000..<25_000:
+                case 21_000...25_000:
                     price = 5_805
+                case let x where x > 25_000:
+                    let temp = Int(x - 25000)
+                    price = 5_805 + (0.108 * Double(temp))
                 default:
                     price = 480
                 }
@@ -453,11 +463,11 @@ private extension CalculationService {
                 case 1:
                     notificationTypeCoef = 1.2
                 case 2:
-                    notificationTypeCoef = 1.4
+                    notificationTypeCoef = 1.44
                 case 3:
-                    notificationTypeCoef = 1.6
+                    notificationTypeCoef = 1.728
                 case 4:
-                    notificationTypeCoef = 1.8
+                    notificationTypeCoef = 2.0736
                 default:
                     notificationTypeCoef = 1
                 }
@@ -526,18 +536,19 @@ private extension CalculationService {
             switch value.type {
             case .numberOfProtectedPremises:
                 switch value.value {
-                case 0..<2:
+                case 0...2:
                     price = 2_560
-                case 2..<4:
+                case 2...4:
                     price = 3_814
-                case 4..<6:
+                case 4...6:
                     price = 5_068
-                case 6..<8:
+                case 6...8:
                     price = 5_990
-                case 8..<12:
+                case 8...12:
                     price = 6_910
-                case 12..<999999:
-                    price = (value.value - 12) + 200
+                case let x where x > 12:
+                    let temp = Int(x - 12)
+                    price = 6_910 + (200 * Double(temp))
                 default:
                     price = 2_560
                 }
@@ -605,36 +616,37 @@ private extension CalculationService {
         valueCoefficients.forEach { value in
             if value.type == .objectArea {
                 switch value.value {
-                case 0..<100:
+                case 0...100:
                     price = 420
-                case 100..<200:
+                case 100...200:
                     price = 484
-                case 200..<400:
+                case 200...400:
                     price = 574
-                case 400..<700:
+                case 400...700:
                     price = 680
-                case 700..<1_000:
+                case 700...1_000:
                     price = 806
-                case 1_000..<2_000:
+                case 1_000...2_000:
                     price = 1_613
-                case 2_000..<3_000:
+                case 2_000...3_000:
                     price = 2_097
-                case 3_000..<5_000:
+                case 3_000...5_000:
                     price = 2_580
-                case 5_000..<7_000:
+                case 5_000...7_000:
                     price = 3_065
-                case 7_000..<10_000:
+                case 7_000...10_000:
                     price = 3_548
-                case 10_000..<13_000:
+                case 10_000...13_000:
                     price = 4_032
-                case 13_000..<17_000:
+                case 13_000...17_000:
                     price = 4_435
-                case 17_000..<21_000:
+                case 17_000...21_000:
                     price = 4_775
-                case 21_000..<25_000:
+                case 21_000...25_000:
                     price = 5_079
-                case 25_000..<9999999:
-                    price = (value.value - 25_000) / 1000 * 108
+                case let x where x > 25_000:
+                    let temp = Int(x - 25000)
+                    price = 5_079 + (0.108 * Double(temp))
                 default:
                     price = 540
                 }
@@ -779,6 +791,7 @@ private extension CalculationService {
         
         var result: [CalculationResultModel] = []
         if flag {
+            
             let stageRPrice: Double = price * 0.25
             result.append(.init(title: .stageP,
                                                           description: "Цена разработки проектной документации:",
@@ -798,9 +811,9 @@ private extension CalculationService {
             result.append(.init(title: .stageP,
                                                           description: "Цена разработки проектной документации:",
                                                           prices: [.init(type: .withVat,
-                                                                         value: price * 1.20),
+                                                                         value: price * 1.20 * 0.9),
                                                                    .init(type: .withoutVat,
-                                                                         value: price)]))
+                                                                         value: price * 0.9)]))
         }
         
         return result
