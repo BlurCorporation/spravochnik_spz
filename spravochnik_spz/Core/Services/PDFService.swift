@@ -46,15 +46,26 @@ extension PDFService: PDFServiceProtocol {
 //
 //        }
         
-        let url = Bundle.main.path(forResource: "securityAlarm1", ofType: "pdf")
-        let data = NSData(contentsOfFile: url!)
-        let pdfDocument = PDFDocument(data: data! as Data)
+//        let url = Bundle.main.url(forResource: "securityAlarm1.pdf", withExtension: "pdf") // (forResource: "securityAlarm1.pdf", ofType: "pdf")
         
+        
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let docDirectoryPath = paths.first
+        let pdfPath = docDirectoryPath!.appendingPathComponent("Охранная сигнализация_1_расчетsecurityAlarm1.pdf")
+
+//        let data = try? Data(contentsOf: pdfPath)
+        
+        let path = Bundle.main.path(forResource: "securityAlarm1",  ofType:"pdf")
+        let fileURL = URL(fileURLWithPath: path!)
+        
+//        let data = NSData(data: URLRequest(url: url))
+        let pdfDocument = PDFDocument(url: fileURL)
+
         guard let pdfDocument = pdfDocument else { return nil }
         do {
             let tempDirectory = FileManager.default.temporaryDirectory
             let pdfURL = tempDirectory.appendingPathComponent("shared.pdf")
-            
+
             try pdfDocument.write(to: pdfURL)
             return pdfURL
         } catch {
