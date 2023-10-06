@@ -250,7 +250,7 @@ extension  ResultPresenter:  ResultPresenterProtocol {
     func shareButtonButtonPressed() {
         let isFullMode = defaultsManager.fetchObject(type: Bool.self, for: .isFullMode) ?? true
         if isFullMode {
-            guard let pdfURL = pdfService.generatePDF(from: "123") else {
+            guard let pdfURL = pdfService.generatePDF(from: makeRequestData()) else {
                 // Handle the case where saving the PDF to a temporary directory failed
                 return
             }
