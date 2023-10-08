@@ -100,12 +100,16 @@ extension AlertPresenter: AlertPresenterProtocol {
     func method(type: CoefficientType, value: String?) {
         switch type {
         case .clear(let model):
-//            let coefficientType = CoefficientType.clear(model: model)
-//            delegate?.saveButtonPressed(type: coefficientType, index: 0)
-//            viewController?.dismiss(animated: true)
             rightButtonPressed()
         case .value(let model):
-            let newValue = Double(value ?? "") ?? 0.0
+            var currentValue = value ?? ""
+            
+            if currentValue == "" && model.value != .zero {
+                currentValue = String(model.value)
+            }
+            
+            let newValue = replaceCommaWithDot(in: currentValue)
+        
             let newModel = ValueСoefficientModel(type: model.type, value: newValue, stringValue: value) //TODO: переделать внесение stringValue
             let coefficientType = CoefficientType.value(model: newModel)
             delegate?.saveButtonPressed(type: coefficientType, index: index)
@@ -117,7 +121,21 @@ extension AlertPresenter: AlertPresenterProtocol {
             viewController?.dismiss(animated: true)
             delegate?.saveButtonPressed(type: coefficientType, index: index)
         case .defaultValue(let model):
-            let newValue = Double(value ?? "") ?? 0.0
+            var currentValue = value ?? ""
+            
+//            if currentValue == "" {
+//                currentValue = String(model.type.defaultValue)
+//            }
+            
+            if currentValue == "" && model.value != .zero {
+                guard let _value = model.value else { return }
+                currentValue = String(_value)
+            }
+            
+//            guard let _currentValue = currentValue else { return }
+            
+            let newValue = replaceCommaWithDot(in: currentValue)
+            
             let newModel = DefaultCoefficientValueModel(type: model.type, value: newValue)
             let coefficientType = CoefficientType.defaultValue(model: newModel)
             viewController?.dismiss(animated: true)
@@ -137,4 +155,17 @@ enum CoefficientType {
     case value(model: ValueСoefficientModel)
     case choice(model: ChoiceCoefficientModel)
     case defaultValue(model: DefaultCoefficientValueModel)
+}
+
+private extension AlertPresenter {
+    func replaceCommaWithDot(in number: String) -> Double {
+        let stringRepresentation = number.replacingOccurrences(of: ",", with: ".")
+        
+        if let doubleValue = Double(stringRepresentation) {
+            let roundedValue = (doubleValue * 100).rounded() / 100
+            return roundedValue
+        } else {
+            return 0.0
+        }
+    }
 }

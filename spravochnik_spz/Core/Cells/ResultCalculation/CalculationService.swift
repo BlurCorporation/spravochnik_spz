@@ -795,25 +795,25 @@ private extension CalculationService {
             let stageRPrice: Double = price * 0.25
             result.append(.init(title: .stageP,
                                                           description: "Цена разработки проектной документации:",
-                                                          prices: [.init(type: .withVat,
-                                                                         value: stageRPrice * 1.2),
-                                                                   .init(type: .withoutVat,
-                                                                         value: stageRPrice)]))
+                                                          prices: [.init(type: .withoutVat,
+                                                                         value: stageRPrice),
+                                                                   .init(type: .withVat,
+                                                                         value: stageRPrice * 1.2)]))
             let stagePPrice: Double = price * 0.75
             result.append(CalculationResultModel(title: .stageR,
                                                            description: "Цена разработки проектной документации:",
-                                                           prices: [.init(type: .withVat,
-                                                                          value: stagePPrice * 1.2),
-                                                                    .init(type: .withoutVat,
-                                                                          value: stagePPrice)]))
+                                                           prices: [.init(type: .withoutVat,
+                                                                          value: stagePPrice),
+                                                                    .init(type: .withVat,
+                                                                          value: stagePPrice * 1.2)]))
             
         } else {
             result.append(.init(title: .stageP,
                                                           description: "Цена разработки проектной документации:",
-                                                          prices: [.init(type: .withVat,
-                                                                         value: price * 1.20 * 0.9),
-                                                                   .init(type: .withoutVat,
-                                                                         value: price * 0.9)]))
+                                                          prices: [.init(type: .withoutVat,
+                                                                         value: price * 0.9),
+                                                                   .init(type: .withVat,
+                                                                         value: price * 1.20 * 0.9)]))
         }
         
         return result

@@ -37,8 +37,17 @@ final class StartPresenter {
 extension StartPresenter: StartPresenterProtocol {
     func demoButtonPressed() {
         defaultsManager.saveObject(false, for: .isFullMode)
-        let onbordingScreen = self.sceneBuildManager.buildOnboardingScreen()
-        self.viewController?.navigationController?.pushViewController(onbordingScreen, animated: true)
+        let isOnbordingWathed = self.defaultsManager.fetchObject(type: Bool.self,
+                                                                 for: .isOnbordingWatched) ?? false
+        if isOnbordingWathed {
+            let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()
+            self.viewController?.navigationController?.pushViewController(tabBarScreen,
+                                                                          animated: true)
+        } else {
+            let onbordingScreen = self.sceneBuildManager.buildOnboardingScreen()
+            self.viewController?.navigationController?.pushViewController(onbordingScreen,
+                                                                          animated: true)
+        }
     }
     
     func loginButtonPressed() {

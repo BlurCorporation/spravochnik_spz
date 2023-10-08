@@ -125,7 +125,7 @@ final class  ResultPresenter {
             let prices = model.prices.map { model -> PriceViewModel in
                 PriceViewModel(
                     title: model.type.title,
-                    description: "\(model.type.carrency)",
+                    description: "\(model.type.carrency.title)",
                     cost: String(format: "%.2f", Double(model.value))
                 )
             }
@@ -147,9 +147,9 @@ final class  ResultPresenter {
         
         var stages: String = ""
         if calculationResult.count == 2 {
-            stages = "1-стадийная разработка"
-        } else {
             stages = "2-хстадийная разработка"
+        } else {
+            stages = "1-стадийная разработка"
         }
         
         let data: [Calculation] = [Calculation(address: address ?? "",
@@ -250,7 +250,7 @@ extension  ResultPresenter:  ResultPresenterProtocol {
     func shareButtonButtonPressed() {
         let isFullMode = defaultsManager.fetchObject(type: Bool.self, for: .isFullMode) ?? true
         if isFullMode {
-            guard let pdfURL = pdfService.generatePDF(from: "123") else {
+            guard let pdfURL = pdfService.generatePDF(from: makeRequestData()) else {
                 // Handle the case where saving the PDF to a temporary directory failed
                 return
             }

@@ -82,9 +82,8 @@ private extension CheckboxCoefficientResultTypeTableViewCell {
         selectionStyle = .none
         contentView.addSubviews(stackView)
         
-        stackView.addArrangedSubviews(titleLabel,
-                                      xMarkImageView)
-        xMarkImageView.isHidden = true
+        stackView.addArrangedSubviews(titleLabel)//,
+                                      //xMarkImageView)
     }
     
     func setupContsraints() {
