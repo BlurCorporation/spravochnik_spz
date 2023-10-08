@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ResultPresenter.shareButtonButtonPressed():ResultPresenter.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "pdfService.generatePDF(from: &quot;123&quot;)">
+            </PersistentString>
+            <PersistentString
+               value = "pdfURL">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
