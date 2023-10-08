@@ -102,23 +102,10 @@ extension AlertPresenter: AlertPresenterProtocol {
         case .clear(let model):
             rightButtonPressed()
         case .value(let model):
-            var defaultValue: String {
-                switch model.type {
-                case .objectArea:
-                    return "0"
-                case .lengthOfThePerimeter:
-                    return "0"
-                case .numberOfBlockingSections:
-                    return "0"
-                case .numberOfProtectedPremises:
-                    return "0"
-                case .address:
-                    return "Выполненный расчет стоимости"
-                }
-            }
             var currentValue = value ?? ""
-            if currentValue == "" {
-                currentValue = defaultValue
+            
+            if currentValue == "" && model.value != .zero {
+                currentValue = String(model.value)
             }
             
             let newValue = replaceCommaWithDot(in: currentValue)
@@ -135,9 +122,17 @@ extension AlertPresenter: AlertPresenterProtocol {
             delegate?.saveButtonPressed(type: coefficientType, index: index)
         case .defaultValue(let model):
             var currentValue = value ?? ""
-            if currentValue == "" {
-                currentValue = String(model.type.defaultValue)
+            
+//            if currentValue == "" {
+//                currentValue = String(model.type.defaultValue)
+//            }
+            
+            if currentValue == "" && model.value != .zero {
+                guard let _value = model.value else { return }
+                currentValue = String(_value)
             }
+            
+//            guard let _currentValue = currentValue else { return }
             
             let newValue = replaceCommaWithDot(in: currentValue)
             
