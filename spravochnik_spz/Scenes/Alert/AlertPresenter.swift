@@ -100,12 +100,29 @@ extension AlertPresenter: AlertPresenterProtocol {
     func method(type: CoefficientType, value: String?) {
         switch type {
         case .clear(let model):
-//            let coefficientType = CoefficientType.clear(model: model)
-//            delegate?.saveButtonPressed(type: coefficientType, index: 0)
-//            viewController?.dismiss(animated: true)
             rightButtonPressed()
         case .value(let model):
-            let newValue = Double(value ?? "") ?? 0.0
+            var defaultValue: String {
+                switch model.type {
+                case .objectArea:
+                    return "0"
+                case .lengthOfThePerimeter:
+                    return "0"
+                case .numberOfBlockingSections:
+                    return "0"
+                case .numberOfProtectedPremises:
+                    return "0"
+                case .address:
+                    return "Выполненный расчет стоимости"
+                }
+            }
+            var currentValue = value ?? ""
+            if currentValue == "" {
+                currentValue = defaultValue
+            }
+            
+            let newValue = replaceCommaWithDot(in: currentValue)
+        
             let newModel = ValueСoefficientModel(type: model.type, value: newValue, stringValue: value) //TODO: переделать внесение stringValue
             let coefficientType = CoefficientType.value(model: newModel)
             delegate?.saveButtonPressed(type: coefficientType, index: index)

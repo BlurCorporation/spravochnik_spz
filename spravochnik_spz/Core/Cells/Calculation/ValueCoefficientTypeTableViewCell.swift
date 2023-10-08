@@ -96,8 +96,10 @@ final class ValueCoefficientTableViewCell: UITableViewCell {
         
         self.index = index
         
-        if viewModel.value != .zero {
+        if viewModel.value != nil {
             button.setTitle("\(viewModel.value)", for: .normal)
+        } else {
+            button.setTitle("", for: .normal)
         }
     }
     

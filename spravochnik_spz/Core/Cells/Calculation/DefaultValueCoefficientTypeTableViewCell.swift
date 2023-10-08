@@ -89,7 +89,7 @@ final class DefaultValueCoefficientTableViewCell: UITableViewCell {
         
         self.index = index
         
-        if viewModel.value != .zero {
+        if viewModel.value != nil {
             button.setTitle("\(viewModel.value)", for: .normal)
         }
     }
