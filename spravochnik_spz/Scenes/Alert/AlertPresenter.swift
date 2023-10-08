@@ -117,7 +117,13 @@ extension AlertPresenter: AlertPresenterProtocol {
             viewController?.dismiss(animated: true)
             delegate?.saveButtonPressed(type: coefficientType, index: index)
         case .defaultValue(let model):
-            let newValue = Double(value ?? "") ?? 0.0
+            var currentValue = value ?? ""
+            if currentValue == "" {
+                currentValue = String(model.type.defaultValue)
+            }
+            
+            let newValue = replaceCommaWithDot(in: currentValue)
+            
             let newModel = DefaultCoefficientValueModel(type: model.type, value: newValue)
             let coefficientType = CoefficientType.defaultValue(model: newModel)
             viewController?.dismiss(animated: true)
@@ -137,4 +143,17 @@ enum CoefficientType {
     case value(model: ValueСoefficientModel)
     case choice(model: ChoiceCoefficientModel)
     case defaultValue(model: DefaultCoefficientValueModel)
+}
+
+private extension AlertPresenter {
+    func replaceCommaWithDot(in number: String) -> Double {
+        let stringRepresentation = number.replacingOccurrences(of: ",", with: ".")
+        
+        if let doubleValue = Double(stringRepresentation) {
+            let roundedValue = (doubleValue * 100).rounded() / 100
+            return roundedValue
+        } else {
+            return 0.0
+        }
+    }
 }
