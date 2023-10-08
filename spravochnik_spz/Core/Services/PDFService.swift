@@ -29,11 +29,11 @@ enum stringsPlaces {
         case .alarmSystem1, .alarmSystem2:
             return [(164, 127), (238, 150), (208, 173), (386, 204), (386, 236), (386, 273), (386, 310), (386, 342), (386, 377), (386, 412), (386, 447)]
         case .perimetrAlarm1, .perimetrAlarm2:
-            return [(281, 127), (238, 150), (268, 173), (169, 196), (208, 219), (386, 250), (386, 282), (386, 346), (386, 381), (386, 416), (386, 377), (386, 451)]
+            return [(281, 127), (238, 150), (268, 173), (169, 196), (208, 219), (386, 250), (386, 282), (386, 314), (386, 346), (386, 381), (386, 416), (386, 451)]
         case .notification1, .notification2:
-            return [(164, 127), (214, 150), (208, 173), (386, 213), (386, 245), (386, 277), (386, 312), (386, 347), (386, 382), (386, 417), (386, 449), (386, 484)]
+            return [(164, 127), (208, 150), (208, 173), (386, 204), (386, 241), (386, 278), (386, 310), (386, 345), (386, 380), (386, 412), (386, 447), (386, 482), (386, 517)]//, (386, 554)]
         case .fireAlarm1, .fireAlarm2:
-            return [(164, 127), (208, 150), (208, 173), (386, 204), (386, 241), (386, 278), (386, 310), (386, 345), (386, 380), (386, 412), (386, 447)]
+            return [(164, 127), (208, 150), (386, 181), (386, 213), (386, 245), (386, 277), (386, 312), (386, 347), (386, 382), (386, 417), (386, 449), (386, 484), (386, 519), (386, 554)]
         case .smokeExhaust1, .smokeExhaust2:
             return [(164, 127), (208, 150), (386, 181), (386, 213), (386, 245), (386, 280), (386, 315), (386, 347), (386, 382), (386, 417), (386, 452)]
         case .moduleFirefighting1, .moduleFirefighting2:
@@ -56,7 +56,7 @@ enum stringsPlaces {
         case .notification1:
             return [(271, 634), (271, 657)]
         case .notification2:
-            return [(271, 634), (271, 657), (271, 482), (271, 517)]
+            return [(271, 634), (271, 657), (271, 732), (271, 755)]
         case .fireAlarm1:
             return [(271, 671), (271, 694)]
         case .fireAlarm2:
@@ -91,8 +91,6 @@ final class PDFService {
             }
         }
         
-        
-        
         array.compactMap { item in
             item.choiceCoef.compactMap { value in
                 dataSource[0].append("\(value.type.items[value.itemIndex ?? 0]) \(value.type.descrp)")
@@ -107,7 +105,6 @@ final class PDFService {
                 let coef = String(item.defaultCoef.first?.type.defaultValue ?? 0.0)
                 dataSource[0].append(coef)
             }
-            
         }
         
         array.compactMap { item in
@@ -265,9 +262,7 @@ extension PDFService: PDFServiceProtocol {
             }
             
             for (index, item) in dataSource[1].enumerated() {
-                guard let _item = item else { return nil}
-                let additionalCoordX = (_item.count - 13) * 9
-                item?.draw(at: CGPoint(x: type.coordsForPrice[index].x + additionalCoordX, y: type.coordsForPrice[index].y), withAttributes: attributesMedium)
+                item?.draw(at: CGPoint(x: type.coordsForPrice[index].x , y: type.coordsForPrice[index].y), withAttributes: attributesMedium)
                 
             }
             

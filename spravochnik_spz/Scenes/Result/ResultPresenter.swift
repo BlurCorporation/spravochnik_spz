@@ -125,7 +125,7 @@ final class  ResultPresenter {
             let prices = model.prices.map { model -> PriceViewModel in
                 PriceViewModel(
                     title: model.type.title,
-                    description: "\(model.type.carrency)",
+                    description: "\(model.type.carrency.title)",
                     cost: String(format: "%.2f", Double(model.value))
                 )
             }
@@ -147,9 +147,9 @@ final class  ResultPresenter {
         
         var stages: String = ""
         if calculationResult.count == 2 {
-            stages = "1-стадийная разработка"
-        } else {
             stages = "2-хстадийная разработка"
+        } else {
+            stages = "1-стадийная разработка"
         }
         
         let data: [Calculation] = [Calculation(address: address ?? "",

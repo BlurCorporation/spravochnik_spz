@@ -34,7 +34,7 @@
 		1BD328A52AC718AC00758A5D /* AppModeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD328A42AC718AC00758A5D /* AppModeType.swift */; };
 		1BD328B62AD0948E00758A5D /* notification2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1BD328A82AD0948D00758A5D /* notification2.pdf */; };
 		1BD328B72AD0948E00758A5D /* notification1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1BD328A92AD0948D00758A5D /* notification1.pdf */; };
-		1BD328B82AD0948E00758A5D /* аfirePump2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1BD328AA2AD0948E00758A5D /* аfirePump2.pdf */; };
+		1BD328B82AD0948E00758A5D /* firePump2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1BD328AA2AD0948E00758A5D /* firePump2.pdf */; };
 		1BD328B92AD0948E00758A5D /* moduleFireFighting1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1BD328AB2AD0948E00758A5D /* moduleFireFighting1.pdf */; };
 		1BD328BA2AD0948E00758A5D /* moduleFireFighting2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1BD328AC2AD0948E00758A5D /* moduleFireFighting2.pdf */; };
 		1BD328BB2AD0948E00758A5D /* perimetrAlarm1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1BD328AD2AD0948E00758A5D /* perimetrAlarm1.pdf */; };
@@ -155,7 +155,7 @@
 		1BD328A42AC718AC00758A5D /* AppModeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModeType.swift; sourceTree = "<group>"; };
 		1BD328A82AD0948D00758A5D /* notification2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = notification2.pdf; sourceTree = "<group>"; };
 		1BD328A92AD0948D00758A5D /* notification1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = notification1.pdf; sourceTree = "<group>"; };
-		1BD328AA2AD0948E00758A5D /* аfirePump2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "аfirePump2.pdf"; sourceTree = "<group>"; };
+		1BD328AA2AD0948E00758A5D /* firePump2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = firePump2.pdf; sourceTree = "<group>"; };
 		1BD328AB2AD0948E00758A5D /* moduleFireFighting1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = moduleFireFighting1.pdf; sourceTree = "<group>"; };
 		1BD328AC2AD0948E00758A5D /* moduleFireFighting2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = moduleFireFighting2.pdf; sourceTree = "<group>"; };
 		1BD328AD2AD0948E00758A5D /* perimetrAlarm1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = perimetrAlarm1.pdf; sourceTree = "<group>"; };
@@ -340,7 +340,7 @@
 				1BD328AB2AD0948E00758A5D /* moduleFireFighting1.pdf */,
 				1BD328AC2AD0948E00758A5D /* moduleFireFighting2.pdf */,
 				1BD328B32AD0948E00758A5D /* firePump1.pdf */,
-				1BD328AA2AD0948E00758A5D /* аfirePump2.pdf */,
+				1BD328AA2AD0948E00758A5D /* firePump2.pdf */,
 				1BD328AD2AD0948E00758A5D /* perimetrAlarm1.pdf */,
 				1BD328B12AD0948E00758A5D /* perimetrAlarm2.pdf */,
 				1BD328B02AD0948E00758A5D /* alarmSystem1.pdf */,
@@ -789,7 +789,7 @@
 				1BD328B72AD0948E00758A5D /* notification1.pdf in Resources */,
 				1B2B11F72979CFF400FFC896 /* LaunchScreen.storyboard in Resources */,
 				1B9938D7299D740B00E2F8A9 /* HelveticaNeueCyr-Black.ttf in Resources */,
-				1BD328B82AD0948E00758A5D /* аfirePump2.pdf in Resources */,
+				1BD328B82AD0948E00758A5D /* firePump2.pdf in Resources */,
 				1BD328C02AD0948E00758A5D /* fireAlarm2.pdf in Resources */,
 				1BD328BC2AD0948E00758A5D /* fireAlarm1.pdf in Resources */,
 				8D9A01182A12C07E00D229FF /* GoogleService-Info.plist in Resources */,
