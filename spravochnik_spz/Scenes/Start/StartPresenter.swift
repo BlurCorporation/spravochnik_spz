@@ -40,8 +40,8 @@ extension StartPresenter: StartPresenterProtocol {
         let isOnbordingWathed = self.defaultsManager.fetchObject(type: Bool.self,
                                                                  for: .isOnbordingWatched) ?? false
         if isOnbordingWathed {
-            let tabBarScreen = self.sceneBuildManager.buildTabBarScreen()
-            self.viewController?.navigationController?.pushViewController(tabBarScreen,
+            let mainScreen = self.sceneBuildManager.buildMainScreen()
+            self.viewController?.navigationController?.pushViewController(mainScreen,
                                                                           animated: true)
         } else {
             let onbordingScreen = self.sceneBuildManager.buildOnboardingScreen()

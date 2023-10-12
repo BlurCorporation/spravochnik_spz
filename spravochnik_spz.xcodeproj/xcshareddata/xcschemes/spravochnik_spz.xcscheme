@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1B2B11E62979CFF300FFC896"
-               BuildableName = "spravochnik_spz.app"
-               BlueprintName = "spravochnik_spz"
+               BuildableName = "&#x421;&#x43f;&#x440;&#x430;&#x432;&#x43e;&#x447;&#x43d;&#x438;&#x43a; &#x441;&#x43f;&#x437;.app"
+               BlueprintName = "&#x421;&#x43f;&#x440;&#x430;&#x432;&#x43e;&#x447;&#x43d;&#x438;&#x43a; &#x441;&#x43f;&#x437;"
                ReferencedContainer = "container:spravochnik_spz.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1B2B11E62979CFF300FFC896"
-            BuildableName = "spravochnik_spz.app"
-            BlueprintName = "spravochnik_spz"
+            BuildableName = "&#x421;&#x43f;&#x440;&#x430;&#x432;&#x43e;&#x447;&#x43d;&#x438;&#x43a; &#x441;&#x43f;&#x437;.app"
+            BlueprintName = "&#x421;&#x43f;&#x440;&#x430;&#x432;&#x43e;&#x447;&#x43d;&#x438;&#x43a; &#x441;&#x43f;&#x437;"
             ReferencedContainer = "container:spravochnik_spz.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1B2B11E62979CFF300FFC896"
-            BuildableName = "spravochnik_spz.app"
-            BlueprintName = "spravochnik_spz"
+            BuildableName = "&#x421;&#x43f;&#x440;&#x430;&#x432;&#x43e;&#x447;&#x43d;&#x438;&#x43a; &#x441;&#x43f;&#x437;.app"
+            BlueprintName = "&#x421;&#x43f;&#x440;&#x430;&#x432;&#x43e;&#x447;&#x43d;&#x438;&#x43a; &#x441;&#x43f;&#x437;"
             ReferencedContainer = "container:spravochnik_spz.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

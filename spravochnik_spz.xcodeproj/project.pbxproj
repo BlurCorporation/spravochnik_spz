@@ -126,7 +126,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1B2B11E72979CFF300FFC896 /* spravochnik_spz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spravochnik_spz.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B2B11E72979CFF300FFC896 /* Справочник спз.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Справочник спз.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B2B11EA2979CFF300FFC896 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B2B11EC2979CFF300FFC896 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1B2B11F32979CFF400FFC896 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -284,7 +284,7 @@
 		1B2B11E82979CFF300FFC896 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1B2B11E72979CFF300FFC896 /* spravochnik_spz.app */,
+				1B2B11E72979CFF300FFC896 /* Справочник спз.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -709,9 +709,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1B2B11E62979CFF300FFC896 /* spravochnik_spz */ = {
+		1B2B11E62979CFF300FFC896 /* Справочник спз */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1B2B11FB2979CFF400FFC896 /* Build configuration list for PBXNativeTarget "spravochnik_spz" */;
+			buildConfigurationList = 1B2B11FB2979CFF400FFC896 /* Build configuration list for PBXNativeTarget "Справочник спз" */;
 			buildPhases = (
 				1B2B11E32979CFF300FFC896 /* Sources */,
 				1B2B11E42979CFF300FFC896 /* Frameworks */,
@@ -721,7 +721,7 @@
 			);
 			dependencies = (
 			);
-			name = spravochnik_spz;
+			name = "Справочник спз";
 			packageProductDependencies = (
 				8D9A010E2A12B9F400D229FF /* FirebaseAuth */,
 				1BF7A28C2A2F66D500A1F929 /* GoogleSignIn */,
@@ -730,7 +730,7 @@
 				45A830282A3F8EAF00713E43 /* FirebaseFirestoreSwift-Beta */,
 			);
 			productName = spravochnik_spz;
-			productReference = 1B2B11E72979CFF300FFC896 /* spravochnik_spz.app */;
+			productReference = 1B2B11E72979CFF300FFC896 /* Справочник спз.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -765,7 +765,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1B2B11E62979CFF300FFC896 /* spravochnik_spz */,
+				1B2B11E62979CFF300FFC896 /* Справочник спз */,
 			);
 		};
 /* End PBXProject section */
@@ -1035,7 +1035,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = spravochnik_spz/spravochnik_spz.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = B22MD3V3UZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = spravochnik_spz/Info.plist;
@@ -1047,7 +1047,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "Maksimka.1spravochnik-spz1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1063,7 +1063,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = spravochnik_spz/spravochnik_spz.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = B22MD3V3UZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = spravochnik_spz/Info.plist;
@@ -1075,7 +1075,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "Maksimka.1spravochnik-spz1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1096,7 +1096,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1B2B11FB2979CFF400FFC896 /* Build configuration list for PBXNativeTarget "spravochnik_spz" */ = {
+		1B2B11FB2979CFF400FFC896 /* Build configuration list for PBXNativeTarget "Справочник спз" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1B2B11FC2979CFF400FFC896 /* Debug */,
