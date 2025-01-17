@@ -7,7 +7,6 @@
 
 import FirebaseCore
 import FirebaseFirestore
-import FirebaseFirestoreSwift
 
 protocol FirebaseServiceProtocol {
     func setCalculation(userID: String,

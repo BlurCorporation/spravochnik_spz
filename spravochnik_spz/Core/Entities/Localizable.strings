@@ -16,7 +16,7 @@
 "smokeExhaustText" = "Система управления дымоудаления";
 
 // TextLabels
-"applicationNameLabelText" = "Справочник СПЗ";
+"applicationNameLabelText" = "CostFactor";
 "infoApplicationLabelText" = "Войдите в систему или зарегистрируйтесь, чтобы получить полный доступ к приложению с возможность сохранять и делиться произведенными расчетами";
 "infoWithLinksLabelText" = "Выполняя вход в приложение вы соглашаетесь с Условиями использования и Политикой конфиденциальности";
 "infoRegisterBottomLabelText" = "У вас уже есть аккаунт?";
