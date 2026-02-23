@@ -108,7 +108,6 @@
 		45A830222A3F8B3600713E43 /* FirebaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A830212A3F8B3600713E43 /* FirebaseRepository.swift */; };
 		45A830242A3F8B5E00713E43 /* CalculationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A830232A3F8B5E00713E43 /* CalculationModel.swift */; };
 		45A830272A3F8BE800713E43 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 45A830262A3F8BE800713E43 /* FirebaseFirestore */; };
-		45A830292A3F8EAF00713E43 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 45A830282A3F8EAF00713E43 /* FirebaseFirestoreSwift-Beta */; };
 		45DA6E4C29804524008D26F8 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA6E4B29804524008D26F8 /* UIView.swift */; };
 		45DA6E4E298047CF008D26F8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DA6E4D298047CF008D26F8 /* UIViewController.swift */; };
 		45F72C2C297F1C6F00D90C8F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F72C2B297F1C6F00D90C8F /* Constants.swift */; };
@@ -249,7 +248,6 @@
 			files = (
 				1BF7A28F2A2F66D500A1F929 /* GoogleSignInSwift in Frameworks */,
 				45A830272A3F8BE800713E43 /* FirebaseFirestore in Frameworks */,
-				45A830292A3F8EAF00713E43 /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				8D9A010F2A12B9F400D229FF /* FirebaseAuth in Frameworks */,
 				1BF7A28D2A2F66D500A1F929 /* GoogleSignIn in Frameworks */,
 			);
@@ -727,7 +725,6 @@
 				1BF7A28C2A2F66D500A1F929 /* GoogleSignIn */,
 				1BF7A28E2A2F66D500A1F929 /* GoogleSignInSwift */,
 				45A830262A3F8BE800713E43 /* FirebaseFirestore */,
-				45A830282A3F8EAF00713E43 /* FirebaseFirestoreSwift-Beta */,
 			);
 			productName = spravochnik_spz;
 			productReference = 1B2B11E72979CFF300FFC896 /* Справочник спз.app */;
@@ -920,7 +917,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -980,7 +977,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -1113,7 +1110,7 @@
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
+				minimumVersion = 8.0.0;
 			};
 		};
 		8D9A010D2A12B9F400D229FF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -1121,7 +1118,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 8.1.0;
+				minimumVersion = 11.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1141,11 +1138,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8D9A010D2A12B9F400D229FF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
-		};
-		45A830282A3F8EAF00713E43 /* FirebaseFirestoreSwift-Beta */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8D9A010D2A12B9F400D229FF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseFirestoreSwift-Beta";
 		};
 		8D9A010E2A12B9F400D229FF /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
